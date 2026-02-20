@@ -59,7 +59,7 @@ const GrowthChart = () => (
     </div>
     <p className="text-muted-foreground font-light text-sm md:text-base mt-6 max-w-2xl">
       ChatGPT reached 100 million users <span className="text-primary font-bold">27× faster</span> than Facebook.
-      AI isn't just fast — it's resetting what "adoption" looks like.
+      AI isn't just fast - it's resetting what "adoption" looks like.
     </p>
   </div>
 );
