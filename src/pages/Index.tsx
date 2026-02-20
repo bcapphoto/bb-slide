@@ -423,18 +423,15 @@ const Index = () => {
     </MobileSection>,
   ];
 
-  /* ─── MOBILE: simple vertical snap scroll ─── */
-  if (isMobile) {
-    return (
-      <div className="h-screen overflow-y-auto snap-y snap-mandatory scrollbar-hide grain">
-        {allSlides}
-      </div>
-    );
-  }
-
-  /* ─── DESKTOP: original horizontal+vertical navigation ─── */
   return (
-    <div ref={containerRef} className="h-screen overflow-y-auto snap-y snap-mandatory scrollbar-hide grain cursor-none">
+    <div ref={containerRef} className={`h-screen overflow-y-auto snap-y snap-mandatory scrollbar-hide grain ${isMobile ? '' : 'cursor-none'}`}>
+
+      {isMobile ? (
+        /* ─── MOBILE: simple vertical snap scroll ─── */
+        <>{allSlides}</>
+      ) : (
+        /* ─── DESKTOP: original horizontal+vertical navigation ─── */
+        <>
 
       {/* TITLE PAGE */}
       <section id="section-title" className="relative h-screen snap-start flex-shrink-0 flex items-center justify-center dot-grid-bold glow-br overflow-hidden">
@@ -718,6 +715,8 @@ const Index = () => {
           right: activeSlide < (slideTotals[activeSection] || 1) - 1,
         }}
       />
+        </>
+      )}
     </div>
   );
 };
