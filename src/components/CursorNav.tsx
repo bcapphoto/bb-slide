@@ -6,11 +6,11 @@ interface CursorNavProps {
   onNavigate: (direction: "left" | "right" | "up" | "down") => void;
 }
 
-const EDGE = 0.18; // 18% from each edge
+const EDGE = 0.22;
 
 const CursorNav = ({ onNavigate }: CursorNavProps) => {
   const [direction, setDirection] = useState<Direction>(null);
-  const [pos, setPos] = useState({ x: -100, y: -100 });
+  const [pos, setPos] = useState({ x: -200, y: -200 });
   const [visible, setVisible] = useState(false);
 
   const handleMove = useCallback((e: MouseEvent) => {
@@ -19,6 +19,7 @@ const CursorNav = ({ onNavigate }: CursorNavProps) => {
     setPos({ x: e.clientX, y: e.clientY });
     setVisible(true);
 
+    // Corners: horizontal takes priority
     if (x < EDGE) setDirection("left");
     else if (x > 1 - EDGE) setDirection("right");
     else if (y < EDGE) setDirection("up");
@@ -46,39 +47,35 @@ const CursorNav = ({ onNavigate }: CursorNavProps) => {
     };
   }, [handleMove, handleClick, handleLeave]);
 
-  if (!visible || !direction) return null;
-
-  const rotation = {
-    left: 180,
-    right: 0,
-    up: -90,
-    down: 90,
-  }[direction];
+  // Caret points in the direction of travel
+  const rotation = direction
+    ? { right: 0, down: 90, left: 180, up: 270 }[direction]
+    : 0;
 
   return (
     <div
-      className="fixed z-50 pointer-events-none"
-      style={{
-        left: pos.x,
-        top: pos.y,
-        transform: `translate(-50%, -50%) rotate(${rotation}deg)`,
-      }}
+      className="fixed inset-0 z-50"
+      style={{ cursor: "none" }}
     >
-      {/* Large arrow SVG */}
-      <svg
-        width="64"
-        height="64"
-        viewBox="0 0 64 64"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-        className="drop-shadow-lg"
-      >
-        <path
-          d="M12 32 L44 16 L38 30 L52 30 L52 34 L38 34 L44 48 Z"
-          fill="hsl(82 72% 52%)"
-          fillOpacity="0.85"
-        />
-      </svg>
+      {visible && (
+        <div
+          className="fixed pointer-events-none transition-opacity duration-150"
+          style={{
+            left: pos.x,
+            top: pos.y,
+            transform: `translate(-50%, -50%) rotate(${rotation}deg)`,
+            opacity: direction ? 0.7 : 0,
+          }}
+        >
+          {/* Large caret > character */}
+          <span
+            className="font-title text-primary select-none block"
+            style={{ fontSize: "120px", lineHeight: 1 }}
+          >
+            ›
+          </span>
+        </div>
+      )}
     </div>
   );
 };
