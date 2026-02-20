@@ -214,18 +214,24 @@ const Index = () => {
         <h2 className="font-title text-3xl md:text-4xl uppercase tracking-tight mb-10">
           3 ways AI will reshape <span className="highlight-green">our business.</span>
         </h2>
-        <div className="space-y-8">
-          <div>
-            <IconFastForward size={28} className="text-brand-green mx-auto mb-2" />
-            <h3 className="font-title text-xl uppercase tracking-tight leading-tight text-gray-900">AI is compressing time across <span className="highlight-green">everything.</span></h3>
+        <div className="space-y-6 text-left">
+          <div className="flex items-center gap-4">
+            <div className="flex-shrink-0 w-12 h-12 rounded-sm bg-brand-green/10 flex items-center justify-center">
+              <IconFastForward size={28} className="text-brand-green" />
+            </div>
+            <h3 className="font-title text-lg uppercase tracking-tight leading-tight text-gray-900">AI is compressing time across <span className="highlight-green">everything.</span></h3>
           </div>
-          <div>
-            <IconStacks size={28} className="text-brand-green mx-auto mb-2" />
-            <h3 className="font-title text-xl uppercase tracking-tight leading-tight text-gray-900">AI is taking over the <span className="highlight-green">"doing."</span></h3>
+          <div className="flex items-center gap-4">
+            <div className="flex-shrink-0 w-12 h-12 rounded-sm bg-brand-green/10 flex items-center justify-center">
+              <IconStacks size={28} className="text-brand-green" />
+            </div>
+            <h3 className="font-title text-lg uppercase tracking-tight leading-tight text-gray-900">AI is taking over the <span className="highlight-green">"doing."</span></h3>
           </div>
-          <div>
-            <IconIdentity size={28} className="text-brand-green mx-auto mb-2" />
-            <h3 className="font-title text-xl uppercase tracking-tight leading-tight text-gray-900">AI will restructure the employer-employee <span className="highlight-green">relationship.</span></h3>
+          <div className="flex items-center gap-4">
+            <div className="flex-shrink-0 w-12 h-12 rounded-sm bg-brand-green/10 flex items-center justify-center">
+              <IconIdentity size={28} className="text-brand-green" />
+            </div>
+            <h3 className="font-title text-lg uppercase tracking-tight leading-tight text-gray-900">AI will restructure the employer-employee <span className="highlight-green">relationship.</span></h3>
           </div>
         </div>
       </div>
@@ -535,17 +541,23 @@ const Index = () => {
             <h2 className="font-title text-4xl md:text-6xl uppercase tracking-tight mb-12">
               3 ways AI will reshape <span className="highlight-green">our business.</span>
             </h2>
-            <div className="space-y-12">
-              <div>
-                <IconFastForward size={36} className="text-brand-green mx-auto mb-3" />
+            <div className="space-y-10 text-left">
+              <div className="flex items-center gap-6">
+                <div className="flex-shrink-0 w-16 h-16 md:w-20 md:h-20 rounded-sm bg-brand-green/10 flex items-center justify-center">
+                  <IconFastForward size={40} className="text-brand-green md:w-12 md:h-12" />
+                </div>
                 <h3 className="font-title text-2xl md:text-3xl uppercase tracking-tight leading-tight text-gray-900">AI is compressing time across <span className="highlight-green">everything.</span></h3>
               </div>
-              <div>
-                <IconStacks size={36} className="text-brand-green mx-auto mb-3" />
+              <div className="flex items-center gap-6">
+                <div className="flex-shrink-0 w-16 h-16 md:w-20 md:h-20 rounded-sm bg-brand-green/10 flex items-center justify-center">
+                  <IconStacks size={40} className="text-brand-green md:w-12 md:h-12" />
+                </div>
                 <h3 className="font-title text-2xl md:text-3xl uppercase tracking-tight leading-tight text-gray-900">AI is taking over the <span className="highlight-green">"doing."</span></h3>
               </div>
-              <div>
-                <IconIdentity size={36} className="text-brand-green mx-auto mb-3" />
+              <div className="flex items-center gap-6">
+                <div className="flex-shrink-0 w-16 h-16 md:w-20 md:h-20 rounded-sm bg-brand-green/10 flex items-center justify-center">
+                  <IconIdentity size={40} className="text-brand-green md:w-12 md:h-12" />
+                </div>
                 <h3 className="font-title text-2xl md:text-3xl uppercase tracking-tight leading-tight text-gray-900">AI will restructure the employer-employee <span className="highlight-green">relationship.</span></h3>
               </div>
             </div>
