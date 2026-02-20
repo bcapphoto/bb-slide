@@ -432,21 +432,27 @@ const Index = () => {
         <img src={bbLogoHorizontal} alt="BrandBlvd" className="h-7 mb-10 mx-auto invert" />
         <div className="space-y-8">
           <div className="flex items-start gap-4">
-            <span className="font-display text-4xl font-black text-brand-green/30 leading-none shrink-0">01</span>
+            <div className="shrink-0 w-10 h-10 rounded-full border border-brand-green/30 flex items-center justify-center">
+              <IconFastForward size={18} className="text-brand-green" />
+            </div>
             <div className="text-left">
               <p className="text-gray-500 text-xs font-light">AI is compressing time across everything.</p>
               <h3 className="font-title text-xl uppercase tracking-tight leading-tight mt-1 text-gray-900">Instant is the new <span className="highlight-green">standard.</span></h3>
             </div>
           </div>
           <div className="flex items-start gap-4">
-            <span className="font-display text-4xl font-black text-brand-green/30 leading-none shrink-0">02</span>
+            <div className="shrink-0 w-10 h-10 rounded-full border border-brand-green/30 flex items-center justify-center">
+              <IconStacks size={18} className="text-brand-green" />
+            </div>
             <div className="text-left">
               <p className="text-gray-500 text-xs font-light">AI is taking over the "doing."</p>
               <h3 className="font-title text-xl uppercase tracking-tight leading-tight mt-1 text-gray-900">Death of transactional <span className="highlight-green">sales.</span></h3>
             </div>
           </div>
           <div className="flex items-start gap-4">
-            <span className="font-display text-4xl font-black text-brand-green/30 leading-none shrink-0">03</span>
+            <div className="shrink-0 w-10 h-10 rounded-full border border-brand-green/30 flex items-center justify-center">
+              <IconIdentity size={18} className="text-brand-green" />
+            </div>
             <div className="text-left">
               <p className="text-gray-500 text-xs font-light">AI will restructure the employer-employee relationship.</p>
               <h3 className="font-title text-xl uppercase tracking-tight leading-tight mt-1 text-gray-900">Identity-driven community <span className="highlight-green">merch.</span></h3>
@@ -724,21 +730,27 @@ const Index = () => {
           <img src={bbLogoHorizontal} alt="BrandBlvd" className="h-8 md:h-10 mb-12 mx-auto invert" />
           <div className="space-y-10">
             <div className="flex items-start gap-6">
-              <span className="font-display text-5xl md:text-6xl font-black text-brand-green/30 leading-none shrink-0">01</span>
+              <div className="shrink-0 w-12 h-12 rounded-full border border-brand-green/30 flex items-center justify-center">
+                <IconFastForward size={22} className="text-brand-green" />
+              </div>
               <div className="text-left">
                 <p className="text-gray-500 text-sm md:text-base font-light">AI is compressing time across everything.</p>
                 <h3 className="font-title text-2xl md:text-3xl uppercase tracking-tight leading-tight mt-1 text-gray-900">Instant is the new <span className="highlight-green">standard.</span></h3>
               </div>
             </div>
             <div className="flex items-start gap-6">
-              <span className="font-display text-5xl md:text-6xl font-black text-brand-green/30 leading-none shrink-0">02</span>
+              <div className="shrink-0 w-12 h-12 rounded-full border border-brand-green/30 flex items-center justify-center">
+                <IconStacks size={22} className="text-brand-green" />
+              </div>
               <div className="text-left">
                 <p className="text-gray-500 text-sm md:text-base font-light">AI is taking over the "doing."</p>
                 <h3 className="font-title text-2xl md:text-3xl uppercase tracking-tight leading-tight mt-1 text-gray-900">Death of transactional <span className="highlight-green">sales.</span></h3>
               </div>
             </div>
             <div className="flex items-start gap-6">
-              <span className="font-display text-5xl md:text-6xl font-black text-brand-green/30 leading-none shrink-0">03</span>
+              <div className="shrink-0 w-12 h-12 rounded-full border border-brand-green/30 flex items-center justify-center">
+                <IconIdentity size={22} className="text-brand-green" />
+              </div>
               <div className="text-left">
                 <p className="text-gray-500 text-sm md:text-base font-light">AI will restructure the employer-employee relationship.</p>
                 <h3 className="font-title text-2xl md:text-3xl uppercase tracking-tight leading-tight mt-1 text-gray-900">Identity-driven community <span className="highlight-green">merch.</span></h3>
