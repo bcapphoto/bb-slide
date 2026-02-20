@@ -30,7 +30,7 @@ const SerifStatement = ({ children }: { children: React.ReactNode }) => (
   <p className="font-serif text-2xl md:text-4xl lg:text-5xl italic leading-snug max-w-5xl">{children}</p>
 );
 
-const SectionOpener = ({ number, superTitle, title, subtitle, icon: Icon }: { number: string; superTitle: string; title: React.ReactNode; subtitle: string; icon?: React.ComponentType<{ size?: number; className?: string }> }) => (
+const SectionOpener = ({ number, superTitle, title, icon: Icon }: { number: string; superTitle: string; title: React.ReactNode; icon?: React.ComponentType<{ size?: number; className?: string }> }) => (
   <div className="relative w-full h-full flex items-center dot-grid overflow-hidden">
     <div className="absolute right-0 top-1/2 -translate-y-1/2 font-display text-[12rem] md:text-[28rem] font-black text-foreground/[0.04] leading-none select-none pointer-events-none">
       {number}
@@ -44,7 +44,6 @@ const SectionOpener = ({ number, superTitle, title, subtitle, icon: Icon }: { nu
       )}
       <p className="font-display text-sm md:text-base uppercase tracking-[0.35em] text-muted-foreground font-bold mb-8">{superTitle}</p>
       <h1 className="font-title text-4xl md:text-7xl lg:text-8xl uppercase leading-[1.15] tracking-tight break-words">{title}</h1>
-      <p className="font-serif text-xl md:text-2xl italic text-muted-foreground mt-6">{subtitle}</p>
     </div>
   </div>
 );
@@ -207,7 +206,7 @@ const Index = () => {
 
     // SECTION 1 slides
     <MobileSection key="1-1">
-      <SectionOpener icon={IconFastForward} number="01" superTitle="The Future of AI" title={<>Instant is the<br />new <span className="highlight-green">standard.</span></>} subtitle="AI is compressing time across everything." />
+      <SectionOpener icon={IconFastForward} number="01" superTitle="The Future of AI" title={<>AI is compressing time<br />across <span className="highlight-green">everything.</span></>} />
     </MobileSection>,
 
     <MobileSection key="1-2" className="relative diagonal-lines">
@@ -297,7 +296,7 @@ const Index = () => {
 
     // SECTION 2 slides
     <MobileSection key="2-1">
-      <SectionOpener icon={IconStacks} number="02" superTitle="The Future of AI" title={<>The human value<br />shifts up the <span className="highlight-green">stack.</span></>} subtitle='AI is taking over the "doing."' />
+      <SectionOpener icon={IconStacks} number="02" superTitle="The Future of AI" title={<>AI is taking over<br />the <span className="highlight-green">"doing."</span></>} />
     </MobileSection>,
 
     <MobileSection key="2-2" className="relative cross-grid">
@@ -375,7 +374,7 @@ const Index = () => {
 
     // SECTION 3 slides
     <MobileSection key="3-1">
-      <SectionOpener icon={IconIdentity} number="03" superTitle="The Future of AI" title={<>Identity &gt;<br /><span className="highlight-green">Employment.</span></>} subtitle="AI will restructure the relationship between employers and employees." />
+      <SectionOpener icon={IconIdentity} number="03" superTitle="The Future of AI" title={<>AI will restructure<br />the employer-employee <span className="highlight-green">relationship.</span></>} />
     </MobileSection>,
 
     <MobileSection key="3-2" className="relative diagonal-lines">
@@ -479,7 +478,7 @@ const Index = () => {
 
       {/* SECTION 1: INSTANT IS THE NEW STANDARD */}
       <Section id="section-instant" onSlideChange={handleSlideChange(1)} initialSlide={activeSection === 1 ? initialSlideRef.current : 0}>
-        <SectionOpener icon={IconFastForward} number="01" superTitle="The Future of AI" title={<>Instant is the<br />new <span className="highlight-green">standard.</span></>} subtitle="AI is compressing time across everything." />
+        <SectionOpener icon={IconFastForward} number="01" superTitle="The Future of AI" title={<>AI is compressing time<br />across <span className="highlight-green">everything.</span></>} />
 
         <div className="relative w-full h-full flex items-center justify-center diagonal-lines">
           <BgImage src={abstractSpeed} opacity="opacity-[0.04]" />
@@ -565,7 +564,7 @@ const Index = () => {
 
       {/* SECTION 2: HUMAN VALUE SHIFTS UP THE STACK */}
       <Section id="section-human-value" onSlideChange={handleSlideChange(2)} initialSlide={activeSection === 2 ? initialSlideRef.current : 0}>
-        <SectionOpener icon={IconStacks} number="02" superTitle="The Future of AI" title={<>The human value<br />shifts up the <span className="highlight-green">stack.</span></>} subtitle='AI is taking over the "doing."' />
+        <SectionOpener icon={IconStacks} number="02" superTitle="The Future of AI" title={<>AI is taking over<br />the <span className="highlight-green">"doing."</span></>} />
 
         <div className="relative w-full h-full flex items-center justify-center cross-grid">
           <BgImage src={abstractStack} opacity="opacity-[0.05]" />
@@ -641,7 +640,7 @@ const Index = () => {
 
       {/* SECTION 3: IDENTITY > EMPLOYMENT */}
       <Section id="section-identity" onSlideChange={handleSlideChange(3)} initialSlide={activeSection === 3 ? initialSlideRef.current : 0}>
-        <SectionOpener icon={IconIdentity} number="03" superTitle="The Future of AI" title={<>Identity &gt;<br /><span className="highlight-green">Employment.</span></>} subtitle="AI will restructure the relationship between employers and employees." />
+        <SectionOpener icon={IconIdentity} number="03" superTitle="The Future of AI" title={<>AI will restructure<br />the employer-employee <span className="highlight-green">relationship.</span></>} />
 
         <div className="relative w-full h-full flex items-center justify-center diagonal-lines">
           <BgImage src={abstractIdentity} opacity="opacity-[0.05]" />
