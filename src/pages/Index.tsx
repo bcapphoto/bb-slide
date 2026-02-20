@@ -1,4 +1,5 @@
 import { useEffect, useState, useCallback, useRef } from "react";
+import { useParams, useNavigate } from "react-router-dom";
 import { ChevronsRight, Quote } from "lucide-react";
 import Section from "@/components/Section";
 import CursorNav from "@/components/CursorNav";
@@ -6,6 +7,8 @@ import GrowthChart from "@/components/GrowthChart";
 import abstractSpeed from "@/assets/abstract-speed.jpg";
 import abstractStack from "@/assets/abstract-stack.jpg";
 import abstractIdentity from "@/assets/abstract-identity.jpg";
+
+const SECTION_NAMES = ["title", "instant", "human-value", "identity"] as const;
 
 /* ─── Reusable slide layouts ─── */
 
@@ -73,9 +76,26 @@ const BgImage = ({ src, opacity = "opacity-20" }: { src: string; opacity?: strin
 
 /* ─── Main presentation ─── */
 
+const TOTAL_SECTIONS = 4;
+
 const Index = () => {
-  const [activeSection, setActiveSection] = useState(0);
+  const { section: paramSection, slide: paramSlide } = useParams();
+  const navigate = useNavigate();
+  const [activeSection, setActiveSection] = useState(() => {
+    const idx = SECTION_NAMES.indexOf(paramSection as any);
+    return idx >= 0 ? idx : 0;
+  });
+  const initialSlideRef = useRef(paramSlide ? parseInt(paramSlide, 10) - 1 : 0);
   const containerRef = useRef<HTMLDivElement>(null);
+  const slidesRef = useRef<Record<number, number>>({});
+  const isScrolling = useRef(false);
+
+  // Sync URL when section or slide changes
+  const updateUrl = useCallback((sectionIdx: number, slideIdx: number) => {
+    const name = SECTION_NAMES[sectionIdx] || "title";
+    const path = slideIdx > 0 ? `/${name}/${slideIdx + 1}` : `/${name}`;
+    navigate(path, { replace: true });
+  }, [navigate]);
 
   useEffect(() => {
     const el = containerRef.current;
@@ -83,14 +103,29 @@ const Index = () => {
     const handler = () => {
       const index = Math.round(el.scrollTop / el.clientHeight);
       setActiveSection(index);
+      updateUrl(index, slidesRef.current[index] || 0);
     };
     el.addEventListener("scroll", handler, { passive: true });
     return () => el.removeEventListener("scroll", handler);
-  }, []);
+  }, [updateUrl]);
+
+  // Scroll to initial section on mount
+  useEffect(() => {
+    const idx = SECTION_NAMES.indexOf(paramSection as any);
+    if (idx > 0) {
+      const el = document.getElementById(`section-${SECTION_NAMES[idx]}`);
+      el?.scrollIntoView({ behavior: "instant" as ScrollBehavior });
+    }
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
+
+  const handleSlideChange = useCallback((sectionIdx: number) => (slideIdx: number) => {
+    slidesRef.current[sectionIdx] = slideIdx;
+    updateUrl(sectionIdx, slideIdx);
+  }, [updateUrl]);
 
   const goToSection = (index: number) => {
-    const clamped = Math.max(0, Math.min(index, 2));
-    const el = document.getElementById(`section-${clamped + 1}`);
+    const clamped = Math.max(0, Math.min(index, TOTAL_SECTIONS - 1));
+    const el = document.getElementById(`section-${SECTION_NAMES[clamped]}`);
     el?.scrollIntoView({ behavior: "smooth" });
   };
 
@@ -100,8 +135,7 @@ const Index = () => {
     } else if (dir === "down") {
       goToSection(activeSection + 1);
     } else {
-      // Find the visible section's horizontal scroller
-      const section = document.getElementById(`section-${activeSection + 1}`);
+      const section = document.getElementById(`section-${SECTION_NAMES[activeSection]}`);
       const scroller = section?.querySelector("[data-slide-scroller]") as HTMLElement | null;
       if (!scroller) return;
       const currentSlide = Math.round(scroller.scrollLeft / scroller.clientWidth);
@@ -114,9 +148,27 @@ const Index = () => {
     <div ref={containerRef} className="h-screen overflow-y-auto snap-y snap-mandatory scrollbar-hide grain cursor-none">
 
       {/* ═══════════════════════════════════════════
+          TITLE PAGE
+      ═══════════════════════════════════════════ */}
+      <section id="section-title" className="relative h-screen snap-start flex-shrink-0 flex items-center justify-center dot-grid overflow-hidden">
+        <div className="absolute right-0 bottom-0 font-display text-[30rem] font-black text-foreground/[0.03] leading-none select-none pointer-events-none">
+          AI
+        </div>
+        <div className="relative z-10 px-8 md:px-20 lg:px-32 text-left max-w-5xl">
+          <p className="font-display text-sm md:text-base uppercase tracking-[0.35em] text-primary font-bold mb-8">BrandBlvd · Internal Presentation</p>
+          <h1 className="font-title text-6xl md:text-8xl lg:text-9xl uppercase leading-[1.05] tracking-tight">
+            The Future<br />of <span className="highlight-green">AI.</span>
+          </h1>
+          <p className="font-serif text-xl md:text-2xl italic text-muted-foreground mt-8 max-w-2xl">
+            How artificial intelligence is reshaping expectations, value, and identity — and what it means for us.
+          </p>
+        </div>
+      </section>
+
+      {/* ═══════════════════════════════════════════
           SECTION 1: INSTANT IS THE NEW STANDARD
       ═══════════════════════════════════════════ */}
-      <Section id="section-1">
+      <Section id="section-instant" onSlideChange={handleSlideChange(1)} initialSlide={activeSection === 1 ? initialSlideRef.current : 0}>
 
         {/* 1.1 - Section Opener (screenshot 2 style) */}
         <SectionOpener
@@ -230,7 +282,7 @@ const Index = () => {
       {/* ═══════════════════════════════════════════
           SECTION 2: HUMAN VALUE SHIFTS UP THE STACK
       ═══════════════════════════════════════════ */}
-      <Section id="section-2">
+      <Section id="section-human-value" onSlideChange={handleSlideChange(2)} initialSlide={activeSection === 2 ? initialSlideRef.current : 0}>
 
         {/* 2.1 - Section Opener */}
         <SectionOpener
@@ -323,7 +375,7 @@ const Index = () => {
       {/* ═══════════════════════════════════════════
           SECTION 3: IDENTITY > EMPLOYMENT
       ═══════════════════════════════════════════ */}
-      <Section id="section-3">
+      <Section id="section-identity" onSlideChange={handleSlideChange(3)} initialSlide={activeSection === 3 ? initialSlideRef.current : 0}>
 
         {/* 3.1 - Section Opener */}
         <SectionOpener
@@ -413,7 +465,7 @@ const Index = () => {
 
       {/* Vertical section dots */}
       <div className="fixed right-6 top-1/2 -translate-y-1/2 flex flex-col items-center gap-3 z-20">
-        {[0, 1, 2].map((i) => (
+        {SECTION_NAMES.map((_, i) => (
           <button
             key={i}
             onClick={() => goToSection(i)}
@@ -422,7 +474,7 @@ const Index = () => {
                 ? "bg-primary h-8"
                 : "bg-muted-foreground/20 h-3 hover:bg-muted-foreground/40"
             }`}
-            aria-label={`Go to section ${i + 1}`}
+            aria-label={`Go to section ${SECTION_NAMES[i]}`}
           />
         ))}
       </div>
