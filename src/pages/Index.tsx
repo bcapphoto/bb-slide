@@ -315,8 +315,8 @@ const Index = () => {
                 { quote: "The real value of AI is helping salespeople spend more time with customers and less time doing administrative work.", author: "Marc Benioff", role: "CEO, Salesforce" },
                 { quote: "We'll be there in 3-6 months, where AI is writing 90% of the code — and in 12 months, AI writes all of it.", author: "Dario Amodei", role: "CEO, Anthropic" },
               ].map((q) => (
-                <div key={q.author} className="text-left border-l-4 border-green-500 pl-4">
-                  <Quote className="w-6 h-6 text-green-400 mb-4" />
+                <div key={q.author} className="text-left border-l-4 border-green-600 pl-4">
+                  <Quote className="w-6 h-6 text-green-600 mb-4" />
                   <p className="font-serif text-lg md:text-xl italic leading-relaxed text-gray-700 mb-4">"{q.quote}"</p>
                   <p className="text-sm text-gray-500">
                     <span className="text-green-600 font-bold">{q.author}</span> — {q.role}
@@ -454,7 +454,7 @@ const Index = () => {
         {/* 3.7 - Closing (white bg) */}
         <WhiteSlide className="dot-grid-light">
           <div className="relative z-10 text-center">
-            <ChevronsRight className="w-12 h-12 text-green-500 mx-auto mb-6" strokeWidth={1.5} />
+            <ChevronsRight className="w-12 h-12 text-green-600 mx-auto mb-6" strokeWidth={1.5} />
             <p className="font-serif text-3xl md:text-4xl lg:text-5xl italic leading-snug max-w-5xl mx-auto text-gray-800">
               The future is already here.
             </p>
