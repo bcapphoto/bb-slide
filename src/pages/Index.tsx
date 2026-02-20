@@ -22,22 +22,22 @@ const Slide = ({ children, className = "" }: { children: React.ReactNode; classN
 );
 
 const BigText = ({ children }: { children: React.ReactNode }) => (
-  <h1 className="font-title text-5xl md:text-7xl lg:text-8xl uppercase tracking-tight leading-[1.05]">{children}</h1>
+  <h1 className="font-title text-4xl md:text-7xl lg:text-8xl uppercase tracking-tight leading-[1.05] break-words">{children}</h1>
 );
 
 const SerifStatement = ({ children }: { children: React.ReactNode }) => (
-  <p className="font-serif text-3xl md:text-4xl lg:text-5xl italic leading-snug max-w-5xl">{children}</p>
+  <p className="font-serif text-2xl md:text-4xl lg:text-5xl italic leading-snug max-w-5xl">{children}</p>
 );
 
 const SectionOpener = ({ number, superTitle, title, subtitle }: { number: string; superTitle: string; title: React.ReactNode; subtitle: string }) => (
   <div className="relative w-full h-full flex items-center dot-grid overflow-hidden">
-    <div className="absolute right-0 top-1/2 -translate-y-1/2 font-display text-[20rem] md:text-[28rem] font-black text-foreground/[0.04] leading-none select-none pointer-events-none">
+    <div className="absolute right-0 top-1/2 -translate-y-1/2 font-display text-[12rem] md:text-[28rem] font-black text-foreground/[0.04] leading-none select-none pointer-events-none">
       {number}
     </div>
     <img src={bbMonogram} alt="BB" className="absolute bottom-8 left-8 md:left-20 lg:left-32 h-8 md:h-10 opacity-40 z-10" />
     <div className="relative z-10 px-8 md:px-20 lg:px-32 text-left max-w-5xl">
       <p className="font-display text-sm md:text-base uppercase tracking-[0.35em] text-muted-foreground font-bold mb-8">{superTitle}</p>
-      <h1 className="font-title text-5xl md:text-7xl lg:text-8xl uppercase leading-[1.15] tracking-tight">{title}</h1>
+      <h1 className="font-title text-4xl md:text-7xl lg:text-8xl uppercase leading-[1.15] tracking-tight break-words">{title}</h1>
       <p className="font-serif text-xl md:text-2xl italic text-muted-foreground mt-6">{subtitle}</p>
     </div>
   </div>
@@ -52,8 +52,8 @@ const GridCard = ({ superTitle, title, body }: { superTitle: string; title: stri
 );
 
 const NumberedItem = ({ num, title, desc }: { num: string; title: string; desc: string }) => (
-  <div className="flex gap-4 items-start text-left">
-    <span className="font-display text-5xl md:text-6xl font-black text-primary/80 leading-none">{num}</span>
+  <div className="flex gap-3 md:gap-4 items-start text-left">
+    <span className="font-display text-4xl md:text-6xl font-black text-primary/80 leading-none shrink-0">{num}</span>
     <div>
       <h3 className="font-display text-lg md:text-xl font-extrabold uppercase leading-tight">{title}</h3>
       <p className="text-sm md:text-base font-light leading-relaxed mt-1 opacity-70">{desc}</p>
@@ -162,7 +162,7 @@ const Index = () => {
       </div>
       <div className="relative z-10 px-8 md:px-20 lg:px-32 text-left max-w-5xl">
         <img src={bbLogoHorizontal} alt="BrandBlvd" className="h-10 md:h-14 mb-12" />
-        <h1 className="font-title text-6xl md:text-8xl lg:text-9xl uppercase leading-[1.05] tracking-tight">
+        <h1 className="font-title text-5xl md:text-8xl lg:text-9xl uppercase leading-[1.05] tracking-tight">
           The Future<br />of <span className="highlight-green">AI.</span>
         </h1>
         <p className="font-serif text-xl md:text-2xl italic text-muted-foreground mt-8 max-w-2xl">
@@ -225,8 +225,8 @@ const Index = () => {
     <MobileSection key="1-6" className="bg-white text-gray-900">
       <div className="w-full max-w-6xl px-8">
         <p className="font-display text-sm uppercase tracking-[0.35em] text-gray-500 font-bold mb-6">What's Changing</p>
-        <h2 className="font-title text-5xl uppercase leading-[0.9] tracking-tight mb-8">
-          <span className="text-gray-900">Expectation</span><span className="highlight-green">Shifts</span>
+        <h2 className="font-title text-4xl md:text-5xl uppercase leading-[0.9] tracking-tight mb-8 break-words">
+          <span className="text-gray-900">Expectation</span><br className="md:hidden" /><span className="highlight-green">Shifts</span>
         </h2>
         <div className="grid grid-cols-1 gap-y-6">
           <NumberedItem num="1" title="Patience is collapsing" desc="ChatGPT can help you compare car models immediately." />
@@ -260,7 +260,7 @@ const Index = () => {
     </MobileSection>,
 
     <MobileSection key="1-9" className="relative dot-grid overflow-hidden">
-      <div className="absolute right-0 top-1/2 -translate-y-1/2 font-display text-[20rem] font-black text-foreground/[0.04] leading-none select-none pointer-events-none">01</div>
+      <div className="absolute right-0 top-1/2 -translate-y-1/2 font-display text-[12rem] md:text-[20rem] font-black text-foreground/[0.04] leading-none select-none pointer-events-none">01</div>
       <Slide className="relative z-10">
         <div className="inline-block px-5 py-2 rounded-sm bg-primary text-primary-foreground font-display text-base font-bold tracking-widest uppercase mb-6">Shift #1</div>
         <BigText>Instant is the<br />new <span className="highlight-green">standard.</span></BigText>
@@ -309,8 +309,8 @@ const Index = () => {
     <MobileSection key="2-4" className="bg-white text-gray-900">
       <div className="w-full max-w-6xl px-8">
         <p className="font-display text-sm uppercase tracking-[0.35em] text-gray-500 font-bold mb-6">Industry Reality</p>
-        <h2 className="font-title text-5xl uppercase leading-[0.9] tracking-tight mb-8">
-          Order-Taking<span className="highlight-green">Dies.</span>
+        <h2 className="font-title text-4xl md:text-5xl uppercase leading-[0.9] tracking-tight mb-8 break-words">
+          Order-Taking<br className="md:hidden" /><span className="highlight-green">Dies.</span>
         </h2>
         <div className="grid grid-cols-1 gap-y-6">
           <div>
@@ -338,7 +338,7 @@ const Index = () => {
     </MobileSection>,
 
     <MobileSection key="2-5" className="relative dot-grid overflow-hidden">
-      <div className="absolute right-0 top-1/2 -translate-y-1/2 font-display text-[20rem] font-black text-foreground/[0.04] leading-none select-none pointer-events-none">02</div>
+      <div className="absolute right-0 top-1/2 -translate-y-1/2 font-display text-[12rem] md:text-[20rem] font-black text-foreground/[0.04] leading-none select-none pointer-events-none">02</div>
       <Slide className="relative z-10">
         <div className="inline-block px-5 py-2 rounded-sm bg-primary text-primary-foreground font-display text-base font-bold tracking-widest uppercase mb-6">Shift #2</div>
         <BigText>Death of<br />transactional <span className="highlight-green">sales.</span></BigText>
@@ -366,7 +366,7 @@ const Index = () => {
     <MobileSection key="3-3" className="bg-white text-gray-900">
       <div className="w-full max-w-6xl px-8">
         <p className="font-display text-sm uppercase tracking-[0.35em] text-gray-500 font-bold mb-6">Workforce Data</p>
-        <h2 className="font-title text-5xl uppercase leading-[0.9] tracking-tight mb-8">
+        <h2 className="font-title text-4xl md:text-5xl uppercase leading-[0.9] tracking-tight mb-8">
           <span className="text-gray-900">The</span><span className="highlight-green">Numbers</span>
         </h2>
         <div className="grid grid-cols-1 gap-y-6">
@@ -379,7 +379,7 @@ const Index = () => {
 
     <MobileSection key="3-4" className="bg-white text-gray-900 diagonal-lines-light">
       <div className="relative z-10 text-center px-8">
-        <p className="font-serif text-3xl italic leading-snug max-w-5xl mx-auto text-gray-800">
+        <p className="font-serif text-2xl md:text-3xl italic leading-snug max-w-5xl mx-auto text-gray-800">
           That doesn't mean merch and swag <span className="text-brand-green font-bold">go away.</span>
         </p>
         <p className="font-display text-sm uppercase tracking-[0.3em] text-gray-500 mt-10 font-bold">
@@ -400,7 +400,7 @@ const Index = () => {
     </MobileSection>,
 
     <MobileSection key="3-6" className="relative dot-grid overflow-hidden">
-      <div className="absolute right-0 top-1/2 -translate-y-1/2 font-display text-[20rem] font-black text-foreground/[0.04] leading-none select-none pointer-events-none">03</div>
+      <div className="absolute right-0 top-1/2 -translate-y-1/2 font-display text-[12rem] md:text-[20rem] font-black text-foreground/[0.04] leading-none select-none pointer-events-none">03</div>
       <Slide className="relative z-10">
         <div className="inline-block px-5 py-2 rounded-sm bg-primary text-primary-foreground font-display text-base font-bold tracking-widest uppercase mb-6">Shift #3</div>
         <BigText>Identity-driven<br />community <span className="highlight-green">merch.</span></BigText>
@@ -413,10 +413,10 @@ const Index = () => {
     <MobileSection key="3-7" className="bg-white text-gray-900 dot-grid-light">
       <div className="relative z-10 text-center px-8">
         <ChevronsRight className="w-10 h-10 text-brand-green mx-auto mb-6" strokeWidth={1.5} />
-        <p className="font-serif text-3xl italic leading-snug max-w-5xl mx-auto text-gray-800">
+        <p className="font-serif text-2xl md:text-3xl italic leading-snug max-w-5xl mx-auto text-gray-800">
           The future is already here.
         </p>
-        <h1 className="font-title text-5xl uppercase tracking-tight leading-[1.05] mt-4">
+        <h1 className="font-title text-4xl md:text-5xl uppercase tracking-tight leading-[1.05] mt-4">
           <span className="highlight-green inline-block">Move with it.</span>
         </h1>
       </div>
