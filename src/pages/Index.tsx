@@ -427,14 +427,37 @@ const Index = () => {
     </MobileSection>,
 
     <MobileSection key="3-7" className="bg-white text-gray-900 dot-grid-light">
-      <div className="relative z-10 text-center px-8">
-        <ChevronsRight className="w-10 h-10 text-brand-green mx-auto mb-6" strokeWidth={1.5} />
-        <p className="font-serif text-2xl md:text-3xl italic leading-snug max-w-5xl mx-auto text-gray-800">
-          The future is already here.
-        </p>
-        <h1 className="font-title text-4xl md:text-5xl uppercase tracking-tight leading-[1.05] mt-4">
-          <span className="highlight-green inline-block">Move with it.</span>
-        </h1>
+      <div className="relative z-10 w-full px-8">
+        <img src={bbLogoHorizontal} alt="BrandBlvd" className="h-7 mb-10 mx-auto invert" />
+        <div className="space-y-8">
+          <div className="flex items-start gap-4">
+            <span className="font-display text-4xl font-black text-brand-green/30 leading-none shrink-0">01</span>
+            <div className="text-left">
+              <p className="text-gray-500 text-xs font-light">AI is compressing time across everything.</p>
+              <h3 className="font-title text-xl uppercase tracking-tight leading-tight mt-1 text-gray-900">Instant is the new <span className="highlight-green">standard.</span></h3>
+            </div>
+          </div>
+          <div className="flex items-start gap-4">
+            <span className="font-display text-4xl font-black text-brand-green/30 leading-none shrink-0">02</span>
+            <div className="text-left">
+              <p className="text-gray-500 text-xs font-light">AI is taking over the "doing."</p>
+              <h3 className="font-title text-xl uppercase tracking-tight leading-tight mt-1 text-gray-900">Death of transactional <span className="highlight-green">sales.</span></h3>
+            </div>
+          </div>
+          <div className="flex items-start gap-4">
+            <span className="font-display text-4xl font-black text-brand-green/30 leading-none shrink-0">03</span>
+            <div className="text-left">
+              <p className="text-gray-500 text-xs font-light">AI will restructure the employer-employee relationship.</p>
+              <h3 className="font-title text-xl uppercase tracking-tight leading-tight mt-1 text-gray-900">Identity-driven community <span className="highlight-green">merch.</span></h3>
+            </div>
+          </div>
+        </div>
+        <div className="border-t border-gray-200 mt-8 pt-6 text-center">
+          <p className="font-serif text-lg italic text-gray-600">The future is already here.</p>
+          <h2 className="font-title text-3xl uppercase tracking-tight mt-2">
+            <span className="highlight-green inline-block">Move with it.</span>
+          </h2>
+        </div>
       </div>
     </MobileSection>,
   ];
@@ -693,14 +716,37 @@ const Index = () => {
         </div>
 
         <WhiteSlide className="dot-grid-light">
-          <div className="relative z-10 text-center">
-            <ChevronsRight className="w-12 h-12 text-brand-green mx-auto mb-6" strokeWidth={1.5} />
-            <p className="font-serif text-3xl md:text-4xl lg:text-5xl italic leading-snug max-w-5xl mx-auto text-gray-800">
-              The future is already here.
-            </p>
-            <h1 className="font-title text-5xl md:text-7xl lg:text-8xl uppercase tracking-tight leading-[1.05] mt-4">
-              <span className="highlight-green inline-block">Move with it.</span>
-            </h1>
+          <div className="relative z-10 w-full max-w-5xl mx-auto">
+            <img src={bbLogoHorizontal} alt="BrandBlvd" className="h-8 md:h-10 mb-12 mx-auto invert" />
+            <div className="space-y-10">
+              <div className="flex items-start gap-6">
+                <span className="font-display text-5xl md:text-6xl font-black text-brand-green/30 leading-none shrink-0">01</span>
+                <div className="text-left">
+                  <p className="text-gray-500 text-sm md:text-base font-light">AI is compressing time across everything.</p>
+                  <h3 className="font-title text-2xl md:text-3xl uppercase tracking-tight leading-tight mt-1 text-gray-900">Instant is the new <span className="highlight-green">standard.</span></h3>
+                </div>
+              </div>
+              <div className="flex items-start gap-6">
+                <span className="font-display text-5xl md:text-6xl font-black text-brand-green/30 leading-none shrink-0">02</span>
+                <div className="text-left">
+                  <p className="text-gray-500 text-sm md:text-base font-light">AI is taking over the "doing."</p>
+                  <h3 className="font-title text-2xl md:text-3xl uppercase tracking-tight leading-tight mt-1 text-gray-900">Death of transactional <span className="highlight-green">sales.</span></h3>
+                </div>
+              </div>
+              <div className="flex items-start gap-6">
+                <span className="font-display text-5xl md:text-6xl font-black text-brand-green/30 leading-none shrink-0">03</span>
+                <div className="text-left">
+                  <p className="text-gray-500 text-sm md:text-base font-light">AI will restructure the employer-employee relationship.</p>
+                  <h3 className="font-title text-2xl md:text-3xl uppercase tracking-tight leading-tight mt-1 text-gray-900">Identity-driven community <span className="highlight-green">merch.</span></h3>
+                </div>
+              </div>
+            </div>
+            <div className="border-t border-gray-200 mt-12 pt-8 text-center">
+              <p className="font-serif text-xl md:text-2xl italic text-gray-600">The future is already here.</p>
+              <h2 className="font-title text-4xl md:text-6xl uppercase tracking-tight mt-2">
+                <span className="highlight-green inline-block">Move with it.</span>
+              </h2>
+            </div>
           </div>
         </WhiteSlide>
       </Section>
