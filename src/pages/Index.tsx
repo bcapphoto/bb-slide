@@ -459,7 +459,7 @@ const Index = () => {
   ];
 
   return (
-    <div ref={containerRef} className={`h-screen overflow-y-auto snap-y snap-mandatory scrollbar-hide grain ${isMobile ? '' : 'cursor-none'}`}>
+    <div ref={containerRef} className={`h-screen overflow-y-auto snap-y snap-mandatory scrollbar-hide grain`}>
 
       {isMobile ? (
         /* ─── MOBILE: simple vertical snap scroll ─── */
@@ -752,7 +752,7 @@ const Index = () => {
             <button
               key={name}
               onClick={() => goToSection(i)}
-              className={`flex items-center gap-2.5 group transition-all duration-300 cursor-none`}
+              className={`flex items-center gap-2.5 group transition-all duration-300`}
               aria-label={`Go to ${SECTION_LABELS[i]}`}
             >
               <span
