@@ -252,7 +252,7 @@ const Index = () => {
     </MobileSection>,
 
     <MobileSection key="1-7" className="relative cross-grid">
-      <Slide>
+      <Slide className="relative z-10">
         <SerifStatement>
           AI is not just improving productivity. <span className="text-primary font-bold">It's rewiring expectation.</span>
         </SerifStatement>
@@ -530,7 +530,7 @@ const Index = () => {
         </WhiteSlide>
 
         <div className="relative w-full h-full flex items-center justify-center cross-grid">
-          <Slide>
+          <Slide className="relative z-10">
             <SerifStatement>
               AI is not just improving productivity. <span className="text-primary font-bold">It's rewiring expectation.</span>
             </SerifStatement>
