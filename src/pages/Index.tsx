@@ -1,6 +1,7 @@
-import { useEffect, useState } from "react";
-import { ChevronsRight, ChevronUp, ChevronDown, Quote } from "lucide-react";
+import { useEffect, useState, useCallback, useRef } from "react";
+import { ChevronsRight, Quote } from "lucide-react";
 import Section from "@/components/Section";
+import CursorNav from "@/components/CursorNav";
 import GrowthChart from "@/components/GrowthChart";
 import abstractSpeed from "@/assets/abstract-speed.jpg";
 import abstractStack from "@/assets/abstract-stack.jpg";
@@ -74,14 +75,18 @@ const BgImage = ({ src, opacity = "opacity-20" }: { src: string; opacity?: strin
 
 const Index = () => {
   const [activeSection, setActiveSection] = useState(0);
-  const scrollContainerRef = (el: HTMLDivElement | null) => {
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const el = containerRef.current;
     if (!el) return;
     const handler = () => {
       const index = Math.round(el.scrollTop / el.clientHeight);
       setActiveSection(index);
     };
     el.addEventListener("scroll", handler, { passive: true });
-  };
+    return () => el.removeEventListener("scroll", handler);
+  }, []);
 
   const goToSection = (index: number) => {
     const clamped = Math.max(0, Math.min(index, 2));
@@ -89,8 +94,24 @@ const Index = () => {
     el?.scrollIntoView({ behavior: "smooth" });
   };
 
+  const handleNavigate = useCallback((dir: "left" | "right" | "up" | "down") => {
+    if (dir === "up") {
+      goToSection(activeSection - 1);
+    } else if (dir === "down") {
+      goToSection(activeSection + 1);
+    } else {
+      // Find the visible section's horizontal scroller
+      const section = document.getElementById(`section-${activeSection + 1}`);
+      const scroller = section?.querySelector("[data-slide-scroller]") as HTMLElement | null;
+      if (!scroller) return;
+      const currentSlide = Math.round(scroller.scrollLeft / scroller.clientWidth);
+      const target = dir === "left" ? currentSlide - 1 : currentSlide + 1;
+      scroller.scrollTo({ left: target * scroller.clientWidth, behavior: "smooth" });
+    }
+  }, [activeSection]);
+
   return (
-    <div ref={scrollContainerRef} className="h-screen overflow-y-auto snap-y snap-mandatory scrollbar-hide grain">
+    <div ref={containerRef} className="h-screen overflow-y-auto snap-y snap-mandatory scrollbar-hide grain cursor-none">
 
       {/* ═══════════════════════════════════════════
           SECTION 1: INSTANT IS THE NEW STANDARD
@@ -390,20 +411,13 @@ const Index = () => {
         </div>
       </Section>
 
-      {/* Vertical section indicator with arrows */}
-      <div className="fixed right-6 top-1/2 -translate-y-1/2 flex flex-col items-center gap-2 z-20">
-        <button
-          onClick={() => goToSection(activeSection - 1)}
-          className={`transition-opacity ${activeSection === 0 ? "opacity-0 pointer-events-none" : "opacity-30 hover:opacity-70"}`}
-          aria-label="Previous section"
-        >
-          <ChevronUp className="w-4 h-4 text-foreground" strokeWidth={1.5} />
-        </button>
+      {/* Vertical section dots */}
+      <div className="fixed right-6 top-1/2 -translate-y-1/2 flex flex-col items-center gap-3 z-20">
         {[0, 1, 2].map((i) => (
           <button
             key={i}
             onClick={() => goToSection(i)}
-            className={`w-1.5 rounded-full transition-all duration-300 ${
+            className={`w-1.5 rounded-full transition-all duration-300 cursor-none ${
               i === activeSection
                 ? "bg-primary h-8"
                 : "bg-muted-foreground/20 h-3 hover:bg-muted-foreground/40"
@@ -411,14 +425,9 @@ const Index = () => {
             aria-label={`Go to section ${i + 1}`}
           />
         ))}
-        <button
-          onClick={() => goToSection(activeSection + 1)}
-          className={`transition-opacity ${activeSection === 2 ? "opacity-0 pointer-events-none" : "opacity-30 hover:opacity-70"}`}
-          aria-label="Next section"
-        >
-          <ChevronDown className="w-4 h-4 text-foreground" strokeWidth={1.5} />
-        </button>
       </div>
+
+      <CursorNav onNavigate={handleNavigate} />
     </div>
   );
 };
