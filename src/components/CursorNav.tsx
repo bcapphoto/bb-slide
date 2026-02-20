@@ -20,7 +20,11 @@ const CursorNav = ({ onNavigate, canGo = { up: true, down: true, left: true, rig
     setPos({ x: e.clientX, y: e.clientY });
     setVisible(true);
 
-    if (x < EDGE) setDirection("left");
+    // Exclude right nav zone (right 80px, middle vertical band)
+    const inNavZone = e.clientX > window.innerWidth - 80 && y > 0.2 && y < 0.8;
+
+    if (inNavZone) setDirection(null);
+    else if (x < EDGE) setDirection("left");
     else if (x > 1 - EDGE) setDirection("right");
     else setDirection(null);
   }, []);
@@ -54,7 +58,7 @@ const CursorNav = ({ onNavigate, canGo = { up: true, down: true, left: true, rig
 
   return (
     <div
-      className="fixed inset-0 z-50"
+      className="fixed inset-0 z-50 pointer-events-none"
       style={{ cursor: "none" }}
     >
       {visible && (
