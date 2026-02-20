@@ -15,7 +15,7 @@ const Slide = ({ children, className = "" }: { children: React.ReactNode; classN
 
 /* Big condensed uppercase heading */
 const BigText = ({ children }: { children: React.ReactNode }) => (
-  <h1 className="font-display text-5xl md:text-7xl lg:text-8xl font-extrabold uppercase tracking-tight leading-[1.05]">{children}</h1>
+  <h1 className="font-title text-5xl md:text-7xl lg:text-8xl uppercase tracking-tight leading-[1.05]">{children}</h1>
 );
 
 /* Serif italic statement (like screenshot 4) */
@@ -32,7 +32,7 @@ const SectionOpener = ({ number, superTitle, title, subtitle }: { number: string
     </div>
     <div className="relative z-10 px-8 md:px-20 lg:px-32 text-left max-w-5xl">
       <p className="font-display text-sm md:text-base uppercase tracking-[0.35em] text-muted-foreground font-bold mb-8">{superTitle}</p>
-      <h1 className="font-display text-6xl md:text-8xl lg:text-[9rem] font-black uppercase leading-[0.9] tracking-tight">{title}</h1>
+      <h1 className="font-title text-6xl md:text-8xl lg:text-[9rem] uppercase leading-[0.9] tracking-tight">{title}</h1>
       <p className="font-serif text-xl md:text-2xl italic text-muted-foreground mt-6">{subtitle}</p>
     </div>
   </div>
@@ -139,7 +139,7 @@ const Index = () => {
         {/* 1.6 - Examples (screenshot 3 style - white bg, numbered) */}
         <WhiteSlide>
           <p className="font-display text-sm uppercase tracking-[0.35em] text-gray-400 font-bold mb-6">What's Changing</p>
-          <h2 className="font-display text-5xl md:text-7xl font-black uppercase leading-[0.9] tracking-tight mb-12">
+          <h2 className="font-title text-5xl md:text-7xl uppercase leading-[0.9] tracking-tight mb-12">
             <span className="text-gray-300">Expectation</span><span className="highlight-green">Shifts</span>
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-8">
@@ -238,7 +238,7 @@ const Index = () => {
         {/* 2.4 - Industry disruption (screenshot 5 style - white bg, two columns) */}
         <WhiteSlide>
           <p className="font-display text-sm uppercase tracking-[0.35em] text-gray-400 font-bold mb-6">Industry Reality</p>
-          <h2 className="font-display text-5xl md:text-7xl font-black uppercase leading-[0.9] tracking-tight mb-12">
+          <h2 className="font-title text-5xl md:text-7xl uppercase leading-[0.9] tracking-tight mb-12">
             Order-Taking<span className="highlight-green">Dies.</span>
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-6">
@@ -309,7 +309,7 @@ const Index = () => {
         {/* 3.3 - Stats (white bg, numbered - screenshot 3 style) */}
         <WhiteSlide>
           <p className="font-display text-sm uppercase tracking-[0.35em] text-gray-400 font-bold mb-6">Workforce Data</p>
-          <h2 className="font-display text-5xl md:text-7xl font-black uppercase leading-[0.9] tracking-tight mb-12">
+          <h2 className="font-title text-5xl md:text-7xl uppercase leading-[0.9] tracking-tight mb-12">
             <span className="text-gray-300">The</span><span className="highlight-green">Numbers</span>
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-x-16 gap-y-8">
