@@ -11,6 +11,7 @@ import abstractStack from "@/assets/abstract-stack.jpg";
 import abstractIdentity from "@/assets/abstract-identity.jpg";
 import bbLogoHorizontal from "@/assets/bb-logo-horizontal-white.svg";
 import bbMonogram from "@/assets/bb-monogram-white.svg";
+import PromptSlide from "@/components/PromptSlide";
 
 const SECTION_NAMES = ["title", "instant", "human-value", "identity", "closing"] as const;
 
@@ -101,7 +102,7 @@ const Index = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const slidesRef = useRef<Record<number, number>>({});
   const [activeSlide, setActiveSlide] = useState(0);
-  const slideTotals: Record<number, number> = { 0: 1, 1: 8, 2: 5, 3: 6, 4: 1 };
+  const slideTotals: Record<number, number> = { 0: 1, 1: 9, 2: 5, 3: 6, 4: 1 };
   const isScrolling = useRef(false);
 
   const updateUrl = useCallback((sectionIdx: number, slideIdx: number) => {
@@ -280,6 +281,10 @@ const Index = () => {
           </div>
         </div>
       </Slide>
+    </MobileSection>,
+
+    <MobileSection key="1-8b">
+      <PromptSlide question="If we were our client, what part of our process would frustrate us?" />
     </MobileSection>,
 
     <MobileSection key="1-9" className="relative dot-grid overflow-hidden">
@@ -557,8 +562,10 @@ const Index = () => {
                 </p>
               </div>
             </div>
-          </Slide>
+        </Slide>
         </div>
+
+        <PromptSlide question="If we were our client, what part of our process would frustrate us?" />
 
         <div className="relative w-full h-full flex items-center justify-center dot-grid overflow-hidden">
           <div className="absolute right-0 top-1/2 -translate-y-1/2 font-display text-[20rem] md:text-[28rem] font-black text-foreground/[0.04] leading-none select-none pointer-events-none">01</div>
