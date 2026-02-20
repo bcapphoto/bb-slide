@@ -8,53 +8,65 @@ import abstractIdentity from "@/assets/abstract-identity.jpg";
 /* ─── Reusable slide layouts ─── */
 
 const Slide = ({ children, className = "" }: { children: React.ReactNode; className?: string }) => (
-  <div className={`w-full max-w-5xl mx-auto flex flex-col items-center justify-center text-center ${className}`}>
+  <div className={`w-full max-w-6xl mx-auto flex flex-col items-center justify-center text-center ${className}`}>
     {children}
   </div>
 );
 
+/* Big condensed uppercase heading */
 const BigText = ({ children }: { children: React.ReactNode }) => (
   <h1 className="font-display text-5xl md:text-7xl lg:text-8xl font-extrabold uppercase tracking-tight leading-[1.05]">{children}</h1>
 );
 
-const SubText = ({ children }: { children: React.ReactNode }) => (
-  <p className="text-2xl md:text-4xl text-muted-foreground font-light leading-relaxed max-w-4xl">{children}</p>
+/* Serif italic statement (like screenshot 4) */
+const SerifStatement = ({ children }: { children: React.ReactNode }) => (
+  <p className="font-serif text-3xl md:text-4xl lg:text-5xl italic leading-snug max-w-5xl">{children}</p>
 );
 
-const ShiftLabel = ({ number, text }: { number: string; text: string }) => (
-  <div className="space-y-6">
-    <div className="inline-block px-5 py-2 rounded-sm bg-primary text-primary-foreground font-display text-base font-bold tracking-widest uppercase">
-      Shift #{number}
+/* Section opener with background number (like screenshot 2) */
+const SectionOpener = ({ number, superTitle, title, subtitle }: { number: string; superTitle: string; title: React.ReactNode; subtitle: string }) => (
+  <div className="relative w-full h-full flex items-center dot-grid overflow-hidden">
+    {/* Large background number */}
+    <div className="absolute right-0 top-1/2 -translate-y-1/2 font-display text-[20rem] md:text-[28rem] font-black text-foreground/[0.04] leading-none select-none pointer-events-none">
+      {number}
     </div>
-    <BigText>{text}</BigText>
+    <div className="relative z-10 px-8 md:px-20 lg:px-32 text-left max-w-5xl">
+      <p className="font-display text-sm md:text-base uppercase tracking-[0.35em] text-muted-foreground font-bold mb-8">{superTitle}</p>
+      <h1 className="font-display text-6xl md:text-8xl lg:text-[9rem] font-black uppercase leading-[0.9] tracking-tight">{title}</h1>
+      <p className="font-serif text-xl md:text-2xl italic text-muted-foreground mt-6">{subtitle}</p>
+    </div>
   </div>
 );
 
-const QuoteSlide = ({ quote, author, role }: { quote: string; author: string; role: string }) => (
-  <Slide>
-    <Quote className="w-8 h-8 text-primary/50 mb-6" />
-    <blockquote className="text-2xl md:text-4xl font-light italic leading-relaxed max-w-4xl text-foreground/90">
-      "{quote}"
-    </blockquote>
-    <p className="mt-8 text-base text-muted-foreground tracking-wide">
-      <span className="text-foreground font-medium">{author}</span> — {role}
-    </p>
-  </Slide>
+/* Dark grid card (like screenshot 1 - green accent bar, super-title, bold heading, body) */
+const GridCard = ({ superTitle, title, body }: { superTitle: string; title: string; body: string }) => (
+  <div className="text-left accent-bar">
+    <p className="text-primary font-bold text-sm uppercase tracking-wider mb-2">{superTitle}</p>
+    <h3 className="font-display text-xl md:text-2xl font-extrabold uppercase leading-tight mb-3">{title}</h3>
+    <p className="text-muted-foreground text-sm md:text-base font-light leading-relaxed">{body}</p>
+  </div>
 );
 
-const StatCard = ({ value, label }: { value: string; label: string }) => (
-  <div className="flex flex-col items-center gap-3 p-6">
-    <span className="font-display text-5xl md:text-6xl font-extrabold text-primary uppercase">{value}</span>
-    <span className="text-base text-muted-foreground font-light tracking-wide">{label}</span>
+/* Numbered item (like screenshot 3 - large green number + title + description) */
+const NumberedItem = ({ num, title, desc }: { num: string; title: string; desc: string }) => (
+  <div className="flex gap-4 items-start text-left">
+    <span className="font-display text-5xl md:text-6xl font-black text-primary/80 leading-none">{num}</span>
+    <div>
+      <h3 className="font-display text-lg md:text-xl font-extrabold uppercase leading-tight">{title}</h3>
+      <p className="text-sm md:text-base font-light leading-relaxed mt-1 opacity-70">{desc}</p>
+    </div>
+  </div>
+);
+
+/* White background full slide */
+const WhiteSlide = ({ children, className = "" }: { children: React.ReactNode; className?: string }) => (
+  <div className={`w-full h-full bg-white text-gray-900 flex items-center justify-center px-8 md:px-20 lg:px-32 ${className}`}>
+    <div className="w-full max-w-6xl">{children}</div>
   </div>
 );
 
 const BgImage = ({ src, opacity = "opacity-20" }: { src: string; opacity?: string }) => (
-  <img
-    src={src}
-    alt=""
-    className={`absolute inset-0 w-full h-full object-cover ${opacity} pointer-events-none select-none`}
-  />
+  <img src={src} alt="" className={`absolute inset-0 w-full h-full object-cover ${opacity} pointer-events-none select-none`} />
 );
 
 /* ─── Main presentation ─── */
@@ -62,105 +74,93 @@ const BgImage = ({ src, opacity = "opacity-20" }: { src: string; opacity?: strin
 const Index = () => {
   return (
     <div className="h-screen overflow-y-auto snap-y snap-mandatory scrollbar-hide grain">
+
       {/* ═══════════════════════════════════════════
           SECTION 1: INSTANT IS THE NEW STANDARD
       ═══════════════════════════════════════════ */}
       <Section id="section-1">
-        {/* 1.1 - Title */}
-        <div className="relative w-full h-full flex items-center justify-center dot-grid">
+
+        {/* 1.1 - Section Opener (screenshot 2 style) */}
+        <SectionOpener
+          number="01"
+          superTitle="The Future of AI"
+          title={<>Instant<br /><span className="highlight-green">is the new standard.</span></>}
+          subtitle="AI is compressing time across everything."
+        />
+
+        {/* 1.2 - Reality (serif italic statement - screenshot 4 style) */}
+        <div className="relative w-full h-full flex items-center justify-center">
           <BgImage src={abstractSpeed} opacity="opacity-10" />
           <Slide className="relative z-10">
-            <FastForward className="w-14 h-14 text-primary mb-8" strokeWidth={1.5} />
-            <BigText>
-              Instant is the<br />
-              <span className="highlight-green">new standard.</span>
-            </BigText>
+            <SerifStatement>
+              AI tools have moved from novelty to <span className="text-primary">household names</span>.
+              They're training people to expect immediate results.
+              Not faster. <span className="text-primary font-bold">Immediate.</span>
+            </SerifStatement>
           </Slide>
         </div>
 
-        {/* 1.2 - Compression */}
-        <Slide>
-          <SubText>
-            AI is compressing time across everything.
-          </SubText>
-        </Slide>
-
-        {/* 1.3 - Reality */}
-        <Slide>
-          <div className="accent-bar text-left max-w-3xl">
-            <p className="text-xl md:text-2xl lg:text-3xl text-muted-foreground font-light leading-relaxed">
-              AI tools have moved from <span className="text-foreground font-medium">novelty and nerdy</span> to{" "}
-              <span className="text-foreground font-medium">household names</span>. They're training people to expect
-              immediate results. Not faster.{" "}
-              <span className="text-primary font-bold">Immediate.</span>
-            </p>
-          </div>
-        </Slide>
-
-        {/* 1.4 - Growth Chart */}
+        {/* 1.3 - Growth Chart */}
         <Slide>
           <GrowthChart />
         </Slide>
 
-        {/* 1.5 - Stats */}
+        {/* 1.4 - Stats (clean cards) */}
         <Slide>
           <h2 className="font-display text-lg uppercase tracking-[0.3em] text-muted-foreground mb-10 font-bold">Time to 100M Users</h2>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8">
-            <StatCard value="~4.5y" label="Facebook" />
-            <StatCard value="~2.5y" label="Instagram" />
-            <StatCard value="~9mo" label="TikTok" />
-            <StatCard value="~2mo" label="ChatGPT" />
-          </div>
-        </Slide>
-
-        {/* 1.6 - Investment data */}
-        <Slide>
-          <h2 className="font-display text-lg uppercase tracking-[0.3em] text-muted-foreground mb-10 font-bold">The Money Follows</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-left max-w-3xl">
             {[
-              { name: "OpenAI", stat: "$100B round · $850B valuation", note: "Largest single funding round in tech history" },
-              { name: "Nvidia", stat: "$3T+ market cap", note: "Stock grew 200%+ in a single year on AI chip demand" },
-              { name: "Lovable", stat: "$330M raised · 1 year old", note: "One of the largest early-stage AI-native rounds" },
-              { name: "Anthropic", stat: "$30B at $380B valuation", note: "Revenue growing 10x annually, less than 3 years old" },
-            ].map((item) => (
-              <div key={item.name} className="p-6 rounded-lg bg-secondary/60 border-l-4 border-primary">
-                <p className="font-display text-primary font-bold text-xl uppercase">{item.name}</p>
-                <p className="text-foreground font-medium mt-1 text-lg">{item.stat}</p>
-                <p className="text-muted-foreground text-base mt-1">{item.note}</p>
+              { value: "~4.5y", label: "Facebook" },
+              { value: "~2.5y", label: "Instagram" },
+              { value: "~9mo", label: "TikTok" },
+              { value: "~2mo", label: "ChatGPT" },
+            ].map((s) => (
+              <div key={s.label} className="flex flex-col items-center gap-3 p-6">
+                <span className="font-display text-5xl md:text-6xl font-extrabold text-primary">{s.value}</span>
+                <span className="text-base text-muted-foreground font-light tracking-wide">{s.label}</span>
               </div>
             ))}
           </div>
         </Slide>
 
-        {/* 1.7 - Examples */}
-        <Slide>
-          <div className="space-y-10 text-left max-w-3xl">
-            {[
-              { icon: "⚡", title: "Patience is collapsing", desc: "ChatGPT can help you compare car models immediately." },
-              { icon: "✓", title: '"Good enough" is now immediate', desc: "Fast is better than perfect — i.e. NotebookLM." },
-              { icon: "→", title: "Exploration cost is nearing 0", desc: '"Generate 3 themes for a campaign."' },
-              { icon: "↑", title: "Self-sufficiency is increasing", desc: "AI can help people do everything now." },
-            ].map((ex) => (
-              <div key={ex.title} className="flex gap-5 items-start accent-bar">
-                <span className="text-3xl mt-0.5">{ex.icon}</span>
-                <div>
-                  <p className="font-display text-foreground font-bold text-xl uppercase">{ex.title}</p>
-                  <p className="text-muted-foreground text-base">{ex.desc}</p>
-                </div>
-              </div>
-            ))}
+        {/* 1.5 - Investment data (screenshot 1 grid card style - dark bg, dot grid) */}
+        <div className="relative w-full h-full flex items-center justify-center dot-grid">
+          <div className="relative z-10 w-full max-w-6xl px-8 md:px-16">
+            <p className="font-display text-sm uppercase tracking-[0.35em] text-muted-foreground font-bold mb-8">Investment Signals</p>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-10">
+              <GridCard superTitle="OpenAI" title="$100B Round · $850B Valuation." body="Largest single funding round in technology history." />
+              <GridCard superTitle="Nvidia" title="$3T+ Market Cap." body="Stock grew 200%+ in a single year on AI chip demand. One of the most valuable companies in the world." />
+              <GridCard superTitle="Lovable" title="$330M Raised · 1 Year Old." body="One of the largest early-stage rounds for an AI-native dev platform." />
+              <GridCard superTitle="Anthropic" title="$30B at $380B Valuation." body="Revenue growing 10x annually, less than 3 years old." />
+            </div>
           </div>
-        </Slide>
+        </div>
 
-        {/* 1.8 - Rewiring */}
-        <Slide>
-          <BigText>
-            AI is not just improving productivity.<br />
-            <span className="highlight-green">It's rewiring expectation.</span>
-          </BigText>
-        </Slide>
+        {/* 1.6 - Examples (screenshot 3 style - white bg, numbered) */}
+        <WhiteSlide>
+          <p className="font-display text-sm uppercase tracking-[0.35em] text-gray-400 font-bold mb-6">What's Changing</p>
+          <h2 className="font-display text-5xl md:text-7xl font-black uppercase leading-[0.9] tracking-tight mb-12">
+            <span className="text-gray-300">Expectation</span><span className="highlight-green">Shifts</span>
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-8">
+            <NumberedItem num="1" title="Patience is collapsing" desc="ChatGPT can help you compare car models immediately." />
+            <NumberedItem num="2" title={'"Good enough" is immediate'} desc="Fast is better than perfect — i.e. NotebookLM." />
+            <NumberedItem num="3" title="Exploration cost is nearing 0" desc='"Generate 3 themes for a campaign."' />
+            <NumberedItem num="4" title="Self-sufficiency is increasing" desc="AI can help people do everything now." />
+          </div>
+        </WhiteSlide>
 
-        {/* 1.9 - Analog world */}
+        {/* 1.7 - Rewiring (serif statement - screenshot 4 style) */}
+        <div className="relative w-full h-full flex items-center justify-center">
+          <Slide>
+            <SerifStatement>
+              AI is not just improving productivity. <span className="text-primary font-bold">It's rewiring expectation.</span>
+            </SerifStatement>
+            <p className="font-display text-sm uppercase tracking-[0.3em] text-muted-foreground mt-10 font-bold">The speed of AI is setting the speed of everything.</p>
+          </Slide>
+        </div>
+
+        {/* 1.8 - Analog world */}
         <Slide>
           <div className="accent-bar text-left max-w-3xl">
             <p className="text-xl md:text-2xl lg:text-3xl text-muted-foreground font-light leading-relaxed">
@@ -172,12 +172,18 @@ const Index = () => {
           </div>
         </Slide>
 
-        {/* 1.10 - Shift #1 */}
-        <div className="relative w-full h-full flex items-center justify-center dot-grid">
+        {/* 1.9 - Shift #1 (with bg number) */}
+        <div className="relative w-full h-full flex items-center justify-center dot-grid overflow-hidden">
+          <div className="absolute right-0 top-1/2 -translate-y-1/2 font-display text-[20rem] md:text-[28rem] font-black text-foreground/[0.04] leading-none select-none pointer-events-none">
+            01
+          </div>
           <Slide className="relative z-10">
-            <ShiftLabel number="1" text="Instant is the new standard." />
+            <div className="inline-block px-5 py-2 rounded-sm bg-primary text-primary-foreground font-display text-base font-bold tracking-widest uppercase mb-6">
+              Shift #1
+            </div>
+            <BigText>Instant is the<br /><span className="highlight-green">new standard.</span></BigText>
             <p className="mt-8 text-muted-foreground font-light max-w-3xl leading-relaxed text-lg md:text-xl">
-              Automate reorders, quoting, proofs, and standard workflows. We don't need to replace people — we need to remove unnecessary delay.
+              Automate reorders, quoting, proofs, and standard workflows. Remove unnecessary delay. Operational excellence buys us the right to be strategic where it matters.
             </p>
           </Slide>
         </div>
@@ -187,97 +193,90 @@ const Index = () => {
           SECTION 2: HUMAN VALUE SHIFTS UP THE STACK
       ═══════════════════════════════════════════ */}
       <Section id="section-2">
-        {/* 2.1 - Title */}
-        <div className="relative w-full h-full flex items-center justify-center dot-grid">
-          <BgImage src={abstractStack} opacity="opacity-15" />
+
+        {/* 2.1 - Section Opener */}
+        <SectionOpener
+          number="02"
+          superTitle="The Future of AI"
+          title={<>The human value<br /><span className="highlight-green">shifts up the stack.</span></>}
+          subtitle='AI is taking over the "doing."'
+        />
+
+        {/* 2.2 - Reality (serif statement) */}
+        <div className="relative w-full h-full flex items-center justify-center">
+          <BgImage src={abstractStack} opacity="opacity-12" />
           <Slide className="relative z-10">
-            <div className="flex gap-3 mb-8">
-              {[1, 2, 3, 4].map((i) => (
-                <div
-                  key={i}
-                  className="rounded-sm"
-                  style={{
-                    width: 44,
-                    height: 12 + i * 12,
-                    background: i === 4 ? "hsl(var(--primary))" : "hsl(var(--secondary))",
-                  }}
-                />
-              ))}
-            </div>
-            <BigText>
-              The "human value"<br />
-              <span className="highlight-green">shifts up the stack.</span>
-            </BigText>
+            <SerifStatement>
+              AI can do rule-based, repetitive, information-heavy tasks <span className="text-primary">faster, cheaper, and at scale</span>.
+              Our role shifts to knowing <span className="text-primary font-bold">"what" to do</span>, not in "doing" it.
+            </SerifStatement>
           </Slide>
         </div>
 
-        {/* 2.2 - Taking over */}
-        <Slide>
-          <SubText>AI is taking over the "doing."</SubText>
-        </Slide>
-
-        {/* 2.3 - Reality */}
-        <Slide>
-          <div className="accent-bar text-left max-w-3xl">
-            <p className="text-xl md:text-2xl lg:text-3xl text-muted-foreground font-light leading-relaxed">
-              AI tools can do rule-based, repetitive, information-heavy tasks{" "}
-              <span className="text-foreground font-medium">faster, cheaper, and at scale</span>. Transactional jobs are the most exposed.
-              Even knowledge work is starting to get replaced.
-            </p>
-          </div>
-        </Slide>
-
-        {/* 2.4 - Role shift */}
-        <Slide>
-          <p className="text-2xl md:text-3xl font-light leading-relaxed max-w-3xl text-foreground/90">
-            Our role as humans shifts up the stack. When things get done at a velocity like never before, we add value by knowing{" "}
-            <span className="text-primary font-bold">"what" to do</span>, not in "doing" it.
-          </p>
-        </Slide>
-
-        {/* 2.5 - Quote: Nadella */}
-        <QuoteSlide
-          quote="The future of work is not about AI replacing people. It's about people who use AI replacing people who don't."
-          author="Satya Nadella"
-          role="CEO, Microsoft"
-        />
-
-        {/* 2.6 - Quote: Benioff */}
-        <QuoteSlide
-          quote="The real value of AI is helping salespeople spend more time with customers and less time doing administrative work."
-          author="Marc Benioff"
-          role="CEO, Salesforce"
-        />
-
-        {/* 2.7 - Quote: Amodei */}
-        <QuoteSlide
-          quote="We'll be there in 3-6 months, where AI is writing 90% of the code — and in 12 months, AI writes all of it essentially."
-          author="Dario Amodei"
-          role="CEO, Anthropic"
-        />
-
-        {/* 2.8 - Industry disruption */}
-        <Slide>
-          <div className="space-y-8 text-left max-w-3xl accent-bar">
-            <p className="font-display text-foreground font-bold text-2xl uppercase">Order-taking will be commoditized — or self-serve.</p>
-            <p className="text-muted-foreground font-light text-lg">
-              AI-empowered systems will draft proposals, generate pricing comparisons, and source products instantly.
-            </p>
-            <p className="text-muted-foreground font-light text-lg">
-              Industries like travel and retail already eliminated transactional middlemen when search became automated.
-            </p>
-            <p className="text-primary font-bold text-lg">
-              If we are just order-takers, we'll be beaten out by alternatives that make it easier and quicker.
-            </p>
-          </div>
-        </Slide>
-
-        {/* 2.9 - Shift #2 */}
+        {/* 2.3 - Quotes (screenshot 1 grid style - dark, dot grid, 3 cards) */}
         <div className="relative w-full h-full flex items-center justify-center dot-grid">
+          <div className="relative z-10 w-full max-w-6xl px-8 md:px-16">
+            <p className="font-display text-sm uppercase tracking-[0.35em] text-muted-foreground font-bold mb-10">Industry Leaders</p>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
+              {[
+                { quote: "The future of work is not about AI replacing people. It's about people who use AI replacing people who don't.", author: "Satya Nadella", role: "CEO, Microsoft" },
+                { quote: "The real value of AI is helping salespeople spend more time with customers and less time doing administrative work.", author: "Marc Benioff", role: "CEO, Salesforce" },
+                { quote: "We'll be there in 3-6 months, where AI is writing 90% of the code — and in 12 months, AI writes all of it.", author: "Dario Amodei", role: "CEO, Anthropic" },
+              ].map((q) => (
+                <div key={q.author} className="text-left accent-bar">
+                  <Quote className="w-6 h-6 text-primary/40 mb-4" />
+                  <p className="font-serif text-lg md:text-xl italic leading-relaxed text-foreground/85 mb-4">"{q.quote}"</p>
+                  <p className="text-sm text-muted-foreground">
+                    <span className="text-primary font-bold">{q.author}</span> — {q.role}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        {/* 2.4 - Industry disruption (screenshot 5 style - white bg, two columns) */}
+        <WhiteSlide>
+          <p className="font-display text-sm uppercase tracking-[0.35em] text-gray-400 font-bold mb-6">Industry Reality</p>
+          <h2 className="font-display text-5xl md:text-7xl font-black uppercase leading-[0.9] tracking-tight mb-12">
+            Order-Taking<span className="highlight-green">Dies.</span>
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-6">
+            <div>
+              <h3 className="font-display text-lg font-extrabold uppercase mb-3">What's happening</h3>
+              <ul className="space-y-3 text-gray-600 text-base">
+                <li>• AI-empowered systems will draft proposals, generate pricing, and source products instantly.</li>
+                <li>• Industries like travel and retail already eliminated transactional middlemen.</li>
+                <li>• Software will get better, and self-serve will become the default.</li>
+              </ul>
+            </div>
+            <div>
+              <h3 className="font-display text-lg font-extrabold uppercase mb-3">What it means for us</h3>
+              <ul className="space-y-3 text-gray-600 text-base">
+                <li>• If we are just order-takers, we'll be replaced by faster alternatives.</li>
+                <li>• We win on framing, interpretation, judgement, context, and strategy.</li>
+                <li>• Not on sending catalogues.</li>
+              </ul>
+            </div>
+          </div>
+          <p className="mt-10 border-t border-gray-200 pt-6">
+            <span className="text-green-600 font-display font-bold uppercase text-sm">Conclusion:</span>{" "}
+            <span className="font-bold text-base">Evolve from "order takers" to collaborators and advisors.</span>
+          </p>
+        </WhiteSlide>
+
+        {/* 2.5 - Shift #2 */}
+        <div className="relative w-full h-full flex items-center justify-center dot-grid overflow-hidden">
+          <div className="absolute right-0 top-1/2 -translate-y-1/2 font-display text-[20rem] md:text-[28rem] font-black text-foreground/[0.04] leading-none select-none pointer-events-none">
+            02
+          </div>
           <Slide className="relative z-10">
-            <ShiftLabel number="2" text="Death of transactional sales." />
+            <div className="inline-block px-5 py-2 rounded-sm bg-primary text-primary-foreground font-display text-base font-bold tracking-widest uppercase mb-6">
+              Shift #2
+            </div>
+            <BigText>Death of<br /><span className="highlight-green">transactional sales.</span></BigText>
             <p className="mt-8 text-muted-foreground font-light max-w-3xl leading-relaxed text-lg md:text-xl">
-              Evolve from "order takers" to collaborators and advisors. We win on framing, interpretation, judgement, context, and strategy — not on sending catalogues.
+              We win on framing, interpretation, judgement, context, and strategy — not on sending catalogues.
             </p>
           </Slide>
         </div>
@@ -287,84 +286,89 @@ const Index = () => {
           SECTION 3: IDENTITY > EMPLOYMENT
       ═══════════════════════════════════════════ */}
       <Section id="section-3">
-        {/* 3.1 - Title */}
-        <div className="relative w-full h-full flex items-center justify-center dot-grid">
-          <BgImage src={abstractIdentity} opacity="opacity-20" />
+
+        {/* 3.1 - Section Opener */}
+        <SectionOpener
+          number="03"
+          superTitle="The Future of AI"
+          title={<>Identity &gt;<br /><span className="highlight-green">Employment.</span></>}
+          subtitle="AI will restructure the relationship between employers and employees."
+        />
+
+        {/* 3.2 - Reality (serif statement) */}
+        <div className="relative w-full h-full flex items-center justify-center">
+          <BgImage src={abstractIdentity} opacity="opacity-15" />
           <Slide className="relative z-10">
-            {/* Two circles visual */}
-            <div className="flex items-center gap-10 mb-10">
-              <div className="w-28 h-28 rounded-full border-4 border-primary" />
-              <div className="w-16 h-16 rounded-full border-4 border-muted-foreground/40" />
-            </div>
-            <BigText>
-              Identity &gt;<br />
-              <span className="highlight-green">Employment.</span>
-            </BigText>
+            <SerifStatement>
+              AI will change workforce structures, whether through efficiency gains, consolidation or augmentation.
+              The workforce <span className="text-primary font-bold">will</span> shift. It's not a question of "if" but one of <span className="text-primary">"when."</span>
+            </SerifStatement>
           </Slide>
         </div>
 
-        {/* 3.2 - Restructure */}
-        <Slide>
-          <SubText>AI will restructure the relationship between employers and employees.</SubText>
-        </Slide>
-
-        {/* 3.3 - Stats */}
-        <Slide>
-          <div className="space-y-10">
-            {[
-              { stat: "80%", desc: "of workers believe AI will impact their daily work tasks" },
-              { stat: "50%", desc: "of workers who use AI worry their job could be automated" },
-              { stat: "76,440", desc: "jobs eliminated in 2025 in data entry, telemarketing, admin" },
-            ].map((item) => (
-              <div key={item.stat} className="flex items-baseline gap-6">
-                <span className="font-display text-5xl md:text-6xl font-extrabold text-primary">{item.stat}</span>
-                <span className="text-muted-foreground font-light text-left text-lg md:text-xl">{item.desc}</span>
-              </div>
-            ))}
+        {/* 3.3 - Stats (white bg, numbered - screenshot 3 style) */}
+        <WhiteSlide>
+          <p className="font-display text-sm uppercase tracking-[0.35em] text-gray-400 font-bold mb-6">Workforce Data</p>
+          <h2 className="font-display text-5xl md:text-7xl font-black uppercase leading-[0.9] tracking-tight mb-12">
+            <span className="text-gray-300">The</span><span className="highlight-green">Numbers</span>
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-x-16 gap-y-8">
+            <NumberedItem num="80%" title="Believe AI will impact their daily work" desc="Workers surveyed about AI's effect on their tasks." />
+            <NumberedItem num="50%" title="Worry their job could be automated" desc="Workers who already use AI at work." />
+            <NumberedItem num="76K+" title="Jobs eliminated in 2025" desc="Data entry, telemarketing, and admin support roles." />
           </div>
-        </Slide>
+        </WhiteSlide>
 
-        {/* 3.4 - But merch doesn't go away */}
-        <Slide>
-          <BigText>
-            That doesn't mean<br />
-            merch and swag<br />
-            <span className="highlight-green">go away.</span>
-          </BigText>
-        </Slide>
+        {/* 3.4 - But merch doesn't go away (serif statement) */}
+        <div className="relative w-full h-full flex items-center justify-center">
+          <Slide>
+            <SerifStatement>
+              That doesn't mean merch and swag <span className="text-primary font-bold">go away.</span>
+            </SerifStatement>
+            <p className="font-display text-sm uppercase tracking-[0.3em] text-muted-foreground mt-10 font-bold">
+              As AI reshapes work, belonging shifts from employer identity to community identity.
+            </p>
+          </Slide>
+        </div>
 
-        {/* 3.5 - Belonging shift */}
-        <Slide>
-          <p className="text-2xl md:text-3xl font-light leading-relaxed max-w-3xl text-foreground/90">
-            As AI reshapes work, <span className="text-foreground font-medium">belonging will shift</span> from employer identity to{" "}
-            <span className="text-primary font-bold">community identity.</span>
-          </p>
-        </Slide>
+        {/* 3.5 - Community merch (dark, dot grid, grid cards - screenshot 1 style) */}
+        <div className="relative w-full h-full flex items-center justify-center dot-grid">
+          <div className="relative z-10 w-full max-w-6xl px-8 md:px-16">
+            <p className="font-display text-sm uppercase tracking-[0.35em] text-muted-foreground font-bold mb-10">The Opportunity</p>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
+              <GridCard superTitle="Internal" title="More intentional." body="Merch must reflect culture and values, not just fill closets." />
+              <GridCard superTitle="External" title="More tribal." body="Build tribes — customers, advocates, insiders, power users, culture ambassadors." />
+              <GridCard superTitle="Identity" title="Badge signalling." body="Move from 'gifting employees' to 'manufacturing belonging.'" />
+            </div>
+          </div>
+        </div>
 
         {/* 3.6 - Shift #3 */}
-        <div className="relative w-full h-full flex items-center justify-center dot-grid">
+        <div className="relative w-full h-full flex items-center justify-center dot-grid overflow-hidden">
+          <div className="absolute right-0 top-1/2 -translate-y-1/2 font-display text-[20rem] md:text-[28rem] font-black text-foreground/[0.04] leading-none select-none pointer-events-none">
+            03
+          </div>
           <Slide className="relative z-10">
-            <ShiftLabel number="3" text="Identity-driven community merch." />
-            <div className="mt-8 space-y-5 text-muted-foreground font-light max-w-3xl text-left text-lg md:text-xl">
-              <p>Internal merch must become more <span className="text-foreground font-medium">intentional</span>. External merch must become more <span className="text-foreground font-medium">tribal</span>.</p>
-              <p>We can help companies build tribes — customers, advocates, insiders, power users, culture ambassadors.</p>
-              <p className="text-primary font-bold">Merch becomes badge signalling, not office swag. Move from "gifting employees" to "manufacturing belonging."</p>
+            <div className="inline-block px-5 py-2 rounded-sm bg-primary text-primary-foreground font-display text-base font-bold tracking-widest uppercase mb-6">
+              Shift #3
             </div>
+            <BigText>Identity-driven<br /><span className="highlight-green">community merch.</span></BigText>
+            <p className="mt-8 text-muted-foreground font-light max-w-3xl leading-relaxed text-lg md:text-xl">
+              Merch becomes badge signalling, not office swag. Move from "gifting employees" to "manufacturing belonging."
+            </p>
           </Slide>
         </div>
 
         {/* 3.7 - Closing */}
-        <div className="relative w-full h-full flex items-center justify-center dot-grid">
-          <Slide className="relative z-10">
-            <div className="space-y-6">
-              <ChevronsRight className="w-12 h-12 text-primary mx-auto" strokeWidth={1.5} />
-              <p className="text-3xl md:text-4xl font-light text-muted-foreground">
-                The future is already here.
-              </p>
-              <BigText>
-                <span className="highlight-green">Move with it.</span>
-              </BigText>
-            </div>
+        <div className="relative w-full h-full flex items-center justify-center">
+          <Slide>
+            <ChevronsRight className="w-12 h-12 text-primary mx-auto mb-6" strokeWidth={1.5} />
+            <SerifStatement>
+              The future is already here.
+            </SerifStatement>
+            <BigText>
+              <span className="highlight-green mt-4 inline-block">Move with it.</span>
+            </BigText>
           </Slide>
         </div>
       </Section>
@@ -372,11 +376,7 @@ const Index = () => {
       {/* Vertical section indicator */}
       <div className="fixed right-6 top-1/2 -translate-y-1/2 flex flex-col gap-3 z-20">
         {[1, 2, 3].map((i) => (
-          <a
-            key={i}
-            href={`#section-${i}`}
-            className="w-1.5 h-8 rounded-full bg-muted-foreground/20 hover:bg-primary/60 transition-colors"
-          />
+          <a key={i} href={`#section-${i}`} className="w-1.5 h-8 rounded-full bg-muted-foreground/20 hover:bg-primary/60 transition-colors" />
         ))}
       </div>
     </div>
