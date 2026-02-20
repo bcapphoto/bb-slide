@@ -198,7 +198,7 @@ const Index = () => {
           The Future<br />of <span className="highlight-green">AI.</span>
         </h1>
         <p className="font-serif text-xl md:text-2xl italic text-muted-foreground mt-8 max-w-2xl">
-          How AI is reshaping expectations, value, and identity - and what it means for us.
+          AI is reshaping expectations, value, and identity - and what it means for us.
         </p>
       </div>
     </section>,
@@ -481,7 +481,7 @@ const Index = () => {
             The Future<br />of <span className="highlight-green">AI.</span>
           </h1>
           <p className="font-serif text-xl md:text-2xl italic text-muted-foreground mt-8 max-w-2xl">
-            How AI is reshaping expectations, value, and identity - and what it means for us.
+            AI is reshaping expectations, value, and identity - and what it means for us.
           </p>
         </div>
       </section>
