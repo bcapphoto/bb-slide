@@ -722,7 +722,7 @@ const Index = () => {
       </Section>
 
       {/* Vertical section nav */}
-      <div className="fixed right-6 top-1/2 -translate-y-1/2 flex flex-col items-end gap-5 z-20">
+      <div className="fixed right-6 top-1/2 -translate-y-1/2 flex flex-col items-end gap-5 z-[60] cursor-default">
         {SECTION_NAMES.map((name, i) => {
           const Icon = SECTION_ICONS[i];
           const isActive = i === activeSection;
