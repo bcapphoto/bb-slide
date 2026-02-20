@@ -102,7 +102,7 @@ const Index = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const slidesRef = useRef<Record<number, number>>({});
   const [activeSlide, setActiveSlide] = useState(0);
-  const slideTotals: Record<number, number> = { 0: 1, 1: 9, 2: 6, 3: 7, 4: 1 };
+  const slideTotals: Record<number, number> = { 0: 3, 1: 9, 2: 6, 3: 7, 4: 1 };
   const isScrolling = useRef(false);
 
   const updateUrl = useCallback((sectionIdx: number, slideIdx: number) => {
@@ -203,6 +203,36 @@ const Index = () => {
         </p>
       </div>
     </section>,
+
+    <MobileSection key="title-prompt">
+      <PromptSlide question="What is 1 way AI has changed how you act or make decisions?" />
+    </MobileSection>,
+
+    <MobileSection key="title-overview" className="bg-white text-gray-900 dot-grid-light">
+      <div className="relative z-10 w-full px-8 text-center">
+        <p className="font-display text-sm uppercase tracking-[0.35em] text-gray-500 font-bold mb-10">What We'll Explore</p>
+        <h2 className="font-title text-3xl md:text-4xl uppercase tracking-tight mb-10">
+          3 ways AI will reshape <span className="highlight-green">our business.</span>
+        </h2>
+        <div className="space-y-8">
+          <div>
+            <IconFastForward size={28} className="text-brand-green mx-auto mb-2" />
+            <h3 className="font-title text-xl uppercase tracking-tight leading-tight text-gray-900">Instant is the new <span className="highlight-green">standard.</span></h3>
+            <p className="text-gray-500 text-xs font-light mt-1">AI is compressing time across everything.</p>
+          </div>
+          <div>
+            <IconStacks size={28} className="text-brand-green mx-auto mb-2" />
+            <h3 className="font-title text-xl uppercase tracking-tight leading-tight text-gray-900">Death of transactional <span className="highlight-green">sales.</span></h3>
+            <p className="text-gray-500 text-xs font-light mt-1">AI is taking over the "doing."</p>
+          </div>
+          <div>
+            <IconIdentity size={28} className="text-brand-green mx-auto mb-2" />
+            <h3 className="font-title text-xl uppercase tracking-tight leading-tight text-gray-900">Identity-driven community <span className="highlight-green">merch.</span></h3>
+            <p className="text-gray-500 text-xs font-light mt-1">AI will restructure the employer-employee relationship.</p>
+          </div>
+        </div>
+      </div>
+    </MobileSection>,
 
     // SECTION 1 slides
     <MobileSection key="1-1">
@@ -481,23 +511,53 @@ const Index = () => {
         /* ─── DESKTOP: original horizontal+vertical navigation ─── */
         <>
 
-      {/* TITLE PAGE */}
-      <section id="section-title" className="relative h-screen snap-start flex-shrink-0 flex items-center justify-center dot-grid-bold glow-br overflow-hidden">
-        <div className="absolute right-0 bottom-0 font-display text-[30rem] font-black text-foreground/[0.03] leading-none select-none pointer-events-none">
-          AI
-        </div>
-        <div className="relative z-10 px-8 md:px-20 lg:px-32 text-left max-w-5xl">
-          <div className="flex items-center gap-4 mb-12">
-            <img src={bbLogoHorizontal} alt="BrandBlvd" className="h-10 md:h-14" />
+      {/* TITLE SECTION */}
+      <Section id="section-title" onSlideChange={handleSlideChange(0)} initialSlide={activeSection === 0 ? initialSlideRef.current : 0}>
+        <div className="relative w-full h-full flex items-center justify-center dot-grid-bold glow-br overflow-hidden">
+          <div className="absolute right-0 bottom-0 font-display text-[30rem] font-black text-foreground/[0.03] leading-none select-none pointer-events-none">
+            AI
           </div>
-          <h1 className="font-title text-6xl md:text-8xl lg:text-9xl uppercase leading-[1.05] tracking-tight">
-            The Future<br />of <span className="highlight-green">AI.</span>
-          </h1>
-          <p className="font-serif text-xl md:text-2xl italic text-muted-foreground mt-8 max-w-2xl">
-            How AI is reshaping expectations, value, and identity - and what it means for us at Brand Blvd.
-          </p>
+          <div className="relative z-10 px-8 md:px-20 lg:px-32 text-left max-w-5xl">
+            <div className="flex items-center gap-4 mb-12">
+              <img src={bbLogoHorizontal} alt="BrandBlvd" className="h-10 md:h-14" />
+            </div>
+            <h1 className="font-title text-6xl md:text-8xl lg:text-9xl uppercase leading-[1.05] tracking-tight">
+              The Future<br />of <span className="highlight-green">AI.</span>
+            </h1>
+            <p className="font-serif text-xl md:text-2xl italic text-muted-foreground mt-8 max-w-2xl">
+              AI is reshaping expectations, value, and identity - and what it means for us at Brand Blvd.
+            </p>
+          </div>
         </div>
-      </section>
+
+        <PromptSlide question="What is 1 way AI has changed how you act or make decisions?" />
+
+        <div className="relative w-full h-full flex items-center justify-center bg-white text-gray-900 dot-grid-light overflow-hidden">
+          <div className="relative z-10 w-full max-w-4xl mx-auto px-8 md:px-16 text-center">
+            <p className="font-display text-sm uppercase tracking-[0.35em] text-gray-500 font-bold mb-10">What We'll Explore</p>
+            <h2 className="font-title text-4xl md:text-6xl uppercase tracking-tight mb-12">
+              3 ways AI will reshape <span className="highlight-green">our business.</span>
+            </h2>
+            <div className="space-y-12">
+              <div>
+                <IconFastForward size={36} className="text-brand-green mx-auto mb-3" />
+                <h3 className="font-title text-2xl md:text-3xl uppercase tracking-tight leading-tight text-gray-900">Instant is the new <span className="highlight-green">standard.</span></h3>
+                <p className="text-gray-500 text-sm md:text-base font-light mt-1">AI is compressing time across everything.</p>
+              </div>
+              <div>
+                <IconStacks size={36} className="text-brand-green mx-auto mb-3" />
+                <h3 className="font-title text-2xl md:text-3xl uppercase tracking-tight leading-tight text-gray-900">Death of transactional <span className="highlight-green">sales.</span></h3>
+                <p className="text-gray-500 text-sm md:text-base font-light mt-1">AI is taking over the "doing."</p>
+              </div>
+              <div>
+                <IconIdentity size={36} className="text-brand-green mx-auto mb-3" />
+                <h3 className="font-title text-2xl md:text-3xl uppercase tracking-tight leading-tight text-gray-900">Identity-driven community <span className="highlight-green">merch.</span></h3>
+                <p className="text-gray-500 text-sm md:text-base font-light mt-1">AI will restructure the employer-employee relationship.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </Section>
 
       {/* SECTION 1: INSTANT IS THE NEW STANDARD */}
       <Section id="section-instant" onSlideChange={handleSlideChange(1)} initialSlide={activeSection === 1 ? initialSlideRef.current : 0}>
