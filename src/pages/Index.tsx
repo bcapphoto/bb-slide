@@ -100,7 +100,7 @@ const Index = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const slidesRef = useRef<Record<number, number>>({});
   const [activeSlide, setActiveSlide] = useState(0);
-  const slideTotals: Record<number, number> = { 0: 1, 1: 9, 2: 5, 3: 7 };
+  const slideTotals: Record<number, number> = { 0: 1, 1: 8, 2: 5, 3: 7 };
   const isScrolling = useRef(false);
 
   const updateUrl = useCallback((sectionIdx: number, slideIdx: number) => {
@@ -225,24 +225,6 @@ const Index = () => {
       <Slide><GrowthChart /></Slide>
     </MobileSection>,
 
-    <MobileSection key="1-4" className="bg-white text-gray-900 dot-grid-light">
-      <div className="w-full max-w-6xl px-8">
-        <h2 className="font-display text-lg uppercase tracking-[0.3em] text-gray-500 mb-10 font-bold relative z-10">Time to 100M Users</h2>
-        <div className="grid grid-cols-2 gap-4 relative z-10">
-          {[
-            { value: "~4.5y", label: "Facebook" },
-            { value: "~2.5y", label: "Instagram" },
-            { value: "~9mo", label: "TikTok" },
-            { value: "~2mo", label: "ChatGPT" },
-          ].map((s) => (
-            <div key={s.label} className="flex flex-col items-center gap-3 p-4">
-              <span className="font-display text-4xl font-extrabold text-brand-green">{s.value}</span>
-              <span className="text-sm text-gray-500 font-light tracking-wide">{s.label}</span>
-            </div>
-          ))}
-        </div>
-      </div>
-    </MobileSection>,
 
     <MobileSection key="1-5" className="relative dot-grid">
       <div className="relative z-10 w-full max-w-6xl px-8">
@@ -512,22 +494,6 @@ const Index = () => {
 
         <Slide><GrowthChart /></Slide>
 
-        <WhiteSlide className="dot-grid-light">
-          <h2 className="font-display text-lg uppercase tracking-[0.3em] text-gray-500 mb-10 font-bold relative z-10">Time to 100M Users</h2>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8 relative z-10">
-            {[
-              { value: "~4.5y", label: "Facebook" },
-              { value: "~2.5y", label: "Instagram" },
-              { value: "~9mo", label: "TikTok" },
-              { value: "~2mo", label: "ChatGPT" },
-            ].map((s) => (
-              <div key={s.label} className="flex flex-col items-center gap-3 p-6">
-                <span className="font-display text-5xl md:text-6xl font-extrabold text-brand-green">{s.value}</span>
-                <span className="text-base text-gray-500 font-light tracking-wide">{s.label}</span>
-              </div>
-            ))}
-          </div>
-        </WhiteSlide>
 
         <div className="relative w-full h-full flex items-center justify-center dot-grid">
           <div className="relative z-10 w-full max-w-6xl px-8 md:px-16">
