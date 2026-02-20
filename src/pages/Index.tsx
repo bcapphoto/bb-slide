@@ -173,15 +173,14 @@ const Index = () => {
       if (currentSlide > 0 && scroller) {
         scroller.scrollTo({ left: (currentSlide - 1) * scroller.clientWidth, behavior: "smooth" });
       } else if (currentSectionIdx > 0) {
-        goToSection(currentSectionIdx - 1, false);
-        setTimeout(() => {
-          const prevSection = document.getElementById(`section-${SECTION_NAMES[currentSectionIdx - 1]}`);
-          const prevScroller = prevSection?.querySelector("[data-slide-scroller]") as HTMLElement | null;
-          if (prevScroller) {
-            const prevTotal = slideTotals[currentSectionIdx - 1] || 1;
-            prevScroller.scrollTo({ left: (prevTotal - 1) * prevScroller.clientWidth, behavior: "smooth" });
-          }
-        }, 600);
+        // Pre-scroll the previous section to its last slide INSTANTLY before navigating
+        const prevSection = document.getElementById(`section-${SECTION_NAMES[currentSectionIdx - 1]}`);
+        const prevScroller = prevSection?.querySelector("[data-slide-scroller]") as HTMLElement | null;
+        if (prevScroller) {
+          const prevTotal = slideTotals[currentSectionIdx - 1] || 1;
+          prevScroller.scrollTo({ left: (prevTotal - 1) * prevScroller.clientWidth, behavior: "instant" as ScrollBehavior });
+        }
+        prevSection?.scrollIntoView({ behavior: "smooth" });
       }
     }
   }, []);
