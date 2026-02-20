@@ -59,16 +59,16 @@ const CursorNav = ({ onNavigate, canGo = { up: true, down: true, left: true, rig
   return (
     <div
       className="fixed inset-0 z-50 pointer-events-none"
-      style={{ cursor: "none" }}
+      style={{ cursor: showArrow ? "none" : "auto" }}
     >
-      {visible && (
+      {visible && showArrow && (
         <div
           className="fixed pointer-events-none transition-opacity duration-150"
           style={{
             left: pos.x,
             top: pos.y,
             transform: `translate(-50%, -50%) rotate(${rotation}deg)`,
-            opacity: showArrow ? 0.7 : 0,
+            opacity: 0.7,
           }}
         >
           <svg width="400" height="400" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
