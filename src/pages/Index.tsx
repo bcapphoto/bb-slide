@@ -145,41 +145,40 @@ const Index = () => {
   };
 
   const handleNavigate = useCallback((dir: "left" | "right" | "up" | "down") => {
-    if (dir === "up" || dir === "down") return; // Only left/right supported
+    if (dir === "up" || dir === "down") return;
 
-    const section = document.getElementById(`section-${SECTION_NAMES[activeSection]}`);
+    // Read active section directly from DOM to avoid stale state
+    const container = containerRef.current;
+    if (!container) return;
+    const currentSectionIdx = Math.round(container.scrollTop / container.clientHeight);
+
+    const section = document.getElementById(`section-${SECTION_NAMES[currentSectionIdx]}`);
     const scroller = section?.querySelector("[data-slide-scroller]") as HTMLElement | null;
     const currentSlide = scroller ? Math.round(scroller.scrollLeft / scroller.clientWidth) : 0;
-    const totalSlides = slideTotals[activeSection] || 1;
+    const totalSlides = slideTotals[currentSectionIdx] || 1;
 
     if (dir === "right") {
       if (currentSlide < totalSlides - 1 && scroller) {
-        // Next slide in same section
         scroller.scrollTo({ left: (currentSlide + 1) * scroller.clientWidth, behavior: "smooth" });
-      } else if (activeSection < TOTAL_SECTIONS - 1) {
-        // Go to next section (first slide)
-        goToSection(activeSection + 1);
+      } else if (currentSectionIdx < TOTAL_SECTIONS - 1) {
+        goToSection(currentSectionIdx + 1);
       }
     } else {
-      // dir === "left"
       if (currentSlide > 0 && scroller) {
-        // Previous slide in same section
         scroller.scrollTo({ left: (currentSlide - 1) * scroller.clientWidth, behavior: "smooth" });
-      } else if (activeSection > 0) {
-        // Go to previous section (last slide)
-        goToSection(activeSection - 1);
-        // After scrolling to previous section, scroll to its last slide
+      } else if (currentSectionIdx > 0) {
+        goToSection(currentSectionIdx - 1);
         setTimeout(() => {
-          const prevSection = document.getElementById(`section-${SECTION_NAMES[activeSection - 1]}`);
+          const prevSection = document.getElementById(`section-${SECTION_NAMES[currentSectionIdx - 1]}`);
           const prevScroller = prevSection?.querySelector("[data-slide-scroller]") as HTMLElement | null;
           if (prevScroller) {
-            const prevTotal = slideTotals[activeSection - 1] || 1;
+            const prevTotal = slideTotals[currentSectionIdx - 1] || 1;
             prevScroller.scrollTo({ left: (prevTotal - 1) * prevScroller.clientWidth, behavior: "smooth" });
           }
         }, 600);
       }
     }
-  }, [activeSection]);
+  }, []);
 
   /* ─── All slide content as flat array for mobile ─── */
   const allSlides = [
