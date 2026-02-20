@@ -38,6 +38,18 @@ const CursorNav = ({ onNavigate, canGo = { up: true, down: true, left: true, rig
     setDirection(null);
   }, []);
 
+  const showArrow = direction && canGo[direction];
+
+  // Toggle cursor:none on body based on whether arrow is showing
+  useEffect(() => {
+    if (showArrow) {
+      document.body.style.cursor = "none";
+    } else {
+      document.body.style.cursor = "";
+    }
+    return () => { document.body.style.cursor = ""; };
+  }, [showArrow]);
+
   useEffect(() => {
     window.addEventListener("mousemove", handleMove);
     window.addEventListener("click", handleClick);
@@ -53,13 +65,9 @@ const CursorNav = ({ onNavigate, canGo = { up: true, down: true, left: true, rig
     ? { right: 0, down: 90, left: 180, up: 270 }[direction]
     : 0;
 
-  // Hide arrow if can't go in that direction
-  const showArrow = direction && canGo[direction];
-
   return (
     <div
       className="fixed inset-0 z-50 pointer-events-none"
-      style={{ cursor: showArrow ? "none" : "auto" }}
     >
       {visible && showArrow && (
         <div
