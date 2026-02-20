@@ -37,8 +37,8 @@ const SectionOpener = ({ number, superTitle, title, subtitle }: { number: string
     <div className="absolute right-0 top-1/2 -translate-y-1/2 font-display text-[20rem] md:text-[28rem] font-black text-foreground/[0.04] leading-none select-none pointer-events-none">
       {number}
     </div>
+    <img src={bbMonogram} alt="BB" className="absolute bottom-8 left-8 md:left-20 lg:left-32 h-8 md:h-10 opacity-40 z-10" />
     <div className="relative z-10 px-8 md:px-20 lg:px-32 text-left max-w-5xl">
-      <img src={bbMonogram} alt="BB" className="h-8 md:h-10 mb-6 opacity-40" />
       <p className="font-display text-sm md:text-base uppercase tracking-[0.35em] text-muted-foreground font-bold mb-8">{superTitle}</p>
       <h1 className="font-title text-5xl md:text-7xl lg:text-8xl uppercase leading-[1.15] tracking-tight">{title}</h1>
       <p className="font-serif text-xl md:text-2xl italic text-muted-foreground mt-6">{subtitle}</p>
