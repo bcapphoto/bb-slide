@@ -1,4 +1,5 @@
-import { ChevronsRight, FastForward, Quote } from "lucide-react";
+import { useEffect, useState } from "react";
+import { ChevronsRight, ChevronUp, ChevronDown, Quote } from "lucide-react";
 import Section from "@/components/Section";
 import GrowthChart from "@/components/GrowthChart";
 import abstractSpeed from "@/assets/abstract-speed.jpg";
@@ -72,8 +73,24 @@ const BgImage = ({ src, opacity = "opacity-20" }: { src: string; opacity?: strin
 /* ─── Main presentation ─── */
 
 const Index = () => {
+  const [activeSection, setActiveSection] = useState(0);
+  const scrollContainerRef = (el: HTMLDivElement | null) => {
+    if (!el) return;
+    const handler = () => {
+      const index = Math.round(el.scrollTop / el.clientHeight);
+      setActiveSection(index);
+    };
+    el.addEventListener("scroll", handler, { passive: true });
+  };
+
+  const goToSection = (index: number) => {
+    const clamped = Math.max(0, Math.min(index, 2));
+    const el = document.getElementById(`section-${clamped + 1}`);
+    el?.scrollIntoView({ behavior: "smooth" });
+  };
+
   return (
-    <div className="h-screen overflow-y-auto snap-y snap-mandatory scrollbar-hide grain">
+    <div ref={scrollContainerRef} className="h-screen overflow-y-auto snap-y snap-mandatory scrollbar-hide grain">
 
       {/* ═══════════════════════════════════════════
           SECTION 1: INSTANT IS THE NEW STANDARD
@@ -373,11 +390,34 @@ const Index = () => {
         </div>
       </Section>
 
-      {/* Vertical section indicator */}
-      <div className="fixed right-6 top-1/2 -translate-y-1/2 flex flex-col gap-3 z-20">
-        {[1, 2, 3].map((i) => (
-          <a key={i} href={`#section-${i}`} className="w-1.5 h-8 rounded-full bg-muted-foreground/20 hover:bg-primary/60 transition-colors" />
+      {/* Vertical section indicator with arrows */}
+      <div className="fixed right-6 top-1/2 -translate-y-1/2 flex flex-col items-center gap-2 z-20">
+        <button
+          onClick={() => goToSection(activeSection - 1)}
+          className={`transition-opacity ${activeSection === 0 ? "opacity-0 pointer-events-none" : "opacity-30 hover:opacity-70"}`}
+          aria-label="Previous section"
+        >
+          <ChevronUp className="w-4 h-4 text-foreground" strokeWidth={1.5} />
+        </button>
+        {[0, 1, 2].map((i) => (
+          <button
+            key={i}
+            onClick={() => goToSection(i)}
+            className={`w-1.5 rounded-full transition-all duration-300 ${
+              i === activeSection
+                ? "bg-primary h-8"
+                : "bg-muted-foreground/20 h-3 hover:bg-muted-foreground/40"
+            }`}
+            aria-label={`Go to section ${i + 1}`}
+          />
         ))}
+        <button
+          onClick={() => goToSection(activeSection + 1)}
+          className={`transition-opacity ${activeSection === 2 ? "opacity-0 pointer-events-none" : "opacity-30 hover:opacity-70"}`}
+          aria-label="Next section"
+        >
+          <ChevronDown className="w-4 h-4 text-foreground" strokeWidth={1.5} />
+        </button>
       </div>
     </div>
   );
