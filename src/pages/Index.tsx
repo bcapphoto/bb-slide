@@ -198,7 +198,7 @@ const Index = () => {
           The Future<br />of <span className="highlight-green">AI.</span>
         </h1>
         <p className="font-serif text-xl md:text-2xl italic text-muted-foreground mt-8 max-w-2xl">
-          How artificial intelligence is reshaping expectations, value, and identity - and what it means for us.
+          How AI is reshaping expectations, value, and identity - and what it means for us.
         </p>
       </div>
     </section>,
@@ -475,14 +475,13 @@ const Index = () => {
         </div>
         <div className="relative z-10 px-8 md:px-20 lg:px-32 text-left max-w-5xl">
           <div className="flex items-center gap-4 mb-12">
-            <IconHome size={28} className="text-primary" />
             <img src={bbLogoHorizontal} alt="BrandBlvd" className="h-10 md:h-14" />
           </div>
           <h1 className="font-title text-6xl md:text-8xl lg:text-9xl uppercase leading-[1.05] tracking-tight">
             The Future<br />of <span className="highlight-green">AI.</span>
           </h1>
           <p className="font-serif text-xl md:text-2xl italic text-muted-foreground mt-8 max-w-2xl">
-            How artificial intelligence is reshaping expectations, value, and identity - and what it means for us.
+            How AI is reshaping expectations, value, and identity - and what it means for us.
           </p>
         </div>
       </section>
