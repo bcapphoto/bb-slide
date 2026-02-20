@@ -197,7 +197,7 @@ const Index = () => {
 
         {/* 1.4 - Stats (clean cards - white bg) */}
         <WhiteSlide className="dot-grid-light">
-          <h2 className="font-display text-lg uppercase tracking-[0.3em] text-gray-400 mb-10 font-bold relative z-10">Time to 100M Users</h2>
+          <h2 className="font-display text-lg uppercase tracking-[0.3em] text-gray-500 mb-10 font-bold relative z-10">Time to 100M Users</h2>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8 relative z-10">
             {[
               { value: "~4.5y", label: "Facebook" },
@@ -228,9 +228,9 @@ const Index = () => {
 
         {/* 1.6 - Examples (screenshot 3 style - white bg, numbered) */}
         <WhiteSlide>
-          <p className="font-display text-sm uppercase tracking-[0.35em] text-gray-400 font-bold mb-6">What's Changing</p>
+          <p className="font-display text-sm uppercase tracking-[0.35em] text-gray-500 font-bold mb-6">What's Changing</p>
           <h2 className="font-title text-5xl md:text-7xl uppercase leading-[0.9] tracking-tight mb-12">
-            <span className="text-gray-300">Expectation</span><span className="highlight-green">Shifts</span>
+            <span className="text-gray-900">Expectation</span><span className="highlight-green">Shifts</span>
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-8">
             <NumberedItem num="1" title="Patience is collapsing" desc="ChatGPT can help you compare car models immediately." />
@@ -308,7 +308,7 @@ const Index = () => {
         {/* 2.3 - Quotes (white bg, cross grid light) */}
         <WhiteSlide className="cross-grid-light">
           <div className="relative z-10">
-            <p className="font-display text-sm uppercase tracking-[0.35em] text-gray-400 font-bold mb-10">Industry Leaders</p>
+            <p className="font-display text-sm uppercase tracking-[0.35em] text-gray-500 font-bold mb-10">Industry Leaders</p>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
               {[
                 { quote: "The future of work is not about AI replacing people. It's about people who use AI replacing people who don't.", author: "Satya Nadella", role: "CEO, Microsoft" },
@@ -329,7 +329,7 @@ const Index = () => {
 
         {/* 2.4 - Industry disruption (screenshot 5 style - white bg, two columns) */}
         <WhiteSlide>
-          <p className="font-display text-sm uppercase tracking-[0.35em] text-gray-400 font-bold mb-6">Industry Reality</p>
+          <p className="font-display text-sm uppercase tracking-[0.35em] text-gray-500 font-bold mb-6">Industry Reality</p>
           <h2 className="font-title text-5xl md:text-7xl uppercase leading-[0.9] tracking-tight mb-12">
             Order-Taking<span className="highlight-green">Dies.</span>
           </h2>
@@ -400,9 +400,9 @@ const Index = () => {
 
         {/* 3.3 - Stats (white bg, numbered - screenshot 3 style) */}
         <WhiteSlide>
-          <p className="font-display text-sm uppercase tracking-[0.35em] text-gray-400 font-bold mb-6">Workforce Data</p>
+          <p className="font-display text-sm uppercase tracking-[0.35em] text-gray-500 font-bold mb-6">Workforce Data</p>
           <h2 className="font-title text-5xl md:text-7xl uppercase leading-[0.9] tracking-tight mb-12">
-            <span className="text-gray-300">The</span><span className="highlight-green">Numbers</span>
+            <span className="text-gray-900">The</span><span className="highlight-green">Numbers</span>
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-x-16 gap-y-8">
             <NumberedItem num="80%" title="Believe AI will impact their daily work" desc="Workers surveyed about AI's effect on their tasks." />
@@ -417,7 +417,7 @@ const Index = () => {
             <p className="font-serif text-3xl md:text-4xl lg:text-5xl italic leading-snug max-w-5xl mx-auto text-gray-800">
               That doesn't mean merch and swag <span className="text-green-600 font-bold">go away.</span>
             </p>
-            <p className="font-display text-sm uppercase tracking-[0.3em] text-gray-400 mt-10 font-bold">
+            <p className="font-display text-sm uppercase tracking-[0.3em] text-gray-500 mt-10 font-bold">
               As AI reshapes work, belonging shifts from employer identity to community identity.
             </p>
           </div>
