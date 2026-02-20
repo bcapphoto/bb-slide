@@ -139,17 +139,39 @@ const Index = () => {
   };
 
   const handleNavigate = useCallback((dir: "left" | "right" | "up" | "down") => {
-    if (dir === "up") {
-      goToSection(activeSection - 1);
-    } else if (dir === "down") {
-      goToSection(activeSection + 1);
+    if (dir === "up" || dir === "down") return; // Only left/right supported
+
+    const section = document.getElementById(`section-${SECTION_NAMES[activeSection]}`);
+    const scroller = section?.querySelector("[data-slide-scroller]") as HTMLElement | null;
+    const currentSlide = scroller ? Math.round(scroller.scrollLeft / scroller.clientWidth) : 0;
+    const totalSlides = slideTotals[activeSection] || 1;
+
+    if (dir === "right") {
+      if (currentSlide < totalSlides - 1 && scroller) {
+        // Next slide in same section
+        scroller.scrollTo({ left: (currentSlide + 1) * scroller.clientWidth, behavior: "smooth" });
+      } else if (activeSection < TOTAL_SECTIONS - 1) {
+        // Go to next section (first slide)
+        goToSection(activeSection + 1);
+      }
     } else {
-      const section = document.getElementById(`section-${SECTION_NAMES[activeSection]}`);
-      const scroller = section?.querySelector("[data-slide-scroller]") as HTMLElement | null;
-      if (!scroller) return;
-      const currentSlide = Math.round(scroller.scrollLeft / scroller.clientWidth);
-      const target = dir === "left" ? currentSlide - 1 : currentSlide + 1;
-      scroller.scrollTo({ left: target * scroller.clientWidth, behavior: "smooth" });
+      // dir === "left"
+      if (currentSlide > 0 && scroller) {
+        // Previous slide in same section
+        scroller.scrollTo({ left: (currentSlide - 1) * scroller.clientWidth, behavior: "smooth" });
+      } else if (activeSection > 0) {
+        // Go to previous section (last slide)
+        goToSection(activeSection - 1);
+        // After scrolling to previous section, scroll to its last slide
+        setTimeout(() => {
+          const prevSection = document.getElementById(`section-${SECTION_NAMES[activeSection - 1]}`);
+          const prevScroller = prevSection?.querySelector("[data-slide-scroller]") as HTMLElement | null;
+          if (prevScroller) {
+            const prevTotal = slideTotals[activeSection - 1] || 1;
+            prevScroller.scrollTo({ left: (prevTotal - 1) * prevScroller.clientWidth, behavior: "smooth" });
+          }
+        }, 600);
+      }
     }
   }, [activeSection]);
 
@@ -709,10 +731,10 @@ const Index = () => {
       <CursorNav
         onNavigate={handleNavigate}
         canGo={{
-          up: activeSection > 0,
-          down: activeSection < TOTAL_SECTIONS - 1,
-          left: activeSlide > 0,
-          right: activeSlide < (slideTotals[activeSection] || 1) - 1,
+          up: false,
+          down: false,
+          left: activeSlide > 0 || activeSection > 0,
+          right: activeSlide < (slideTotals[activeSection] || 1) - 1 || activeSection < TOTAL_SECTIONS - 1,
         }}
       />
         </>
