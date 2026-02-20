@@ -30,11 +30,13 @@ const SerifStatement = ({ children }: { children: React.ReactNode }) => (
   <p className="font-serif text-2xl md:text-4xl lg:text-5xl italic leading-snug max-w-5xl">{children}</p>
 );
 
-const SectionOpener = ({ number, superTitle, title, icon: Icon }: { number: string; superTitle: string; title: React.ReactNode; icon?: React.ComponentType<{ size?: number; className?: string }> }) => (
+const SectionOpener = ({ superTitle, title, icon: Icon }: { number?: string; superTitle: string; title: React.ReactNode; icon?: React.ComponentType<{ size?: number; className?: string }> }) => (
   <div className="relative w-full h-full flex items-center dot-grid overflow-hidden">
-    <div className="absolute right-0 top-1/2 -translate-y-1/2 font-display text-[12rem] md:text-[28rem] font-black text-foreground/[0.04] leading-none select-none pointer-events-none">
-      {number}
-    </div>
+    {Icon && (
+      <div className="absolute right-[-2rem] md:right-8 top-1/2 -translate-y-1/2 select-none pointer-events-none opacity-[0.04]">
+        <Icon size={500} className="text-foreground w-[280px] h-[280px] md:w-[500px] md:h-[500px]" />
+      </div>
+    )}
     <img src={bbMonogram} alt="BB" className="absolute bottom-8 left-8 md:left-20 lg:left-32 h-8 md:h-10 opacity-40 z-10" />
     <div className="relative z-10 px-8 md:px-20 lg:px-32 text-left max-w-5xl">
       {Icon && (
