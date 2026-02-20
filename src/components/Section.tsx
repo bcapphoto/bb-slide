@@ -1,5 +1,4 @@
 import React, { useRef, useEffect, useState, useCallback } from "react";
-import { ChevronLeft, ChevronRight } from "lucide-react";
 
 interface SectionProps {
   children: React.ReactNode;
@@ -25,18 +24,12 @@ const Section: React.FC<SectionProps> = ({ children, id }) => {
     return () => el.removeEventListener("scroll", handleScroll);
   }, [handleScroll]);
 
-  const goTo = (index: number) => {
-    const el = scrollRef.current;
-    if (!el) return;
-    const clamped = Math.max(0, Math.min(index, slideCount - 1));
-    el.scrollTo({ left: clamped * el.clientWidth, behavior: "smooth" });
-  };
-
   return (
     <section id={id} className="relative h-screen snap-start flex-shrink-0">
       <div
         ref={scrollRef}
         className="h-full overflow-x-auto snap-x snap-mandatory flex scrollbar-hide"
+        data-slide-scroller
       >
         {React.Children.map(children, (child, i) => (
           <div
@@ -48,35 +41,19 @@ const Section: React.FC<SectionProps> = ({ children, id }) => {
         ))}
       </div>
 
-      {/* Bottom: dots + left/right arrows */}
+      {/* Dot indicators only */}
       {slideCount > 1 && (
-        <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex items-center gap-4 z-10">
-          <button
-            onClick={() => goTo(activeSlide - 1)}
-            className={`transition-opacity ${activeSlide === 0 ? "opacity-0 pointer-events-none" : "opacity-30 hover:opacity-70"}`}
-            aria-label="Previous slide"
-          >
-            <ChevronLeft className="w-5 h-5 text-foreground" strokeWidth={1.5} />
-          </button>
-          <div className="flex gap-2">
-            {Array.from({ length: slideCount }).map((_, i) => (
-              <div
-                key={i}
-                className={`h-1.5 rounded-full transition-all duration-300 ${
-                  i === activeSlide
-                    ? "bg-primary w-8"
-                    : "bg-muted-foreground/20 w-1.5"
-                }`}
-              />
-            ))}
-          </div>
-          <button
-            onClick={() => goTo(activeSlide + 1)}
-            className={`transition-opacity ${activeSlide === slideCount - 1 ? "opacity-0 pointer-events-none" : "opacity-30 hover:opacity-70"}`}
-            aria-label="Next slide"
-          >
-            <ChevronRight className="w-5 h-5 text-foreground" strokeWidth={1.5} />
-          </button>
+        <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-2 z-10">
+          {Array.from({ length: slideCount }).map((_, i) => (
+            <div
+              key={i}
+              className={`h-1.5 rounded-full transition-all duration-300 ${
+                i === activeSlide
+                  ? "bg-primary w-8"
+                  : "bg-muted-foreground/20 w-1.5"
+              }`}
+            />
+          ))}
         </div>
       )}
     </section>
