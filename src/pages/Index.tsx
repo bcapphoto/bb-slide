@@ -32,7 +32,7 @@ const SectionOpener = ({ number, superTitle, title, subtitle }: { number: string
     </div>
     <div className="relative z-10 px-8 md:px-20 lg:px-32 text-left max-w-5xl">
       <p className="font-display text-sm md:text-base uppercase tracking-[0.35em] text-muted-foreground font-bold mb-8">{superTitle}</p>
-      <h1 className="font-title text-6xl md:text-8xl lg:text-[9rem] uppercase leading-[0.9] tracking-tight">{title}</h1>
+      <h1 className="font-title text-6xl md:text-8xl lg:text-[9rem] uppercase leading-[1.15] tracking-tight">{title}</h1>
       <p className="font-serif text-xl md:text-2xl italic text-muted-foreground mt-6">{subtitle}</p>
     </div>
   </div>
