@@ -195,10 +195,10 @@ const Index = () => {
           <GrowthChart />
         </Slide>
 
-        {/* 1.4 - Stats (clean cards) */}
-        <Slide>
-          <h2 className="font-display text-lg uppercase tracking-[0.3em] text-muted-foreground mb-10 font-bold">Time to 100M Users</h2>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8">
+        {/* 1.4 - Stats (clean cards - white bg) */}
+        <WhiteSlide className="dot-grid-light">
+          <h2 className="font-display text-lg uppercase tracking-[0.3em] text-gray-400 mb-10 font-bold relative z-10">Time to 100M Users</h2>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8 relative z-10">
             {[
               { value: "~4.5y", label: "Facebook" },
               { value: "~2.5y", label: "Instagram" },
@@ -206,12 +206,12 @@ const Index = () => {
               { value: "~2mo", label: "ChatGPT" },
             ].map((s) => (
               <div key={s.label} className="flex flex-col items-center gap-3 p-6">
-                <span className="font-display text-5xl md:text-6xl font-extrabold text-primary">{s.value}</span>
-                <span className="text-base text-muted-foreground font-light tracking-wide">{s.label}</span>
+                <span className="font-display text-5xl md:text-6xl font-extrabold text-green-600">{s.value}</span>
+                <span className="text-base text-gray-500 font-light tracking-wide">{s.label}</span>
               </div>
             ))}
           </div>
-        </Slide>
+        </WhiteSlide>
 
         {/* 1.5 - Investment data (screenshot 1 grid card style - dark bg, dot grid) */}
         <div className="relative w-full h-full flex items-center justify-center dot-grid">
@@ -305,27 +305,27 @@ const Index = () => {
           </Slide>
         </div>
 
-        {/* 2.3 - Quotes (screenshot 1 grid style - dark, dot grid, 3 cards) */}
-        <div className="relative w-full h-full flex items-center justify-center dot-grid-bold">
-          <div className="relative z-10 w-full max-w-6xl px-8 md:px-16">
-            <p className="font-display text-sm uppercase tracking-[0.35em] text-muted-foreground font-bold mb-10">Industry Leaders</p>
+        {/* 2.3 - Quotes (white bg, cross grid light) */}
+        <WhiteSlide className="cross-grid-light">
+          <div className="relative z-10">
+            <p className="font-display text-sm uppercase tracking-[0.35em] text-gray-400 font-bold mb-10">Industry Leaders</p>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
               {[
                 { quote: "The future of work is not about AI replacing people. It's about people who use AI replacing people who don't.", author: "Satya Nadella", role: "CEO, Microsoft" },
                 { quote: "The real value of AI is helping salespeople spend more time with customers and less time doing administrative work.", author: "Marc Benioff", role: "CEO, Salesforce" },
                 { quote: "We'll be there in 3-6 months, where AI is writing 90% of the code — and in 12 months, AI writes all of it.", author: "Dario Amodei", role: "CEO, Anthropic" },
               ].map((q) => (
-                <div key={q.author} className="text-left accent-bar">
-                  <Quote className="w-6 h-6 text-primary/40 mb-4" />
-                  <p className="font-serif text-lg md:text-xl italic leading-relaxed text-foreground/85 mb-4">"{q.quote}"</p>
-                  <p className="text-sm text-muted-foreground">
-                    <span className="text-primary font-bold">{q.author}</span> — {q.role}
+                <div key={q.author} className="text-left border-l-4 border-green-500 pl-4">
+                  <Quote className="w-6 h-6 text-green-400 mb-4" />
+                  <p className="font-serif text-lg md:text-xl italic leading-relaxed text-gray-700 mb-4">"{q.quote}"</p>
+                  <p className="text-sm text-gray-500">
+                    <span className="text-green-600 font-bold">{q.author}</span> — {q.role}
                   </p>
                 </div>
               ))}
             </div>
           </div>
-        </div>
+        </WhiteSlide>
 
         {/* 2.4 - Industry disruption (screenshot 5 style - white bg, two columns) */}
         <WhiteSlide>
@@ -411,17 +411,17 @@ const Index = () => {
           </div>
         </WhiteSlide>
 
-        {/* 3.4 - But merch doesn't go away (serif statement) */}
-        <div className="relative w-full h-full flex items-center justify-center cross-grid">
-          <Slide>
-            <SerifStatement>
-              That doesn't mean merch and swag <span className="text-primary font-bold">go away.</span>
-            </SerifStatement>
-            <p className="font-display text-sm uppercase tracking-[0.3em] text-muted-foreground mt-10 font-bold">
+        {/* 3.4 - But merch doesn't go away (white bg, diagonal lines) */}
+        <WhiteSlide className="diagonal-lines-light">
+          <div className="relative z-10 text-center">
+            <p className="font-serif text-3xl md:text-4xl lg:text-5xl italic leading-snug max-w-5xl mx-auto text-gray-800">
+              That doesn't mean merch and swag <span className="text-green-600 font-bold">go away.</span>
+            </p>
+            <p className="font-display text-sm uppercase tracking-[0.3em] text-gray-400 mt-10 font-bold">
               As AI reshapes work, belonging shifts from employer identity to community identity.
             </p>
-          </Slide>
-        </div>
+          </div>
+        </WhiteSlide>
 
         {/* 3.5 - Community merch (dark, dot grid, grid cards - screenshot 1 style) */}
         <div className="relative w-full h-full flex items-center justify-center dot-grid">
@@ -451,18 +451,18 @@ const Index = () => {
           </Slide>
         </div>
 
-        {/* 3.7 - Closing */}
-        <div className="relative w-full h-full flex items-center justify-center">
-          <Slide>
-            <ChevronsRight className="w-12 h-12 text-primary mx-auto mb-6" strokeWidth={1.5} />
-            <SerifStatement>
+        {/* 3.7 - Closing (white bg) */}
+        <WhiteSlide className="dot-grid-light">
+          <div className="relative z-10 text-center">
+            <ChevronsRight className="w-12 h-12 text-green-500 mx-auto mb-6" strokeWidth={1.5} />
+            <p className="font-serif text-3xl md:text-4xl lg:text-5xl italic leading-snug max-w-5xl mx-auto text-gray-800">
               The future is already here.
-            </SerifStatement>
-            <BigText>
-              <span className="highlight-green mt-4 inline-block">Move with it.</span>
-            </BigText>
-          </Slide>
-        </div>
+            </p>
+            <h1 className="font-title text-5xl md:text-7xl lg:text-8xl uppercase tracking-tight leading-[1.05] mt-4">
+              <span className="highlight-green inline-block">Move with it.</span>
+            </h1>
+          </div>
+        </WhiteSlide>
       </Section>
 
       {/* Vertical section dots */}

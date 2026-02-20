@@ -163,6 +163,58 @@
   opacity: 0.25;
 }
 
+/* White-bg dot grid */
+.dot-grid-light {
+  position: relative;
+}
+.dot-grid-light::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background-image: radial-gradient(circle, hsl(0 0% 80%) 1.5px, transparent 1.5px);
+  background-size: 32px 32px;
+  opacity: 0.5;
+}
+
+/* White-bg cross grid */
+.cross-grid-light {
+  position: relative;
+}
+.cross-grid-light::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background-image:
+    linear-gradient(hsl(0 0% 90%) 1px, transparent 1px),
+    linear-gradient(90deg, hsl(0 0% 90%) 1px, transparent 1px);
+  background-size: 48px 48px;
+  opacity: 0.6;
+}
+
+/* White-bg diagonal lines */
+.diagonal-lines-light {
+  position: relative;
+}
+.diagonal-lines-light::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background-image: repeating-linear-gradient(
+    -45deg,
+    transparent,
+    transparent 20px,
+    hsl(0 0% 92%) 20px,
+    hsl(0 0% 92%) 21px
+  );
+  opacity: 0.5;
+}
+
 /* Green highlight pill behind text */
 .highlight-green {
   background-color: hsl(82 72% 52%);
