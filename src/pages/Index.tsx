@@ -197,7 +197,7 @@ const Index = () => {
           The Future<br />of <span className="highlight-green">AI.</span>
         </h1>
         <p className="font-serif text-xl md:text-2xl italic text-muted-foreground mt-8 max-w-2xl">
-          How artificial intelligence is reshaping expectations, value, and identity — and what it means for us.
+          How artificial intelligence is reshaping expectations, value, and identity - and what it means for us.
         </p>
       </div>
     </section>,
@@ -243,7 +243,7 @@ const Index = () => {
         </h2>
         <div className="grid grid-cols-1 gap-y-6">
           <NumberedItem num="1" title="Patience is collapsing" desc="ChatGPT can help you compare car models immediately." />
-          <NumberedItem num="2" title={'"Good enough" is immediate'} desc="Fast is better than perfect — i.e. NotebookLM." />
+          <NumberedItem num="2" title={'"Good enough" is immediate'} desc="Fast is better than perfect - i.e. NotebookLM." />
           <NumberedItem num="3" title="Exploration cost is nearing 0" desc='"Generate 3 themes for a campaign."' />
           <NumberedItem num="4" title="Self-sufficiency is increasing" desc="AI can help people do everything now." />
         </div>
@@ -274,7 +274,7 @@ const Index = () => {
           <div className="border-t border-muted-foreground/20 pt-5">
             <p className="font-display text-sm uppercase tracking-[0.3em] text-primary font-bold mb-2">Reality Check</p>
             <p className="text-sm text-muted-foreground font-light leading-relaxed">
-              Buyers will expect real-time pricing, proofs, and ordering — <span className="text-primary font-bold">delays will feel broken.</span>
+              Buyers will expect real-time pricing, proofs, and ordering - <span className="text-primary font-bold">delays will feel broken.</span>
             </p>
           </div>
         </div>
@@ -314,13 +314,13 @@ const Index = () => {
           {[
             { quote: "The future of work is not about AI replacing people. It's about people who use AI replacing people who don't.", author: "Satya Nadella", role: "CEO, Microsoft" },
             { quote: "The real value of AI is helping salespeople spend more time with customers and less time doing administrative work.", author: "Marc Benioff", role: "CEO, Salesforce" },
-            { quote: "We'll be there in 3-6 months, where AI is writing 90% of the code — and in 12 months, AI writes all of it.", author: "Dario Amodei", role: "CEO, Anthropic" },
+             { quote: "We'll be there in 3-6 months, where AI is writing 90% of the code - and in 12 months, AI writes all of it.", author: "Dario Amodei", role: "CEO, Anthropic" },
           ].map((q) => (
             <div key={q.author} className="text-left border-l-4 border-brand-green pl-4">
               <Quote className="w-5 h-5 text-brand-green mb-3" />
               <p className="font-serif text-lg italic leading-relaxed text-gray-700 mb-3">"{q.quote}"</p>
               <p className="text-sm text-gray-500">
-                <span className="text-brand-green font-bold">{q.author}</span> — {q.role}
+                 <span className="text-brand-green font-bold">{q.author}</span> - {q.role}
               </p>
             </div>
           ))}
@@ -365,7 +365,7 @@ const Index = () => {
         <div className="inline-block px-5 py-2 rounded-sm bg-primary text-primary-foreground font-display text-base font-bold tracking-widest uppercase mb-6">Shift #2</div>
         <BigText>Death of<br />transactional <span className="highlight-green">sales.</span></BigText>
         <p className="mt-8 text-muted-foreground font-light max-w-3xl leading-relaxed text-lg">
-          We win on framing, interpretation, judgement, context, and strategy — not on sending catalogues.
+           We win on framing, interpretation, judgement, context, and strategy - not on sending catalogues.
         </p>
       </Slide>
     </MobileSection>,
@@ -415,7 +415,7 @@ const Index = () => {
         <p className="font-display text-sm uppercase tracking-[0.35em] text-muted-foreground font-bold mb-10">The Opportunity</p>
         <div className="grid grid-cols-1 gap-8">
           <GridCard superTitle="Internal" title="More intentional." body="Merch must reflect culture and values, not just fill closets." />
-          <GridCard superTitle="External" title="More tribal." body="Build tribes — customers, advocates, insiders, power users, culture ambassadors." />
+           <GridCard superTitle="External" title="More tribal." body="Build tribes - customers, advocates, insiders, power users, culture ambassadors." />
           <GridCard superTitle="Identity" title="Badge signalling." body="Move from 'gifting employees' to 'manufacturing belonging.'" />
         </div>
       </div>
@@ -469,7 +469,7 @@ const Index = () => {
             The Future<br />of <span className="highlight-green">AI.</span>
           </h1>
           <p className="font-serif text-xl md:text-2xl italic text-muted-foreground mt-8 max-w-2xl">
-            How artificial intelligence is reshaping expectations, value, and identity — and what it means for us.
+            How artificial intelligence is reshaping expectations, value, and identity - and what it means for us.
           </p>
         </div>
       </section>
@@ -511,7 +511,7 @@ const Index = () => {
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-8">
             <NumberedItem num="1" title="Patience is collapsing" desc="ChatGPT can help you compare car models immediately." />
-            <NumberedItem num="2" title={'"Good enough" is immediate'} desc="Fast is better than perfect — i.e. NotebookLM." />
+            <NumberedItem num="2" title={'"Good enough" is immediate'} desc="Fast is better than perfect - i.e. NotebookLM." />
             <NumberedItem num="3" title="Exploration cost is nearing 0" desc='"Generate 3 themes for a campaign."' />
             <NumberedItem num="4" title="Self-sufficiency is increasing" desc="AI can help people do everything now." />
           </div>
@@ -541,7 +541,7 @@ const Index = () => {
               <div className="border-t border-muted-foreground/20 pt-6">
                 <p className="font-display text-sm uppercase tracking-[0.3em] text-primary font-bold mb-3">Reality Check</p>
                 <p className="text-base md:text-lg lg:text-xl text-muted-foreground font-light leading-relaxed">
-                  Buyers will expect real-time pricing, proofs, and ordering — <span className="text-primary font-bold">delays will feel broken.</span>
+                  Buyers will expect real-time pricing, proofs, and ordering - <span className="text-primary font-bold">delays will feel broken.</span>
                 </p>
               </div>
             </div>
@@ -581,13 +581,13 @@ const Index = () => {
               {[
                 { quote: "The future of work is not about AI replacing people. It's about people who use AI replacing people who don't.", author: "Satya Nadella", role: "CEO, Microsoft" },
                 { quote: "The real value of AI is helping salespeople spend more time with customers and less time doing administrative work.", author: "Marc Benioff", role: "CEO, Salesforce" },
-                { quote: "We'll be there in 3-6 months, where AI is writing 90% of the code — and in 12 months, AI writes all of it.", author: "Dario Amodei", role: "CEO, Anthropic" },
+                { quote: "We'll be there in 3-6 months, where AI is writing 90% of the code - and in 12 months, AI writes all of it.", author: "Dario Amodei", role: "CEO, Anthropic" },
               ].map((q) => (
                 <div key={q.author} className="text-left border-l-4 border-brand-green pl-4">
                   <Quote className="w-6 h-6 text-brand-green mb-4" />
                   <p className="font-serif text-lg md:text-xl italic leading-relaxed text-gray-700 mb-4">"{q.quote}"</p>
                   <p className="text-sm text-gray-500">
-                    <span className="text-brand-green font-bold">{q.author}</span> — {q.role}
+                    <span className="text-brand-green font-bold">{q.author}</span> - {q.role}
                   </p>
                 </div>
               ))}
@@ -630,7 +630,7 @@ const Index = () => {
             <div className="inline-block px-5 py-2 rounded-sm bg-primary text-primary-foreground font-display text-base font-bold tracking-widest uppercase mb-6">Shift #2</div>
             <BigText>Death of<br />transactional <span className="highlight-green">sales.</span></BigText>
             <p className="mt-8 text-muted-foreground font-light max-w-3xl leading-relaxed text-lg md:text-xl">
-              We win on framing, interpretation, judgement, context, and strategy — not on sending catalogues.
+              We win on framing, interpretation, judgement, context, and strategy - not on sending catalogues.
             </p>
           </Slide>
         </div>
@@ -678,7 +678,7 @@ const Index = () => {
             <p className="font-display text-sm uppercase tracking-[0.35em] text-muted-foreground font-bold mb-10">The Opportunity</p>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
               <GridCard superTitle="Internal" title="More intentional." body="Merch must reflect culture and values, not just fill closets." />
-              <GridCard superTitle="External" title="More tribal." body="Build tribes — customers, advocates, insiders, power users, culture ambassadors." />
+              <GridCard superTitle="External" title="More tribal." body="Build tribes - customers, advocates, insiders, power users, culture ambassadors." />
               <GridCard superTitle="Identity" title="Badge signalling." body="Move from 'gifting employees' to 'manufacturing belonging.'" />
             </div>
           </div>
