@@ -304,6 +304,7 @@ const Index = () => {
           AI can do rule-based, repetitive, information-heavy tasks <span className="text-primary">faster, cheaper, and at scale</span>.
           Our role shifts to knowing <span className="text-primary font-bold">"what" to do</span>, not in "doing" it.
         </SerifStatement>
+        <p className="font-display text-sm uppercase tracking-[0.3em] text-muted-foreground mt-10 font-bold">The human role shifts up the stack.</p>
       </Slide>
     </MobileSection>,
 
@@ -566,12 +567,13 @@ const Index = () => {
 
         <div className="relative w-full h-full flex items-center justify-center cross-grid">
           <BgImage src={abstractStack} opacity="opacity-[0.05]" />
-          <Slide className="relative z-10">
-            <SerifStatement>
-              AI can do rule-based, repetitive, information-heavy tasks <span className="text-primary">faster, cheaper, and at scale</span>.
-              Our role shifts to knowing <span className="text-primary font-bold">"what" to do</span>, not in "doing" it.
-            </SerifStatement>
-          </Slide>
+           <Slide className="relative z-10">
+             <SerifStatement>
+               AI can do rule-based, repetitive, information-heavy tasks <span className="text-primary">faster, cheaper, and at scale</span>.
+               Our role shifts to knowing <span className="text-primary font-bold">"what" to do</span>, not in "doing" it.
+             </SerifStatement>
+             <p className="font-display text-sm uppercase tracking-[0.3em] text-muted-foreground mt-10 font-bold">The human role shifts up the stack.</p>
+           </Slide>
         </div>
 
         <WhiteSlide className="cross-grid-light">
