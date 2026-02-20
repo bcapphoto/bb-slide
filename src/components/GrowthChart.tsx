@@ -26,13 +26,13 @@ const data = [
 const lines = [
   { key: "facebook", color: "#4267B2", label: "Facebook" },
   { key: "instagram", color: "#E1306C", label: "Instagram" },
-  { key: "tiktok", color: "#25F4EE", label: "TikTok" },
-  { key: "chatgpt", color: "hsl(15, 85%, 58%)", label: "ChatGPT" },
+  { key: "tiktok", color: "#69C9D0", label: "TikTok" },
+  { key: "chatgpt", color: "hsl(82, 72%, 52%)", label: "ChatGPT" },
 ];
 
 const GrowthChart = () => (
   <div className="w-full max-w-3xl mx-auto">
-    <h3 className="text-lg font-light text-muted-foreground mb-2 tracking-wide">
+    <h3 className="font-display text-lg font-bold text-muted-foreground mb-2 tracking-wide uppercase">
       Time to 100M Users
     </h3>
     <div className="h-[350px]">
@@ -40,37 +40,37 @@ const GrowthChart = () => (
         <LineChart data={data} margin={{ top: 10, right: 10, left: 0, bottom: 10 }}>
           <XAxis
             dataKey="month"
-            stroke="hsl(225, 8%, 30%)"
-            tick={{ fill: "hsl(225, 8%, 45%)", fontSize: 12 }}
+            stroke="hsl(186, 15%, 25%)"
+            tick={{ fill: "hsl(186, 15%, 55%)", fontSize: 12 }}
             axisLine={false}
             tickLine={false}
             label={{
               value: "Months",
               position: "insideBottom",
               offset: -5,
-              fill: "hsl(225, 8%, 45%)",
+              fill: "hsl(186, 15%, 55%)",
               fontSize: 11,
             }}
           />
           <YAxis
-            stroke="hsl(225, 8%, 30%)"
-            tick={{ fill: "hsl(225, 8%, 45%)", fontSize: 12 }}
+            stroke="hsl(186, 15%, 25%)"
+            tick={{ fill: "hsl(186, 15%, 55%)", fontSize: 12 }}
             axisLine={false}
             tickLine={false}
             label={{
               value: "Users (M)",
               angle: -90,
               position: "insideLeft",
-              fill: "hsl(225, 8%, 45%)",
+              fill: "hsl(186, 15%, 55%)",
               fontSize: 11,
             }}
           />
           <Tooltip
             contentStyle={{
-              background: "hsl(225, 20%, 8%)",
-              border: "1px solid hsl(225, 15%, 15%)",
+              background: "hsl(186, 40%, 14%)",
+              border: "1px solid hsl(186, 25%, 20%)",
               borderRadius: "8px",
-              color: "hsl(40, 15%, 93%)",
+              color: "hsl(0, 0%, 98%)",
               fontSize: 12,
             }}
             formatter={(value: number, name: string) => [
@@ -95,8 +95,8 @@ const GrowthChart = () => (
     </div>
     <div className="flex gap-6 justify-center mt-4">
       {lines.map((line) => (
-        <div key={line.key} className="flex items-center gap-2 text-xs text-muted-foreground">
-          <div className="w-3 h-0.5 rounded" style={{ background: line.color }} />
+        <div key={line.key} className="flex items-center gap-2 text-sm text-muted-foreground">
+          <div className="w-4 h-1 rounded" style={{ background: line.color }} />
           {line.label}
         </div>
       ))}
