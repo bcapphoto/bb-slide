@@ -140,14 +140,12 @@ const Index = () => {
   const goToSection = (index: number, resetSlide = true) => {
     const clamped = Math.max(0, Math.min(index, TOTAL_SECTIONS - 1));
     const el = document.getElementById(`section-${SECTION_NAMES[clamped]}`);
-    el?.scrollIntoView({ behavior: "smooth" });
     if (resetSlide) {
-      // Reset horizontal scroll to first slide
-      setTimeout(() => {
-        const scroller = el?.querySelector("[data-slide-scroller]") as HTMLElement | null;
-        if (scroller) scroller.scrollTo({ left: 0, behavior: "smooth" });
-      }, 100);
+      // Reset horizontal scroll INSTANTLY before the vertical scroll happens
+      const scroller = el?.querySelector("[data-slide-scroller]") as HTMLElement | null;
+      if (scroller) scroller.scrollTo({ left: 0, behavior: "instant" as ScrollBehavior });
     }
+    el?.scrollIntoView({ behavior: "smooth" });
   };
 
   const handleNavigate = useCallback((dir: "left" | "right" | "up" | "down") => {
