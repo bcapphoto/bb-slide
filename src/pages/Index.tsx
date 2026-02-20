@@ -1,6 +1,7 @@
 import { useEffect, useState, useCallback, useRef } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { ChevronsRight, Quote } from "lucide-react";
+import { SECTION_ICONS, SECTION_LABELS, IconHome, IconFastForward, IconStacks, IconIdentity } from "@/components/SectionIcons";
 import Section from "@/components/Section";
 import CursorNav from "@/components/CursorNav";
 import GrowthChart from "@/components/GrowthChart";
@@ -29,13 +30,18 @@ const SerifStatement = ({ children }: { children: React.ReactNode }) => (
   <p className="font-serif text-2xl md:text-4xl lg:text-5xl italic leading-snug max-w-5xl">{children}</p>
 );
 
-const SectionOpener = ({ number, superTitle, title, subtitle }: { number: string; superTitle: string; title: React.ReactNode; subtitle: string }) => (
+const SectionOpener = ({ number, superTitle, title, subtitle, icon: Icon }: { number: string; superTitle: string; title: React.ReactNode; subtitle: string; icon?: React.ComponentType<{ size?: number; className?: string }> }) => (
   <div className="relative w-full h-full flex items-center dot-grid overflow-hidden">
     <div className="absolute right-0 top-1/2 -translate-y-1/2 font-display text-[12rem] md:text-[28rem] font-black text-foreground/[0.04] leading-none select-none pointer-events-none">
       {number}
     </div>
     <img src={bbMonogram} alt="BB" className="absolute bottom-8 left-8 md:left-20 lg:left-32 h-8 md:h-10 opacity-40 z-10" />
     <div className="relative z-10 px-8 md:px-20 lg:px-32 text-left max-w-5xl">
+      {Icon && (
+        <div className="mb-6">
+          <Icon size={28} className="text-primary" />
+        </div>
+      )}
       <p className="font-display text-sm md:text-base uppercase tracking-[0.35em] text-muted-foreground font-bold mb-8">{superTitle}</p>
       <h1 className="font-title text-4xl md:text-7xl lg:text-8xl uppercase leading-[1.15] tracking-tight break-words">{title}</h1>
       <p className="font-serif text-xl md:text-2xl italic text-muted-foreground mt-6">{subtitle}</p>
@@ -195,7 +201,7 @@ const Index = () => {
 
     // SECTION 1 slides
     <MobileSection key="1-1">
-      <SectionOpener number="01" superTitle="The Future of AI" title={<>Instant is the<br />new <span className="highlight-green">standard.</span></>} subtitle="AI is compressing time across everything." />
+      <SectionOpener icon={IconFastForward} number="01" superTitle="The Future of AI" title={<>Instant is the<br />new <span className="highlight-green">standard.</span></>} subtitle="AI is compressing time across everything." />
     </MobileSection>,
 
     <MobileSection key="1-2" className="relative diagonal-lines">
@@ -294,7 +300,7 @@ const Index = () => {
 
     // SECTION 2 slides
     <MobileSection key="2-1">
-      <SectionOpener number="02" superTitle="The Future of AI" title={<>The human value<br />shifts up the <span className="highlight-green">stack.</span></>} subtitle='AI is taking over the "doing."' />
+      <SectionOpener icon={IconStacks} number="02" superTitle="The Future of AI" title={<>The human value<br />shifts up the <span className="highlight-green">stack.</span></>} subtitle='AI is taking over the "doing."' />
     </MobileSection>,
 
     <MobileSection key="2-2" className="relative cross-grid">
@@ -372,7 +378,7 @@ const Index = () => {
 
     // SECTION 3 slides
     <MobileSection key="3-1">
-      <SectionOpener number="03" superTitle="The Future of AI" title={<>Identity &gt;<br /><span className="highlight-green">Employment.</span></>} subtitle="AI will restructure the relationship between employers and employees." />
+      <SectionOpener icon={IconIdentity} number="03" superTitle="The Future of AI" title={<>Identity &gt;<br /><span className="highlight-green">Employment.</span></>} subtitle="AI will restructure the relationship between employers and employees." />
     </MobileSection>,
 
     <MobileSection key="3-2" className="relative diagonal-lines">
@@ -461,7 +467,10 @@ const Index = () => {
           AI
         </div>
         <div className="relative z-10 px-8 md:px-20 lg:px-32 text-left max-w-5xl">
-          <img src={bbLogoHorizontal} alt="BrandBlvd" className="h-10 md:h-14 mb-12" />
+          <div className="flex items-center gap-4 mb-12">
+            <IconHome size={28} className="text-primary" />
+            <img src={bbLogoHorizontal} alt="BrandBlvd" className="h-10 md:h-14" />
+          </div>
           <h1 className="font-title text-6xl md:text-8xl lg:text-9xl uppercase leading-[1.05] tracking-tight">
             The Future<br />of <span className="highlight-green">AI.</span>
           </h1>
@@ -473,7 +482,7 @@ const Index = () => {
 
       {/* SECTION 1: INSTANT IS THE NEW STANDARD */}
       <Section id="section-instant" onSlideChange={handleSlideChange(1)} initialSlide={activeSection === 1 ? initialSlideRef.current : 0}>
-        <SectionOpener number="01" superTitle="The Future of AI" title={<>Instant is the<br />new <span className="highlight-green">standard.</span></>} subtitle="AI is compressing time across everything." />
+        <SectionOpener icon={IconFastForward} number="01" superTitle="The Future of AI" title={<>Instant is the<br />new <span className="highlight-green">standard.</span></>} subtitle="AI is compressing time across everything." />
 
         <div className="relative w-full h-full flex items-center justify-center diagonal-lines">
           <BgImage src={abstractSpeed} opacity="opacity-[0.04]" />
@@ -566,7 +575,7 @@ const Index = () => {
 
       {/* SECTION 2: HUMAN VALUE SHIFTS UP THE STACK */}
       <Section id="section-human-value" onSlideChange={handleSlideChange(2)} initialSlide={activeSection === 2 ? initialSlideRef.current : 0}>
-        <SectionOpener number="02" superTitle="The Future of AI" title={<>The human value<br />shifts up the <span className="highlight-green">stack.</span></>} subtitle='AI is taking over the "doing."' />
+        <SectionOpener icon={IconStacks} number="02" superTitle="The Future of AI" title={<>The human value<br />shifts up the <span className="highlight-green">stack.</span></>} subtitle='AI is taking over the "doing."' />
 
         <div className="relative w-full h-full flex items-center justify-center cross-grid">
           <BgImage src={abstractStack} opacity="opacity-[0.05]" />
@@ -642,7 +651,7 @@ const Index = () => {
 
       {/* SECTION 3: IDENTITY > EMPLOYMENT */}
       <Section id="section-identity" onSlideChange={handleSlideChange(3)} initialSlide={activeSection === 3 ? initialSlideRef.current : 0}>
-        <SectionOpener number="03" superTitle="The Future of AI" title={<>Identity &gt;<br /><span className="highlight-green">Employment.</span></>} subtitle="AI will restructure the relationship between employers and employees." />
+        <SectionOpener icon={IconIdentity} number="03" superTitle="The Future of AI" title={<>Identity &gt;<br /><span className="highlight-green">Employment.</span></>} subtitle="AI will restructure the relationship between employers and employees." />
 
         <div className="relative w-full h-full flex items-center justify-center diagonal-lines">
           <BgImage src={abstractIdentity} opacity="opacity-[0.05]" />
@@ -712,20 +721,39 @@ const Index = () => {
         </WhiteSlide>
       </Section>
 
-      {/* Vertical section dots */}
-      <div className="fixed right-6 top-1/2 -translate-y-1/2 flex flex-col items-center gap-3 z-20">
-        {SECTION_NAMES.map((_, i) => (
-          <button
-            key={i}
-            onClick={() => goToSection(i)}
-            className={`w-1.5 rounded-full transition-all duration-300 cursor-none ${
-              i === activeSection
-                ? "bg-primary h-8"
-                : "bg-muted-foreground/20 h-3 hover:bg-muted-foreground/40"
-            }`}
-            aria-label={`Go to section ${SECTION_NAMES[i]}`}
-          />
-        ))}
+      {/* Vertical section nav */}
+      <div className="fixed right-6 top-1/2 -translate-y-1/2 flex flex-col items-end gap-5 z-20">
+        {SECTION_NAMES.map((name, i) => {
+          const Icon = SECTION_ICONS[i];
+          const isActive = i === activeSection;
+          return (
+            <button
+              key={name}
+              onClick={() => goToSection(i)}
+              className={`flex items-center gap-2.5 group transition-all duration-300 cursor-none`}
+              aria-label={`Go to ${SECTION_LABELS[i]}`}
+            >
+              <span
+                className={`font-display text-[10px] uppercase tracking-[0.2em] transition-all duration-300 ${
+                  isActive
+                    ? "opacity-100 text-primary translate-x-0"
+                    : "opacity-0 group-hover:opacity-60 translate-x-2 group-hover:translate-x-0 text-muted-foreground"
+                }`}
+              >
+                {SECTION_LABELS[i]}
+              </span>
+              <div
+                className={`flex items-center justify-center w-8 h-8 rounded-sm transition-all duration-300 ${
+                  isActive
+                    ? "text-primary bg-primary/10"
+                    : "text-muted-foreground/30 hover:text-muted-foreground/60"
+                }`}
+              >
+                <Icon size={16} />
+              </div>
+            </button>
+          );
+        })}
       </div>
 
       <CursorNav
