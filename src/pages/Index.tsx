@@ -209,7 +209,7 @@ const Index = () => {
               { value: "~2mo", label: "ChatGPT" },
             ].map((s) => (
               <div key={s.label} className="flex flex-col items-center gap-3 p-6">
-                <span className="font-display text-5xl md:text-6xl font-extrabold text-green-600">{s.value}</span>
+                <span className="font-display text-5xl md:text-6xl font-extrabold text-brand-green">{s.value}</span>
                 <span className="text-base text-gray-500 font-light tracking-wide">{s.label}</span>
               </div>
             ))}
@@ -318,11 +318,11 @@ const Index = () => {
                 { quote: "The real value of AI is helping salespeople spend more time with customers and less time doing administrative work.", author: "Marc Benioff", role: "CEO, Salesforce" },
                 { quote: "We'll be there in 3-6 months, where AI is writing 90% of the code — and in 12 months, AI writes all of it.", author: "Dario Amodei", role: "CEO, Anthropic" },
               ].map((q) => (
-                <div key={q.author} className="text-left border-l-4 border-green-600 pl-4">
-                  <Quote className="w-6 h-6 text-green-600 mb-4" />
+                <div key={q.author} className="text-left border-l-4 border-brand-green pl-4">
+                  <Quote className="w-6 h-6 text-brand-green mb-4" />
                   <p className="font-serif text-lg md:text-xl italic leading-relaxed text-gray-700 mb-4">"{q.quote}"</p>
                   <p className="text-sm text-gray-500">
-                    <span className="text-green-600 font-bold">{q.author}</span> — {q.role}
+                    <span className="text-brand-green font-bold">{q.author}</span> — {q.role}
                   </p>
                 </div>
               ))}
@@ -355,7 +355,7 @@ const Index = () => {
             </div>
           </div>
           <p className="mt-10 border-t border-gray-200 pt-6">
-            <span className="text-green-600 font-display font-bold uppercase text-sm">Conclusion:</span>{" "}
+            <span className="text-brand-green font-display font-bold uppercase text-sm">Conclusion:</span>{" "}
             <span className="font-bold text-base">Evolve from "order takers" to collaborators and advisors.</span>
           </p>
         </WhiteSlide>
@@ -418,7 +418,7 @@ const Index = () => {
         <WhiteSlide className="diagonal-lines-light">
           <div className="relative z-10 text-center">
             <p className="font-serif text-3xl md:text-4xl lg:text-5xl italic leading-snug max-w-5xl mx-auto text-gray-800">
-              That doesn't mean merch and swag <span className="text-green-600 font-bold">go away.</span>
+              That doesn't mean merch and swag <span className="text-brand-green font-bold">go away.</span>
             </p>
             <p className="font-display text-sm uppercase tracking-[0.3em] text-gray-500 mt-10 font-bold">
               As AI reshapes work, belonging shifts from employer identity to community identity.
@@ -457,7 +457,7 @@ const Index = () => {
         {/* 3.7 - Closing (white bg) */}
         <WhiteSlide className="dot-grid-light">
           <div className="relative z-10 text-center">
-            <ChevronsRight className="w-12 h-12 text-green-600 mx-auto mb-6" strokeWidth={1.5} />
+            <ChevronsRight className="w-12 h-12 text-brand-green mx-auto mb-6" strokeWidth={1.5} />
             <p className="font-serif text-3xl md:text-4xl lg:text-5xl italic leading-snug max-w-5xl mx-auto text-gray-800">
               The future is already here.
             </p>
