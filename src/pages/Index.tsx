@@ -217,18 +217,15 @@ const Index = () => {
         <div className="space-y-8">
           <div>
             <IconFastForward size={28} className="text-brand-green mx-auto mb-2" />
-            <h3 className="font-title text-xl uppercase tracking-tight leading-tight text-gray-900">Instant is the new <span className="highlight-green">standard.</span></h3>
-            <p className="text-gray-500 text-xs font-light mt-1">AI is compressing time across everything.</p>
+            <h3 className="font-title text-xl uppercase tracking-tight leading-tight text-gray-900">AI is compressing time across <span className="highlight-green">everything.</span></h3>
           </div>
           <div>
             <IconStacks size={28} className="text-brand-green mx-auto mb-2" />
-            <h3 className="font-title text-xl uppercase tracking-tight leading-tight text-gray-900">Death of transactional <span className="highlight-green">sales.</span></h3>
-            <p className="text-gray-500 text-xs font-light mt-1">AI is taking over the "doing."</p>
+            <h3 className="font-title text-xl uppercase tracking-tight leading-tight text-gray-900">AI is taking over the <span className="highlight-green">"doing."</span></h3>
           </div>
           <div>
             <IconIdentity size={28} className="text-brand-green mx-auto mb-2" />
-            <h3 className="font-title text-xl uppercase tracking-tight leading-tight text-gray-900">Identity-driven community <span className="highlight-green">merch.</span></h3>
-            <p className="text-gray-500 text-xs font-light mt-1">AI will restructure the employer-employee relationship.</p>
+            <h3 className="font-title text-xl uppercase tracking-tight leading-tight text-gray-900">AI will restructure the employer-employee <span className="highlight-green">relationship.</span></h3>
           </div>
         </div>
       </div>
@@ -541,18 +538,15 @@ const Index = () => {
             <div className="space-y-12">
               <div>
                 <IconFastForward size={36} className="text-brand-green mx-auto mb-3" />
-                <h3 className="font-title text-2xl md:text-3xl uppercase tracking-tight leading-tight text-gray-900">Instant is the new <span className="highlight-green">standard.</span></h3>
-                <p className="text-gray-500 text-sm md:text-base font-light mt-1">AI is compressing time across everything.</p>
+                <h3 className="font-title text-2xl md:text-3xl uppercase tracking-tight leading-tight text-gray-900">AI is compressing time across <span className="highlight-green">everything.</span></h3>
               </div>
               <div>
                 <IconStacks size={36} className="text-brand-green mx-auto mb-3" />
-                <h3 className="font-title text-2xl md:text-3xl uppercase tracking-tight leading-tight text-gray-900">Death of transactional <span className="highlight-green">sales.</span></h3>
-                <p className="text-gray-500 text-sm md:text-base font-light mt-1">AI is taking over the "doing."</p>
+                <h3 className="font-title text-2xl md:text-3xl uppercase tracking-tight leading-tight text-gray-900">AI is taking over the <span className="highlight-green">"doing."</span></h3>
               </div>
               <div>
                 <IconIdentity size={36} className="text-brand-green mx-auto mb-3" />
-                <h3 className="font-title text-2xl md:text-3xl uppercase tracking-tight leading-tight text-gray-900">Identity-driven community <span className="highlight-green">merch.</span></h3>
-                <p className="text-gray-500 text-sm md:text-base font-light mt-1">AI will restructure the employer-employee relationship.</p>
+                <h3 className="font-title text-2xl md:text-3xl uppercase tracking-tight leading-tight text-gray-900">AI will restructure the employer-employee <span className="highlight-green">relationship.</span></h3>
               </div>
             </div>
           </div>
