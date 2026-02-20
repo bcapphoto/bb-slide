@@ -67,12 +67,15 @@ const CursorNav = ({ onNavigate }: CursorNavProps) => {
             opacity: direction ? 0.7 : 0,
           }}
         >
-          {/* Large rounded caret */}
-          <svg width="200" height="200" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path
-              d="M35 20 Q33 18 35 16 L65 48 Q67 50 65 52 L35 84 Q33 82 35 80 L60 50 Z"
-              fill="hsl(82 72% 52%)"
-              rx="8"
+          {/* Large rounded chevron stroke — no fill, equal-width arms */}
+          <svg width="400" height="400" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <polyline
+              points="35,25 65,50 35,75"
+              stroke="hsl(82 72% 52%)"
+              strokeWidth="10"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              fill="none"
             />
           </svg>
         </div>
