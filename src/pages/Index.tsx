@@ -8,7 +8,7 @@ import abstractIdentity from "@/assets/abstract-identity.jpg";
 /* ─── Reusable slide layouts ─── */
 
 const Slide = ({ children, className = "" }: { children: React.ReactNode; className?: string }) => (
-  <div className={`w-full max-w-6xl mx-auto flex flex-col items-center justify-center text-center ${className}`}>
+  <div className={`w-full max-w-6xl mx-auto flex flex-col items-center justify-center text-center px-8 md:px-20 lg:px-32 ${className}`}>
     {children}
   </div>
 );
@@ -90,7 +90,7 @@ const Index = () => {
 
         {/* 1.2 - Reality (serif italic statement - screenshot 4 style) */}
         <div className="relative w-full h-full flex items-center justify-center">
-          <BgImage src={abstractSpeed} opacity="opacity-10" />
+          <BgImage src={abstractSpeed} opacity="opacity-[0.04]" />
           <Slide className="relative z-10">
             <SerifStatement>
               AI tools have moved from novelty to <span className="text-primary">household names</span>.
@@ -204,7 +204,7 @@ const Index = () => {
 
         {/* 2.2 - Reality (serif statement) */}
         <div className="relative w-full h-full flex items-center justify-center">
-          <BgImage src={abstractStack} opacity="opacity-12" />
+          <BgImage src={abstractStack} opacity="opacity-[0.05]" />
           <Slide className="relative z-10">
             <SerifStatement>
               AI can do rule-based, repetitive, information-heavy tasks <span className="text-primary">faster, cheaper, and at scale</span>.
@@ -297,7 +297,7 @@ const Index = () => {
 
         {/* 3.2 - Reality (serif statement) */}
         <div className="relative w-full h-full flex items-center justify-center">
-          <BgImage src={abstractIdentity} opacity="opacity-15" />
+          <BgImage src={abstractIdentity} opacity="opacity-[0.05]" />
           <Slide className="relative z-10">
             <SerifStatement>
               AI will change workforce structures, whether through efficiency gains, consolidation or augmentation.
