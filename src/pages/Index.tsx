@@ -335,25 +335,18 @@ const Index = () => {
         <h2 className="font-title text-4xl md:text-5xl uppercase leading-[0.9] tracking-tight mb-8 break-words">
           Order-Taking<br className="md:hidden" /><span className="highlight-green">Dies.</span>
         </h2>
-        <div className="grid grid-cols-1 gap-y-6">
-          <div>
-            <h3 className="font-display text-lg font-extrabold uppercase mb-3">What's happening</h3>
-            <ul className="space-y-2 text-gray-600 text-sm">
-              <li>• AI-empowered systems will draft proposals, generate pricing, and source products instantly.</li>
-              <li>• Industries like travel and retail already eliminated transactional middlemen.</li>
-              <li>• Software will get better, and self-serve will become the default.</li>
-            </ul>
-          </div>
-          <div>
-            <h3 className="font-display text-lg font-extrabold uppercase mb-3">What it means for us</h3>
-            <ul className="space-y-2 text-gray-600 text-sm">
-              <li>• If we are just order-takers, we'll be replaced by faster alternatives.</li>
-              <li>• We win on framing, interpretation, judgement, context, and strategy.</li>
-              <li>• Not on sending catalogues.</li>
-            </ul>
-          </div>
+        <div className="space-y-4">
+          <p className="text-gray-600 text-sm leading-relaxed">
+            Software will get better. AI-empowered systems will draft proposals, generate pricing comparisons, and source products instantly.
+          </p>
+          <p className="text-gray-600 text-sm leading-relaxed">
+            More people will use more tools to do the work we do now. If we continue to be just order-takers, we'll be beaten out by alternatives that make it easier and quicker.
+          </p>
+          <p className="text-gray-600 text-sm leading-relaxed">
+            Industries like travel and retail eliminated transactional middlemen when search became automated. <span className="text-gray-800 font-medium">This will happen to us, too.</span>
+          </p>
         </div>
-        <p className="mt-8 border-t border-gray-200 pt-4">
+        <p className="mt-6 border-t border-gray-200 pt-4">
           <span className="text-brand-green font-display font-bold uppercase text-sm">Conclusion:</span>{" "}
           <span className="font-bold text-sm">Evolve from "order takers" to collaborators and advisors.</span>
         </p>
@@ -602,22 +595,24 @@ const Index = () => {
           <h2 className="font-title text-5xl md:text-7xl uppercase leading-[0.9] tracking-tight mb-12">
             Order-Taking<span className="highlight-green">Dies.</span>
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-8">
             <div>
-              <h3 className="font-display text-lg font-extrabold uppercase mb-3">What's happening</h3>
-              <ul className="space-y-3 text-gray-600 text-base">
-                <li>• AI-empowered systems will draft proposals, generate pricing, and source products instantly.</li>
-                <li>• Industries like travel and retail already eliminated transactional middlemen.</li>
-                <li>• Software will get better, and self-serve will become the default.</li>
-              </ul>
+              <h3 className="font-display text-lg font-extrabold uppercase mb-4">The shift</h3>
+              <p className="text-gray-600 text-base leading-relaxed mb-4">
+                Software will get better. AI-empowered systems will draft proposals, generate pricing comparisons, and source products instantly.
+              </p>
+              <p className="text-gray-600 text-base leading-relaxed mb-4">
+                More people will use more tools to do the work we do now. If we continue to be just order-takers, we'll be beaten out by alternatives that make it easier and quicker.
+              </p>
             </div>
             <div>
-              <h3 className="font-display text-lg font-extrabold uppercase mb-3">What it means for us</h3>
-              <ul className="space-y-3 text-gray-600 text-base">
-                <li>• If we are just order-takers, we'll be replaced by faster alternatives.</li>
-                <li>• We win on framing, interpretation, judgement, context, and strategy.</li>
-                <li>• Not on sending catalogues.</li>
-              </ul>
+              <h3 className="font-display text-lg font-extrabold uppercase mb-4">The precedent</h3>
+              <p className="text-gray-600 text-base leading-relaxed mb-4">
+                Industries like travel and retail eliminated transactional middlemen when search became automated.
+              </p>
+              <p className="text-gray-800 text-base leading-relaxed font-medium">
+                This will happen to us, too.
+              </p>
             </div>
           </div>
           <p className="mt-10 border-t border-gray-200 pt-6">
