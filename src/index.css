@@ -101,8 +101,9 @@
 .highlight-green {
   background-color: hsl(82 72% 52%);
   color: hsl(186 45% 11%);
-  padding: 0.05em 0.2em;
+  padding: 0.1em 0.25em;
   display: inline;
+  line-height: 1.35;
   box-decoration-break: clone;
   -webkit-box-decoration-break: clone;
 }
