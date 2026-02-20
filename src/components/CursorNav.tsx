@@ -4,11 +4,12 @@ type Direction = "left" | "right" | "up" | "down" | null;
 
 interface CursorNavProps {
   onNavigate: (direction: "left" | "right" | "up" | "down") => void;
+  canGo?: { up: boolean; down: boolean; left: boolean; right: boolean };
 }
 
 const EDGE = 0.22;
 
-const CursorNav = ({ onNavigate }: CursorNavProps) => {
+const CursorNav = ({ onNavigate, canGo = { up: true, down: true, left: true, right: true } }: CursorNavProps) => {
   const [direction, setDirection] = useState<Direction>(null);
   const [pos, setPos] = useState({ x: -200, y: -200 });
   const [visible, setVisible] = useState(false);
@@ -19,7 +20,6 @@ const CursorNav = ({ onNavigate }: CursorNavProps) => {
     setPos({ x: e.clientX, y: e.clientY });
     setVisible(true);
 
-    // Corners: horizontal takes priority
     if (x < EDGE) setDirection("left");
     else if (x > 1 - EDGE) setDirection("right");
     else if (y < EDGE) setDirection("up");
@@ -28,8 +28,8 @@ const CursorNav = ({ onNavigate }: CursorNavProps) => {
   }, []);
 
   const handleClick = useCallback(() => {
-    if (direction) onNavigate(direction);
-  }, [direction, onNavigate]);
+    if (direction && canGo[direction]) onNavigate(direction);
+  }, [direction, onNavigate, canGo]);
 
   const handleLeave = useCallback(() => {
     setVisible(false);
@@ -47,10 +47,12 @@ const CursorNav = ({ onNavigate }: CursorNavProps) => {
     };
   }, [handleMove, handleClick, handleLeave]);
 
-  // Caret points in the direction of travel
   const rotation = direction
     ? { right: 0, down: 90, left: 180, up: 270 }[direction]
     : 0;
+
+  // Hide arrow if can't go in that direction
+  const showArrow = direction && canGo[direction];
 
   return (
     <div
@@ -64,10 +66,9 @@ const CursorNav = ({ onNavigate }: CursorNavProps) => {
             left: pos.x,
             top: pos.y,
             transform: `translate(-50%, -50%) rotate(${rotation}deg)`,
-            opacity: direction ? 0.7 : 0,
+            opacity: showArrow ? 0.7 : 0,
           }}
         >
-          {/* Large rounded chevron stroke — no fill, equal-width arms */}
           <svg width="400" height="400" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
             <polyline
               points="35,25 65,50 35,75"
