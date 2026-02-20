@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -6,44 +6,44 @@
 
 @layer base {
   :root {
-    --background: 225 25% 5%;
-    --foreground: 40 15% 93%;
+    --background: 186 45% 11%;
+    --foreground: 0 0% 98%;
 
-    --card: 225 20% 8%;
-    --card-foreground: 40 15% 93%;
+    --card: 186 40% 14%;
+    --card-foreground: 0 0% 98%;
 
-    --popover: 225 20% 8%;
-    --popover-foreground: 40 15% 93%;
+    --popover: 186 40% 14%;
+    --popover-foreground: 0 0% 98%;
 
-    --primary: 15 85% 58%;
-    --primary-foreground: 225 25% 5%;
+    --primary: 82 72% 52%;
+    --primary-foreground: 186 45% 11%;
 
-    --secondary: 225 15% 12%;
-    --secondary-foreground: 40 15% 93%;
+    --secondary: 186 35% 16%;
+    --secondary-foreground: 0 0% 98%;
 
-    --muted: 225 12% 15%;
-    --muted-foreground: 225 8% 45%;
+    --muted: 186 30% 18%;
+    --muted-foreground: 186 15% 55%;
 
-    --accent: 170 45% 42%;
-    --accent-foreground: 40 15% 93%;
+    --accent: 82 72% 52%;
+    --accent-foreground: 186 45% 11%;
 
     --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive-foreground: 0 0% 98%;
 
-    --border: 225 15% 15%;
-    --input: 225 15% 15%;
-    --ring: 15 85% 58%;
+    --border: 186 25% 20%;
+    --input: 186 25% 20%;
+    --ring: 82 72% 52%;
 
     --radius: 0.5rem;
 
-    --sidebar-background: 225 20% 8%;
-    --sidebar-foreground: 40 15% 93%;
-    --sidebar-primary: 15 85% 58%;
-    --sidebar-primary-foreground: 225 25% 5%;
-    --sidebar-accent: 225 12% 15%;
-    --sidebar-accent-foreground: 40 15% 93%;
-    --sidebar-border: 225 15% 15%;
-    --sidebar-ring: 15 85% 58%;
+    --sidebar-background: 186 40% 14%;
+    --sidebar-foreground: 0 0% 98%;
+    --sidebar-primary: 82 72% 52%;
+    --sidebar-primary-foreground: 186 45% 11%;
+    --sidebar-accent: 186 30% 18%;
+    --sidebar-accent-foreground: 0 0% 98%;
+    --sidebar-border: 186 25% 20%;
+    --sidebar-ring: 82 72% 52%;
   }
 }
 
@@ -66,9 +66,44 @@
   .scrollbar-hide::-webkit-scrollbar {
     display: none;
   }
+
+  .font-display {
+    font-family: 'Barlow Condensed', sans-serif;
+  }
 }
 
-/* Grain texture overlay */
+/* Dot grid pattern overlay */
+.dot-grid {
+  position: relative;
+}
+.dot-grid::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background-image: radial-gradient(circle, hsl(186 30% 25%) 1px, transparent 1px);
+  background-size: 28px 28px;
+  opacity: 0.4;
+}
+
+/* Green highlight pill behind text */
+.highlight-green {
+  background-color: hsl(82 72% 52%);
+  color: hsl(186 45% 11%);
+  padding: 0.05em 0.2em;
+  display: inline;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+}
+
+/* Left green accent bar */
+.accent-bar {
+  border-left: 4px solid hsl(82 72% 52%);
+  padding-left: 1rem;
+}
+
+/* Subtle grain */
 .grain::after {
   content: '';
   position: fixed;
@@ -77,7 +112,7 @@
   width: 100%;
   height: 100%;
   pointer-events: none;
-  opacity: 0.03;
+  opacity: 0.02;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
   z-index: 9999;
 }
