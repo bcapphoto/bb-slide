@@ -32,7 +32,7 @@ const SectionOpener = ({ number, superTitle, title, subtitle }: { number: string
     </div>
     <div className="relative z-10 px-8 md:px-20 lg:px-32 text-left max-w-5xl">
       <p className="font-display text-sm md:text-base uppercase tracking-[0.35em] text-muted-foreground font-bold mb-8">{superTitle}</p>
-      <h1 className="font-title text-6xl md:text-8xl lg:text-[9rem] uppercase leading-[1.15] tracking-tight">{title}</h1>
+      <h1 className="font-title text-5xl md:text-7xl lg:text-8xl uppercase leading-[1.15] tracking-tight">{title}</h1>
       <p className="font-serif text-xl md:text-2xl italic text-muted-foreground mt-6">{subtitle}</p>
     </div>
   </div>
@@ -84,7 +84,7 @@ const Index = () => {
         <SectionOpener
           number="01"
           superTitle="The Future of AI"
-          title={<>Instant<br /><span className="highlight-green">is the new standard.</span></>}
+          title={<>Instant is the<br />new <span className="highlight-green">standard.</span></>}
           subtitle="AI is compressing time across everything."
         />
 
@@ -181,7 +181,7 @@ const Index = () => {
             <div className="inline-block px-5 py-2 rounded-sm bg-primary text-primary-foreground font-display text-base font-bold tracking-widest uppercase mb-6">
               Shift #1
             </div>
-            <BigText>Instant is the<br /><span className="highlight-green">new standard.</span></BigText>
+            <BigText>Instant is the<br />new <span className="highlight-green">standard.</span></BigText>
             <p className="mt-8 text-muted-foreground font-light max-w-3xl leading-relaxed text-lg md:text-xl">
               Automate reorders, quoting, proofs, and standard workflows. Remove unnecessary delay. Operational excellence buys us the right to be strategic where it matters.
             </p>
@@ -198,7 +198,7 @@ const Index = () => {
         <SectionOpener
           number="02"
           superTitle="The Future of AI"
-          title={<>The human value<br /><span className="highlight-green">shifts up the stack.</span></>}
+          title={<>The human value<br />shifts up the <span className="highlight-green">stack.</span></>}
           subtitle='AI is taking over the "doing."'
         />
 
@@ -274,7 +274,7 @@ const Index = () => {
             <div className="inline-block px-5 py-2 rounded-sm bg-primary text-primary-foreground font-display text-base font-bold tracking-widest uppercase mb-6">
               Shift #2
             </div>
-            <BigText>Death of<br /><span className="highlight-green">transactional sales.</span></BigText>
+            <BigText>Death of<br />transactional <span className="highlight-green">sales.</span></BigText>
             <p className="mt-8 text-muted-foreground font-light max-w-3xl leading-relaxed text-lg md:text-xl">
               We win on framing, interpretation, judgement, context, and strategy — not on sending catalogues.
             </p>
@@ -352,7 +352,7 @@ const Index = () => {
             <div className="inline-block px-5 py-2 rounded-sm bg-primary text-primary-foreground font-display text-base font-bold tracking-widest uppercase mb-6">
               Shift #3
             </div>
-            <BigText>Identity-driven<br /><span className="highlight-green">community merch.</span></BigText>
+            <BigText>Identity-driven<br />community <span className="highlight-green">merch.</span></BigText>
             <p className="mt-8 text-muted-foreground font-light max-w-3xl leading-relaxed text-lg md:text-xl">
               Merch becomes badge signalling, not office swag. Move from "gifting employees" to "manufacturing belonging."
             </p>
