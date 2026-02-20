@@ -1,7 +1,7 @@
 import { useEffect, useState, useCallback, useRef } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { ChevronsRight, Quote } from "lucide-react";
-import { SECTION_ICONS, SECTION_LABELS, IconHome, IconFastForward, IconStacks, IconIdentity } from "@/components/SectionIcons";
+import { SECTION_ICONS, SECTION_LABELS, IconHome, IconFastForward, IconStacks, IconIdentity, IconClosing } from "@/components/SectionIcons";
 import Section from "@/components/Section";
 import CursorNav from "@/components/CursorNav";
 import GrowthChart from "@/components/GrowthChart";
@@ -12,7 +12,7 @@ import abstractIdentity from "@/assets/abstract-identity.jpg";
 import bbLogoHorizontal from "@/assets/bb-logo-horizontal-white.svg";
 import bbMonogram from "@/assets/bb-monogram-white.svg";
 
-const SECTION_NAMES = ["title", "instant", "human-value", "identity"] as const;
+const SECTION_NAMES = ["title", "instant", "human-value", "identity", "closing"] as const;
 
 /* ─── Reusable slide layouts ─── */
 
@@ -85,7 +85,7 @@ const MobileSection = ({ children, className = "" }: { children: React.ReactNode
 
 /* ─── Main presentation ─── */
 
-const TOTAL_SECTIONS = 4;
+const TOTAL_SECTIONS = 5;
 
 const Index = () => {
   const { section: paramSection, slide: paramSlide } = useParams();
@@ -99,7 +99,7 @@ const Index = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const slidesRef = useRef<Record<number, number>>({});
   const [activeSlide, setActiveSlide] = useState(0);
-  const slideTotals: Record<number, number> = { 0: 1, 1: 8, 2: 5, 3: 7 };
+  const slideTotals: Record<number, number> = { 0: 1, 1: 8, 2: 5, 3: 6, 4: 1 };
   const isScrolling = useRef(false);
 
   const updateUrl = useCallback((sectionIdx: number, slideIdx: number) => {
@@ -426,7 +426,8 @@ const Index = () => {
       </Slide>
     </MobileSection>,
 
-    <MobileSection key="3-7" className="bg-white text-gray-900 dot-grid-light">
+    // CLOSING section
+    <MobileSection key="4-1" className="bg-white text-gray-900 dot-grid-light">
       <div className="relative z-10 w-full px-8">
         <img src={bbLogoHorizontal} alt="BrandBlvd" className="h-7 mb-10 mx-auto invert" />
         <div className="space-y-8">
@@ -453,9 +454,9 @@ const Index = () => {
           </div>
         </div>
         <div className="border-t border-gray-200 mt-8 pt-6 text-center">
-          <p className="font-serif text-lg italic text-gray-600">The future is already here.</p>
-          <h2 className="font-title text-3xl uppercase tracking-tight mt-2">
-            <span className="highlight-green inline-block">Move with it.</span>
+          <p className="font-serif text-lg italic text-gray-600 mb-2">The shift isn't coming.</p>
+          <h2 className="font-title text-3xl uppercase tracking-tight">
+            It's <span className="highlight-green inline-block">here.</span>
           </h2>
         </div>
       </div>
@@ -715,41 +716,43 @@ const Index = () => {
           </Slide>
         </div>
 
-        <WhiteSlide className="dot-grid-light">
-          <div className="relative z-10 w-full max-w-5xl mx-auto">
-            <img src={bbLogoHorizontal} alt="BrandBlvd" className="h-8 md:h-10 mb-12 mx-auto invert" />
-            <div className="space-y-10">
-              <div className="flex items-start gap-6">
-                <span className="font-display text-5xl md:text-6xl font-black text-brand-green/30 leading-none shrink-0">01</span>
-                <div className="text-left">
-                  <p className="text-gray-500 text-sm md:text-base font-light">AI is compressing time across everything.</p>
-                  <h3 className="font-title text-2xl md:text-3xl uppercase tracking-tight leading-tight mt-1 text-gray-900">Instant is the new <span className="highlight-green">standard.</span></h3>
-                </div>
-              </div>
-              <div className="flex items-start gap-6">
-                <span className="font-display text-5xl md:text-6xl font-black text-brand-green/30 leading-none shrink-0">02</span>
-                <div className="text-left">
-                  <p className="text-gray-500 text-sm md:text-base font-light">AI is taking over the "doing."</p>
-                  <h3 className="font-title text-2xl md:text-3xl uppercase tracking-tight leading-tight mt-1 text-gray-900">Death of transactional <span className="highlight-green">sales.</span></h3>
-                </div>
-              </div>
-              <div className="flex items-start gap-6">
-                <span className="font-display text-5xl md:text-6xl font-black text-brand-green/30 leading-none shrink-0">03</span>
-                <div className="text-left">
-                  <p className="text-gray-500 text-sm md:text-base font-light">AI will restructure the employer-employee relationship.</p>
-                  <h3 className="font-title text-2xl md:text-3xl uppercase tracking-tight leading-tight mt-1 text-gray-900">Identity-driven community <span className="highlight-green">merch.</span></h3>
-                </div>
+      </Section>
+
+      {/* CLOSING SECTION */}
+      <section id="section-closing" className="h-screen snap-start flex-shrink-0 bg-white text-gray-900 dot-grid-light flex items-center justify-center overflow-hidden">
+        <div className="relative z-10 w-full max-w-5xl mx-auto px-8 md:px-16">
+          <img src={bbLogoHorizontal} alt="BrandBlvd" className="h-8 md:h-10 mb-12 mx-auto invert" />
+          <div className="space-y-10">
+            <div className="flex items-start gap-6">
+              <span className="font-display text-5xl md:text-6xl font-black text-brand-green/30 leading-none shrink-0">01</span>
+              <div className="text-left">
+                <p className="text-gray-500 text-sm md:text-base font-light">AI is compressing time across everything.</p>
+                <h3 className="font-title text-2xl md:text-3xl uppercase tracking-tight leading-tight mt-1 text-gray-900">Instant is the new <span className="highlight-green">standard.</span></h3>
               </div>
             </div>
-            <div className="border-t border-gray-200 mt-12 pt-8 text-center">
-              <p className="font-serif text-xl md:text-2xl italic text-gray-600">The future is already here.</p>
-              <h2 className="font-title text-4xl md:text-6xl uppercase tracking-tight mt-2">
-                <span className="highlight-green inline-block">Move with it.</span>
-              </h2>
+            <div className="flex items-start gap-6">
+              <span className="font-display text-5xl md:text-6xl font-black text-brand-green/30 leading-none shrink-0">02</span>
+              <div className="text-left">
+                <p className="text-gray-500 text-sm md:text-base font-light">AI is taking over the "doing."</p>
+                <h3 className="font-title text-2xl md:text-3xl uppercase tracking-tight leading-tight mt-1 text-gray-900">Death of transactional <span className="highlight-green">sales.</span></h3>
+              </div>
+            </div>
+            <div className="flex items-start gap-6">
+              <span className="font-display text-5xl md:text-6xl font-black text-brand-green/30 leading-none shrink-0">03</span>
+              <div className="text-left">
+                <p className="text-gray-500 text-sm md:text-base font-light">AI will restructure the employer-employee relationship.</p>
+                <h3 className="font-title text-2xl md:text-3xl uppercase tracking-tight leading-tight mt-1 text-gray-900">Identity-driven community <span className="highlight-green">merch.</span></h3>
+              </div>
             </div>
           </div>
-        </WhiteSlide>
-      </Section>
+          <div className="border-t border-gray-200 mt-12 pt-8 text-center">
+            <p className="font-serif text-xl md:text-2xl italic text-gray-600 mb-2">The shift isn't coming.</p>
+            <h2 className="font-title text-4xl md:text-6xl uppercase tracking-tight">
+              It's <span className="highlight-green inline-block">here.</span>
+            </h2>
+          </div>
+        </div>
+      </section>
 
       {/* Vertical section nav */}
       <div className="fixed right-0 top-1/2 -translate-y-1/2 flex flex-col items-end gap-5 z-[60] cursor-default py-12 pr-6 pl-4">
