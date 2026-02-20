@@ -167,7 +167,7 @@ const Index = () => {
       if (currentSlide < totalSlides - 1 && scroller) {
         scroller.scrollTo({ left: (currentSlide + 1) * scroller.clientWidth, behavior: "smooth" });
       } else if (currentSectionIdx < TOTAL_SECTIONS - 1) {
-        goToSection(currentSectionIdx + 1, false);
+        goToSection(currentSectionIdx + 1, true);
       }
     } else {
       if (currentSlide > 0 && scroller) {
