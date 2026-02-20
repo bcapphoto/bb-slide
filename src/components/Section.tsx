@@ -33,7 +33,7 @@ const Section: React.FC<SectionProps> = ({ children, id }) => {
         {React.Children.map(children, (child, i) => (
           <div
             key={i}
-            className="min-w-[100vw] w-[100vw] h-full flex-shrink-0 snap-start flex items-center justify-center px-8 md:px-20 lg:px-32"
+            className="min-w-[100vw] w-[100vw] h-full flex-shrink-0 snap-start flex items-center justify-center"
           >
             {child}
           </div>
