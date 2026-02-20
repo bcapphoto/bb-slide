@@ -3,19 +3,31 @@ import React, { useRef, useEffect, useState, useCallback } from "react";
 interface SectionProps {
   children: React.ReactNode;
   id?: string;
+  onSlideChange?: (slideIndex: number) => void;
+  initialSlide?: number;
 }
 
-const Section: React.FC<SectionProps> = ({ children, id }) => {
+const Section: React.FC<SectionProps> = ({ children, id, onSlideChange, initialSlide = 0 }) => {
   const scrollRef = useRef<HTMLDivElement>(null);
-  const [activeSlide, setActiveSlide] = useState(0);
+  const [activeSlide, setActiveSlide] = useState(initialSlide);
   const slideCount = React.Children.count(children);
+  const didInitScroll = useRef(false);
+
+  // Scroll to initial slide on mount
+  useEffect(() => {
+    if (initialSlide > 0 && scrollRef.current && !didInitScroll.current) {
+      didInitScroll.current = true;
+      scrollRef.current.scrollTo({ left: initialSlide * scrollRef.current.clientWidth, behavior: "instant" as ScrollBehavior });
+    }
+  }, [initialSlide]);
 
   const handleScroll = useCallback(() => {
     const el = scrollRef.current;
     if (!el) return;
     const index = Math.round(el.scrollLeft / el.clientWidth);
     setActiveSlide(index);
-  }, []);
+    onSlideChange?.(index);
+  }, [onSlideChange]);
 
   useEffect(() => {
     const el = scrollRef.current;
