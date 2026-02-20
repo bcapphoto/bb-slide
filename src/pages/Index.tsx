@@ -18,12 +18,12 @@ const BigText = ({ children }: { children: React.ReactNode }) => (
 );
 
 const SubText = ({ children }: { children: React.ReactNode }) => (
-  <p className="text-xl md:text-2xl text-muted-foreground font-light leading-relaxed max-w-3xl">{children}</p>
+  <p className="text-2xl md:text-4xl text-muted-foreground font-light leading-relaxed max-w-4xl">{children}</p>
 );
 
 const ShiftLabel = ({ number, text }: { number: string; text: string }) => (
   <div className="space-y-6">
-    <div className="inline-block px-4 py-1.5 rounded-full border border-primary/30 text-primary text-sm tracking-widest uppercase">
+    <div className="inline-block px-5 py-2 rounded-full border border-primary/30 text-primary text-base tracking-widest uppercase">
       Shift #{number}
     </div>
     <BigText>{text}</BigText>
@@ -33,19 +33,19 @@ const ShiftLabel = ({ number, text }: { number: string; text: string }) => (
 const QuoteSlide = ({ quote, author, role }: { quote: string; author: string; role: string }) => (
   <Slide>
     <Quote className="w-8 h-8 text-primary/40 mb-6" />
-    <blockquote className="text-2xl md:text-3xl font-light italic leading-relaxed max-w-3xl text-foreground/90">
+    <blockquote className="text-2xl md:text-4xl font-light italic leading-relaxed max-w-4xl text-foreground/90">
       "{quote}"
     </blockquote>
-    <p className="mt-8 text-sm text-muted-foreground tracking-wide">
+    <p className="mt-8 text-base text-muted-foreground tracking-wide">
       <span className="text-foreground font-medium">{author}</span> — {role}
     </p>
   </Slide>
 );
 
 const StatCard = ({ value, label }: { value: string; label: string }) => (
-  <div className="flex flex-col items-center gap-2 p-6">
-    <span className="text-4xl md:text-5xl font-bold text-primary">{value}</span>
-    <span className="text-sm text-muted-foreground font-light tracking-wide">{label}</span>
+  <div className="flex flex-col items-center gap-3 p-6">
+    <span className="text-5xl md:text-6xl font-bold text-primary">{value}</span>
+    <span className="text-base text-muted-foreground font-light tracking-wide">{label}</span>
   </div>
 );
 
@@ -87,7 +87,7 @@ const Index = () => {
 
         {/* 1.3 - Reality */}
         <Slide>
-          <p className="text-lg md:text-xl text-muted-foreground font-light leading-relaxed max-w-2xl">
+          <p className="text-xl md:text-2xl lg:text-3xl text-muted-foreground font-light leading-relaxed max-w-3xl">
             AI tools have moved from <span className="text-foreground font-medium">novelty and nerdy</span> to{" "}
             <span className="text-foreground font-medium">household names</span>. They're training people to expect
             immediate results. Not faster.{" "}
@@ -102,7 +102,7 @@ const Index = () => {
 
         {/* 1.5 - Stats */}
         <Slide>
-          <h2 className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-10">Time to 100M Users</h2>
+          <h2 className="text-base uppercase tracking-[0.3em] text-muted-foreground mb-10">Time to 100M Users</h2>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8">
             <StatCard value="~4.5y" label="Facebook" />
             <StatCard value="~2.5y" label="Instagram" />
@@ -113,7 +113,7 @@ const Index = () => {
 
         {/* 1.6 - Investment data */}
         <Slide>
-          <h2 className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-10">The Money Follows</h2>
+          <h2 className="text-base uppercase tracking-[0.3em] text-muted-foreground mb-10">The Money Follows</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-left max-w-3xl">
             {[
               { name: "OpenAI", stat: "$100B round · $850B valuation", note: "Largest single funding round in tech history" },
@@ -121,10 +121,10 @@ const Index = () => {
               { name: "Lovable", stat: "$330M raised · 1 year old", note: "One of the largest early-stage AI-native rounds" },
               { name: "Anthropic", stat: "$30B at $380B valuation", note: "Revenue growing 10x annually, less than 3 years old" },
             ].map((item) => (
-              <div key={item.name} className="p-5 rounded-xl bg-secondary/50 border border-border/50">
-                <p className="text-primary font-semibold text-lg">{item.name}</p>
-                <p className="text-foreground font-medium mt-1">{item.stat}</p>
-                <p className="text-muted-foreground text-sm mt-1">{item.note}</p>
+              <div key={item.name} className="p-6 rounded-xl bg-secondary/50 border border-border/50">
+                <p className="text-primary font-semibold text-xl">{item.name}</p>
+                <p className="text-foreground font-medium mt-1 text-lg">{item.stat}</p>
+                <p className="text-muted-foreground text-base mt-1">{item.note}</p>
               </div>
             ))}
           </div>
@@ -132,18 +132,18 @@ const Index = () => {
 
         {/* 1.7 - Examples */}
         <Slide>
-          <div className="space-y-8 text-left max-w-2xl">
+          <div className="space-y-10 text-left max-w-3xl">
             {[
               { icon: "⚡", title: "Patience is collapsing", desc: "ChatGPT can help you compare car models immediately." },
               { icon: "✓", title: '"Good enough" is now immediate', desc: "Fast is better than perfect — i.e. NotebookLM." },
               { icon: "→", title: "Exploration cost is nearing 0", desc: '"Generate 3 themes for a campaign."' },
               { icon: "↑", title: "Self-sufficiency is increasing", desc: "AI can help people do everything now." },
             ].map((ex) => (
-              <div key={ex.title} className="flex gap-4 items-start">
-                <span className="text-2xl mt-0.5">{ex.icon}</span>
+              <div key={ex.title} className="flex gap-5 items-start">
+                <span className="text-3xl mt-0.5">{ex.icon}</span>
                 <div>
-                  <p className="text-foreground font-medium">{ex.title}</p>
-                  <p className="text-muted-foreground text-sm">{ex.desc}</p>
+                  <p className="text-foreground font-medium text-xl">{ex.title}</p>
+                  <p className="text-muted-foreground text-base">{ex.desc}</p>
                 </div>
               </div>
             ))}
@@ -160,7 +160,7 @@ const Index = () => {
 
         {/* 1.9 - Analog world */}
         <Slide>
-          <p className="text-lg md:text-xl text-muted-foreground font-light leading-relaxed max-w-2xl">
+          <p className="text-xl md:text-2xl lg:text-3xl text-muted-foreground font-light leading-relaxed max-w-3xl">
             If quotes take 48 hours. Proofs take 3 days. Reorders require email chains.{" "}
             <span className="text-foreground font-medium">That feels analog in a digital world.</span>{" "}
             Buyers will expect real-time pricing, proofs, and ordering;{" "}
@@ -171,7 +171,7 @@ const Index = () => {
         {/* 1.10 - Shift #1 */}
         <Slide>
           <ShiftLabel number="1" text="Instant is the new standard." />
-          <p className="mt-8 text-muted-foreground font-light max-w-2xl leading-relaxed">
+          <p className="mt-8 text-muted-foreground font-light max-w-3xl leading-relaxed text-lg md:text-xl">
             Automate reorders, quoting, proofs, and standard workflows. We don't need to replace people — we need to remove unnecessary delay.
           </p>
         </Slide>
@@ -212,7 +212,7 @@ const Index = () => {
 
         {/* 2.3 - Reality */}
         <Slide>
-          <p className="text-lg md:text-xl text-muted-foreground font-light leading-relaxed max-w-2xl">
+          <p className="text-xl md:text-2xl lg:text-3xl text-muted-foreground font-light leading-relaxed max-w-3xl">
             AI tools can do rule-based, repetitive, information-heavy tasks{" "}
             <span className="text-foreground font-medium">faster, cheaper, and at scale</span>. Transactional jobs are the most exposed.
             Even knowledge work is starting to get replaced.
@@ -221,7 +221,7 @@ const Index = () => {
 
         {/* 2.4 - Role shift */}
         <Slide>
-          <p className="text-xl md:text-2xl font-light leading-relaxed max-w-2xl text-foreground/90">
+          <p className="text-2xl md:text-3xl font-light leading-relaxed max-w-3xl text-foreground/90">
             Our role as humans shifts up the stack. When things get done at a velocity like never before, we add value by knowing{" "}
             <span className="text-primary font-semibold">"what" to do</span>, not in "doing" it.
           </p>
@@ -250,15 +250,15 @@ const Index = () => {
 
         {/* 2.8 - Industry disruption */}
         <Slide>
-          <div className="space-y-6 text-left max-w-2xl">
-            <p className="text-foreground font-medium text-lg">Order-taking will be commoditized — or self-serve.</p>
-            <p className="text-muted-foreground font-light">
+          <div className="space-y-8 text-left max-w-3xl">
+            <p className="text-foreground font-medium text-2xl">Order-taking will be commoditized — or self-serve.</p>
+            <p className="text-muted-foreground font-light text-lg">
               AI-empowered systems will draft proposals, generate pricing comparisons, and source products instantly.
             </p>
-            <p className="text-muted-foreground font-light">
+            <p className="text-muted-foreground font-light text-lg">
               Industries like travel and retail already eliminated transactional middlemen when search became automated.
             </p>
-            <p className="text-primary font-medium">
+            <p className="text-primary font-medium text-lg">
               If we are just order-takers, we'll be beaten out by alternatives that make it easier and quicker.
             </p>
           </div>
@@ -267,7 +267,7 @@ const Index = () => {
         {/* 2.9 - Shift #2 */}
         <Slide>
           <ShiftLabel number="2" text="Death of transactional sales." />
-          <p className="mt-8 text-muted-foreground font-light max-w-2xl leading-relaxed">
+          <p className="mt-8 text-muted-foreground font-light max-w-3xl leading-relaxed text-lg md:text-xl">
             Evolve from "order takers" to collaborators and advisors. We win on framing, interpretation, judgement, context, and strategy — not on sending catalogues.
           </p>
         </Slide>
@@ -306,9 +306,9 @@ const Index = () => {
               { stat: "50%", desc: "of workers who use AI worry their job could be automated" },
               { stat: "76,440", desc: "jobs eliminated in 2025 in data entry, telemarketing, admin" },
             ].map((item) => (
-              <div key={item.stat} className="flex items-baseline gap-4">
-                <span className="text-4xl md:text-5xl font-bold text-primary">{item.stat}</span>
-                <span className="text-muted-foreground font-light text-left">{item.desc}</span>
+              <div key={item.stat} className="flex items-baseline gap-6">
+                <span className="text-5xl md:text-6xl font-bold text-primary">{item.stat}</span>
+                <span className="text-muted-foreground font-light text-left text-lg md:text-xl">{item.desc}</span>
               </div>
             ))}
           </div>
@@ -325,7 +325,7 @@ const Index = () => {
 
         {/* 3.5 - Belonging shift */}
         <Slide>
-          <p className="text-xl md:text-2xl font-light leading-relaxed max-w-2xl text-foreground/90">
+          <p className="text-2xl md:text-3xl font-light leading-relaxed max-w-3xl text-foreground/90">
             As AI reshapes work, <span className="text-foreground font-medium">belonging will shift</span> from employer identity to{" "}
             <span className="text-primary font-semibold">community identity.</span>
           </p>
@@ -334,7 +334,7 @@ const Index = () => {
         {/* 3.6 - Shift #3 */}
         <Slide>
           <ShiftLabel number="3" text="Identity-driven community merch." />
-          <div className="mt-8 space-y-4 text-muted-foreground font-light max-w-2xl text-left">
+          <div className="mt-8 space-y-5 text-muted-foreground font-light max-w-3xl text-left text-lg md:text-xl">
             <p>Internal merch must become more <span className="text-foreground font-medium">intentional</span>. External merch must become more <span className="text-foreground font-medium">tribal</span>.</p>
             <p>We can help companies build tribes — customers, advocates, insiders, power users, culture ambassadors.</p>
             <p className="text-primary font-medium">Merch becomes badge signalling, not office swag. Move from "gifting employees" to "manufacturing belonging."</p>
@@ -345,7 +345,7 @@ const Index = () => {
         <Slide>
           <div className="space-y-6">
             <ChevronsRight className="w-10 h-10 text-primary mx-auto" strokeWidth={1.5} />
-            <p className="text-2xl md:text-3xl font-light text-muted-foreground">
+            <p className="text-3xl md:text-4xl font-light text-muted-foreground">
               The future is already here.
             </p>
             <BigText>
