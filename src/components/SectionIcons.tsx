@@ -1,0 +1,91 @@
+import { SVGProps } from "react";
+
+type IconProps = SVGProps<SVGSVGElement> & { size?: number };
+
+const defaults = (size = 24): SVGProps<SVGSVGElement> => ({
+  width: size,
+  height: size,
+  viewBox: "0 0 24 24",
+  fill: "none",
+  xmlns: "http://www.w3.org/2000/svg",
+});
+
+/* ─── Home: minimal house silhouette ─── */
+export const IconHome = ({ size = 24, ...props }: IconProps) => (
+  <svg {...defaults(size)} {...props}>
+    <path
+      d="M4 11L12 4L20 11V20H15V15H9V20H4V11Z"
+      stroke="currentColor"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+  </svg>
+);
+
+/* ─── Fast-forward: double chevron ─── */
+export const IconFastForward = ({ size = 24, ...props }: IconProps) => (
+  <svg {...defaults(size)} {...props}>
+    <path
+      d="M6 5L13 12L6 19"
+      stroke="currentColor"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+    <path
+      d="M13 5L20 12L13 19"
+      stroke="currentColor"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+  </svg>
+);
+
+/* ─── Stacks: two rectangles side by side ─── */
+export const IconStacks = ({ size = 24, ...props }: IconProps) => (
+  <svg {...defaults(size)} {...props}>
+    <rect
+      x="3"
+      y="6"
+      width="8"
+      height="12"
+      rx="1.5"
+      stroke="currentColor"
+      strokeWidth="1.5"
+    />
+    <rect
+      x="13"
+      y="6"
+      width="8"
+      height="12"
+      rx="1.5"
+      stroke="currentColor"
+      strokeWidth="1.5"
+    />
+  </svg>
+);
+
+/* ─── Identity: two circles, big + small, no overlap ─── */
+export const IconIdentity = ({ size = 24, ...props }: IconProps) => (
+  <svg {...defaults(size)} {...props}>
+    <circle
+      cx="10"
+      cy="12"
+      r="7"
+      stroke="currentColor"
+      strokeWidth="1.5"
+    />
+    <circle
+      cx="19"
+      cy="8"
+      r="3.5"
+      stroke="currentColor"
+      strokeWidth="1.5"
+    />
+  </svg>
+);
+
+export const SECTION_ICONS = [IconHome, IconFastForward, IconStacks, IconIdentity] as const;
+export const SECTION_LABELS = ["Home", "Instant", "Human Value", "Identity"] as const;
