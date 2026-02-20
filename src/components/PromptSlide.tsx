@@ -6,6 +6,13 @@ interface PromptSlideProps {
 
 const PromptSlide: React.FC<PromptSlideProps> = ({ question }) => (
   <div className="w-full h-full flex items-center justify-center relative overflow-hidden">
+    {/* Large background question mark */}
+    <div className="absolute inset-0 flex items-center justify-center pointer-events-none select-none">
+      <span className="font-serif text-[40rem] md:text-[50rem] leading-none text-primary/[0.06] -translate-y-8">
+        ?
+      </span>
+    </div>
+
     {/* Subtle corner accents */}
     <div className="absolute top-8 left-8 w-12 h-12 border-t-2 border-l-2 border-primary/30" />
     <div className="absolute bottom-8 right-8 w-12 h-12 border-b-2 border-r-2 border-primary/30" />
