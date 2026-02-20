@@ -87,5 +87,12 @@ export const IconIdentity = ({ size = 24, ...props }: IconProps) => (
   </svg>
 );
 
-export const SECTION_ICONS = [IconHome, IconFastForward, IconStacks, IconIdentity] as const;
-export const SECTION_LABELS = ["Home", "Instant", "Human Value", "Identity"] as const;
+/* ─── Closing: arrow-right-to-line ─── */
+export const IconClosing = ({ size = 24, ...props }: IconProps) => (
+  <svg {...defaults(size)} {...props}>
+    <path d="M5 12H17M17 12L12 7M17 12L12 17M20 5V19" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+  </svg>
+);
+
+export const SECTION_ICONS = [IconHome, IconFastForward, IconStacks, IconIdentity, IconClosing] as const;
+export const SECTION_LABELS = ["Home", "Instant", "Human Value", "Identity", "Summary"] as const;
