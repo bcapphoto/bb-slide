@@ -138,10 +138,17 @@ const Index = () => {
     updateUrl(sectionIdx, slideIdx);
   }, [updateUrl]);
 
-  const goToSection = (index: number) => {
+  const goToSection = (index: number, resetSlide = true) => {
     const clamped = Math.max(0, Math.min(index, TOTAL_SECTIONS - 1));
     const el = document.getElementById(`section-${SECTION_NAMES[clamped]}`);
     el?.scrollIntoView({ behavior: "smooth" });
+    if (resetSlide) {
+      // Reset horizontal scroll to first slide
+      setTimeout(() => {
+        const scroller = el?.querySelector("[data-slide-scroller]") as HTMLElement | null;
+        if (scroller) scroller.scrollTo({ left: 0, behavior: "smooth" });
+      }, 100);
+    }
   };
 
   const handleNavigate = useCallback((dir: "left" | "right" | "up" | "down") => {
@@ -161,13 +168,13 @@ const Index = () => {
       if (currentSlide < totalSlides - 1 && scroller) {
         scroller.scrollTo({ left: (currentSlide + 1) * scroller.clientWidth, behavior: "smooth" });
       } else if (currentSectionIdx < TOTAL_SECTIONS - 1) {
-        goToSection(currentSectionIdx + 1);
+        goToSection(currentSectionIdx + 1, false);
       }
     } else {
       if (currentSlide > 0 && scroller) {
         scroller.scrollTo({ left: (currentSlide - 1) * scroller.clientWidth, behavior: "smooth" });
       } else if (currentSectionIdx > 0) {
-        goToSection(currentSectionIdx - 1);
+        goToSection(currentSectionIdx - 1, false);
         setTimeout(() => {
           const prevSection = document.getElementById(`section-${SECTION_NAMES[currentSectionIdx - 1]}`);
           const prevScroller = prevSection?.querySelector("[data-slide-scroller]") as HTMLElement | null;
