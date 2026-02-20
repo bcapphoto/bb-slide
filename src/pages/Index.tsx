@@ -102,7 +102,7 @@ const Index = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const slidesRef = useRef<Record<number, number>>({});
   const [activeSlide, setActiveSlide] = useState(0);
-  const slideTotals: Record<number, number> = { 0: 1, 1: 9, 2: 6, 3: 6, 4: 1 };
+  const slideTotals: Record<number, number> = { 0: 1, 1: 9, 2: 6, 3: 7, 4: 1 };
   const isScrolling = useRef(false);
 
   const updateUrl = useCallback((sectionIdx: number, slideIdx: number) => {
@@ -403,6 +403,10 @@ const Index = () => {
       </div>
     </MobileSection>,
 
+    <MobileSection key="3-3b">
+      <PromptSlide question="If our clients reduced headcount by 20%, what happens to our revenue?" />
+    </MobileSection>,
+
     <MobileSection key="3-4" className="bg-white text-gray-900 diagonal-lines-light">
       <div className="relative z-10 text-center px-8">
         <p className="font-serif text-2xl md:text-3xl italic leading-snug max-w-5xl mx-auto text-gray-800">
@@ -689,6 +693,8 @@ const Index = () => {
             <NumberedItem num="76K+" title="Jobs eliminated in 2025" desc="Data entry, telemarketing, and admin support roles." />
           </div>
         </WhiteSlide>
+
+        <PromptSlide question="If our clients reduced headcount by 20%, what happens to our revenue?" />
 
         <WhiteSlide className="diagonal-lines-light">
           <div className="relative z-10 text-center">
