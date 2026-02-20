@@ -82,7 +82,7 @@
   }
 }
 
-/* Dot grid pattern overlay */
+/* Dot grid pattern overlay - small */
 .dot-grid {
   position: relative;
 }
@@ -95,6 +95,72 @@
   background-image: radial-gradient(circle, hsl(186 30% 25%) 1px, transparent 1px);
   background-size: 28px 28px;
   opacity: 0.4;
+}
+
+/* Bold dot grid - larger dots like the PDF page 3 */
+.dot-grid-bold {
+  position: relative;
+}
+.dot-grid-bold::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background-image: radial-gradient(circle, hsl(186 25% 22%) 3px, transparent 3px);
+  background-size: 36px 36px;
+  opacity: 0.5;
+}
+
+/* Diagonal lines pattern */
+.diagonal-lines {
+  position: relative;
+}
+.diagonal-lines::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background-image: repeating-linear-gradient(
+    -45deg,
+    transparent,
+    transparent 20px,
+    hsl(186 30% 16%) 20px,
+    hsl(186 30% 16%) 21px
+  );
+  opacity: 0.3;
+}
+
+/* Radial gradient glow - bottom right like PDF section openers */
+.glow-br {
+  position: relative;
+}
+.glow-br::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background: radial-gradient(ellipse at 85% 75%, hsl(186 35% 16%) 0%, transparent 60%);
+  opacity: 0.8;
+}
+
+/* Cross pattern */
+.cross-grid {
+  position: relative;
+}
+.cross-grid::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background-image:
+    linear-gradient(hsl(186 30% 16%) 1px, transparent 1px),
+    linear-gradient(90deg, hsl(186 30% 16%) 1px, transparent 1px);
+  background-size: 48px 48px;
+  opacity: 0.25;
 }
 
 /* Green highlight pill behind text */
