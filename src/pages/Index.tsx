@@ -102,7 +102,7 @@ const Index = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const slidesRef = useRef<Record<number, number>>({});
   const [activeSlide, setActiveSlide] = useState(0);
-  const slideTotals: Record<number, number> = { 0: 1, 1: 9, 2: 5, 3: 6, 4: 1 };
+  const slideTotals: Record<number, number> = { 0: 1, 1: 9, 2: 6, 3: 6, 4: 1 };
   const isScrolling = useRef(false);
 
   const updateUrl = useCallback((sectionIdx: number, slideIdx: number) => {
@@ -357,6 +357,10 @@ const Index = () => {
           <span className="font-bold text-sm">Evolve from "order takers" to collaborators and advisors.</span>
         </p>
       </div>
+    </MobileSection>,
+
+    <MobileSection key="2-4b">
+      <PromptSlide question="If AI handled 50% of admin tomorrow, would our reps know what to do with the extra time?" />
     </MobileSection>,
 
     <MobileSection key="2-5" className="relative dot-grid overflow-hidden">
@@ -645,6 +649,8 @@ const Index = () => {
             <span className="font-bold text-base">Evolve from "order takers" to collaborators and advisors.</span>
           </p>
         </WhiteSlide>
+
+        <PromptSlide question="If AI handled 50% of admin tomorrow, would our reps know what to do with the extra time?" />
 
         <div className="relative w-full h-full flex items-center justify-center dot-grid overflow-hidden">
           <div className="absolute right-0 top-1/2 -translate-y-1/2 font-display text-[20rem] md:text-[28rem] font-black text-foreground/[0.04] leading-none select-none pointer-events-none">02</div>
