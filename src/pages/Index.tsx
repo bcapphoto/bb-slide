@@ -91,6 +91,8 @@ const Index = () => {
   const initialSlideRef = useRef(paramSlide ? parseInt(paramSlide, 10) - 1 : 0);
   const containerRef = useRef<HTMLDivElement>(null);
   const slidesRef = useRef<Record<number, number>>({});
+  const [activeSlide, setActiveSlide] = useState(0);
+  const slideTotals: Record<number, number> = { 0: 1, 1: 9, 2: 5, 3: 7 };
   const isScrolling = useRef(false);
 
   // Sync URL when section or slide changes
@@ -106,6 +108,7 @@ const Index = () => {
     const handler = () => {
       const index = Math.round(el.scrollTop / el.clientHeight);
       setActiveSection(index);
+      setActiveSlide(slidesRef.current[index] || 0);
       updateUrl(index, slidesRef.current[index] || 0);
     };
     el.addEventListener("scroll", handler, { passive: true });
@@ -123,6 +126,7 @@ const Index = () => {
 
   const handleSlideChange = useCallback((sectionIdx: number) => (slideIdx: number) => {
     slidesRef.current[sectionIdx] = slideIdx;
+    setActiveSlide(slideIdx);
     updateUrl(sectionIdx, slideIdx);
   }, [updateUrl]);
 
@@ -484,7 +488,15 @@ const Index = () => {
         ))}
       </div>
 
-      <CursorNav onNavigate={handleNavigate} />
+      <CursorNav
+        onNavigate={handleNavigate}
+        canGo={{
+          up: activeSection > 0,
+          down: activeSection < TOTAL_SECTIONS - 1,
+          left: activeSlide > 0,
+          right: activeSlide < (slideTotals[activeSection] || 1) - 1,
+        }}
+      />
     </div>
   );
 };
