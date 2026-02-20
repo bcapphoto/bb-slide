@@ -150,7 +150,7 @@ const Index = () => {
       {/* ═══════════════════════════════════════════
           TITLE PAGE
       ═══════════════════════════════════════════ */}
-      <section id="section-title" className="relative h-screen snap-start flex-shrink-0 flex items-center justify-center dot-grid overflow-hidden">
+      <section id="section-title" className="relative h-screen snap-start flex-shrink-0 flex items-center justify-center dot-grid-bold glow-br overflow-hidden">
         <div className="absolute right-0 bottom-0 font-display text-[30rem] font-black text-foreground/[0.03] leading-none select-none pointer-events-none">
           AI
         </div>
@@ -179,7 +179,7 @@ const Index = () => {
         />
 
         {/* 1.2 - Reality (serif italic statement - screenshot 4 style) */}
-        <div className="relative w-full h-full flex items-center justify-center">
+        <div className="relative w-full h-full flex items-center justify-center diagonal-lines">
           <BgImage src={abstractSpeed} opacity="opacity-[0.04]" />
           <Slide className="relative z-10">
             <SerifStatement>
@@ -241,7 +241,7 @@ const Index = () => {
         </WhiteSlide>
 
         {/* 1.7 - Rewiring (serif statement - screenshot 4 style) */}
-        <div className="relative w-full h-full flex items-center justify-center">
+        <div className="relative w-full h-full flex items-center justify-center cross-grid">
           <Slide>
             <SerifStatement>
               AI is not just improving productivity. <span className="text-primary font-bold">It's rewiring expectation.</span>
@@ -251,7 +251,8 @@ const Index = () => {
         </div>
 
         {/* 1.8 - Analog world */}
-        <Slide>
+        <div className="relative w-full h-full flex items-center justify-center diagonal-lines">
+        <Slide className="relative z-10">
           <div className="accent-bar text-left max-w-3xl">
             <p className="text-xl md:text-2xl lg:text-3xl text-muted-foreground font-light leading-relaxed">
               If quotes take 48 hours. Proofs take 3 days. Reorders require email chains.{" "}
@@ -261,6 +262,7 @@ const Index = () => {
             </p>
           </div>
         </Slide>
+        </div>
 
         {/* 1.9 - Shift #1 (with bg number) */}
         <div className="relative w-full h-full flex items-center justify-center dot-grid overflow-hidden">
@@ -293,7 +295,7 @@ const Index = () => {
         />
 
         {/* 2.2 - Reality (serif statement) */}
-        <div className="relative w-full h-full flex items-center justify-center">
+        <div className="relative w-full h-full flex items-center justify-center cross-grid">
           <BgImage src={abstractStack} opacity="opacity-[0.05]" />
           <Slide className="relative z-10">
             <SerifStatement>
@@ -304,7 +306,7 @@ const Index = () => {
         </div>
 
         {/* 2.3 - Quotes (screenshot 1 grid style - dark, dot grid, 3 cards) */}
-        <div className="relative w-full h-full flex items-center justify-center dot-grid">
+        <div className="relative w-full h-full flex items-center justify-center dot-grid-bold">
           <div className="relative z-10 w-full max-w-6xl px-8 md:px-16">
             <p className="font-display text-sm uppercase tracking-[0.35em] text-muted-foreground font-bold mb-10">Industry Leaders</p>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
@@ -386,7 +388,7 @@ const Index = () => {
         />
 
         {/* 3.2 - Reality (serif statement) */}
-        <div className="relative w-full h-full flex items-center justify-center">
+        <div className="relative w-full h-full flex items-center justify-center diagonal-lines">
           <BgImage src={abstractIdentity} opacity="opacity-[0.05]" />
           <Slide className="relative z-10">
             <SerifStatement>
@@ -410,7 +412,7 @@ const Index = () => {
         </WhiteSlide>
 
         {/* 3.4 - But merch doesn't go away (serif statement) */}
-        <div className="relative w-full h-full flex items-center justify-center">
+        <div className="relative w-full h-full flex items-center justify-center cross-grid">
           <Slide>
             <SerifStatement>
               That doesn't mean merch and swag <span className="text-primary font-bold">go away.</span>
