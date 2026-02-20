@@ -282,13 +282,22 @@ const Index = () => {
 
     <MobileSection key="1-8" className="relative diagonal-lines">
       <Slide className="relative z-10">
-        <div className="accent-bar text-left max-w-3xl">
-          <p className="text-xl text-muted-foreground font-light leading-relaxed">
-            If quotes take 48 hours. Proofs take 3 days. Reorders require email chains.{" "}
-            <span className="text-foreground font-medium">That feels analog in a digital world.</span>{" "}
-            Buyers will expect real-time pricing, proofs, and ordering;{" "}
-            <span className="text-primary font-bold">delays will feel broken.</span>
+        <div className="text-left max-w-3xl">
+          <p className="font-display text-sm uppercase tracking-[0.35em] text-muted-foreground font-bold mb-6">If…</p>
+          <div className="border-l-4 border-primary/40 pl-5 mb-8 space-y-3">
+            <p className="text-lg text-muted-foreground font-light leading-relaxed">Quotes take <span className="text-foreground font-medium">48 hours</span></p>
+            <p className="text-lg text-muted-foreground font-light leading-relaxed">Proofs take <span className="text-foreground font-medium">3 days</span></p>
+            <p className="text-lg text-muted-foreground font-light leading-relaxed">Reorders require <span className="text-foreground font-medium">email chains</span></p>
+          </div>
+          <p className="text-base text-foreground font-medium italic mb-6">
+            …that feels analog in a digital world.
           </p>
+          <div className="border-t border-muted-foreground/20 pt-5">
+            <p className="font-display text-sm uppercase tracking-[0.3em] text-primary font-bold mb-2">Reality Check</p>
+            <p className="text-sm text-muted-foreground font-light leading-relaxed">
+              Buyers will expect real-time pricing, proofs, and ordering — <span className="text-primary font-bold">delays will feel broken.</span>
+            </p>
+          </div>
         </div>
       </Slide>
     </MobileSection>,
@@ -556,13 +565,22 @@ const Index = () => {
 
         <div className="relative w-full h-full flex items-center justify-center diagonal-lines">
           <Slide className="relative z-10">
-            <div className="accent-bar text-left max-w-3xl">
-              <p className="text-xl md:text-2xl lg:text-3xl text-muted-foreground font-light leading-relaxed">
-                If quotes take 48 hours. Proofs take 3 days. Reorders require email chains.{" "}
-                <span className="text-foreground font-medium">That feels analog in a digital world.</span>{" "}
-                Buyers will expect real-time pricing, proofs, and ordering;{" "}
-                <span className="text-primary font-bold">delays will feel broken.</span>
+            <div className="text-left max-w-3xl">
+              <p className="font-display text-sm uppercase tracking-[0.35em] text-muted-foreground font-bold mb-8">If…</p>
+              <div className="border-l-4 border-primary/40 pl-6 mb-10 space-y-4">
+                <p className="text-xl md:text-2xl lg:text-3xl text-muted-foreground font-light leading-relaxed">Quotes take <span className="text-foreground font-medium">48 hours</span></p>
+                <p className="text-xl md:text-2xl lg:text-3xl text-muted-foreground font-light leading-relaxed">Proofs take <span className="text-foreground font-medium">3 days</span></p>
+                <p className="text-xl md:text-2xl lg:text-3xl text-muted-foreground font-light leading-relaxed">Reorders require <span className="text-foreground font-medium">email chains</span></p>
+              </div>
+              <p className="text-lg md:text-xl lg:text-2xl text-foreground font-medium italic mb-8">
+                …that feels analog in a digital world.
               </p>
+              <div className="border-t border-muted-foreground/20 pt-6">
+                <p className="font-display text-sm uppercase tracking-[0.3em] text-primary font-bold mb-3">Reality Check</p>
+                <p className="text-base md:text-lg lg:text-xl text-muted-foreground font-light leading-relaxed">
+                  Buyers will expect real-time pricing, proofs, and ordering — <span className="text-primary font-bold">delays will feel broken.</span>
+                </p>
+              </div>
             </div>
           </Slide>
         </div>
