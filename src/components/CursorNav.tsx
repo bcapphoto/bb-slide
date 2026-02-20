@@ -22,8 +22,6 @@ const CursorNav = ({ onNavigate, canGo = { up: true, down: true, left: true, rig
 
     if (x < EDGE) setDirection("left");
     else if (x > 1 - EDGE) setDirection("right");
-    else if (y < EDGE) setDirection("up");
-    else if (y > 1 - EDGE) setDirection("down");
     else setDirection(null);
   }, []);
 
