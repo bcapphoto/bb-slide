@@ -210,7 +210,7 @@ const Index = () => {
 
     <MobileSection key="title-overview" className="bg-white text-gray-900 dot-grid-light">
       <div className="relative z-10 w-full px-8 text-center">
-        <p className="font-serif text-xl italic text-gray-500 mb-10">These are the 3 biggest ways we believe AI will impact our business and our industry.</p>
+        <p className="font-serif text-xl italic text-gray-500 mb-10">The 3 biggest ways I believe AI will impact our business and our industry.</p>
         <div className="space-y-6 text-left">
           <div className="flex items-center gap-4">
             <div className="flex-shrink-0 w-12 h-12 rounded-sm bg-brand-green/10 flex items-center justify-center">
@@ -546,7 +546,7 @@ const Index = () => {
 
         <div className="relative w-full h-full flex items-center justify-center bg-white text-gray-900 dot-grid-light overflow-hidden">
           <div className="relative z-10 w-full max-w-4xl mx-auto px-8 md:px-16 text-center">
-            <p className="font-serif text-xl md:text-2xl italic text-gray-500 mb-14">These are the 3 biggest ways we believe AI will impact our business and our industry.</p>
+            <p className="font-serif text-xl md:text-2xl italic text-gray-500 mb-14">The 3 biggest ways I believe AI will impact our business and our industry.</p>
             <div className="space-y-10 text-left">
               <div className="flex items-center gap-6">
                 <div className="flex-shrink-0 w-16 h-16 md:w-20 md:h-20 rounded-sm bg-brand-green/10 flex items-center justify-center">
