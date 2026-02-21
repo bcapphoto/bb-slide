@@ -140,13 +140,22 @@ const Index = () => {
     updateUrl(sectionIdx, slideIdx);
   }, [updateUrl]);
 
-  const goToSection = (index: number, resetSlide = true) => {
+  const goToSection = (index: number, targetSlide: "first" | "last" = "first") => {
     const clamped = Math.max(0, Math.min(index, TOTAL_SECTIONS - 1));
     const el = document.getElementById(`section-${SECTION_NAMES[clamped]}`);
-    if (resetSlide) {
-      // Reset horizontal scroll INSTANTLY before the vertical scroll happens
-      const scroller = el?.querySelector("[data-slide-scroller]") as HTMLElement | null;
-      if (scroller) scroller.scrollTo({ left: 0, behavior: "instant" as ScrollBehavior });
+    const scroller = el?.querySelector("[data-slide-scroller]") as HTMLElement | null;
+
+    if (scroller) {
+      const total = slideTotals[clamped] || 1;
+      const slideIdx = targetSlide === "last" ? total - 1 : 0;
+      // Remove snap temporarily to prevent snap-mandatory from fighting the reset
+      scroller.style.scrollSnapType = "none";
+      scroller.scrollLeft = slideIdx * scroller.clientWidth;
+      slidesRef.current[clamped] = slideIdx;
+      // Re-enable snap after a frame so the browser doesn't snap back
+      requestAnimationFrame(() => {
+        if (scroller) scroller.style.scrollSnapType = "";
+      });
     }
     el?.scrollIntoView({ behavior: "smooth" });
   };
@@ -168,20 +177,13 @@ const Index = () => {
       if (currentSlide < totalSlides - 1 && scroller) {
         scroller.scrollTo({ left: (currentSlide + 1) * scroller.clientWidth, behavior: "smooth" });
       } else if (currentSectionIdx < TOTAL_SECTIONS - 1) {
-        goToSection(currentSectionIdx + 1, true);
+        goToSection(currentSectionIdx + 1, "first");
       }
     } else {
       if (currentSlide > 0 && scroller) {
         scroller.scrollTo({ left: (currentSlide - 1) * scroller.clientWidth, behavior: "smooth" });
       } else if (currentSectionIdx > 0) {
-        // Pre-scroll the previous section to its last slide INSTANTLY before navigating
-        const prevSection = document.getElementById(`section-${SECTION_NAMES[currentSectionIdx - 1]}`);
-        const prevScroller = prevSection?.querySelector("[data-slide-scroller]") as HTMLElement | null;
-        if (prevScroller) {
-          const prevTotal = slideTotals[currentSectionIdx - 1] || 1;
-          prevScroller.scrollTo({ left: (prevTotal - 1) * prevScroller.clientWidth, behavior: "instant" as ScrollBehavior });
-        }
-        prevSection?.scrollIntoView({ behavior: "smooth" });
+        goToSection(currentSectionIdx - 1, "last");
       }
     }
   }, []);
