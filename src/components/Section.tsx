@@ -11,6 +11,7 @@ const Section: React.FC<SectionProps> = ({ children, id, onSlideChange, initialS
   const scrollRef = useRef<HTMLDivElement>(null);
   const [activeSlide, setActiveSlide] = useState(initialSlide);
   const slideCount = React.Children.count(children);
+  const isOgMode = new URLSearchParams(window.location.search).has("og");
   const didInitScroll = useRef(false);
 
   // Scroll to initial slide on mount
@@ -54,7 +55,7 @@ const Section: React.FC<SectionProps> = ({ children, id, onSlideChange, initialS
       </div>
 
       {/* Dot indicators only */}
-      {slideCount > 1 && (
+      {slideCount > 1 && !isOgMode && (
         <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-2 z-10">
           {Array.from({ length: slideCount }).map((_, i) => (
             <div

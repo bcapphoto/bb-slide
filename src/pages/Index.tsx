@@ -94,6 +94,7 @@ const Index = () => {
   const { section: paramSection, slide: paramSlide } = useParams();
   const navigate = useNavigate();
   const isMobile = useIsMobile();
+  const isOgMode = new URLSearchParams(window.location.search).has("og");
   const [activeSection, setActiveSection] = useState(() => {
     const idx = SECTION_NAMES.indexOf(paramSection as any);
     return idx >= 0 ? idx : 0;
@@ -848,6 +849,7 @@ const Index = () => {
       </section>
 
       {/* Vertical section nav */}
+      {!isOgMode && (
       <div className="fixed right-0 top-1/2 -translate-y-1/2 flex flex-col items-end gap-5 z-[60] cursor-default py-12 pr-6 pl-4">
         {SECTION_NAMES.map((name, i) => {
           const Icon = SECTION_ICONS[i];
@@ -881,7 +883,9 @@ const Index = () => {
           );
         })}
       </div>
+      )}
 
+      {!isOgMode && (
       <CursorNav
         onNavigate={handleNavigate}
         canGo={{
@@ -891,6 +895,7 @@ const Index = () => {
           right: activeSlide < (slideTotals[activeSection] || 1) - 1 || activeSection < TOTAL_SECTIONS - 1,
         }}
       />
+      )}
         </>
       )}
     </div>
