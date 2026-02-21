@@ -314,7 +314,7 @@ const Index = () => {
     </MobileSection>,
 
     <MobileSection key="1-8b">
-      <PromptSlide question="If we were our client, what part of our process would frustrate us?" />
+      <PromptSlide question="If you were our client, what part of our process would frustrate you?" />
     </MobileSection>,
 
     <MobileSection key="1-9" className="relative dot-grid overflow-hidden">
@@ -645,7 +645,7 @@ const Index = () => {
         </Slide>
         </div>
 
-        <PromptSlide question="If we were our client, what part of our process would frustrate us?" />
+        <PromptSlide question="If you were our client, what part of our process would frustrate you?" />
 
         <div className="relative w-full h-full flex items-center justify-center dot-grid overflow-hidden">
           <div className="absolute right-0 top-1/2 -translate-y-1/2 font-display text-[20rem] md:text-[28rem] font-black text-foreground/[0.04] leading-none select-none pointer-events-none">01</div>
