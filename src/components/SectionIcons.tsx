@@ -94,5 +94,13 @@ export const IconClosing = ({ size = 24, ...props }: IconProps) => (
   </svg>
 );
 
-export const SECTION_ICONS = [IconHome, IconFastForward, IconStacks, IconIdentity, IconClosing] as const;
-export const SECTION_LABELS = ["Home", "Instant", "Human Value", "Identity", "Summary"] as const;
+/* ─── Article: open book ─── */
+export const IconArticle = ({ size = 24, ...props }: IconProps) => (
+  <svg {...defaults(size)} {...props}>
+    <path d="M4 19V5C4 4 5 3 6 3H18C19 3 20 4 20 5V19C20 20 19 21 18 21H6C5 21 4 20 4 19Z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+    <path d="M8 7H16M8 11H16M8 15H13" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+  </svg>
+);
+
+export const SECTION_ICONS = [IconHome, IconFastForward, IconStacks, IconIdentity, IconClosing, IconArticle] as const;
+export const SECTION_LABELS = ["Home", "Instant", "Human Value", "Identity", "Summary", "Article"] as const;
