@@ -12,6 +12,7 @@ import abstractIdentity from "@/assets/abstract-identity.jpg";
 import bbLogoHorizontal from "@/assets/bb-logo-horizontal-white.svg";
 import bbMonogram from "@/assets/bb-monogram-white.svg";
 import PromptSlide from "@/components/PromptSlide";
+import ArticleSection from "@/components/ArticleSection";
 
 const SECTION_NAMES = ["title", "instant", "human-value", "identity", "closing"] as const;
 
@@ -521,7 +522,10 @@ const Index = () => {
 
       {isMobile ? (
         /* ─── MOBILE: simple vertical snap scroll ─── */
-        <>{allSlides}</>
+        <>
+          {allSlides}
+          <div className="snap-start"><ArticleSection /></div>
+        </>
       ) : (
         /* ─── DESKTOP: original horizontal+vertical navigation ─── */
         <>
@@ -847,6 +851,11 @@ const Index = () => {
           </div>
         </div>
       </section>
+
+      {/* Article section */}
+      <div className="snap-start">
+        <ArticleSection />
+      </div>
 
       {/* Vertical section nav */}
       {!isOgMode && (
