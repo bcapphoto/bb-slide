@@ -1,7 +1,7 @@
 import { useEffect, useState, useCallback, useRef } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { ChevronsRight, Quote } from "lucide-react";
-import { SECTION_ICONS, SECTION_LABELS, IconHome, IconFastForward, IconStacks, IconIdentity, IconClosing } from "@/components/SectionIcons";
+import { SECTION_ICONS, SECTION_LABELS, IconHome, IconFastForward, IconStacks, IconIdentity, IconClosing, IconArticle } from "@/components/SectionIcons";
 import Section from "@/components/Section";
 import CursorNav from "@/components/CursorNav";
 import GrowthChart from "@/components/GrowthChart";
@@ -14,7 +14,7 @@ import bbMonogram from "@/assets/bb-monogram-white.svg";
 import PromptSlide from "@/components/PromptSlide";
 import ArticleSection from "@/components/ArticleSection";
 
-const SECTION_NAMES = ["title", "instant", "human-value", "identity", "closing"] as const;
+const SECTION_NAMES = ["title", "instant", "human-value", "identity", "closing", "article"] as const;
 
 /* ─── Reusable slide layouts ─── */
 
@@ -89,7 +89,7 @@ const MobileSection = ({ children, className = "" }: { children: React.ReactNode
 
 /* ─── Main presentation ─── */
 
-const TOTAL_SECTIONS = 5;
+const TOTAL_SECTIONS = 6;
 
 const Index = () => {
   const { section: paramSection, slide: paramSlide } = useParams();
@@ -104,7 +104,7 @@ const Index = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const slidesRef = useRef<Record<number, number>>({});
   const [activeSlide, setActiveSlide] = useState(0);
-  const slideTotals: Record<number, number> = { 0: 3, 1: 9, 2: 6, 3: 7, 4: 1 };
+  const slideTotals: Record<number, number> = { 0: 3, 1: 9, 2: 6, 3: 7, 4: 1, 5: 1 };
   const isScrolling = useRef(false);
 
   const updateUrl = useCallback((sectionIdx: number, slideIdx: number) => {
@@ -524,7 +524,7 @@ const Index = () => {
         /* ─── MOBILE: simple vertical snap scroll ─── */
         <>
           {allSlides}
-          <div className="snap-start"><ArticleSection /></div>
+          <section id="section-article" className="snap-start flex-shrink-0 h-screen overflow-y-auto scrollbar-hide"><ArticleSection /></section>
         </>
       ) : (
         /* ─── DESKTOP: original horizontal+vertical navigation ─── */
@@ -853,9 +853,9 @@ const Index = () => {
       </section>
 
       {/* Article section */}
-      <div className="snap-start">
+      <section id="section-article" className="h-screen snap-start flex-shrink-0 overflow-y-auto scrollbar-hide">
         <ArticleSection />
-      </div>
+      </section>
 
       {/* Vertical section nav */}
       {!isOgMode && (
