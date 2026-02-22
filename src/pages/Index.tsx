@@ -132,7 +132,10 @@ const Index = () => {
     const idx = SECTION_NAMES.indexOf(paramSection as any);
     if (idx > 0) {
       const el = document.getElementById(`section-${SECTION_NAMES[idx]}`);
-      el?.scrollIntoView({ behavior: "instant" as ScrollBehavior });
+      if (el) {
+        if (el.classList.contains('overflow-y-auto')) el.scrollTop = 0;
+        el.scrollIntoView({ behavior: "instant" as ScrollBehavior });
+      }
     }
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
@@ -158,6 +161,10 @@ const Index = () => {
       requestAnimationFrame(() => {
         if (scroller) scroller.style.scrollSnapType = "";
       });
+    }
+    // Reset internal scroll for article section
+    if (el && el.classList.contains('overflow-y-auto')) {
+      el.scrollTop = 0;
     }
     el?.scrollIntoView({ behavior: "smooth" });
   };
