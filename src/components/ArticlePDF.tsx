@@ -9,22 +9,22 @@ import {
 
 Font.register({
   family: "DM Serif Display",
-  src: "https://fonts.gstatic.com/s/dmserifdisplay/v17/-nFnOHM81r4j6k0gjAW3mujVU2B2G_Bx0g.woff2",
+  src: "/fonts/DMSerifDisplay-Regular.ttf",
 });
 
 Font.register({
   family: "Inter",
   fonts: [
-    { src: "https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1ZL7.woff2", fontWeight: 400 },
-    { src: "https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1ZL7.woff2", fontWeight: 400, fontStyle: "italic" },
-    { src: "https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1ZL7.woff2", fontWeight: 600 },
+    { src: "/fonts/Inter-Variable.ttf", fontWeight: 400 },
+    { src: "/fonts/Inter-Variable.ttf", fontWeight: 400, fontStyle: "italic" },
+    { src: "/fonts/Inter-Variable.ttf", fontWeight: 600 },
   ],
 });
 
 Font.register({
   family: "Barlow Condensed",
   fonts: [
-    { src: "https://fonts.gstatic.com/s/barlowcondensed/v13/HTxwL3I-JCGChYJ8VI-L6OO_au7B4873z3bWuQ.woff2", fontWeight: 600 },
+    { src: "/fonts/BarlowCondensed-SemiBold.ttf", fontWeight: 600 },
   ],
 });
 
