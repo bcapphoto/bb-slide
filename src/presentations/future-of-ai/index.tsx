@@ -667,7 +667,6 @@ const futureOfAi: PresentationConfig = {
   slug: "future-of-ai",
   title: "The Future of AI - Brand Blvd",
   description: "How artificial intelligence is reshaping expectations, value, and identity - and what it means for us.",
-  ogImage: "https://storage.googleapis.com/gpt-engineer-file-uploads/i9RYoO5s7dMy9YqF7p9BG90zLjQ2/social-images/social-1771640938712-Screen_Shot_2026-02-20_at_9.25.39_PM.webp",
   themeId: "brand-blvd",
 
   sections: [

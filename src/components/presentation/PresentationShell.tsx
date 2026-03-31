@@ -182,6 +182,18 @@ export default function PresentationShell({ config }: Props) {
     });
   }
 
+  // OG mode: render only the first slide, no nav, no scroll
+  if (isOgMode) {
+    const firstSlide = config.sections[0]?.desktopSlides[0];
+    return (
+      <ThemeProvider themeId={config.themeId}>
+        <div className="w-[1200px] h-[630px] overflow-hidden grain">
+          <div className="w-[1200px] h-[630px]">{firstSlide}</div>
+        </div>
+      </ThemeProvider>
+    );
+  }
+
   return (
     <ThemeProvider themeId={config.themeId}>
       <div
