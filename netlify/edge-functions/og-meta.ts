@@ -39,10 +39,12 @@ export default async function handler(request: Request, context: Context) {
   if (!meta) return response;
 
   const ogImageUrl = `${url.origin}/og/${slug}.png`;
+  const ogUrl = `${url.origin}/${slug}/`;
   let html = await response.text();
 
   // Replace or inject OG tags
   const ogTags = `
+    <meta property="og:url" content="${ogUrl}">
     <meta property="og:title" content="${meta.title}">
     <meta property="og:description" content="${meta.description}">
     <meta property="og:image" content="${ogImageUrl}">

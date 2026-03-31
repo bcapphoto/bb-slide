@@ -5,8 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build && npm run generate:og",
-    "build:vite": "vite build",
+    "build": "vite build",
     "generate:og": "npx tsx scripts/generate-og.ts",
     "build:dev": "vite build --mode development",
     "lint": "eslint .",
