@@ -1,51 +1,6 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700;900&family=Barlow+Condensed:wght@400;500;600;700;800;900&family=DM+Serif+Display:ital@0;1&display=swap');
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-@layer base {
-  :root {
-    --background: 186 45% 11%;
-    --foreground: 0 0% 98%;
-
-    --card: 186 40% 14%;
-    --card-foreground: 0 0% 98%;
-
-    --popover: 186 40% 14%;
-    --popover-foreground: 0 0% 98%;
-
-    --primary: 82 72% 52%;
-    --primary-foreground: 186 45% 11%;
-
-    --secondary: 186 35% 16%;
-    --secondary-foreground: 0 0% 98%;
-
-    --muted: 186 30% 18%;
-    --muted-foreground: 186 15% 55%;
-
-    --accent: 82 72% 52%;
-    --accent-foreground: 186 45% 11%;
-
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 0 0% 98%;
-
-    --border: 186 25% 20%;
-    --input: 186 25% 20%;
-    --ring: 82 72% 52%;
-
-    --radius: 0.5rem;
-
-    --sidebar-background: 186 40% 14%;
-    --sidebar-foreground: 0 0% 98%;
-    --sidebar-primary: 82 72% 52%;
-    --sidebar-primary-foreground: 186 45% 11%;
-    --sidebar-accent: 186 30% 18%;
-    --sidebar-accent-foreground: 0 0% 98%;
-    --sidebar-border: 186 25% 20%;
-    --sidebar-ring: 82 72% 52%;
-  }
-}
 
 @layer base {
   * {
@@ -54,8 +9,6 @@
 
   body {
     @apply bg-background text-foreground;
-    font-family: 'Inter', system-ui, sans-serif;
-    font-weight: 300;
   }
 }
 
@@ -67,172 +20,38 @@
   .scrollbar-hide::-webkit-scrollbar {
     display: none;
   }
-
-  .font-display {
-    font-family: 'Barlow Condensed', sans-serif;
-  }
-
-  .font-serif {
-    font-family: 'DM Serif Display', serif;
-  }
-
-  .font-title {
-    font-family: 'Inter', sans-serif;
-    font-weight: 900;
-  }
 }
 
-/* Dot grid pattern overlay - small */
-.dot-grid {
-  position: relative;
-}
-.dot-grid::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  z-index: 0;
-  background-image: radial-gradient(circle, hsl(186 30% 25%) 1px, transparent 1px);
-  background-size: 28px 28px;
-  opacity: 0.4;
-}
+/* ─── Pattern base structure (shared across all themes) ─── */
+/* The actual colors/sizes/opacities are injected by ThemeProvider */
 
-/* Bold dot grid - larger dots like the PDF page 3 */
-.dot-grid-bold {
-  position: relative;
-}
-.dot-grid-bold::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  z-index: 0;
-  background-image: radial-gradient(circle, hsl(186 25% 22%) 3px, transparent 3px);
-  background-size: 36px 36px;
-  opacity: 0.5;
-}
-
-/* Diagonal lines pattern */
-.diagonal-lines {
-  position: relative;
-}
-.diagonal-lines::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  z-index: 0;
-  background-image: repeating-linear-gradient(
-    -45deg,
-    transparent,
-    transparent 20px,
-    hsl(186 30% 16%) 20px,
-    hsl(186 30% 16%) 21px
-  );
-  opacity: 0.3;
-}
-
-/* Radial gradient glow - bottom right like PDF section openers */
+.dot-grid,
+.dot-grid-bold,
+.dot-grid-light,
+.diagonal-lines,
+.diagonal-lines-light,
+.cross-grid,
+.cross-grid-light,
 .glow-br {
   position: relative;
 }
+
+.dot-grid::before,
+.dot-grid-bold::before,
+.dot-grid-light::before,
+.diagonal-lines::before,
+.diagonal-lines-light::before,
+.cross-grid::before,
+.cross-grid-light::before,
 .glow-br::before {
   content: '';
   position: absolute;
   inset: 0;
   pointer-events: none;
   z-index: 0;
-  background: radial-gradient(ellipse at 85% 75%, hsl(186 35% 16%) 0%, transparent 60%);
-  opacity: 0.8;
 }
 
-/* Cross pattern */
-.cross-grid {
-  position: relative;
-}
-.cross-grid::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  z-index: 0;
-  background-image:
-    linear-gradient(hsl(186 30% 16%) 1px, transparent 1px),
-    linear-gradient(90deg, hsl(186 30% 16%) 1px, transparent 1px);
-  background-size: 48px 48px;
-  opacity: 0.25;
-}
-
-/* White-bg dot grid */
-.dot-grid-light {
-  position: relative;
-}
-.dot-grid-light::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  z-index: 0;
-  background-image: radial-gradient(circle, hsl(0 0% 80%) 1.5px, transparent 1.5px);
-  background-size: 32px 32px;
-  opacity: 0.5;
-}
-
-/* White-bg cross grid */
-.cross-grid-light {
-  position: relative;
-}
-.cross-grid-light::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  z-index: 0;
-  background-image:
-    linear-gradient(hsl(0 0% 90%) 1px, transparent 1px),
-    linear-gradient(90deg, hsl(0 0% 90%) 1px, transparent 1px);
-  background-size: 48px 48px;
-  opacity: 0.6;
-}
-
-/* White-bg diagonal lines */
-.diagonal-lines-light {
-  position: relative;
-}
-.diagonal-lines-light::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  z-index: 0;
-  background-image: repeating-linear-gradient(
-    -45deg,
-    transparent,
-    transparent 20px,
-    hsl(0 0% 92%) 20px,
-    hsl(0 0% 92%) 21px
-  );
-  opacity: 0.5;
-}
-
-/* Green highlight pill behind text */
-.highlight-green {
-  background-color: hsl(82 72% 52%);
-  color: hsl(186 45% 11%);
-  padding: 0.1em 0.25em;
-  display: inline;
-  line-height: 1.35;
-  box-decoration-break: clone;
-  -webkit-box-decoration-break: clone;
-}
-
-/* Left green accent bar */
-.accent-bar {
-  border-left: 4px solid hsl(82 72% 52%);
-  padding-left: 1rem;
-}
-
-/* Subtle grain */
+/* ─── Grain overlay structure ─── */
 .grain::after {
   content: '';
   position: fixed;
@@ -241,7 +60,6 @@
   width: 100%;
   height: 100%;
   pointer-events: none;
-  opacity: 0.02;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
   z-index: 9999;
 }

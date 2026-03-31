@@ -82,7 +82,7 @@ const CursorNav = ({ onNavigate, canGo = { up: true, down: true, left: true, rig
           <svg width="400" height="400" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
             <polyline
               points="35,25 65,50 35,75"
-              stroke="hsl(82 72% 52%)"
+              stroke="hsl(var(--primary))"
               strokeWidth="10"
               strokeLinecap="round"
               strokeLinejoin="round"
