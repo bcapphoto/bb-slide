@@ -25,6 +25,8 @@ import {
   IconArticle,
 } from "@/components/SectionIcons";
 import ArticleSection from "./ArticleSection";
+import { MMMShowcaseDesktop, MMMShowcaseMobile, MMMProductGalleryDesktop, MMMProductGalleryMobile } from "./MagicMerchUI";
+import { VideoSlide, VideoSlideDark } from "./VideoPlaceholder";
 
 import bbLogoHorizontal from "@/assets/bb-logo-horizontal-white.svg";
 import bbMonogram from "@/assets/bb-monogram-white.svg";
@@ -53,6 +55,15 @@ const titleDesktop = [
       </p>
     </div>
   </div>,
+
+  // Welcome video from Jill
+  <VideoSlide
+    from="Jill Pascuzzi"
+    role="VP of Sales, USA — Brand Blvd"
+    title={<>A personal <span className="highlight-green">welcome.</span></>}
+    subtitle="From Jill"
+    initials="JP"
+  />,
 
   // The hook
   <div className="relative w-full h-full flex items-center justify-center diagonal-lines">
@@ -129,6 +140,23 @@ const advantageDesktop = [
     </div>
   </div>,
 
+  // Bryan intro to Magic Merch Maker
+  <VideoSlideDark
+    from="Bryan Caporicci"
+    role="Founder & CEO — Brand Blvd"
+    title={<>Meet Magic Merch <span className="highlight-green">Maker.</span></>}
+    subtitle="Product Demo"
+    initials="BC"
+  />,
+
+  <div className="relative w-full h-full flex items-center justify-center bg-white text-gray-900 overflow-hidden">
+    <MMMShowcaseDesktop />
+  </div>,
+
+  <div className="relative w-full h-full flex items-center justify-center bg-white text-gray-900 overflow-hidden">
+    <MMMProductGalleryDesktop />
+  </div>,
+
   <WhiteSlide>
     <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
       <div>
@@ -154,7 +182,7 @@ const advantageDesktop = [
       <div className="inline-block px-5 py-2 rounded-sm bg-primary text-primary-foreground font-display text-base font-bold tracking-widest uppercase mb-6">The Advantage</div>
       <BigText>You sell.<br />We <span className="highlight-green">arm you.</span></BigText>
       <p className="mt-8 text-muted-foreground font-light max-w-3xl leading-relaxed text-lg md:text-xl">
-        AI-powered mockups, pitch decks, demo stores, and creative — all built for you, so you can focus on closing.
+        Magic Merch Maker — AI-powered mockups, pitch decks, demo stores, and creative — all built for you, so you can focus on closing.
       </p>
     </Slide>
   </div>,
@@ -181,7 +209,7 @@ const ideasDesktop = [
       <p className="font-display text-sm uppercase tracking-[0.35em] text-muted-foreground font-bold mb-10">What Sets You Apart</p>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
         <GridCard superTitle="Creative" title="In-house creative team." body="Full design capabilities for the big pitches that win new business." />
-        <GridCard superTitle="Execution" title="Production under one roof." body="Full production and execution — you pitch bigger because you can actually deliver bigger." />
+        <GridCard superTitle="Execution" title="Production under one roof." body="Magic Merch Maker + full production and execution — you pitch bigger because you can deliver bigger." />
         <GridCard superTitle="Reach" title="Canada + U.S. seamless." body="North American reach with zero friction for your clients." />
       </div>
     </div>
@@ -387,6 +415,15 @@ const titleMobile = [
     </div>
   </div>,
 
+  // Welcome video from Jill
+  <VideoSlide
+    from="Jill Pascuzzi"
+    role="VP of Sales, USA — Brand Blvd"
+    title={<>A personal <span className="highlight-green">welcome.</span></>}
+    subtitle="From Jill"
+    initials="JP"
+  />,
+
   <div className="relative w-full h-full flex items-center justify-center diagonal-lines">
     <Slide className="relative z-10">
       <SerifStatement>
@@ -442,6 +479,23 @@ const advantageMobile = [
         <GridCard superTitle="Creative" title="Ideas → presentations." body="Polished presentations, not napkin sketches." />
       </div>
     </div>
+  </div>,
+
+  // Bryan intro to Magic Merch Maker
+  <VideoSlideDark
+    from="Bryan Caporicci"
+    role="Founder & CEO — Brand Blvd"
+    title={<>Meet Magic Merch <span className="highlight-green">Maker.</span></>}
+    subtitle="Product Demo"
+    initials="BC"
+  />,
+
+  <div className="w-full h-full bg-white text-gray-900 flex items-center justify-center overflow-hidden">
+    <MMMShowcaseMobile />
+  </div>,
+
+  <div className="w-full h-full bg-white text-gray-900 flex items-center justify-center overflow-hidden">
+    <MMMProductGalleryMobile />
   </div>,
 
   <div className="w-full h-full bg-white text-gray-900 flex items-center justify-center px-8">

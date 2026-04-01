@@ -220,6 +220,13 @@ const ArticlePDF = () => (
       <Bullet>Demo stores — Live, clickable company stores your prospect can browse on the spot</Bullet>
       <Bullet>Creative concepts — Ideas turned into polished presentations, not napkin sketches</Bullet>
 
+      <Text style={s.p}>
+        All of this is powered by Magic Merch Maker — our all-in-one AI platform built in-house at Brand Blvd. It does company research automatically, generates product ideas tailored to your client's brand, creates AI mockups in seconds, assembles Creative Concept Decks, and even spins up a live demo store — all before the meeting starts.
+      </Text>
+      <Text style={s.p}>
+        It's not a collection of disconnected tools. It's a single pipeline: research a prospect, generate ideas, build mockups, assemble a pitch, and launch a store. End to end.
+      </Text>
+
       <View style={s.beforeAfter}>
         <View style={s.beforeAfterCol}>
           <Text style={[s.label, { color: "#6B7280" }]}>Before</Text>
@@ -227,7 +234,7 @@ const ArticlePDF = () => (
         </View>
         <View style={s.beforeAfterCol}>
           <Text style={[s.label, { color: green }]}>After</Text>
-          <Text style={[s.p, s.bold]}>You spend it closing. The tools do the rest.</Text>
+          <Text style={[s.p, s.bold]}>You spend it closing. Magic Merch Maker does the rest.</Text>
         </View>
       </View>
 
@@ -239,7 +246,7 @@ const ArticlePDF = () => (
         At most distributors, the conversation starts and ends with a product catalog. At Brand Blvd, it starts with an idea that makes your client's brand unforgettable.
       </Text>
       <Text style={s.p}>
-        In-house creative team. Full production and execution under one roof. You pitch bigger because you can actually deliver bigger.
+        In-house creative team. Full production and execution under one roof. Magic Merch Maker handles the research and ideation; our creative team brings it to life. You pitch bigger because you can actually deliver bigger.
       </Text>
 
       <View style={s.beforeAfter}>

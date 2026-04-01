@@ -108,6 +108,13 @@ const ArticleSection = () => {
           </li>
         </ul>
 
+        <p className="text-gray-600 text-lg leading-relaxed mb-6">
+          All of this is powered by <strong>Magic Merch Maker</strong> — our all-in-one AI platform built in-house at Brand Blvd. It does company research automatically, generates product ideas tailored to your client's brand, creates AI mockups in seconds, assembles Creative Concept Decks, and even spins up a live demo store — all before the meeting starts.
+        </p>
+        <p className="text-gray-600 text-lg leading-relaxed mb-6">
+          It's not a collection of disconnected tools. It's a single pipeline: research a prospect, generate ideas, build mockups, assemble a pitch, and launch a store. End to end.
+        </p>
+
         <div className="bg-gray-50 rounded-lg p-6 md:p-8 mb-8">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div>
@@ -116,7 +123,7 @@ const ArticleSection = () => {
             </div>
             <div>
               <p className="font-display text-xs uppercase tracking-[0.3em] text-brand-green font-bold mb-2">After</p>
-              <p className="text-gray-900 leading-relaxed font-medium">You spend it closing. The tools do the rest.</p>
+              <p className="text-gray-900 leading-relaxed font-medium">You spend it closing. Magic Merch Maker does the rest.</p>
             </div>
           </div>
         </div>
@@ -137,7 +144,7 @@ const ArticleSection = () => {
         </p>
 
         <p className="text-gray-600 text-lg leading-relaxed mb-6">
-          In-house creative team. Full production and execution under one roof. You pitch bigger because you can actually deliver bigger.
+          In-house creative team. Full production and execution under one roof. Magic Merch Maker handles the research and ideation; our creative team brings it to life. You pitch bigger because you can actually deliver bigger.
         </p>
 
         <div className="bg-gray-50 rounded-lg p-6 md:p-8 mb-8">
