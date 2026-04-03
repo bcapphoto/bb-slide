@@ -57,6 +57,12 @@ A web-based presentation system for Brand Blvd. Each presentation is a standalon
 - Articles are the source of truth — slides are derived from article content
 - PDF accent color comes from `theme.pdf.accentColor`
 
+### Text Color Rules (Critical)
+- **Dark-background slides** (`dot-grid`, `dot-grid-bold`, `diagonal-lines`, `cross-grid`, `glow-br`) — use theme-aware classes: `text-foreground`, `text-muted-foreground`, `text-primary`
+- **White-background slides** (`WhiteSlide`, `bg-white`, `dot-grid-light`, `cross-grid-light`, `diagonal-lines-light`) — can use Tailwind gray classes: `text-gray-900`, `text-gray-600`, `text-gray-500`
+- **Never use `text-gray-*` on dark backgrounds** — they become invisible. Use `text-foreground` (for emphasis) and `text-muted-foreground` (for body text) instead
+- The `<Slide>`, `<SerifStatement>`, `<BigText>` primitives handle their own colors correctly via theme variables — only manual `<div>`/`<p>` elements need attention
+
 ## Build & Verify
 
 ```bash

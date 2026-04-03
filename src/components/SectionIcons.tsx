@@ -136,5 +136,40 @@ export const IconTeam = ({ size = 24, ...props }: IconProps) => (
   </svg>
 );
 
+/* ─── Update: circular refresh arrow ─── */
+export const IconUpdate = ({ size = 24, ...props }: IconProps) => (
+  <svg {...defaults(size)} {...props}>
+    <path d="M21 12C21 16.97 16.97 21 12 21C7.03 21 3 16.97 3 12C3 7.03 7.03 3 12 3C15.31 3 18.16 4.9 19.5 7.64" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+    <path d="M16 7.5H20V3.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+  </svg>
+);
+
+/* ─── Org chart: hierarchical nodes ─── */
+export const IconOrgChart = ({ size = 24, ...props }: IconProps) => (
+  <svg {...defaults(size)} {...props}>
+    <rect x="9" y="3" width="6" height="4" rx="1" stroke="currentColor" strokeWidth="1.5" />
+    <rect x="3" y="17" width="6" height="4" rx="1" stroke="currentColor" strokeWidth="1.5" />
+    <rect x="15" y="17" width="6" height="4" rx="1" stroke="currentColor" strokeWidth="1.5" />
+    <path d="M12 7V11M12 11H6M12 11H18M6 11V17M18 11V17" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+  </svg>
+);
+
+/* ─── Agent: bot/automation cog ─── */
+export const IconAgent = ({ size = 24, ...props }: IconProps) => (
+  <svg {...defaults(size)} {...props}>
+    <circle cx="12" cy="12" r="4" stroke="currentColor" strokeWidth="1.5" />
+    <path d="M12 2V5M12 19V22M2 12H5M19 12H22M4.93 4.93L7.05 7.05M16.95 16.95L19.07 19.07M19.07 4.93L16.95 7.05M7.05 16.95L4.93 19.07" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+  </svg>
+);
+
+/* ─── Target: crosshair for buyer targeting ─── */
+export const IconTarget = ({ size = 24, ...props }: IconProps) => (
+  <svg {...defaults(size)} {...props}>
+    <circle cx="12" cy="12" r="8" stroke="currentColor" strokeWidth="1.5" />
+    <circle cx="12" cy="12" r="3" stroke="currentColor" strokeWidth="1.5" />
+    <path d="M12 2V6M12 18V22M2 12H6M18 12H22" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+  </svg>
+);
+
 export const SECTION_ICONS = [IconHome, IconFastForward, IconStacks, IconIdentity, IconClosing, IconArticle] as const;
 export const SECTION_LABELS = ["Home", "Instant", "Human Value", "Identity", "Summary", "Article"] as const;

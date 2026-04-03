@@ -428,6 +428,151 @@ const ArticlePDF = () => (
         If we tie our growth to payroll size, we're tied to a shrinking lever. If we tie our growth to identity and belonging, we tie our growth to something expanding. That's the shift.
       </Text>
 
+      {/* ─── UPDATE: 30 DAYS LATER ─── */}
+      <View style={{ ...s.divider, marginVertical: 50 }}>
+        <View style={s.dividerLine} />
+      </View>
+
+      <Text style={s.h2}>Update: 1 month later, and I already need to add to this</Text>
+      <Text style={s.p}>
+        I wrote this article about a month ago. I thought it would hold up for a while. It didn't.
+      </Text>
+      <Text style={s.p}>
+        Not because I was wrong. The themes still stand. But new signals emerged in the last 30 days that I didn't fully see coming. The speed I wrote about in the first section? It's happening to the article itself.
+      </Text>
+      <Text style={s.pLast}>
+        So rather than rewrite what's above, I'm adding to it. Consider this the "yes, and..." to everything you just read. 3 things have shifted my thinking since.
+      </Text>
+
+      {/* ─── UPDATE SECTION 1: Org Charts ─── */}
+      <Divider />
+
+      <Text style={s.h2}>The org chart is dissolving</Text>
+
+      <Text style={s.h3}>The management layer problem</Text>
+      <Text style={s.p}>
+        For 2,000 years, organizations have been designed around one constraint: a leader can only effectively manage 3 to 8 people. That's it. That number hasn't changed since the Roman military. It's why we have hierarchies. It's why we have middle management.
+      </Text>
+      <Text style={s.p}>
+        The entire purpose of those layers is coordination. Information flows up. Decisions flow down. Middle management exists to aggregate, translate, and route.
+      </Text>
+      <Text style={s.p}>
+        AI doesn't need layers to coordinate. It doesn't need a weekly pipeline review to know what's happening. It doesn't need someone spending 3 days building a spreadsheet just so a VP can ask a question about trends.
+      </Text>
+      <Text style={s.p}>
+        Sequoia Capital published a piece recently called "From Hierarchy to Intelligence." It profiles how Block (the company behind Cash App and Square) is replacing the coordination function itself. They built a "Company World Model" - an AI system that maintains a continuously updated picture of the entire operation. The result? 3 roles instead of 10 layers:
+      </Text>
+      <View style={s.accentItem}>
+        <Text><Text style={s.accentLabel}>Individual contributors</Text> who use the model for context instead of waiting for management approval.</Text>
+      </View>
+      <View style={s.accentItem}>
+        <Text><Text style={s.accentLabel}>Directly Responsible Individuals</Text> who own a specific problem for 90 days with cross-team authority.</Text>
+      </View>
+      <View style={s.accentItem}>
+        <Text><Text style={s.accentLabel}>Player-coaches</Text> who build things and develop people at the same time.</Text>
+      </View>
+      <Text style={s.pLast}>
+        The manager role doesn't disappear. But it transforms from information processor to coach and decision-maker. The "doing" part of management is what AI absorbs first. The thinking part - judgment, coaching, strategy - that stays human.
+      </Text>
+
+      <Text style={s.h3}>So what does this change?</Text>
+      <Text style={s.p}>
+        Inside our walls, "growing the team" starts to look less like adding headcount and more like increasing leverage per person. Outside our walls, the companies we're selling to will look different - flatter orgs, fewer decision-makers, fewer middle managers to navigate in a deal.
+      </Text>
+      <Text style={s.pLast}>
+        But if management layers compress, the people who remain become more important, not less. They care more about culture and belonging because they're closer to the work. That's a very good thing for a company that manufactures belonging.
+      </Text>
+
+      {/* ─── UPDATE SECTION 2: Agents ─── */}
+      <Divider />
+
+      <Text style={s.h2}>Agents are doing the work</Text>
+
+      <Text style={s.h3}>The convergence</Text>
+      <Text style={s.p}>
+        A month ago, when I talked about AI "taking over the doing," I was mostly talking about AI as a tool. What's changed is the speed at which the biggest players are converging on the same conclusion: agents should do the work, not just assist with it.
+      </Text>
+      <View style={s.accentItem}>
+        <Text><Text style={s.accentLabel}>Claude Code</Text> now generates over $2.5 billion in annual revenue. 4% of all public GitHub commits are authored by Claude Code - doubled in a single month.</Text>
+      </View>
+      <View style={s.accentItem}>
+        <Text><Text style={s.accentLabel}>OpenClaw</Text> hit 250,000 GitHub stars in 60 days - surpassing React's 10-year record. 3.2 million monthly active users.</Text>
+      </View>
+      <View style={s.accentItem}>
+        <Text><Text style={s.accentLabel}>Cursor</Text> launched version 3. You describe what you want in plain English and the system writes it, tests it, and demos it. Revenue doubled in 3 months to over $2 billion annually.</Text>
+      </View>
+      <Text style={s.pLast}>
+        These aren't 3 competing tools. They're 3 signals pointing the same direction: AI isn't assisting anymore. It's executing.
+      </Text>
+
+      <Text style={s.h3}>Beyond code</Text>
+      <Text style={s.p}>
+        Coding is the most visible example because it's the easiest to agentify. But it's just the first domino. Marketing is next. The $200+ billion in agentic AI spending projected for 2026 isn't speculative.
+      </Text>
+      <Text style={s.pLast}>
+        Dario Amodei, CEO of Anthropic, gives a 70-80% probability that 2026 is the year we see the first billion-dollar company run by a single person. This reframes the question from "will AI take jobs?" to: what does a company even look like when agents can do the work?
+      </Text>
+
+      <Text style={s.h3}>Services are the new software</Text>
+      <Text style={s.p}>
+        Sequoia Capital published "Services: The New Software." The argument: the next trillion-dollar company won't sell tools. It will sell outcomes. For every dollar companies spend on software, they spend 6 dollars on services.
+      </Text>
+      <Text style={s.pLast}>
+        We don't sell t-shirts. We sell the experience around the t-shirt - the brand moment, the culture artifact, the belonging signal. The more AI commoditizes logistics, the more the value shifts to what we're actually good at: designing the moment.
+      </Text>
+
+      {/* ─── UPDATE SECTION 3: Buyers ─── */}
+      <Divider />
+
+      <Text style={s.h2}>When machines are the buyers</Text>
+
+      <Text style={s.h3}>The question no one is asking</Text>
+      <Text style={s.p}>
+        If AI is making the decisions... who are we selling to? I don't mean philosophically. I mean literally:
+      </Text>
+      <Bullet>45% of B2B buyers already use AI as their primary research method for identifying new suppliers.</Bullet>
+      <Bullet>Two-thirds of B2B buyers use AI agents for vendor research and rely on them as much as - or more than - Google.</Bullet>
+      <Bullet>By 2028, analysts predict AI agents will mediate 90% of all B2B purchases - $15 trillion in spending through machines.</Bullet>
+      <Text style={s.pLast}>
+        Tomorrow, a procurement manager tells their AI agent: "I need 500 branded polos for a company retreat. Budget is $25K. Find me 3 vendors." The agent researches, compares, shortlists. The human doesn't visit a website. Doesn't take a sales call.
+      </Text>
+
+      <Text style={s.h3}>Two lanes</Text>
+      <View style={s.accentItem}>
+        <Text><Text style={s.accentLabel}>Lane 1: Human buyer</Text> - Relationships, trust, and personal service still win. We double down on the human stuff.</Text>
+      </View>
+      <View style={s.accentItem}>
+        <Text><Text style={s.accentLabel}>Lane 2: Agent buyer</Text> - Are we structured data an AI can parse? Are our case studies machine-readable? A completely different muscle.</Text>
+      </View>
+      <Text style={s.pLast}>
+        It's not replacing the human sales process. It's adding a second, parallel track.
+      </Text>
+
+      <Text style={s.h3}>The Brand Blvd angle</Text>
+      <Text style={s.p}>
+        An AI procurement agent can't evaluate: Does this company actually understand my brand? Will they push back when my idea is off? Will they design an experience that makes our people feel something?
+      </Text>
+      <Text style={s.p}>
+        The transactional vendors will get eaten alive by agentic procurement. But companies that sell belonging, that design brand moments, that bring creative strategy? Those are the ones the human picks up the phone for.
+      </Text>
+      <Text style={s.pLast}>
+        The agent can shortlist vendors. But it can't feel the culture of a brand. We're selling something machines can't evaluate. And that might be the best competitive moat in an agentic world.
+      </Text>
+
+      {/* ─── UPDATE CLOSING ─── */}
+      <View style={{ ...s.divider, marginVertical: 50 }}>
+        <View style={s.dividerLine} />
+      </View>
+      <Text style={s.p}>
+        I wrote the original article to make a point about speed. And then I had to update it 30 days later because the world changed faster than I realized. That's the meta-lesson.
+      </Text>
+      <Text style={s.p}>
+        The companies that win are not the ones who predict the future correctly. They're the ones who build the muscle to adapt continuously.
+      </Text>
+      <Text style={s.pLast}>
+        That's what we're doing at Brand Blvd. Paying attention is half the battle. The other half is doing something about it.
+      </Text>
+
       {/* Footer */}
       <View style={s.footer}>
         <View style={s.footerDot} />

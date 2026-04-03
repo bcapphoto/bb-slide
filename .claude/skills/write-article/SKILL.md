@@ -35,21 +35,75 @@ A good article for this system typically follows this pattern:
 
 Read the existing article for voice reference: `src/presentations/future-of-ai/ArticleSection.tsx`
 
-Key characteristics of Bryan's writing voice:
+#### Overall Tone
+
+Clear, direct, warm, and practical. Sounds like a builder-teacher explaining something he actually cares about — not a marketer writing copy, not a consultant hedging their bets. Confident but not arrogant. Collaborative, intellectually curious, candid.
+
+In one sentence: A sharp, warm, no-BS builder-founder who writes to organize thinking and move things forward.
+
+#### Key Characteristics
+
 - **Direct and authoritative** — Speaks from conviction, not hedging
-- **Punchy rhythm** — Short declarative sentences mixed with longer explanatory ones
-- **Conversational but not casual** — Professional without being stiff
+- **Punchy rhythm** — Short sentences for emphasis. Longer when explaining. Mix of short and mid-length. Partial sentences used deliberately for punch: "Bold ideas. Crazy imaginations. Impressive logistics."
+- **Conversational but not casual** — Professional without being stiff. Contractions freely. First person freely.
 - **"We" framing** — Talks to and with the team, not at them
-- **Concrete over abstract** — Uses specific examples, numbers, company names
+- **Concrete over abstract** — Uses specific examples, numbers (always numerals: 5 not five), company names
 - **Bold claims backed up** — States the thesis bluntly, then supports it
 - **Active voice** — "AI is compressing time" not "Time is being compressed by AI"
 - **Strategic lens** — Always connects the "what" to the "so what" for the business
+- **Writing organizes thinking** — Not just communicating, but working through ideas on the page
 
-Example of Bryan's rhythm:
-> AI tools have moved from novelty to household names. They're training people to expect immediate results. Not faster. Immediate.
+#### Signature Rhetorical Moves
 
-Another example:
-> Software will get better. AI-empowered systems will draft proposals, generate pricing comparisons, and source products instantly. More people will use more tools to do the work we do now. If we continue to be just order-takers, we'll be beaten out by alternatives that make it easier and quicker.
+- **Hook then substance.** Opens with a short personal observation, bold claim, or story beat before getting to the main point.
+- **"See, ..." / "Here's the thing ..." / "The problem is ..."** — telegraphs an insight shift or reframe mid-paragraph.
+- **Direct address to stop the reader.** "Pause." / "Hear me out." / "Do you realize?" — creates forced attention before the main point lands.
+- **Name the structure before filling it.** "There are 2 parts:" / "Here's how it works:" / "Here's the important part, though."
+- **Coins his own terms.** Names concepts he's invented and uses them naturally: "process debt," "ZOG," "rocking horse theory." Names them once, doesn't over-explain.
+- **Teach then apply.** Explains the concept first (often with an analogy or named framework), then tells the reader what to do with it.
+- **Self-disclosure as illustration.** Uses his own habits and preferences as examples. Natural, not performative.
+- **Parenthetical asides.** Uses parentheses for self-aware commentary or casual context: "(And no, it's not 'just use ChatGPT')"
+- **The dramatic "..." pause.** Uses "..." as a dramatic continuation marker — signals "here comes the real thing." Not trailing off. Theatrical.
+- **Rhetorical question setup.** Uses a question to frame a key point, then answers it himself.
+
+#### Formatting Rules
+
+- Sentence case always, never title case
+- Uses " -- " (double hyphens) for asides. Never em dashes.
+- Almost never uses semicolons
+- Uses exclamation points scattered naturally, not every line
+- Numbers always as numerals (5, not five)
+- Uses "~" for approximation: "~12 months ago"
+- Always 2 line breaks between paragraphs — never dense blocks
+- Uses headers, bullets, numbered lists, short paragraphs, and frameworks
+
+#### What to AVOID
+
+- Corporate fluff and buzzwords ("synergy," "circle back," "deep dive," "at the end of the day")
+- Passive voice
+- Excessive politeness padding
+- Vague motivational language
+- Jargon-heavy or meandering prose
+- Em dashes (use -- double hyphens)
+- Emojis in written content
+- "Certainly!", "Great question!", "Of course!"
+- Anything that sounds like a PR department or LinkedIn ghostwriter
+- Over-explaining frameworks — name them, use them, move on
+- Title case headings
+
+#### Examples of Bryan's Rhythm
+
+> "It's an AI-everything world. Yup. The bots are taking over. Err. Not really. People still come first."
+
+> "Business owners. Pause. Hear me out for a moment. Do you realize? You built a thing from nothing. You solve a real problem in the real world. Think about that. That's pretty damn cool!"
+
+> "Software will get better. AI-empowered systems will draft proposals, generate pricing comparisons, and source products instantly. More people will use more tools to do the work we do now. If we continue to be just order-takers, we'll be beaten out by alternatives that make it easier and quicker."
+
+> "...you somewhere along the way started drowning in what I call 'process debt' -- a Zap here, a Google Sheet there, a few too many email templates."
+
+#### Voice Check
+
+After drafting, ask: "Does this sound like a sharp, direct, builder-founder who values clarity, action, and genuine human connection?" If it sounds like a PR email, corporate memo, or LinkedIn ghostwriter — rewrite it. The goal is: it sounds like Bryan wrote it.
 
 ### 4. Iterate with the User
 

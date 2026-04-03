@@ -79,7 +79,13 @@ Always read these files to understand the patterns:
 
 4. **Background patterns**: Use `dot-grid`, `dot-grid-bold`, `diagonal-lines`, `cross-grid`, `glow-br` on dark slides. Use `dot-grid-light`, `cross-grid-light`, `diagonal-lines-light` on white slides. Vary them across sections for visual rhythm.
 
-5. **Highlight green**: Use `<span className="highlight-green">word</span>` for the key term in each headline.
+5. **Text color rules for dark vs white backgrounds** (critical — getting this wrong makes text invisible):
+   - **Dark-background slides** (`dot-grid`, `dot-grid-bold`, `diagonal-lines`, `cross-grid`, `glow-br`): Use `text-foreground` for headings/emphasis and `text-muted-foreground` for body text. NEVER use `text-gray-*` classes — they are dark colors on a dark background and become unreadable.
+   - **White-background slides** (`WhiteSlide`, `bg-white`, or `*-light` pattern variants): Use Tailwind gray classes (`text-gray-900`, `text-gray-600`, `text-gray-500`) as normal.
+   - The slide primitives (`Slide`, `SerifStatement`, `BigText`, `SectionOpener`, `GridCard`, etc.) handle their own text colors via CSS variables. Only custom `<div>`/`<p>` elements need manual color attention.
+   - When creating custom content on dark slides with `<GridCard>`, `<NumberedItem>`, or other primitives — those are fine, they use theme variables internally.
+
+6. **Highlight green**: Use `<span className="highlight-green">word</span>` for the key term in each headline.
 
 6. **Closing section**: Always create a summary slide that recaps all main themes with their icons and takeaway lines.
 
@@ -114,13 +120,17 @@ Run `npx tsc --noEmit` and `npm run build` to verify everything compiles.
 
 ## Voice & Tone
 
-Bryan's writing voice is:
-- Direct and confident, not academic
-- Uses short, punchy sentences mixed with longer explanatory ones
-- Speaks from experience and conviction
+Bryan's full voice reference is in the `/write-article` skill. Key points for slide content:
+- Clear, direct, warm, practical — a builder-teacher, not a marketer writing copy
+- Short punchy sentences mixed with longer explanatory ones. Partial sentences for punch.
+- Speaks from conviction, not hedging. Bold claims backed up.
 - Uses "we" when talking about the team/company
+- Concrete over abstract — specific numbers (always numerals), named companies, real examples
+- Active voice. Strategic lens — connects "what" to "so what."
+- Coins terms naturally: "process debt," "ZOG" — names once, doesn't over-explain
+- Sentence case always. Double hyphens ( -- ) for asides, never em dashes.
+- No corporate buzzwords, no passive voice, no PR tone, no emojis in content
 - Ends sections with clear, actionable takeaways
-- Avoids jargon — explains concepts simply but doesn't talk down
 
 ## Output
 
