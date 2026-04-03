@@ -55,7 +55,7 @@ const newSectionDesktop: React.ReactNode[] = [
     Big Headline with <span className="highlight-green">Key Term</span>
   </SectionOpener>,
   // 2-4 content slides
-  <PromptSlide pattern="cross-grid">Discussion question here?</PromptSlide>,
+  <PromptSlide question="Discussion question here?" />,
   <BigText>Takeaway with <span className="highlight-green">emphasis</span></BigText>,
 ];
 ```
@@ -77,10 +77,10 @@ Append new sections to the `sections` array in the `PresentationConfig`:
 ```typescript
 {
   id: "new-section",
-  title: "Section Title",
+  label: "Section Title",
   icon: IconName,
-  desktop: newSectionDesktop,
-  mobile: newSectionMobile,
+  desktopSlides: newSectionDesktop,
+  mobileSlides: newSectionMobile,
 },
 ```
 

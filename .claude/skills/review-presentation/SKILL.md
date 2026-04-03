@@ -41,7 +41,7 @@ Then cross-reference each match with its parent slide's background pattern. If t
 ### 2. Desktop + Mobile Parity
 
 For every section in the `PresentationConfig`:
-- Verify both `desktop` and `mobile` arrays exist
+- Verify both `desktopSlides` and `mobileSlides` arrays exist
 - Verify they have roughly comparable content (mobile might have fewer slides but shouldn't skip entire topics)
 - Check that mobile slides use appropriate sizing (smaller text variants)
 

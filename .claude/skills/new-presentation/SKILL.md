@@ -87,7 +87,7 @@ Always read these files to understand the patterns:
 
 6. **Highlight green**: Use `<span className="highlight-green">word</span>` for the key term in each headline.
 
-6. **Closing section**: Always create a summary slide that recaps all main themes with their icons and takeaway lines.
+7. **Closing section**: Always create a summary slide that recaps all main themes with their icons and takeaway lines.
 
 #### Article Section Rules
 

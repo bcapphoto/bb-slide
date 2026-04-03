@@ -44,8 +44,11 @@ A web-based presentation system for Brand Blvd. Each presentation is a standalon
 
 ## Skills
 
-- `/new-presentation` — Scaffold a complete new presentation from content
+- `/research` — Enrich content with stats, quotes, case studies, and data
 - `/write-article` — Collaborate on writing the foundational article
+- `/new-presentation` — Scaffold a complete new presentation from content
+- `/add-section` — Append new sections to an existing presentation
+- `/review-presentation` — QA audit for visual bugs, text readability, theme compliance
 
 ## Key Conventions
 

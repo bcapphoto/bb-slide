@@ -171,5 +171,3 @@ export const IconTarget = ({ size = 24, ...props }: IconProps) => (
   </svg>
 );
 
-export const SECTION_ICONS = [IconHome, IconFastForward, IconStacks, IconIdentity, IconClosing, IconArticle] as const;
-export const SECTION_LABELS = ["Home", "Instant", "Human Value", "Identity", "Summary", "Article"] as const;
