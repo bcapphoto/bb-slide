@@ -7,12 +7,13 @@ interface CursorNavProps {
   canGo?: { up: boolean; down: boolean; left: boolean; right: boolean };
 }
 
-const EDGE = 0.22;
+const EDGE = 0.20;
 
 const CursorNav = ({ onNavigate, canGo = { up: true, down: true, left: true, right: true } }: CursorNavProps) => {
   const [direction, setDirection] = useState<Direction>(null);
   const [pos, setPos] = useState({ x: -200, y: -200 });
   const [visible, setVisible] = useState(false);
+  const [clicking, setClicking] = useState(false);
 
   const handleMove = useCallback((e: MouseEvent) => {
     const x = e.clientX / window.innerWidth;
@@ -30,7 +31,11 @@ const CursorNav = ({ onNavigate, canGo = { up: true, down: true, left: true, rig
   }, []);
 
   const handleClick = useCallback(() => {
-    if (direction && canGo[direction]) onNavigate(direction);
+    if (direction && canGo[direction]) {
+      setClicking(true);
+      onNavigate(direction);
+      setTimeout(() => setClicking(false), 200);
+    }
   }, [direction, onNavigate, canGo]);
 
   const handleLeave = useCallback(() => {
@@ -61,32 +66,50 @@ const CursorNav = ({ onNavigate, canGo = { up: true, down: true, left: true, rig
     };
   }, [handleMove, handleClick, handleLeave]);
 
-  const rotation = direction
-    ? { right: 0, down: 90, left: 180, up: 270 }[direction]
-    : 0;
+  const isLeft = direction === "left";
 
   return (
-    <div
-      className="fixed inset-0 z-50 pointer-events-none"
-    >
+    <div className="fixed inset-0 z-50 pointer-events-none">
       {visible && showArrow && (
         <div
-          className="fixed pointer-events-none transition-opacity duration-150"
+          className="fixed pointer-events-none"
           style={{
             left: pos.x,
             top: pos.y,
-            transform: `translate(-50%, -50%) rotate(${rotation}deg)`,
-            opacity: 0.7,
+            transform: `translate(-50%, -50%) scale(${clicking ? 0.85 : 1})`,
+            transition: "transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.15s ease",
+            opacity: clicking ? 1 : 0.85,
           }}
         >
-          <svg width="400" height="400" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <polyline
-              points="35,25 65,50 35,75"
+          {/* Subtle glow behind arrow */}
+          <div
+            className="absolute inset-0 rounded-full"
+            style={{
+              background: "radial-gradient(circle, hsl(var(--primary) / 0.12) 0%, transparent 70%)",
+              width: 64,
+              height: 64,
+              transform: "translate(-50%, -50%)",
+              left: "50%",
+              top: "50%",
+            }}
+          />
+          <svg
+            width="36"
+            height="36"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            style={{
+              filter: "drop-shadow(0 0 8px hsl(var(--primary) / 0.3))",
+              transform: isLeft ? "scaleX(-1)" : undefined,
+            }}
+          >
+            <path
+              d="M9 5l7 7-7 7"
               stroke="hsl(var(--primary))"
-              strokeWidth="10"
+              strokeWidth="2.5"
               strokeLinecap="round"
               strokeLinejoin="round"
-              fill="none"
             />
           </svg>
         </div>
