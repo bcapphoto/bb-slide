@@ -132,9 +132,14 @@ Bryan's full voice reference is in the `/write-article` skill. Key points for sl
 - No corporate buzzwords, no passive voice, no PR tone, no emojis in content
 - Ends sections with clear, actionable takeaways
 
+## Post-Creation
+
+After the presentation is built and compiles cleanly, run `/contrast-audit <slug>` to verify all text is readable. Fix any contrast failures before presenting the results to the user.
+
 ## Output
 
 When done, tell the user:
 1. The URL path for their new presentation (e.g., `/new-slug`)
 2. Quick summary of sections created
-3. Remind them to add any custom images to `src/assets/` if they want background images
+3. Contrast audit results (pass/fail summary)
+4. Remind them to add any custom images to `src/assets/` if they want background images

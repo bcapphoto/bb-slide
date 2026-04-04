@@ -4,7 +4,6 @@
  * Original presentation migrated into the multi-presentation system.
  */
 
-import { ChevronsRight, Quote } from "lucide-react";
 import {
   Slide,
   BigText,
@@ -690,25 +689,25 @@ const updateIntroDesktop = [
 
   <div className="relative w-full h-full flex items-center justify-center dot-grid">
     <div className="relative z-10 w-full max-w-4xl mx-auto px-8 md:px-16 text-center">
-      <p className="font-serif text-xl md:text-2xl italic text-gray-500 mb-14">3 things have shifted my thinking since.</p>
+      <p className="font-serif text-xl md:text-2xl italic text-muted-foreground mb-14">3 things have shifted my thinking since.</p>
       <div className="space-y-10 text-left">
         <div className="flex items-center gap-6">
           <div className="flex-shrink-0 w-16 h-16 md:w-20 md:h-20 rounded-sm bg-brand-green/10 flex items-center justify-center">
             <IconOrgChart size={40} className="text-brand-green md:w-12 md:h-12" />
           </div>
-          <h3 className="font-title text-2xl md:text-3xl uppercase tracking-tight leading-tight text-gray-900">The org chart is <span className="highlight-green">dissolving.</span></h3>
+          <h3 className="font-title text-2xl md:text-3xl uppercase tracking-tight leading-tight text-foreground">The org chart is <span className="highlight-green">dissolving.</span></h3>
         </div>
         <div className="flex items-center gap-6">
           <div className="flex-shrink-0 w-16 h-16 md:w-20 md:h-20 rounded-sm bg-brand-green/10 flex items-center justify-center">
             <IconAgent size={40} className="text-brand-green md:w-12 md:h-12" />
           </div>
-          <h3 className="font-title text-2xl md:text-3xl uppercase tracking-tight leading-tight text-gray-900">Agents are doing the <span className="highlight-green">work.</span></h3>
+          <h3 className="font-title text-2xl md:text-3xl uppercase tracking-tight leading-tight text-foreground">Agents are doing the <span className="highlight-green">work.</span></h3>
         </div>
         <div className="flex items-center gap-6">
           <div className="flex-shrink-0 w-16 h-16 md:w-20 md:h-20 rounded-sm bg-brand-green/10 flex items-center justify-center">
             <IconTarget size={40} className="text-brand-green md:w-12 md:h-12" />
           </div>
-          <h3 className="font-title text-2xl md:text-3xl uppercase tracking-tight leading-tight text-gray-900">Machines are becoming the <span className="highlight-green">buyers.</span></h3>
+          <h3 className="font-title text-2xl md:text-3xl uppercase tracking-tight leading-tight text-foreground">Machines are becoming the <span className="highlight-green">buyers.</span></h3>
         </div>
       </div>
     </div>
@@ -1028,25 +1027,25 @@ const updateIntroMobile = [
 
   <div className="relative w-full h-full flex items-center justify-center dot-grid">
     <div className="relative z-10 w-full px-8 text-center">
-      <p className="font-serif text-lg italic text-gray-500 mb-10">3 things have shifted my thinking since.</p>
+      <p className="font-serif text-lg italic text-muted-foreground mb-10">3 things have shifted my thinking since.</p>
       <div className="space-y-6 text-left">
         <div className="flex items-center gap-4">
           <div className="flex-shrink-0 w-12 h-12 rounded-sm bg-brand-green/10 flex items-center justify-center">
             <IconOrgChart size={28} className="text-brand-green" />
           </div>
-          <h3 className="font-title text-lg uppercase tracking-tight leading-tight text-gray-900">The org chart is <span className="highlight-green">dissolving.</span></h3>
+          <h3 className="font-title text-lg uppercase tracking-tight leading-tight text-foreground">The org chart is <span className="highlight-green">dissolving.</span></h3>
         </div>
         <div className="flex items-center gap-4">
           <div className="flex-shrink-0 w-12 h-12 rounded-sm bg-brand-green/10 flex items-center justify-center">
             <IconAgent size={28} className="text-brand-green" />
           </div>
-          <h3 className="font-title text-lg uppercase tracking-tight leading-tight text-gray-900">Agents are doing the <span className="highlight-green">work.</span></h3>
+          <h3 className="font-title text-lg uppercase tracking-tight leading-tight text-foreground">Agents are doing the <span className="highlight-green">work.</span></h3>
         </div>
         <div className="flex items-center gap-4">
           <div className="flex-shrink-0 w-12 h-12 rounded-sm bg-brand-green/10 flex items-center justify-center">
             <IconTarget size={28} className="text-brand-green" />
           </div>
-          <h3 className="font-title text-lg uppercase tracking-tight leading-tight text-gray-900">Machines are becoming the <span className="highlight-green">buyers.</span></h3>
+          <h3 className="font-title text-lg uppercase tracking-tight leading-tight text-foreground">Machines are becoming the <span className="highlight-green">buyers.</span></h3>
         </div>
       </div>
     </div>

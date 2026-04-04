@@ -109,10 +109,15 @@ npx tsc --noEmit    # Type check
 npm run build       # Full build
 ```
 
+## Post-Addition
+
+After the new sections compile cleanly, run `/contrast-audit <slug>` to verify all text is readable. Fix any contrast failures before presenting the results to the user.
+
 ## Output
 
 When done, tell the user:
 1. What sections were added and their URL paths
 2. Summary of new slide count (desktop + mobile)
 3. Confirmation that article and PDF were updated
-4. Any icons that were created
+4. Contrast audit results (pass/fail summary)
+5. Any icons that were created

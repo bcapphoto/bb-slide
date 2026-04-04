@@ -119,3 +119,7 @@ If the user asks to fix issues (or if running as part of another skill's pipelin
 - TypeScript errors → fix type issues
 
 Always re-run `npx tsc --noEmit` after fixes to confirm resolution.
+
+## Contrast Audit
+
+After the static review is complete, run `/contrast-audit <slug>` to check computed contrast ratios in the browser. This catches issues that class-name scanning misses — like theme-aware classes that still produce poor contrast on certain backgrounds. Include the contrast audit results in your review output.
