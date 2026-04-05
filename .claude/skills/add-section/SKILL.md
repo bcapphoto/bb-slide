@@ -102,7 +102,15 @@ In `ArticlePDF.tsx`, add matching content:
 - Add between existing content and footer
 - Match the article structure
 
-### 8. Verify
+### 8. Update Presenter Notes
+
+After updating slides and article, update the presenter notes to stay in sync:
+- `src/presentations/<slug>/PresenterNotesSection.tsx` — add slide blocks for the new sections
+- `src/presentations/<slug>/PresenterNotesPDF.tsx` — add matching content to the PDF
+
+Use `/generate-presenter-notes` or follow its workflow. If the presenter notes files don't exist yet, create them from scratch.
+
+### 9. Verify
 
 ```bash
 npx tsc --noEmit    # Type check
@@ -118,6 +126,6 @@ After the new sections compile cleanly, run `/contrast-audit <slug>` to verify a
 When done, tell the user:
 1. What sections were added and their URL paths
 2. Summary of new slide count (desktop + mobile)
-3. Confirmation that article and PDF were updated
+3. Confirmation that article, PDF, and presenter notes were updated
 4. Contrast audit results (pass/fail summary)
 5. Any icons that were created

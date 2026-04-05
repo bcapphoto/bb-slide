@@ -38,6 +38,9 @@ export interface PresentationConfig {
   /** Optional article section (rendered as the final scrollable section) */
   articleComponent?: React.ComponentType;
 
+  /** Optional presenter notes (standalone page at /:slug/presenter-notes) */
+  presenterNotesComponent?: React.ComponentType;
+
   /** Optional home icon override */
   homeIcon?: React.ComponentType<{ size?: number; className?: string }>;
   /** Optional article icon override */

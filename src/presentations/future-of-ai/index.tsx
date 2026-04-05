@@ -30,6 +30,7 @@ import {
 } from "@/components/SectionIcons";
 import GrowthChart from "@/components/GrowthChart";
 import ArticleSection from "./ArticleSection";
+import PresenterNotesSection from "./PresenterNotesSection";
 
 import abstractSpeed from "@/assets/abstract-speed.jpg";
 import abstractStack from "@/assets/abstract-stack.jpg";
@@ -1408,6 +1409,7 @@ const futureOfAi: PresentationConfig = {
 
   articleComponent: ArticleSection,
   articleIcon: IconArticle,
+  presenterNotesComponent: PresenterNotesSection,
 };
 
 export default futureOfAi;

@@ -27,6 +27,8 @@ A web-based presentation system for Brand Blvd. Each presentation is a standalon
 - `index.tsx` — `PresentationConfig` with all slide content (desktop + mobile arrays)
 - `ArticleSection.tsx` — Long-form article component
 - `ArticlePDF.tsx` — PDF version using @react-pdf/renderer
+- `PresenterNotesSection.tsx` — Slide-by-slide presenter cheat sheet
+- `PresenterNotesPDF.tsx` — PDF version of presenter notes
 - Registry: `src/presentations/index.ts` — maps slugs to lazy-loaded modules
 
 ### Shared Components
@@ -41,6 +43,8 @@ A web-based presentation system for Brand Blvd. Each presentation is a standalon
 - `/:slug` → presentation home
 - `/:slug/:section` → specific section
 - `/:slug/:section/:slide` → specific slide
+- `/:slug/article` → full article page
+- `/:slug/presenter-notes` → presenter cheat sheet (not linked in nav, URL-only access)
 
 ## Skills
 
@@ -48,6 +52,7 @@ A web-based presentation system for Brand Blvd. Each presentation is a standalon
 - `/write-article` — Collaborate on writing the foundational article
 - `/new-presentation` — Scaffold a complete new presentation from content
 - `/add-section` — Append new sections to an existing presentation
+- `/generate-presenter-notes` — Generate or update slide-by-slide presenter notes
 - `/review-presentation` — QA audit for visual bugs, text readability, theme compliance
 
 ## Key Conventions
@@ -58,6 +63,7 @@ A web-based presentation system for Brand Blvd. Each presentation is a standalon
 - Each presentation needs both desktop and mobile slide arrays
 - Desktop uses horizontal snap-scroll within sections; mobile uses flat vertical scroll
 - Articles are the source of truth — slides are derived from article content
+- Presenter notes must stay in sync with slides and article — update them whenever slides or article change
 - PDF accent color comes from `theme.pdf.accentColor`
 
 ### Text Color Rules (Critical)

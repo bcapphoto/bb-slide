@@ -110,11 +110,27 @@ After creating the module, update `src/presentations/index.ts` to add the new pr
 "<slug>": () => import("./<slug>"),
 ```
 
-### 5. Create Custom Icons (if needed)
+### 5. Generate Presenter Notes
+
+After the article and slides are built, generate the presenter notes. Use `/generate-presenter-notes` or follow its workflow to create:
+- `src/presentations/<slug>/PresenterNotesSection.tsx` — slide-by-slide web page
+- `src/presentations/<slug>/PresenterNotesPDF.tsx` — downloadable PDF version
+
+Wire the component into the config:
+```typescript
+import PresenterNotesSection from "./PresenterNotesSection";
+
+// In the PresentationConfig:
+presenterNotesComponent: PresenterNotesSection,
+```
+
+The presenter notes are available at `/<slug>/presenter-notes`.
+
+### 6. Create Custom Icons (if needed)
 
 If the presentation's themes don't match existing icons, create new SVG icon components in `src/components/SectionIcons.tsx` following the same pattern (24x24 viewBox, stroke-based, currentColor).
 
-### 6. Verify
+### 7. Verify
 
 Run `npx tsc --noEmit` and `npm run build` to verify everything compiles.
 
@@ -141,5 +157,6 @@ After the presentation is built and compiles cleanly, run `/contrast-audit <slug
 When done, tell the user:
 1. The URL path for their new presentation (e.g., `/new-slug`)
 2. Quick summary of sections created
-3. Contrast audit results (pass/fail summary)
-4. Remind them to add any custom images to `src/assets/` if they want background images
+3. Presenter notes URL: `/<slug>/presenter-notes`
+4. Contrast audit results (pass/fail summary)
+5. Remind them to add any custom images to `src/assets/` if they want background images

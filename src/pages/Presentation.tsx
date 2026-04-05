@@ -2,10 +2,12 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import PresentationShell from "@/components/presentation/PresentationShell";
 import { loadPresentation, defaultSlug } from "@/presentations";
+import { ThemeProvider } from "@/themes/ThemeProvider";
+import { PresentationContext } from "@/presentations/PresentationContext";
 import type { PresentationConfig } from "@/presentations/presentation.types";
 
 export default function PresentationPage() {
-  const { slug } = useParams();
+  const { slug, section } = useParams();
   const effectiveSlug = slug || defaultSlug;
   const [config, setConfig] = useState<PresentationConfig | null>(null);
   const [error, setError] = useState(false);
@@ -33,6 +35,18 @@ export default function PresentationPage() {
       <div className="h-screen flex items-center justify-center bg-background text-foreground">
         <div className="text-muted-foreground">Loading...</div>
       </div>
+    );
+  }
+
+  // Presenter notes: standalone page, not part of slide deck navigation
+  if (section === "presenter-notes" && config.presenterNotesComponent) {
+    const PresenterNotes = config.presenterNotesComponent;
+    return (
+      <ThemeProvider themeId={config.themeId}>
+        <PresentationContext.Provider value={config}>
+          <PresenterNotes />
+        </PresentationContext.Provider>
+      </ThemeProvider>
     );
   }
 

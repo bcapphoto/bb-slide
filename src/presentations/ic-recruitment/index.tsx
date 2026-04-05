@@ -25,6 +25,7 @@ import {
   IconArticle,
 } from "@/components/SectionIcons";
 import ArticleSection from "./ArticleSection";
+import PresenterNotesSection from "./PresenterNotesSection";
 import { MMMShowcaseDesktop, MMMShowcaseMobile, MMMProductGalleryDesktop, MMMProductGalleryMobile } from "./MagicMerchUI";
 import { VideoSlide, VideoSlideDark } from "./VideoPlaceholder";
 
@@ -755,6 +756,7 @@ const icRecruitment: PresentationConfig = {
 
   articleComponent: ArticleSection,
   articleIcon: IconArticle,
+  presenterNotesComponent: PresenterNotesSection,
 };
 
 export default icRecruitment;
