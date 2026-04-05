@@ -539,10 +539,26 @@ const ArticleSection = () => {
         And then there's the really wild stuff. An open-source project called Paperclip launched in March 2026 and hit 30,000 GitHub stars in 3 weeks. What does it do? It lets you build a company run entirely by AI agents. Org charts, budgets, reporting lines, governance - all orchestrated by agents. Zero humans required.
       </p>
       <p className="text-lg leading-[1.8] text-gray-700 mb-5">
-        A developer named Nat Eliason built an AI agent called Felix using OpenClaw. It operates autonomously and has generated over $100,000 in revenue. Matthew Gallagher launched a telehealth company with $20,000 and AI tools - $401 million in sales in 2025, on track for $1.8 billion this year.
+        A developer named Nat Eliason built an AI agent called Felix using OpenClaw. It operates autonomously and has generated over $100,000 in revenue.
+      </p>
+
+      <h3 className="font-display text-sm uppercase tracking-[0.3em] text-gray-500 mb-5 mt-14">
+        The zero-employee company
+      </h3>
+      <p className="text-lg leading-[1.8] text-gray-700 mb-5">
+        But the example that really makes this real - the one that's gone viral and that I can't stop thinking about - is Matthew Gallagher.
+      </p>
+      <p className="text-lg leading-[1.8] text-gray-700 mb-5">
+        Gallagher and his brother launched a telehealth company with $20,000 in startup capital. No venture funding. No team of 50. Just the two of them and AI agents handling nearly everything - operations, customer support, marketing, fulfillment. The agents don't assist. They run the business.
+      </p>
+      <p className="text-lg leading-[1.8] text-gray-700 mb-5">
+        In 2025, they did $401 million in sales. In 2026, they're on track for $1.8 billion. Two people. No employees. A $20,000 bet turned into one of the fastest-growing companies in the country.
+      </p>
+      <p className="text-lg leading-[1.8] text-gray-700 mb-5">
+        This isn't a tech story. It's a leverage story. The same AI tools available to a two-person telehealth startup are available to everyone. The question is who figures out how to use them first.
       </p>
       <p className="text-lg leading-[1.8] text-gray-700 mb-10">
-        Dario Amodei, CEO of Anthropic, gives a 70-80% probability that 2026 is the year we see the first billion-dollar company run by a single person. This reframes the question from "will AI take jobs?" to something more fundamental: what does a company even look like when agents can do the work?
+        Dario Amodei, CEO of Anthropic, gives a 70-80% probability that 2026 is the year we see the first billion-dollar company run by a single person. Looking at Gallagher's numbers, it might already be happening. This reframes the question from "will AI take jobs?" to something more fundamental: what does a company even look like when agents can do the work?
       </p>
 
       <h3 className="font-display text-sm uppercase tracking-[0.3em] text-gray-500 mb-5 mt-14">

@@ -840,6 +840,41 @@ const agentsDesktop = [
     </div>
   </div>,
 
+  <div className="relative w-full h-full flex items-center justify-center dot-grid-bold">
+    <Slide className="relative z-10">
+      <p className="font-display text-sm uppercase tracking-[0.35em] text-muted-foreground font-bold mb-8">The Zero-Employee Company</p>
+      <SerifStatement>
+        What if you didn't need <span className="text-primary">employees</span> at all?
+      </SerifStatement>
+      <p className="text-muted-foreground font-light max-w-3xl mx-auto leading-relaxed text-lg md:text-xl mt-8">
+        Dario Amodei gives a <span className="text-foreground font-medium">70-80% probability</span> that 2026 sees the first billion-dollar company run by a single person. It might already be happening.
+      </p>
+    </Slide>
+  </div>,
+
+  <WhiteSlide>
+    <p className="font-display text-sm uppercase tracking-[0.35em] text-gray-500 font-bold mb-6">Case Study</p>
+    <h2 className="font-title text-5xl md:text-7xl uppercase leading-[0.9] tracking-tight mb-12">
+      <span className="text-gray-900">$20K to</span><br /><span className="highlight-green">$1.8 Billion.</span>
+    </h2>
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-x-16 gap-y-8">
+      <GridCard superTitle="The Founders" title="2 people. That's it." body="Matthew Gallagher and his brother built a telehealth company using AI agents for nearly everything — operations, support, marketing, fulfillment." />
+      <GridCard superTitle="The Investment" title="$20,000 to start." body="No VC. No team of 50. Just a small bet, AI tools, and a relentless focus on delivering outcomes to patients." />
+      <GridCard superTitle="The Result" title="$1.8B projected in 2026." body="$401 million in sales in 2025. On track to nearly 5x this year. The most compelling proof that the zero-employee model works." />
+    </div>
+  </WhiteSlide>,
+
+  <div className="relative w-full h-full flex items-center justify-center diagonal-lines">
+    <Slide className="relative z-10">
+      <SerifStatement>
+        This isn't a tech story.<br />It's a <span className="text-primary font-bold">leverage</span> story.
+      </SerifStatement>
+      <p className="text-muted-foreground font-light max-w-3xl mx-auto leading-relaxed text-lg md:text-xl mt-8">
+        Two people. No employees. AI handling operations, support, and scale. The question isn't whether this is possible. It's whether your competitors figure it out before you do.
+      </p>
+    </Slide>
+  </div>,
+
   <div className="relative w-full h-full flex items-center justify-center cross-grid">
     <Slide className="relative z-10">
       <p className="font-display text-sm uppercase tracking-[0.35em] text-muted-foreground font-bold mb-8">Sequoia Capital</p>
@@ -1125,6 +1160,37 @@ const agentsMobile = [
         <GridCard superTitle="Cursor" title="$2B+ annual revenue." body="Describe what you want. It writes, tests, and demos." />
       </div>
     </div>
+  </div>,
+
+  <div className="relative w-full h-full flex items-center justify-center dot-grid-bold">
+    <Slide className="relative z-10">
+      <p className="font-display text-sm uppercase tracking-[0.35em] text-muted-foreground font-bold mb-6">The Zero-Employee Company</p>
+      <SerifStatement>
+        What if you didn't need <span className="text-primary">employees</span> at all?
+      </SerifStatement>
+    </Slide>
+  </div>,
+
+  <div className="w-full h-full bg-white text-gray-900 flex items-center justify-center px-8">
+    <div className="w-full max-w-6xl">
+      <p className="font-display text-sm uppercase tracking-[0.35em] text-gray-500 font-bold mb-6">Case Study</p>
+      <h2 className="font-title text-4xl uppercase leading-[0.9] tracking-tight mb-8">
+        <span className="text-gray-900">$20K to</span><br /><span className="highlight-green">$1.8 Billion.</span>
+      </h2>
+      <div className="grid grid-cols-1 gap-y-6">
+        <GridCard superTitle="The Founders" title="2 people. That's it." body="Matthew Gallagher and his brother built a telehealth company using AI agents for nearly everything." />
+        <GridCard superTitle="The Investment" title="$20,000 to start." body="No VC. No team of 50. Just AI tools and a focus on delivering outcomes." />
+        <GridCard superTitle="The Result" title="$1.8B projected in 2026." body="$401M in 2025 sales. On track to nearly 5x this year." />
+      </div>
+    </div>
+  </div>,
+
+  <div className="relative w-full h-full flex items-center justify-center diagonal-lines">
+    <Slide className="relative z-10">
+      <SerifStatement>
+        This isn't a tech story. It's a <span className="text-primary font-bold">leverage</span> story.
+      </SerifStatement>
+    </Slide>
   </div>,
 
   <div className="relative w-full h-full flex items-center justify-center cross-grid">
