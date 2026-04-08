@@ -45,6 +45,17 @@ export interface ThemeColors {
   /** Destructive / error color */
   destructive: string;
   destructiveForeground: string;
+
+  /** Light surface background (for "white" slides). Falls back to white. */
+  lightSurface?: string;
+  /** Primary text on light surfaces. Falls back to gray-900. */
+  lightText?: string;
+  /** Secondary/body text on light surfaces. Falls back to gray-600. */
+  lightTextSecondary?: string;
+  /** Muted/caption text on light surfaces. Falls back to gray-500. */
+  lightTextMuted?: string;
+  /** Border color on light surfaces. Falls back to gray-200. */
+  lightBorder?: string;
 }
 
 export interface ThemeTypography {

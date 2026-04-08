@@ -79,9 +79,9 @@ export const NumberedItem = ({ num, title, desc }: { num: string; title: string;
   </div>
 );
 
-/* ─── White-background slide container ─── */
+/* ─── White/Canvas-background slide container (theme-aware) ─── */
 export const WhiteSlide = ({ children, className = "" }: { children: React.ReactNode; className?: string }) => (
-  <div className={`w-full h-full bg-white text-gray-900 flex items-center justify-center px-8 md:px-20 lg:px-32 ${className}`}>
+  <div className={`w-full h-full bg-light-surface text-light flex items-center justify-center px-8 md:px-20 lg:px-32 ${className}`}>
     <div className="w-full max-w-6xl">{children}</div>
   </div>
 );
@@ -111,11 +111,11 @@ export const PromptSlide = ({ question }: { question: string }) => (
   </div>
 );
 
-/* ─── Quote card (for white-bg slides) ─── */
+/* ─── Quote card (for light-bg slides, theme-aware) ─── */
 export const QuoteCard = ({ quote, author, role }: { quote: string; author: string; role: string }) => (
   <div className="text-left border-l-4 border-brand-green pl-4">
-    <p className="font-serif text-lg md:text-xl italic leading-relaxed text-gray-700 mb-4">"{quote}"</p>
-    <p className="text-sm text-gray-500">
+    <p className="font-serif text-lg md:text-xl italic leading-relaxed text-light-secondary mb-4">"{quote}"</p>
+    <p className="text-sm text-light-muted">
       <span className="text-brand-green font-bold">{author}</span> - {role}
     </p>
   </div>

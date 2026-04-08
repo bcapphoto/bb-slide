@@ -10,6 +10,7 @@ import type { PresentationConfig } from "./presentation.types";
 // Lazy-load presentations for code splitting
 const presentationLoaders: Record<string, () => Promise<{ default: PresentationConfig }>> = {
   "future-of-ai": () => import("./future-of-ai"),
+  "future-of-ai-v2": () => import("./future-of-ai-v2"),
   "ic-recruitment": () => import("./ic-recruitment"),
 };
 

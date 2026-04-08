@@ -1,5 +1,6 @@
 import type { Theme } from "./theme.types";
 import brandBlvd from "./brand-blvd";
+import brandBlvdV2 from "./brand-blvd-v2";
 
 /**
  * Theme Registry
@@ -10,6 +11,7 @@ import brandBlvd from "./brand-blvd";
 
 const themes: Record<string, Theme> = {
   "brand-blvd": brandBlvd,
+  "brand-blvd-v2": brandBlvdV2,
 };
 
 export const defaultThemeId = "brand-blvd";
@@ -27,5 +29,5 @@ export function getAllThemes(): Theme[] {
   return Object.values(themes);
 }
 
-export { brandBlvd };
+export { brandBlvd, brandBlvdV2 };
 export type { Theme };

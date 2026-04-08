@@ -50,6 +50,13 @@ const brandBlvd: Theme = {
     // ─── Destructive ───
     destructive: "0 84.2% 60.2%",
     destructiveForeground: "0 0% 98%",
+
+    // ─── Light surfaces (white slides) ───
+    lightSurface: "0 0% 100%",              // white
+    lightText: "222.2 47.4% 11.2%",         // gray-900
+    lightTextSecondary: "215.4 16.3% 46.9%", // gray-600
+    lightTextMuted: "220 8.9% 46.1%",       // gray-500
+    lightBorder: "220 13% 91%",             // gray-200
   },
 
   typography: {

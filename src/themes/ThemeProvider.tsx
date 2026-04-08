@@ -64,6 +64,13 @@ function generateThemeCSS(theme: Theme): string {
 
   /* Theme PDF */
   --pdf-accent: ${theme.pdf.accentColor};
+
+  /* Light surface colors (for white/canvas slides) */
+  --light-surface: ${colors.lightSurface ?? '0 0% 100%'};
+  --light-text: ${colors.lightText ?? '222.2 47.4% 11.2%'};
+  --light-text-secondary: ${colors.lightTextSecondary ?? '215.4 16.3% 46.9%'};
+  --light-text-muted: ${colors.lightTextMuted ?? '220 8.9% 46.1%'};
+  --light-border: ${colors.lightBorder ?? '220 13% 91%'};
 }
 
 body {
@@ -165,6 +172,13 @@ body {
 .grain::after {
   opacity: ${patterns.grainOpacity};
 }
+
+/* ─── Light surface utilities (theme-aware replacements for bg-white / text-gray-*) ─── */
+.bg-light-surface { background-color: hsl(var(--light-surface)); }
+.text-light { color: hsl(var(--light-text)); }
+.text-light-secondary { color: hsl(var(--light-text-secondary)); }
+.text-light-muted { color: hsl(var(--light-text-muted)); }
+.border-light { border-color: hsl(var(--light-border)); }
 
 /* ─── Animations ─── */
 @keyframes fade-up {
