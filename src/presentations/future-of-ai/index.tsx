@@ -1,7 +1,7 @@
 /**
  * "The Future of AI" Presentation
  *
- * Original presentation migrated into the multi-presentation system.
+ * How AI is reshaping expectations, value, and identity.
  */
 
 import {
@@ -65,27 +65,27 @@ const titleDesktop = [
   <PromptSlide question="What is 1 way AI has changed how you act or make decisions?" />,
 
   // Overview
-  <div className="relative w-full h-full flex items-center justify-center bg-white text-gray-900 dot-grid-light overflow-hidden">
+  <div className="relative w-full h-full flex items-center justify-center bg-light-surface text-light dot-grid-light overflow-hidden">
     <div className="relative z-10 w-full max-w-4xl mx-auto px-8 md:px-16 text-center">
-      <p className="font-serif text-xl md:text-2xl italic text-gray-500 mb-14">The 3 biggest ways I believe AI will impact our business and our industry.</p>
+      <p className="font-serif text-xl md:text-2xl italic text-light-muted mb-14">The 3 biggest ways I believe AI will impact our business and our industry.</p>
       <div className="space-y-10 text-left">
         <div className="flex items-center gap-6">
           <div className="flex-shrink-0 w-16 h-16 md:w-20 md:h-20 rounded-sm bg-brand-green/10 flex items-center justify-center">
             <IconFastForward size={40} className="text-brand-green md:w-12 md:h-12" />
           </div>
-          <h3 className="font-title text-2xl md:text-3xl uppercase tracking-tight leading-tight text-gray-900">AI is compressing time across <span className="highlight-green">everything.</span></h3>
+          <h3 className="font-title text-2xl md:text-3xl uppercase tracking-tight leading-tight text-light">AI is compressing time across <span className="highlight-green">everything.</span></h3>
         </div>
         <div className="flex items-center gap-6">
           <div className="flex-shrink-0 w-16 h-16 md:w-20 md:h-20 rounded-sm bg-brand-green/10 flex items-center justify-center">
             <IconStacks size={40} className="text-brand-green md:w-12 md:h-12" />
           </div>
-          <h3 className="font-title text-2xl md:text-3xl uppercase tracking-tight leading-tight text-gray-900">AI is taking over the <span className="highlight-green">"doing."</span></h3>
+          <h3 className="font-title text-2xl md:text-3xl uppercase tracking-tight leading-tight text-light">AI is taking over the <span className="highlight-green">"doing."</span></h3>
         </div>
         <div className="flex items-center gap-6">
           <div className="flex-shrink-0 w-16 h-16 md:w-20 md:h-20 rounded-sm bg-brand-green/10 flex items-center justify-center">
             <IconIdentity size={40} className="text-brand-green md:w-12 md:h-12" />
           </div>
-          <h3 className="font-title text-2xl md:text-3xl uppercase tracking-tight leading-tight text-gray-900">AI will restructure the employer-employee <span className="highlight-green">relationship.</span></h3>
+          <h3 className="font-title text-2xl md:text-3xl uppercase tracking-tight leading-tight text-light">AI will restructure the employer-employee <span className="highlight-green">relationship.</span></h3>
         </div>
       </div>
     </div>
@@ -121,9 +121,9 @@ const instantDesktop = [
   </div>,
 
   <WhiteSlide>
-    <p className="font-display text-sm uppercase tracking-[0.35em] text-gray-500 font-bold mb-6">What's Changing</p>
+    <p className="font-display text-sm uppercase tracking-[0.35em] text-light-muted font-bold mb-6">What's Changing</p>
     <h2 className="font-title text-5xl md:text-7xl uppercase leading-[0.9] tracking-tight mb-12">
-      <span className="text-gray-900">Expectation</span><span className="highlight-green">Shifts</span>
+      <span className="text-light">Expectation</span><span className="highlight-green">Shifts</span>
     </h2>
     <div className="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-8">
       <NumberedItem num="1" title="Patience is collapsing" desc="ChatGPT can help you compare car models immediately." />
@@ -194,7 +194,7 @@ const humanValueDesktop = [
 
   <WhiteSlide className="cross-grid-light">
     <div className="relative z-10">
-      <p className="font-display text-sm uppercase tracking-[0.35em] text-gray-500 font-bold mb-10">Industry Leaders</p>
+      <p className="font-display text-sm uppercase tracking-[0.35em] text-light-muted font-bold mb-10">Industry Leaders</p>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
         {[
           { quote: "The future of work is not about AI replacing people. It's about people who use AI replacing people who don't.", author: "Satya Nadella", role: "CEO, Microsoft" },
@@ -208,31 +208,31 @@ const humanValueDesktop = [
   </WhiteSlide>,
 
   <WhiteSlide>
-    <p className="font-display text-sm uppercase tracking-[0.35em] text-gray-500 font-bold mb-6">Industry Reality</p>
+    <p className="font-display text-sm uppercase tracking-[0.35em] text-light-muted font-bold mb-6">Industry Reality</p>
     <h2 className="font-title text-5xl md:text-7xl uppercase leading-[0.9] tracking-tight mb-12">
       Order-Taking<span className="highlight-green">Dies.</span>
     </h2>
     <div className="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-8">
       <div>
         <h3 className="font-display text-lg font-extrabold uppercase mb-4">The shift</h3>
-        <p className="text-gray-600 text-base leading-relaxed mb-4">
+        <p className="text-light-secondary text-base leading-relaxed mb-4">
           Software will get better. AI-empowered systems will draft proposals, generate pricing comparisons, and source products instantly.
         </p>
-        <p className="text-gray-600 text-base leading-relaxed mb-4">
+        <p className="text-light-secondary text-base leading-relaxed mb-4">
           More people will use more tools to do the work we do now. If we continue to be just order-takers, we'll be beaten out by alternatives that make it easier and quicker.
         </p>
       </div>
       <div>
         <h3 className="font-display text-lg font-extrabold uppercase mb-4">The precedent</h3>
-        <p className="text-gray-600 text-base leading-relaxed mb-4">
+        <p className="text-light-secondary text-base leading-relaxed mb-4">
           Industries like travel and retail eliminated transactional middlemen when search became automated.
         </p>
-        <p className="text-gray-800 text-base leading-relaxed font-medium">
+        <p className="text-light text-base leading-relaxed font-medium">
           This will happen to us, too.
         </p>
       </div>
     </div>
-    <p className="mt-10 border-t border-gray-200 pt-6">
+    <p className="mt-10 border-t border-light pt-6">
       <span className="text-brand-green font-display font-bold uppercase text-sm">Conclusion:</span>{" "}
       <span className="font-bold text-base">Evolve from "order takers" to collaborators and advisors.</span>
     </p>
@@ -266,9 +266,9 @@ const identityDesktop = [
   </div>,
 
   <WhiteSlide>
-    <p className="font-display text-sm uppercase tracking-[0.35em] text-gray-500 font-bold mb-6">Workforce Data</p>
+    <p className="font-display text-sm uppercase tracking-[0.35em] text-light-muted font-bold mb-6">Workforce Data</p>
     <h2 className="font-title text-5xl md:text-7xl uppercase leading-[0.9] tracking-tight mb-12">
-      <span className="text-gray-900">The</span><span className="highlight-green">Numbers</span>
+      <span className="text-light">The</span><span className="highlight-green">Numbers</span>
     </h2>
     <div className="grid grid-cols-1 md:grid-cols-3 gap-x-16 gap-y-8">
       <NumberedItem num="80%" title="Believe AI will impact their daily work" desc="Workers surveyed about AI's effect on their tasks." />
@@ -281,10 +281,10 @@ const identityDesktop = [
 
   <WhiteSlide className="diagonal-lines-light">
     <div className="relative z-10 text-center">
-      <p className="font-serif text-3xl md:text-4xl lg:text-5xl italic leading-snug max-w-5xl mx-auto text-gray-800">
+      <p className="font-serif text-3xl md:text-4xl lg:text-5xl italic leading-snug max-w-5xl mx-auto text-light">
         That doesn't mean merch and swag <span className="text-brand-green font-bold">go away.</span>
       </p>
-      <p className="font-display text-sm uppercase tracking-[0.3em] text-gray-500 mt-10 font-bold">
+      <p className="font-display text-sm uppercase tracking-[0.3em] text-light-muted mt-10 font-bold">
         As AI reshapes work, belonging shifts from employer identity to community identity.
       </p>
     </div>
@@ -314,7 +314,7 @@ const identityDesktop = [
 ];
 
 const closingDesktop = [
-  <div className="relative w-full h-full flex items-center justify-center bg-white text-gray-900 dot-grid-light overflow-hidden">
+  <div className="relative w-full h-full flex items-center justify-center bg-light-surface text-light dot-grid-light overflow-hidden">
     <div className="relative z-10 w-full max-w-4xl mx-auto px-8 md:px-16 text-center">
       <img src={bbLogoHorizontal} alt="BrandBlvd" className="h-8 md:h-10 mb-14 mx-auto invert" />
       <div className="space-y-10 text-left max-w-2xl mx-auto">
@@ -323,8 +323,8 @@ const closingDesktop = [
             <IconFastForward size={40} className="text-brand-green md:w-12 md:h-12" />
           </div>
           <div>
-            <p className="text-gray-500 text-sm font-light">AI is compressing time across everything.</p>
-            <h3 className="font-title text-2xl md:text-3xl uppercase tracking-tight leading-tight mt-1 text-gray-900">Instant is the new <span className="highlight-green">standard.</span></h3>
+            <p className="text-light-muted text-sm font-light">AI is compressing time across everything.</p>
+            <h3 className="font-title text-2xl md:text-3xl uppercase tracking-tight leading-tight mt-1 text-light">Instant is the new <span className="highlight-green">standard.</span></h3>
           </div>
         </div>
         <div className="flex items-center gap-6">
@@ -332,8 +332,8 @@ const closingDesktop = [
             <IconStacks size={40} className="text-brand-green md:w-12 md:h-12" />
           </div>
           <div>
-            <p className="text-gray-500 text-sm font-light">AI is taking over the "doing."</p>
-            <h3 className="font-title text-2xl md:text-3xl uppercase tracking-tight leading-tight mt-1 text-gray-900">Death of transactional <span className="highlight-green">sales.</span></h3>
+            <p className="text-light-muted text-sm font-light">AI is taking over the "doing."</p>
+            <h3 className="font-title text-2xl md:text-3xl uppercase tracking-tight leading-tight mt-1 text-light">Death of transactional <span className="highlight-green">sales.</span></h3>
           </div>
         </div>
         <div className="flex items-center gap-6">
@@ -341,13 +341,13 @@ const closingDesktop = [
             <IconIdentity size={40} className="text-brand-green md:w-12 md:h-12" />
           </div>
           <div>
-            <p className="text-gray-500 text-sm font-light">AI will restructure the employer-employee relationship.</p>
-            <h3 className="font-title text-2xl md:text-3xl uppercase tracking-tight leading-tight mt-1 text-gray-900">Identity-driven community <span className="highlight-green">merch.</span></h3>
+            <p className="text-light-muted text-sm font-light">AI will restructure the employer-employee relationship.</p>
+            <h3 className="font-title text-2xl md:text-3xl uppercase tracking-tight leading-tight mt-1 text-light">Identity-driven community <span className="highlight-green">merch.</span></h3>
           </div>
         </div>
       </div>
-      <div className="border-t border-gray-200 mt-12 pt-8 text-center">
-        <p className="font-serif text-xl md:text-2xl italic text-gray-600 mb-2">The shift isn't coming.</p>
+      <div className="border-t border-light mt-12 pt-8 text-center">
+        <p className="font-serif text-xl md:text-2xl italic text-light-secondary mb-2">The shift isn't coming.</p>
         <h2 className="font-title text-4xl md:text-6xl uppercase tracking-tight">
           It's <span className="highlight-green inline-block">here.</span>
         </h2>
@@ -377,27 +377,27 @@ const titleMobile = [
 
   <PromptSlide question="What is 1 way AI has changed how you act or make decisions?" />,
 
-  <div className="relative w-full h-full flex items-center justify-center bg-white text-gray-900 dot-grid-light overflow-hidden">
+  <div className="relative w-full h-full flex items-center justify-center bg-light-surface text-light dot-grid-light overflow-hidden">
     <div className="relative z-10 w-full px-8 text-center">
-      <p className="font-serif text-xl italic text-gray-500 mb-10">The 3 biggest ways I believe AI will impact our business and our industry.</p>
+      <p className="font-serif text-xl italic text-light-muted mb-10">The 3 biggest ways I believe AI will impact our business and our industry.</p>
       <div className="space-y-6 text-left">
         <div className="flex items-center gap-4">
           <div className="flex-shrink-0 w-12 h-12 rounded-sm bg-brand-green/10 flex items-center justify-center">
             <IconFastForward size={28} className="text-brand-green" />
           </div>
-          <h3 className="font-title text-lg uppercase tracking-tight leading-tight text-gray-900">AI is compressing time across <span className="highlight-green">everything.</span></h3>
+          <h3 className="font-title text-lg uppercase tracking-tight leading-tight text-light">AI is compressing time across <span className="highlight-green">everything.</span></h3>
         </div>
         <div className="flex items-center gap-4">
           <div className="flex-shrink-0 w-12 h-12 rounded-sm bg-brand-green/10 flex items-center justify-center">
             <IconStacks size={28} className="text-brand-green" />
           </div>
-          <h3 className="font-title text-lg uppercase tracking-tight leading-tight text-gray-900">AI is taking over the <span className="highlight-green">"doing."</span></h3>
+          <h3 className="font-title text-lg uppercase tracking-tight leading-tight text-light">AI is taking over the <span className="highlight-green">"doing."</span></h3>
         </div>
         <div className="flex items-center gap-4">
           <div className="flex-shrink-0 w-12 h-12 rounded-sm bg-brand-green/10 flex items-center justify-center">
             <IconIdentity size={28} className="text-brand-green" />
           </div>
-          <h3 className="font-title text-lg uppercase tracking-tight leading-tight text-gray-900">AI will restructure the employer-employee <span className="highlight-green">relationship.</span></h3>
+          <h3 className="font-title text-lg uppercase tracking-tight leading-tight text-light">AI will restructure the employer-employee <span className="highlight-green">relationship.</span></h3>
         </div>
       </div>
     </div>
@@ -432,11 +432,11 @@ const instantMobile = [
     </div>
   </div>,
 
-  <div className="w-full h-full bg-white text-gray-900 flex items-center justify-center px-8">
+  <div className="w-full h-full bg-light-surface text-light flex items-center justify-center px-8">
     <div className="w-full max-w-6xl">
-      <p className="font-display text-sm uppercase tracking-[0.35em] text-gray-500 font-bold mb-6">What's Changing</p>
+      <p className="font-display text-sm uppercase tracking-[0.35em] text-light-muted font-bold mb-6">What's Changing</p>
       <h2 className="font-title text-4xl uppercase leading-[0.9] tracking-tight mb-8 break-words">
-        <span className="text-gray-900">Expectation</span><br className="md:hidden" /><span className="highlight-green">Shifts</span>
+        <span className="text-light">Expectation</span><br className="md:hidden" /><span className="highlight-green">Shifts</span>
       </h2>
       <div className="grid grid-cols-1 gap-y-6">
         <NumberedItem num="1" title="Patience is collapsing" desc="ChatGPT can help you compare car models immediately." />
@@ -506,9 +506,9 @@ const humanValueMobile = [
     </Slide>
   </div>,
 
-  <div className="w-full h-full bg-white text-gray-900 flex items-center justify-center px-8 cross-grid-light">
+  <div className="w-full h-full bg-light-surface text-light flex items-center justify-center px-8 cross-grid-light">
     <div className="w-full max-w-6xl relative z-10">
-      <p className="font-display text-sm uppercase tracking-[0.35em] text-gray-500 font-bold mb-10">Industry Leaders</p>
+      <p className="font-display text-sm uppercase tracking-[0.35em] text-light-muted font-bold mb-10">Industry Leaders</p>
       <div className="grid grid-cols-1 gap-8">
         {[
           { quote: "The future of work is not about AI replacing people. It's about people who use AI replacing people who don't.", author: "Satya Nadella", role: "CEO, Microsoft" },
@@ -521,24 +521,24 @@ const humanValueMobile = [
     </div>
   </div>,
 
-  <div className="w-full h-full bg-white text-gray-900 flex items-center justify-center px-8">
+  <div className="w-full h-full bg-light-surface text-light flex items-center justify-center px-8">
     <div className="w-full max-w-6xl">
-      <p className="font-display text-sm uppercase tracking-[0.35em] text-gray-500 font-bold mb-6">Industry Reality</p>
+      <p className="font-display text-sm uppercase tracking-[0.35em] text-light-muted font-bold mb-6">Industry Reality</p>
       <h2 className="font-title text-4xl uppercase leading-[0.9] tracking-tight mb-8 break-words">
         Order-Taking<br className="md:hidden" /><span className="highlight-green">Dies.</span>
       </h2>
       <div className="space-y-4">
-        <p className="text-gray-600 text-sm leading-relaxed">
+        <p className="text-light-secondary text-sm leading-relaxed">
           Software will get better. AI-empowered systems will draft proposals, generate pricing comparisons, and source products instantly.
         </p>
-        <p className="text-gray-600 text-sm leading-relaxed">
+        <p className="text-light-secondary text-sm leading-relaxed">
           More people will use more tools to do the work we do now. If we continue to be just order-takers, we'll be beaten out by alternatives that make it easier and quicker.
         </p>
-        <p className="text-gray-600 text-sm leading-relaxed">
-          Industries like travel and retail eliminated transactional middlemen when search became automated. <span className="text-gray-800 font-medium">This will happen to us, too.</span>
+        <p className="text-light-secondary text-sm leading-relaxed">
+          Industries like travel and retail eliminated transactional middlemen when search became automated. <span className="text-light font-medium">This will happen to us, too.</span>
         </p>
       </div>
-      <p className="mt-6 border-t border-gray-200 pt-4">
+      <p className="mt-6 border-t border-light pt-4">
         <span className="text-brand-green font-display font-bold uppercase text-sm">Conclusion:</span>{" "}
         <span className="font-bold text-sm">Evolve from "order takers" to collaborators and advisors.</span>
       </p>
@@ -572,11 +572,11 @@ const identityMobile = [
     </Slide>
   </div>,
 
-  <div className="w-full h-full bg-white text-gray-900 flex items-center justify-center px-8">
+  <div className="w-full h-full bg-light-surface text-light flex items-center justify-center px-8">
     <div className="w-full max-w-6xl">
-      <p className="font-display text-sm uppercase tracking-[0.35em] text-gray-500 font-bold mb-6">Workforce Data</p>
+      <p className="font-display text-sm uppercase tracking-[0.35em] text-light-muted font-bold mb-6">Workforce Data</p>
       <h2 className="font-title text-4xl uppercase leading-[0.9] tracking-tight mb-8">
-        <span className="text-gray-900">The</span><span className="highlight-green">Numbers</span>
+        <span className="text-light">The</span><span className="highlight-green">Numbers</span>
       </h2>
       <div className="grid grid-cols-1 gap-y-6">
         <NumberedItem num="80%" title="Believe AI will impact their daily work" desc="Workers surveyed about AI's effect on their tasks." />
@@ -588,12 +588,12 @@ const identityMobile = [
 
   <PromptSlide question="If our clients reduced headcount by 20%, what happens to our revenue?" />,
 
-  <div className="w-full h-full bg-white text-gray-900 flex items-center justify-center px-8 diagonal-lines-light">
+  <div className="w-full h-full bg-light-surface text-light flex items-center justify-center px-8 diagonal-lines-light">
     <div className="relative z-10 text-center">
-      <p className="font-serif text-2xl italic leading-snug max-w-5xl mx-auto text-gray-800">
+      <p className="font-serif text-2xl italic leading-snug max-w-5xl mx-auto text-light">
         That doesn't mean merch and swag <span className="text-brand-green font-bold">go away.</span>
       </p>
-      <p className="font-display text-sm uppercase tracking-[0.3em] text-gray-500 mt-10 font-bold">
+      <p className="font-display text-sm uppercase tracking-[0.3em] text-light-muted mt-10 font-bold">
         As AI reshapes work, belonging shifts from employer identity to community identity.
       </p>
     </div>
@@ -623,7 +623,7 @@ const identityMobile = [
 ];
 
 const closingMobile = [
-  <div className="relative w-full h-full flex items-center justify-center bg-white text-gray-900 dot-grid-light overflow-hidden">
+  <div className="relative w-full h-full flex items-center justify-center bg-light-surface text-light dot-grid-light overflow-hidden">
     <div className="relative z-10 w-full px-8 text-center">
       <img src={bbLogoHorizontal} alt="BrandBlvd" className="h-7 mb-10 mx-auto invert" />
       <div className="space-y-6 text-left">
@@ -632,8 +632,8 @@ const closingMobile = [
             <IconFastForward size={28} className="text-brand-green" />
           </div>
           <div>
-            <p className="text-gray-500 text-xs font-light">AI is compressing time across everything.</p>
-            <h3 className="font-title text-lg uppercase tracking-tight leading-tight mt-1 text-gray-900">Instant is the new <span className="highlight-green">standard.</span></h3>
+            <p className="text-light-muted text-xs font-light">AI is compressing time across everything.</p>
+            <h3 className="font-title text-lg uppercase tracking-tight leading-tight mt-1 text-light">Instant is the new <span className="highlight-green">standard.</span></h3>
           </div>
         </div>
         <div className="flex items-center gap-4">
@@ -641,8 +641,8 @@ const closingMobile = [
             <IconStacks size={28} className="text-brand-green" />
           </div>
           <div>
-            <p className="text-gray-500 text-xs font-light">AI is taking over the "doing."</p>
-            <h3 className="font-title text-lg uppercase tracking-tight leading-tight mt-1 text-gray-900">Death of transactional <span className="highlight-green">sales.</span></h3>
+            <p className="text-light-muted text-xs font-light">AI is taking over the "doing."</p>
+            <h3 className="font-title text-lg uppercase tracking-tight leading-tight mt-1 text-light">Death of transactional <span className="highlight-green">sales.</span></h3>
           </div>
         </div>
         <div className="flex items-center gap-4">
@@ -650,13 +650,13 @@ const closingMobile = [
             <IconIdentity size={28} className="text-brand-green" />
           </div>
           <div>
-            <p className="text-gray-500 text-xs font-light">AI will restructure the employer-employee relationship.</p>
-            <h3 className="font-title text-lg uppercase tracking-tight leading-tight mt-1 text-gray-900">Identity-driven community <span className="highlight-green">merch.</span></h3>
+            <p className="text-light-muted text-xs font-light">AI will restructure the employer-employee relationship.</p>
+            <h3 className="font-title text-lg uppercase tracking-tight leading-tight mt-1 text-light">Identity-driven community <span className="highlight-green">merch.</span></h3>
           </div>
         </div>
       </div>
-      <div className="border-t border-gray-200 mt-8 pt-6 text-center">
-        <p className="font-serif text-lg italic text-gray-600 mb-2">The shift isn't coming.</p>
+      <div className="border-t border-light mt-8 pt-6 text-center">
+        <p className="font-serif text-lg italic text-light-secondary mb-2">The shift isn't coming.</p>
         <h2 className="font-title text-3xl uppercase tracking-tight">
           It's <span className="highlight-green inline-block">here.</span>
         </h2>
@@ -668,7 +668,7 @@ const closingMobile = [
 /* ─── Update: 30 Days Later ─── */
 
 const updateIntroDesktop = [
-  <div className="relative w-full h-full flex items-center justify-center bg-white text-gray-900 cross-grid-light overflow-hidden">
+  <div className="relative w-full h-full flex items-center justify-center bg-light-surface text-light cross-grid-light overflow-hidden">
     <div className="absolute right-0 bottom-0 font-display text-[20rem] font-black text-foreground/[0.02] leading-none select-none pointer-events-none">
       +30
     </div>
@@ -677,12 +677,12 @@ const updateIntroDesktop = [
         <div className="w-12 h-12 rounded-sm bg-brand-green/10 flex items-center justify-center">
           <IconUpdate size={28} className="text-brand-green" />
         </div>
-        <p className="font-display text-sm uppercase tracking-[0.3em] text-gray-500 font-bold">Addendum</p>
+        <p className="font-display text-sm uppercase tracking-[0.3em] text-light-muted font-bold">Addendum</p>
       </div>
-      <h1 className="font-title text-5xl md:text-7xl lg:text-8xl uppercase leading-[1.05] tracking-tight text-gray-900">
+      <h1 className="font-title text-5xl md:text-7xl lg:text-8xl uppercase leading-[1.05] tracking-tight text-light">
         30 Days<br /><span className="highlight-green">Later.</span>
       </h1>
-      <p className="font-serif text-xl md:text-2xl italic text-gray-500 mt-8 max-w-2xl">
+      <p className="font-serif text-xl md:text-2xl italic text-light-muted mt-8 max-w-2xl">
         I thought this article would hold up for a while. It didn't. Not because I was wrong - but because new signals emerged faster than I expected.
       </p>
     </div>
@@ -730,16 +730,16 @@ const orgChartDesktop = [
   </div>,
 
   <WhiteSlide>
-    <p className="font-display text-sm uppercase tracking-[0.35em] text-gray-500 font-bold mb-6">Case Study: Block (Square + Cash App)</p>
+    <p className="font-display text-sm uppercase tracking-[0.35em] text-light-muted font-bold mb-6">Case Study: Block (Square + Cash App)</p>
     <h2 className="font-title text-5xl md:text-7xl uppercase leading-[0.9] tracking-tight mb-12">
-      <span className="text-gray-900">3 Roles.</span><br /><span className="highlight-green">Not 10 Layers.</span>
+      <span className="text-light">3 Roles.</span><br />Not 10 <span className="highlight-green">Layers.</span>
     </h2>
     <div className="grid grid-cols-1 md:grid-cols-3 gap-x-16 gap-y-8">
       <GridCard superTitle="ICs" title="Individual Contributors." body="Use the AI model for context instead of waiting for management approval." />
       <GridCard superTitle="DRIs" title="Directly Responsible." body="Own a specific problem for 90 days with cross-team authority." />
       <GridCard superTitle="Player-Coaches" title="Build + Develop." body="Build things and develop people at the same time." />
     </div>
-    <p className="mt-10 text-gray-500 text-sm italic">Source: Sequoia Capital — "From Hierarchy to Intelligence"</p>
+    <p className="mt-10 text-light-muted text-sm italic">Source: Sequoia Capital — "From Hierarchy to Intelligence"</p>
   </WhiteSlide>,
 
   <div className="relative w-full h-full flex items-center justify-center dot-grid">
@@ -804,9 +804,9 @@ const agentsDesktop = [
   </div>,
 
   <WhiteSlide>
-    <p className="font-display text-sm uppercase tracking-[0.35em] text-gray-500 font-bold mb-6">The Convergence</p>
+    <p className="font-display text-sm uppercase tracking-[0.35em] text-light-muted font-bold mb-6">The Convergence</p>
     <h2 className="font-title text-5xl md:text-7xl uppercase leading-[0.9] tracking-tight mb-12">
-      <span className="text-gray-900">3 Signals.</span><br /><span className="highlight-green">Same Direction.</span>
+      <span className="text-light">3 Signals.</span><br />Same <span className="highlight-green">Direction.</span>
     </h2>
     <div className="grid grid-cols-1 md:grid-cols-3 gap-x-16 gap-y-8">
       <GridCard superTitle="Claude Code" title="$2.5B annual revenue." body="74 releases in 52 days. 4% of all GitHub commits. That number doubled in a single month." />
@@ -854,9 +854,9 @@ const agentsDesktop = [
   </div>,
 
   <WhiteSlide>
-    <p className="font-display text-sm uppercase tracking-[0.35em] text-gray-500 font-bold mb-6">Case Study</p>
+    <p className="font-display text-sm uppercase tracking-[0.35em] text-light-muted font-bold mb-6">Case Study</p>
     <h2 className="font-title text-5xl md:text-7xl uppercase leading-[0.9] tracking-tight mb-12">
-      <span className="text-gray-900">$20K to</span><br /><span className="highlight-green">$1.8 Billion.</span>
+      <span className="text-light">$20K to</span><br /><span className="highlight-green">$1.8 Billion.</span>
     </h2>
     <div className="grid grid-cols-1 md:grid-cols-3 gap-x-16 gap-y-8">
       <GridCard superTitle="The Founders" title="2 people. That's it." body="Matthew Gallagher and his brother built a telehealth company using AI agents for nearly everything — operations, support, marketing, fulfillment." />
@@ -934,9 +934,9 @@ const buyersDesktop = [
   </div>,
 
   <WhiteSlide>
-    <p className="font-display text-sm uppercase tracking-[0.35em] text-gray-500 font-bold mb-6">Agentic Procurement</p>
+    <p className="font-display text-sm uppercase tracking-[0.35em] text-light-muted font-bold mb-6">Agentic Procurement</p>
     <h2 className="font-title text-5xl md:text-7xl uppercase leading-[0.9] tracking-tight mb-12">
-      <span className="text-gray-900">The</span><span className="highlight-green">Numbers</span>
+      <span className="text-light">The</span><span className="highlight-green">Numbers</span>
     </h2>
     <div className="grid grid-cols-1 md:grid-cols-3 gap-x-16 gap-y-8">
       <NumberedItem num="45%" title="Use AI as primary research" desc="B2B buyers already using AI to identify new suppliers." />
@@ -963,14 +963,14 @@ const buyersDesktop = [
 
   <WhiteSlide className="dot-grid-light">
     <div className="relative z-10">
-      <p className="font-display text-sm uppercase tracking-[0.35em] text-gray-500 font-bold mb-10">Two Lanes</p>
+      <p className="font-display text-sm uppercase tracking-[0.35em] text-light-muted font-bold mb-10">Two Lanes</p>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-10">
         <div>
           <div className="w-16 h-16 rounded-sm bg-brand-green/10 flex items-center justify-center mb-6">
             <IconIdentity size={36} className="text-brand-green" />
           </div>
           <h3 className="font-title text-2xl md:text-3xl uppercase tracking-tight leading-tight mb-4">Lane 1: <span className="highlight-green">Human</span> Buyer</h3>
-          <p className="text-gray-600 text-base leading-relaxed">
+          <p className="text-light-secondary text-base leading-relaxed">
             Relationships, trust, and personal service still win. The SDR call matters. Showing up and reading the room is the differentiator. We double down on the human stuff.
           </p>
         </div>
@@ -979,7 +979,7 @@ const buyersDesktop = [
             <IconAgent size={36} className="text-brand-green" />
           </div>
           <h3 className="font-title text-2xl md:text-3xl uppercase tracking-tight leading-tight mb-4">Lane 2: <span className="highlight-green">Agent</span> Buyer</h3>
-          <p className="text-gray-600 text-base leading-relaxed">
+          <p className="text-light-secondary text-base leading-relaxed">
             Are we structured data an AI can parse? Are our case studies machine-readable? Are we in the right databases and data feeds? It's a completely different muscle.
           </p>
         </div>
@@ -1004,7 +1004,7 @@ const buyersDesktop = [
     <div className="absolute right-0 top-1/2 -translate-y-1/2 font-display text-[20rem] md:text-[28rem] font-black text-foreground/[0.04] leading-none select-none pointer-events-none">06</div>
     <Slide className="relative z-10">
       <div className="inline-block px-5 py-2 rounded-sm bg-primary text-primary-foreground font-display text-base font-bold tracking-widest uppercase mb-6">Shift #6</div>
-      <BigText>We sell what<br />machines <span className="highlight-green">can't evaluate.</span></BigText>
+      <BigText>We sell what<br />machines can't <span className="highlight-green">evaluate.</span></BigText>
       <p className="mt-8 text-muted-foreground font-light max-w-3xl leading-relaxed text-lg md:text-xl">
         Transactional vendors get eaten alive by agentic procurement. But companies that sell belonging? That's where the human picks up the phone.
       </p>
@@ -1024,14 +1024,14 @@ const updateClosingDesktop = [
     </Slide>
   </div>,
 
-  <div className="relative w-full h-full flex items-center justify-center bg-white text-gray-900 dot-grid-light overflow-hidden">
+  <div className="relative w-full h-full flex items-center justify-center bg-light-surface text-light dot-grid-light overflow-hidden">
     <div className="relative z-10 w-full max-w-4xl mx-auto px-8 md:px-16 text-center">
       <img src={bbLogoHorizontal} alt="BrandBlvd" className="h-8 md:h-10 mb-14 mx-auto invert" />
-      <p className="font-serif text-xl md:text-2xl italic text-gray-500 mb-10">The companies that win are the ones that build the muscle to adapt continuously.</p>
-      <div className="border-t border-gray-200 pt-8 text-center">
-        <p className="font-serif text-xl md:text-2xl italic text-gray-600 mb-2">Paying attention is half the battle.</p>
+      <p className="font-serif text-xl md:text-2xl italic text-light-muted mb-10">The companies that win are the ones that build the muscle to adapt continuously.</p>
+      <div className="border-t border-light pt-8 text-center">
+        <p className="font-serif text-xl md:text-2xl italic text-light-secondary mb-2">Paying attention is half the battle.</p>
         <h2 className="font-title text-4xl md:text-6xl uppercase tracking-tight">
-          The other half is <span className="highlight-green inline-block">doing something about it.</span>
+          The other half is <span className="highlight-green">doing</span> something about it.
         </h2>
       </div>
     </div>
@@ -1041,7 +1041,7 @@ const updateClosingDesktop = [
 /* ─── Update: Mobile slides ─── */
 
 const updateIntroMobile = [
-  <div className="relative w-full h-full flex items-center justify-center bg-white text-gray-900 cross-grid-light overflow-hidden">
+  <div className="relative w-full h-full flex items-center justify-center bg-light-surface text-light cross-grid-light overflow-hidden">
     <div className="absolute right-0 bottom-0 font-display text-[12rem] font-black text-foreground/[0.02] leading-none select-none pointer-events-none">
       +30
     </div>
@@ -1050,12 +1050,12 @@ const updateIntroMobile = [
         <div className="w-10 h-10 rounded-sm bg-brand-green/10 flex items-center justify-center">
           <IconUpdate size={24} className="text-brand-green" />
         </div>
-        <p className="font-display text-sm uppercase tracking-[0.3em] text-gray-500 font-bold">Addendum</p>
+        <p className="font-display text-sm uppercase tracking-[0.3em] text-light-muted font-bold">Addendum</p>
       </div>
-      <h1 className="font-title text-4xl uppercase leading-[1.05] tracking-tight text-gray-900">
+      <h1 className="font-title text-4xl uppercase leading-[1.05] tracking-tight text-light">
         30 Days<br /><span className="highlight-green">Later.</span>
       </h1>
-      <p className="font-serif text-lg italic text-gray-500 mt-6 max-w-2xl">
+      <p className="font-serif text-lg italic text-light-muted mt-6 max-w-2xl">
         I thought this article would hold up for a while. It didn't. Not because I was wrong - but because new signals emerged faster than I expected.
       </p>
     </div>
@@ -1102,11 +1102,11 @@ const orgChartMobile = [
     </Slide>
   </div>,
 
-  <div className="w-full h-full bg-white text-gray-900 flex items-center justify-center px-8">
+  <div className="w-full h-full bg-light-surface text-light flex items-center justify-center px-8">
     <div className="w-full max-w-6xl">
-      <p className="font-display text-sm uppercase tracking-[0.35em] text-gray-500 font-bold mb-6">Case Study: Block</p>
+      <p className="font-display text-sm uppercase tracking-[0.35em] text-light-muted font-bold mb-6">Case Study: Block</p>
       <h2 className="font-title text-4xl uppercase leading-[0.9] tracking-tight mb-8">
-        <span className="text-gray-900">3 Roles.</span><br /><span className="highlight-green">Not 10 Layers.</span>
+        <span className="text-light">3 Roles.</span><br />Not 10 <span className="highlight-green">Layers.</span>
       </h2>
       <div className="grid grid-cols-1 gap-y-6">
         <GridCard superTitle="ICs" title="Individual Contributors." body="Use the AI model for context instead of waiting for management approval." />
@@ -1149,11 +1149,11 @@ const agentsMobile = [
     </Slide>
   </div>,
 
-  <div className="w-full h-full bg-white text-gray-900 flex items-center justify-center px-8">
+  <div className="w-full h-full bg-light-surface text-light flex items-center justify-center px-8">
     <div className="w-full max-w-6xl">
-      <p className="font-display text-sm uppercase tracking-[0.35em] text-gray-500 font-bold mb-6">The Convergence</p>
+      <p className="font-display text-sm uppercase tracking-[0.35em] text-light-muted font-bold mb-6">The Convergence</p>
       <h2 className="font-title text-4xl uppercase leading-[0.9] tracking-tight mb-8">
-        <span className="text-gray-900">3 Signals.</span><br /><span className="highlight-green">Same Direction.</span>
+        <span className="text-light">3 Signals.</span><br />Same <span className="highlight-green">Direction.</span>
       </h2>
       <div className="grid grid-cols-1 gap-y-6">
         <GridCard superTitle="Claude Code" title="$2.5B annual revenue." body="4% of all GitHub commits. Doubled in a single month." />
@@ -1172,11 +1172,11 @@ const agentsMobile = [
     </Slide>
   </div>,
 
-  <div className="w-full h-full bg-white text-gray-900 flex items-center justify-center px-8">
+  <div className="w-full h-full bg-light-surface text-light flex items-center justify-center px-8">
     <div className="w-full max-w-6xl">
-      <p className="font-display text-sm uppercase tracking-[0.35em] text-gray-500 font-bold mb-6">Case Study</p>
+      <p className="font-display text-sm uppercase tracking-[0.35em] text-light-muted font-bold mb-6">Case Study</p>
       <h2 className="font-title text-4xl uppercase leading-[0.9] tracking-tight mb-8">
-        <span className="text-gray-900">$20K to</span><br /><span className="highlight-green">$1.8 Billion.</span>
+        <span className="text-light">$20K to</span><br /><span className="highlight-green">$1.8 Billion.</span>
       </h2>
       <div className="grid grid-cols-1 gap-y-6">
         <GridCard superTitle="The Founders" title="2 people. That's it." body="Matthew Gallagher and his brother built a telehealth company using AI agents for nearly everything." />
@@ -1244,11 +1244,11 @@ const buyersMobile = [
     </Slide>
   </div>,
 
-  <div className="w-full h-full bg-white text-gray-900 flex items-center justify-center px-8">
+  <div className="w-full h-full bg-light-surface text-light flex items-center justify-center px-8">
     <div className="w-full max-w-6xl">
-      <p className="font-display text-sm uppercase tracking-[0.35em] text-gray-500 font-bold mb-6">Agentic Procurement</p>
+      <p className="font-display text-sm uppercase tracking-[0.35em] text-light-muted font-bold mb-6">Agentic Procurement</p>
       <h2 className="font-title text-4xl uppercase leading-[0.9] tracking-tight mb-8">
-        <span className="text-gray-900">The</span><span className="highlight-green">Numbers</span>
+        <span className="text-light">The</span><span className="highlight-green">Numbers</span>
       </h2>
       <div className="grid grid-cols-1 gap-y-6">
         <NumberedItem num="45%" title="Use AI as primary research" desc="B2B buyers using AI to identify new suppliers." />
@@ -1258,19 +1258,19 @@ const buyersMobile = [
     </div>
   </div>,
 
-  <div className="w-full h-full bg-white text-gray-900 flex items-center justify-center px-8 dot-grid-light">
+  <div className="w-full h-full bg-light-surface text-light flex items-center justify-center px-8 dot-grid-light">
     <div className="relative z-10 w-full max-w-6xl">
-      <p className="font-display text-sm uppercase tracking-[0.35em] text-gray-500 font-bold mb-8">Two Lanes</p>
+      <p className="font-display text-sm uppercase tracking-[0.35em] text-light-muted font-bold mb-8">Two Lanes</p>
       <div className="space-y-8">
         <div>
           <h3 className="font-title text-xl uppercase tracking-tight leading-tight mb-3">Lane 1: <span className="highlight-green">Human</span> Buyer</h3>
-          <p className="text-gray-600 text-sm leading-relaxed">
+          <p className="text-light-secondary text-sm leading-relaxed">
             Relationships, trust, and personal service still win. Double down on the human stuff.
           </p>
         </div>
         <div>
           <h3 className="font-title text-xl uppercase tracking-tight leading-tight mb-3">Lane 2: <span className="highlight-green">Agent</span> Buyer</h3>
-          <p className="text-gray-600 text-sm leading-relaxed">
+          <p className="text-light-secondary text-sm leading-relaxed">
             Are we structured data an AI can parse? Are our case studies machine-readable? A completely different muscle.
           </p>
         </div>
@@ -1293,7 +1293,7 @@ const buyersMobile = [
     <div className="absolute right-0 top-1/2 -translate-y-1/2 font-display text-[12rem] font-black text-foreground/[0.04] leading-none select-none pointer-events-none">06</div>
     <Slide className="relative z-10">
       <div className="inline-block px-5 py-2 rounded-sm bg-primary text-primary-foreground font-display text-base font-bold tracking-widest uppercase mb-6">Shift #6</div>
-      <BigText>We sell what<br />machines <span className="highlight-green">can't evaluate.</span></BigText>
+      <BigText>We sell what<br />machines can't <span className="highlight-green">evaluate.</span></BigText>
       <p className="mt-8 text-muted-foreground font-light max-w-3xl leading-relaxed text-lg">
         Transactional vendors get eaten alive. Companies that sell belonging? That's where the human picks up the phone.
       </p>
@@ -1312,14 +1312,14 @@ const updateClosingMobile = [
     </Slide>
   </div>,
 
-  <div className="relative w-full h-full flex items-center justify-center bg-white text-gray-900 dot-grid-light overflow-hidden">
+  <div className="relative w-full h-full flex items-center justify-center bg-light-surface text-light dot-grid-light overflow-hidden">
     <div className="relative z-10 w-full px-8 text-center">
       <img src={bbLogoHorizontal} alt="BrandBlvd" className="h-7 mb-10 mx-auto invert" />
-      <p className="font-serif text-lg italic text-gray-500 mb-8">The companies that win build the muscle to adapt continuously.</p>
-      <div className="border-t border-gray-200 pt-6 text-center">
-        <p className="font-serif text-lg italic text-gray-600 mb-2">Paying attention is half the battle.</p>
+      <p className="font-serif text-lg italic text-light-muted mb-8">The companies that win build the muscle to adapt continuously.</p>
+      <div className="border-t border-light pt-6 text-center">
+        <p className="font-serif text-lg italic text-light-secondary mb-2">Paying attention is half the battle.</p>
         <h2 className="font-title text-3xl uppercase tracking-tight">
-          The other half is <span className="highlight-green inline-block">doing something about it.</span>
+          The other half is <span className="highlight-green">doing</span> something about it.
         </h2>
       </div>
     </div>
@@ -1332,7 +1332,7 @@ const futureOfAi: PresentationConfig = {
   slug: "future-of-ai",
   title: "The Future of AI - Brand Blvd",
   description: "How artificial intelligence is reshaping expectations, value, and identity - and what it means for us.",
-  themeId: "brand-blvd",
+  themeId: "brand-blvd-v2",
 
   sections: [
     {

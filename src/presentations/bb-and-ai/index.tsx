@@ -1,8 +1,7 @@
 /**
- * "The Future of AI" Presentation — V3 (Team-Focused)
+ * "Brand BB and AI" Presentation
  *
- * Merged version: 8 sections, no "update" framing.
- * Audience: ~70 ground-floor employees at Brand Blvd.
+ * Team-focused: what AI means for Brand Blvd employees.
  */
 
 import {
@@ -1270,9 +1269,9 @@ const closingMobile = [
 
 /* ─── Config ─── */
 
-const futureOfAiV3: PresentationConfig = {
-  slug: "future-of-ai-v3",
-  title: "AI and the Future of Our Work - Brand Blvd",
+const bbAndAi: PresentationConfig = {
+  slug: "bb-and-ai",
+  title: "Brand BB and AI - Brand Blvd",
   description: "What's happening with AI, what it means for our team, and why we're not standing still.",
   themeId: "brand-blvd-v2",
 
@@ -1340,4 +1339,4 @@ const futureOfAiV3: PresentationConfig = {
   presenterNotesComponent: PresenterNotesSection,
 };
 
-export default futureOfAiV3;
+export default bbAndAi;
