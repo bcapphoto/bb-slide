@@ -40,6 +40,44 @@ import bbMonogram from "@/assets/bb-monogram-white.svg";
 
 import type { PresentationConfig } from "@/presentations/presentation.types";
 
+/* ─── 98/2 donut chart ─── */
+const NinetyEightTwoChart = ({ size = 340 }: { size?: number }) => {
+  const r = 80;
+  const c = 2 * Math.PI * r;
+  const twoPct = c * 0.02;
+  return (
+    <div className="flex flex-col items-center justify-center">
+      <svg width={size} height={size} viewBox="0 0 200 200" className="drop-shadow-sm">
+        <circle cx="100" cy="100" r={r} fill="none" stroke="hsl(var(--muted-foreground) / 0.25)" strokeWidth="28" />
+        <circle
+          cx="100"
+          cy="100"
+          r={r}
+          fill="none"
+          stroke="hsl(var(--primary))"
+          strokeWidth="28"
+          strokeDasharray={`${twoPct} ${c - twoPct}`}
+          strokeDashoffset={c * 0.25}
+          transform="rotate(-90 100 100)"
+          strokeLinecap="butt"
+        />
+        <text x="100" y="96" textAnchor="middle" className="fill-foreground font-display font-black" style={{ fontSize: 34 }}>98%</text>
+        <text x="100" y="118" textAnchor="middle" className="fill-muted-foreground font-display uppercase tracking-[0.2em]" style={{ fontSize: 8, fontWeight: 700 }}>moved on</text>
+      </svg>
+      <div className="flex items-center gap-6 mt-4">
+        <div className="flex items-center gap-2">
+          <span className="inline-block w-3 h-3 rounded-sm" style={{ background: "hsl(var(--muted-foreground) / 0.25)" }} />
+          <span className="font-display text-xs uppercase tracking-[0.2em] text-muted-foreground font-bold">98% moved on</span>
+        </div>
+        <div className="flex items-center gap-2">
+          <span className="inline-block w-3 h-3 rounded-sm bg-primary" />
+          <span className="font-display text-xs uppercase tracking-[0.2em] text-muted-foreground font-bold">2% watching</span>
+        </div>
+      </div>
+    </div>
+  );
+};
+
 /* ─── Desktop slide content ─── */
 
 const titleDesktop = [
@@ -63,17 +101,20 @@ const titleDesktop = [
 
   // Karpathy framing - the organizing idea
   <div className="relative w-full h-full flex items-center justify-center cross-grid">
-    <Slide className="relative z-10">
-      <p className="font-display text-sm uppercase tracking-[0.35em] text-muted-foreground font-bold mb-8">Andrej Karpathy - April 9, 2026</p>
-      <SerifStatement>
-        There are <span className="text-primary">2 groups</span> of people right now.
-        The <span className="text-primary font-bold">98%</span> who tried ChatGPT once and moved on.
-        And the <span className="text-primary font-bold">2%</span> watching it do things that would have been science fiction 2 years ago.
-      </SerifStatement>
-      <p className="font-serif text-lg md:text-xl italic text-muted-foreground mt-10 max-w-3xl mx-auto">
-        Both groups are looking at the same technology. They're coming away with completely different realities.
-      </p>
-    </Slide>
+    <div className="relative z-10 w-full max-w-7xl mx-auto px-8 md:px-16 grid md:grid-cols-[1fr_auto] gap-12 md:gap-20 items-center">
+      <div className="text-left">
+        <p className="font-display text-sm uppercase tracking-[0.35em] text-muted-foreground font-bold mb-8">Andrej Karpathy - April 9, 2026</p>
+        <p className="font-serif text-3xl md:text-5xl lg:text-6xl leading-[1.15] tracking-tight">
+          There are <span className="text-primary">2 groups</span> of people right now.
+          The <span className="text-primary font-bold">98%</span> who tried ChatGPT once and moved on.
+          And the <span className="text-primary font-bold">2%</span> watching it do things that would have been science fiction 2 years ago.
+        </p>
+        <p className="font-serif text-lg md:text-xl italic text-muted-foreground mt-8 max-w-2xl">
+          Both groups are looking at the same technology. They're coming away with completely different realities.
+        </p>
+      </div>
+      <NinetyEightTwoChart />
+    </div>
   </div>,
 
   // Why I'm sharing this
@@ -860,12 +901,15 @@ const titleMobile = [
   </div>,
 
   <div className="relative w-full h-full flex items-center justify-center cross-grid">
-    <Slide className="relative z-10">
+    <div className="relative z-10 px-8 w-full">
       <p className="font-display text-xs uppercase tracking-[0.35em] text-muted-foreground font-bold mb-6">Andrej Karpathy - April 9, 2026</p>
-      <SerifStatement>
+      <p className="font-serif text-2xl leading-[1.2] tracking-tight">
         2 groups right now. The <span className="text-primary font-bold">98%</span> who tried ChatGPT and moved on. The <span className="text-primary font-bold">2%</span> watching it do things that would have been science fiction 2 years ago.
-      </SerifStatement>
-    </Slide>
+      </p>
+      <div className="mt-8 flex justify-center">
+        <NinetyEightTwoChart size={220} />
+      </div>
+    </div>
   </div>,
 
   <div className="relative w-full h-full flex items-center justify-center diagonal-lines">
