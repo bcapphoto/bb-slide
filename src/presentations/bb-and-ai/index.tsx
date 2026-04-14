@@ -1,7 +1,8 @@
 /**
- * "Brand BB and AI" Presentation
+ * "Brand BB and AI - v2" Presentation
  *
- * Team-focused: what AI means for Brand Blvd employees.
+ * Team-facing kickoff for the AI Lab pilot.
+ * Reframed around Karpathy's 98/2 observation - invitation, not ultimatum.
  */
 
 import {
@@ -39,6 +40,194 @@ import bbMonogram from "@/assets/bb-monogram-white.svg";
 
 import type { PresentationConfig } from "@/presentations/presentation.types";
 
+/* ─── 98/2 donut chart ─── */
+const NinetyEightTwoChart = ({ size = 340 }: { size?: number }) => {
+  const r = 80;
+  const c = 2 * Math.PI * r;
+  const twoPct = c * 0.02;
+  return (
+    <div className="flex flex-col items-center justify-center">
+      <svg width={size} height={size} viewBox="0 0 200 200" className="drop-shadow-sm">
+        <circle cx="100" cy="100" r={r} fill="none" stroke="hsl(var(--muted-foreground) / 0.25)" strokeWidth="28" />
+        <circle
+          cx="100"
+          cy="100"
+          r={r}
+          fill="none"
+          stroke="hsl(var(--primary))"
+          strokeWidth="28"
+          strokeDasharray={`${twoPct} ${c - twoPct}`}
+          strokeDashoffset={c * 0.25}
+          transform="rotate(-90 100 100)"
+          strokeLinecap="butt"
+        />
+        <text x="100" y="96" textAnchor="middle" className="fill-foreground font-display font-black" style={{ fontSize: 34 }}>98%</text>
+        <text x="100" y="118" textAnchor="middle" className="fill-muted-foreground font-display uppercase tracking-[0.2em]" style={{ fontSize: 8, fontWeight: 700 }}>moved on</text>
+      </svg>
+      <div className="flex items-center gap-6 mt-4">
+        <div className="flex items-center gap-2">
+          <span className="inline-block w-3 h-3 rounded-sm" style={{ background: "hsl(var(--muted-foreground) / 0.25)" }} />
+          <span className="font-display text-xs uppercase tracking-[0.2em] text-muted-foreground font-bold">98% moved on</span>
+        </div>
+        <div className="flex items-center gap-2">
+          <span className="inline-block w-3 h-3 rounded-sm bg-primary" />
+          <span className="font-display text-xs uppercase tracking-[0.2em] text-muted-foreground font-bold">2% watching</span>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+/* ─── Span-of-control org diagram ─── */
+const SpanOfControlDiagram = () => {
+  // Traditional hierarchy: 1 -> 4 -> 16 (3 layers)
+  // AI-enabled: 1 -> 16 (flat)
+  const primary = "hsl(var(--primary))";
+  const muted = "hsl(var(--muted-foreground) / 0.35)";
+  const line = "hsl(var(--muted-foreground) / 0.25)";
+  return (
+    <div className="grid grid-cols-2 gap-8 md:gap-12 w-full max-w-xl">
+      <div className="flex flex-col items-center">
+        <p className="font-display text-[10px] md:text-xs uppercase tracking-[0.2em] text-muted-foreground font-bold mb-4">Traditional</p>
+        <svg viewBox="0 0 200 140" className="w-full">
+          <line x1="100" y1="20" x2="50" y2="60" stroke={line} strokeWidth="1" />
+          <line x1="100" y1="20" x2="150" y2="60" stroke={line} strokeWidth="1" />
+          {[30, 60, 90, 110, 140, 170].map((x) => (
+            <line key={x} x1={x < 100 ? 50 : 150} y1="60" x2={x} y2="110" stroke={line} strokeWidth="1" />
+          ))}
+          <circle cx="100" cy="20" r="6" fill={primary} />
+          <circle cx="50" cy="60" r="5" fill={muted} />
+          <circle cx="150" cy="60" r="5" fill={muted} />
+          {[30, 60, 90, 110, 140, 170].map((x) => (
+            <circle key={x} cx={x} cy="110" r="3" fill={muted} />
+          ))}
+        </svg>
+        <p className="font-display text-xs text-muted-foreground mt-3 text-center">Layers to coordinate</p>
+      </div>
+      <div className="flex flex-col items-center">
+        <p className="font-display text-[10px] md:text-xs uppercase tracking-[0.2em] text-primary font-bold mb-4">With AI</p>
+        <svg viewBox="0 0 200 140" className="w-full">
+          {[20, 45, 70, 95, 120, 145, 170].map((x) => (
+            <line key={x} x1="100" y1="30" x2={x} y2="100" stroke={line} strokeWidth="1" />
+          ))}
+          <circle cx="100" cy="30" r="6" fill={primary} />
+          {[20, 45, 70, 95, 120, 145, 170].map((x) => (
+            <circle key={x} cx={x} cy="100" r="3" fill={muted} />
+          ))}
+        </svg>
+        <p className="font-display text-xs text-muted-foreground mt-3 text-center">Context replaces layers</p>
+      </div>
+    </div>
+  );
+};
+
+/* ─── Telehealth hockey-stick line chart: $20K → $401M → $1.8B ─── */
+const TelehealthScaleChart = () => {
+  // Linear scale so the hockey-stick shape reads immediately.
+  // $20K rounds to ~0 on this scale, which is the whole point.
+  const W = 600;
+  const H = 280;
+  const pad = { l: 50, r: 50, t: 50, b: 55 };
+  const pts = [
+    { label: "$20K", sub: "Start", v: 0.00002 },
+    { label: "$401M", sub: "2025 sales", v: 0.401 },
+    { label: "$1.8B", sub: "2026 est.", v: 1.8 },
+  ];
+  const maxV = 1.8;
+  const xFor = (i: number) => pad.l + (i / (pts.length - 1)) * (W - pad.l - pad.r);
+  const yFor = (v: number) => H - pad.b - (v / maxV) * (H - pad.t - pad.b);
+  const coords = pts.map((p, i) => ({ ...p, x: xFor(i), y: yFor(p.v) }));
+  // Smooth bezier between points for the hockey-stick feel
+  // Straight segments so the geometry stays true-to-scale (hockey stick emerges from the data, not easing).
+  const path = coords.reduce((d, p, i) => (i === 0 ? `M ${p.x} ${p.y}` : `${d} L ${p.x} ${p.y}`), "");
+  const areaPath = `${path} L ${coords[coords.length - 1].x} ${H - pad.b} L ${coords[0].x} ${H - pad.b} Z`;
+  return (
+    <div className="w-full max-w-3xl mx-auto">
+      <svg viewBox={`0 0 ${W} ${H}`} className="w-full h-auto">
+        {/* baseline */}
+        <line x1={pad.l} y1={H - pad.b} x2={W - pad.r} y2={H - pad.b} stroke="hsl(var(--light) / 0.25)" strokeWidth="1.5" />
+        {/* area fill */}
+        <path d={areaPath} fill="hsl(var(--brand) / 0.15)" />
+        {/* line */}
+        <path d={path} fill="none" stroke="hsl(var(--brand))" strokeWidth="4" strokeLinecap="round" />
+        {/* points + labels */}
+        {coords.map((p, i) => (
+          <g key={p.label}>
+            <circle cx={p.x} cy={p.y} r={i === coords.length - 1 ? 8 : 5} fill="hsl(var(--brand))" stroke="hsl(var(--light-surface))" strokeWidth="3" />
+            <text
+              x={p.x}
+              y={p.y - 18}
+              textAnchor={i === coords.length - 1 ? "end" : i === 0 ? "start" : "middle"}
+              className="fill-light font-title"
+              style={{ fontSize: i === coords.length - 1 ? 30 : 20, fontWeight: 800, letterSpacing: "-0.02em" }}
+            >
+              {p.label}
+            </text>
+            <text
+              x={p.x}
+              y={H - pad.b + 22}
+              textAnchor="middle"
+              className="fill-light-muted font-display"
+              style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase" }}
+            >
+              {p.sub.toUpperCase()}
+            </text>
+          </g>
+        ))}
+      </svg>
+    </div>
+  );
+};
+
+/* ─── AI Lab pilot timeline: 12 weeks, weekly sessions + monthly builds ─── */
+const PilotTimeline = () => {
+  const weeks = Array.from({ length: 12 }, (_, i) => i + 1);
+  return (
+    <div className="w-full max-w-5xl mx-auto">
+      {/* Month markers */}
+      <div className="grid grid-cols-3 gap-4 mb-3">
+        {["Month 1", "Month 2", "Month 3"].map((m) => (
+          <div key={m} className="text-center">
+            <p className="font-display text-xs uppercase tracking-[0.3em] text-light-muted font-bold">{m}</p>
+          </div>
+        ))}
+      </div>
+      {/* Timeline track */}
+      <div className="relative">
+        <div className="absolute left-0 right-0 top-1/2 -translate-y-1/2 h-[2px] bg-light/20" />
+        <div className="relative grid grid-cols-12 gap-2 items-center py-6">
+          {weeks.map((w) => {
+            const isBuild = w % 4 === 0;
+            return (
+              <div key={w} className="flex flex-col items-center">
+                {isBuild ? (
+                  <div className="w-10 h-10 md:w-12 md:h-12 rounded-sm bg-brand-green flex items-center justify-center shadow-sm">
+                    <span className="font-display text-[9px] md:text-[10px] uppercase tracking-wide font-black text-light">½ day</span>
+                  </div>
+                ) : (
+                  <div className="w-3 h-3 md:w-4 md:h-4 rounded-full bg-light/50 border-2 border-light/30" />
+                )}
+                <span className="font-display text-[10px] uppercase tracking-wider text-light-muted mt-2">W{w}</span>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+      {/* Legend */}
+      <div className="flex flex-wrap gap-6 md:gap-8 justify-center mt-6">
+        <div className="flex items-center gap-2">
+          <span className="w-3 h-3 rounded-full bg-light/50 border-2 border-light/30" />
+          <span className="font-display text-xs uppercase tracking-[0.2em] text-light-secondary font-bold">90 min / week - live session</span>
+        </div>
+        <div className="flex items-center gap-2">
+          <span className="w-4 h-4 rounded-sm bg-brand-green" />
+          <span className="font-display text-xs uppercase tracking-[0.2em] text-light-secondary font-bold">½ day / month - ship something real</span>
+        </div>
+      </div>
+    </div>
+  );
+};
+
 /* ─── Desktop slide content ─── */
 
 const titleDesktop = [
@@ -52,27 +241,58 @@ const titleDesktop = [
         <img src={bbLogoHorizontal} alt="BrandBlvd" className="h-10 md:h-14" />
       </div>
       <h1 className="font-title text-6xl md:text-8xl lg:text-9xl uppercase leading-[1.05] tracking-tight">
-        The Future<br />of <span className="highlight-green">AI.</span>
+        Don't<br /><span className="highlight-green">miss</span> this.
       </h1>
       <p className="font-serif text-xl md:text-2xl italic text-muted-foreground mt-8 max-w-2xl">
-        What's happening, what it means for us, and why we're not standing still.
+        Why I started the AI Lab, and why I want as many of you in it as possible.
       </p>
     </div>
   </div>,
 
-  // Discussion
-  <PromptSlide question="What is 1 way AI has changed how you act or make decisions?" />,
+  // Karpathy framing - the organizing idea
+  <div className="relative w-full h-full flex items-center justify-center cross-grid">
+    <div className="relative z-10 w-full max-w-7xl mx-auto px-8 md:px-16 grid md:grid-cols-[1fr_auto] gap-12 md:gap-20 items-center">
+      <div className="text-left">
+        <p className="font-display text-sm uppercase tracking-[0.35em] text-muted-foreground font-bold mb-8">Andrej Karpathy - April 9, 2026</p>
+        <p className="font-serif text-3xl md:text-5xl lg:text-6xl leading-[1.15] tracking-tight">
+          There are <span className="text-primary">2 groups</span> of people right now.
+          The <span className="text-primary font-bold">98%</span> who tried ChatGPT once and moved on.
+          And the <span className="text-primary font-bold">2%</span> watching it do things that would have been science fiction 2 years ago.
+        </p>
+        <p className="font-serif text-lg md:text-xl italic text-muted-foreground mt-8 max-w-2xl">
+          Both groups are looking at the same technology. They're coming away with completely different realities.
+        </p>
+      </div>
+      <NinetyEightTwoChart />
+    </div>
+  </div>,
 
-  // Overview — 6 topics
+  // Why I'm sharing this
+  <div className="relative w-full h-full flex items-center justify-center diagonal-lines">
+    <Slide className="relative z-10">
+      <SerifStatement>
+        I've been spending a lot of time in the <span className="text-primary font-bold">2%</span>.
+        Not because I'm an expert. Because I've been paying close attention - reading, building, experimenting.
+      </SerifStatement>
+      <p className="font-serif text-lg md:text-xl italic text-muted-foreground mt-10 max-w-3xl mx-auto">
+        And I want to bring as many of you over as I can.
+      </p>
+    </Slide>
+  </div>,
+
+  // Discussion
+  <PromptSlide question="Where do you think you sit right now - closer to the 98 or the 2?" />,
+
+  // Overview - 6 shifts
   <div className="relative w-full h-full flex items-center justify-center bg-light-surface text-light dot-grid-light overflow-hidden">
     <div className="relative z-10 w-full max-w-4xl mx-auto px-8 md:px-16 text-center">
-      <p className="font-serif text-xl md:text-2xl italic text-light-muted mb-14">6 shifts we believe will reshape our business and our industry.</p>
+      <p className="font-serif text-xl md:text-2xl italic text-light-muted mb-14">6 things the 2% are watching - and what I think they mean for us.</p>
       <div className="space-y-8 text-left">
         <div className="flex items-center gap-6">
           <div className="flex-shrink-0 w-16 h-16 md:w-20 md:h-20 rounded-sm bg-brand-green/10 flex items-center justify-center">
             <IconFastForward size={40} className="text-brand-green md:w-12 md:h-12" />
           </div>
-          <h3 className="font-title text-2xl md:text-3xl uppercase tracking-tight leading-tight text-light">AI is compressing time across <span className="highlight-green">everything.</span></h3>
+          <h3 className="font-title text-2xl md:text-3xl uppercase tracking-tight leading-tight text-light">Expectations have <span className="highlight-green">shifted.</span></h3>
         </div>
         <div className="flex items-center gap-6">
           <div className="flex-shrink-0 w-16 h-16 md:w-20 md:h-20 rounded-sm bg-brand-green/10 flex items-center justify-center">
@@ -102,116 +322,100 @@ const titleDesktop = [
           <div className="flex-shrink-0 w-16 h-16 md:w-20 md:h-20 rounded-sm bg-brand-green/10 flex items-center justify-center">
             <IconTarget size={40} className="text-brand-green md:w-12 md:h-12" />
           </div>
-          <h3 className="font-title text-2xl md:text-3xl uppercase tracking-tight leading-tight text-light">Machines are becoming the <span className="highlight-green">buyers.</span></h3>
+          <h3 className="font-title text-2xl md:text-3xl uppercase tracking-tight leading-tight text-light">The buyer isn't a <span className="highlight-green">person</span> anymore.</h3>
         </div>
       </div>
     </div>
   </div>,
 ];
 
-const instantDesktop = [
-  <SectionOpener icon={IconFastForward} number="01" superTitle="The Future of AI" title={<>AI is compressing time<br />across <span className="highlight-green">everything.</span></>} monogramSrc={bbMonogram} />,
+const expectationsDesktop = [
+  <SectionOpener icon={IconFastForward} number="01" superTitle="Don't miss this." title={<>Expectations have<br /><span className="highlight-green">shifted.</span></>} monogramSrc={bbMonogram} />,
 
   <div className="relative w-full h-full flex items-center justify-center diagonal-lines">
     <BgImage src={abstractSpeed} opacity="opacity-[0.04]" />
     <Slide className="relative z-10">
       <SerifStatement>
-        AI tools have moved from novelty to <span className="text-primary">household names</span>.
-        They're training people to expect immediate results.
+        AI is training people to expect <span className="text-primary">immediate</span>.
         Not faster. <span className="text-primary font-bold">Immediate.</span>
       </SerifStatement>
+      <p className="font-display text-sm uppercase tracking-[0.3em] text-muted-foreground mt-10 font-bold">37% of consumers go to AI first instead of Google. Nearly 50% of searches include AI summaries.</p>
     </Slide>
   </div>,
 
   <Slide><GrowthChart /></Slide>,
 
-  <div className="relative w-full h-full flex items-center justify-center dot-grid">
-    <div className="relative z-10 w-full max-w-6xl px-8 md:px-16">
-      <p className="font-display text-sm uppercase tracking-[0.35em] text-muted-foreground font-bold mb-8">Investment Signals</p>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-10">
-        <GridCard superTitle="OpenAI" title="$100B Round · $850B Valuation." body="Largest single funding round in technology history." />
-        <GridCard superTitle="Nvidia" title="$3T+ Market Cap." body="Stock grew 200%+ in a single year on AI chip demand. One of the most valuable companies in the world." />
-        <GridCard superTitle="Lovable" title="$330M Raised · 1 Year Old." body="One of the largest early-stage rounds for an AI-native dev platform." />
-        <GridCard superTitle="Anthropic" title="$30B at $380B Valuation." body="Revenue growing 10x annually, less than 3 years old." />
-      </div>
-    </div>
-  </div>,
-
-  <WhiteSlide>
-    <p className="font-display text-sm uppercase tracking-[0.35em] text-light-muted font-bold mb-6">What's Changing</p>
-    <h2 className="font-title text-5xl md:text-7xl uppercase leading-[0.9] tracking-tight mb-12">
-      <span className="text-light">Expectation</span><span className="highlight-green">Shifts</span>
-    </h2>
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-8">
-      <NumberedItem num="1" title="Patience is collapsing" desc="ChatGPT can help you compare car models immediately." />
-      <NumberedItem num="2" title={'"Good enough" is immediate'} desc="Fast is better than perfect - i.e. NotebookLM." />
-      <NumberedItem num="3" title="Exploration cost is nearing 0" desc='"Generate 3 themes for a campaign."' />
-      <NumberedItem num="4" title="Self-sufficiency is increasing" desc="AI can help people do everything now." />
-    </div>
-  </WhiteSlide>,
-
+  // The "good enough is good enough" beat
   <div className="relative w-full h-full flex items-center justify-center cross-grid">
     <Slide className="relative z-10">
       <SerifStatement>
-        AI is not just improving productivity. <span className="text-primary font-bold">It's rewiring expectation.</span>
+        <span className="text-primary">"Good enough, right now"</span> beats <span className="text-primary font-bold">"perfect, later."</span>
       </SerifStatement>
-      <p className="font-display text-sm uppercase tracking-[0.3em] text-muted-foreground mt-10 font-bold">The speed of AI is setting the speed of everything.</p>
+      <p className="font-serif text-lg md:text-xl italic text-muted-foreground mt-10 max-w-3xl mx-auto">
+        A background cut that used to take 30 minutes in Photoshop now takes 5 seconds in Canva. Is it pixel-perfect? Maybe not. But it's done. And that's the new floor.
+      </p>
     </Slide>
   </div>,
 
   <div className="relative w-full h-full flex items-center justify-center diagonal-lines">
     <Slide className="relative z-10">
+      <SerifStatement>
+        The 2% have already been re-trained by these tools. They expect <span className="text-primary">instant</span>. They explore more, compare more, iterate more - <span className="text-primary font-bold">before they ever pick up the phone.</span>
+      </SerifStatement>
+      <p className="font-display text-sm uppercase tracking-[0.3em] text-muted-foreground mt-10 font-bold">Exploration is free now. Behaviour changes when exploration is free.</p>
+    </Slide>
+  </div>,
+
+  // Gap framing
+  <div className="relative w-full h-full flex items-center justify-center diagonal-lines">
+    <Slide className="relative z-10">
       <div className="text-left max-w-3xl">
-        <p className="font-serif text-lg md:text-xl lg:text-2xl italic text-muted-foreground mb-8">If we operate with...</p>
+        <p className="font-serif text-lg md:text-xl lg:text-2xl italic text-muted-foreground mb-8">A gap is opening up in the industry.</p>
         <div className="border-l-4 border-primary/40 pl-6 mb-10 space-y-4">
-          <p className="text-xl md:text-2xl lg:text-3xl text-muted-foreground font-light leading-relaxed"><span className="text-foreground font-medium">48-hour</span> quote turnarounds</p>
-          <p className="text-xl md:text-2xl lg:text-3xl text-muted-foreground font-light leading-relaxed"><span className="text-foreground font-medium">3-day</span> proof cycles</p>
-          <p className="text-xl md:text-2xl lg:text-3xl text-muted-foreground font-light leading-relaxed">Reorders buried in <span className="text-foreground font-medium">email chains</span></p>
+          <p className="text-xl md:text-2xl lg:text-3xl text-muted-foreground font-light leading-relaxed">What clients are <span className="text-foreground font-medium">starting to expect</span></p>
+          <p className="text-xl md:text-2xl lg:text-3xl text-muted-foreground font-light leading-relaxed">vs. what most agencies are <span className="text-foreground font-medium">set up to deliver.</span></p>
         </div>
-        <p className="font-serif text-lg md:text-xl lg:text-2xl italic text-foreground mb-8">
-          ...we'll feel analog in a digital world.
-        </p>
         <div className="border-t border-muted-foreground/20 pt-6">
-          <p className="font-display text-sm uppercase tracking-[0.3em] text-primary font-bold mb-3">Reality Check</p>
+          <p className="font-display text-sm uppercase tracking-[0.3em] text-primary font-bold mb-3">The Opening</p>
           <p className="text-base md:text-lg lg:text-xl text-muted-foreground font-light leading-relaxed">
-            Buyers will expect real-time pricing, proofs, and ordering - <span className="text-primary font-bold">delays will feel broken.</span>
+            That gap is where both the risk <span className="text-primary font-bold">and the opportunity</span> live - and we get to choose which side we're on.
           </p>
         </div>
       </div>
     </Slide>
   </div>,
 
-  <PromptSlide question="If you were our client, what part of our process would frustrate you?" />,
+  <PromptSlide question="What's something you've seen a client expect lately that they wouldn't have asked for a year ago?" />,
 
   <div className="relative w-full h-full flex items-center justify-center dot-grid overflow-hidden">
     <div className="absolute right-0 top-1/2 -translate-y-1/2 font-display text-[20rem] md:text-[28rem] font-black text-foreground/[0.04] leading-none select-none pointer-events-none">01</div>
     <Slide className="relative z-10">
       <div className="inline-block px-5 py-2 rounded-sm bg-primary text-primary-foreground font-display text-base font-bold tracking-widest uppercase mb-6">Shift #1</div>
-      <BigText>Instant is the<br />new <span className="highlight-green">standard.</span></BigText>
+      <BigText>Good enough,<br />right <span className="highlight-green">now.</span></BigText>
       <p className="mt-8 text-muted-foreground font-light max-w-3xl leading-relaxed text-lg md:text-xl">
-        Automate reorders, quoting, proofs, and standard workflows. Remove unnecessary delay. Operational excellence buys us the right to be strategic where it matters.
+        The floor moved. Velocity beats precision at the front of the process. The agencies that close the gap between what clients expect and what they get are the ones that get pulled forward.
       </p>
     </Slide>
   </div>,
 ];
 
 const humanValueDesktop = [
-  <SectionOpener icon={IconStacks} number="02" superTitle="The Future of AI" title={<>AI is taking over<br />the <span className="highlight-green">"doing."</span></>} monogramSrc={bbMonogram} />,
+  <SectionOpener icon={IconStacks} number="02" superTitle="Don't miss this." title={<>AI is taking over<br />the <span className="highlight-green">"doing."</span></>} monogramSrc={bbMonogram} />,
 
   <div className="relative w-full h-full flex items-center justify-center cross-grid">
     <BgImage src={abstractStack} opacity="opacity-[0.05]" />
     <Slide className="relative z-10">
       <SerifStatement>
-        AI can do rule-based, repetitive, information-heavy tasks <span className="text-primary">faster, cheaper, and at scale</span>.
-        Our role shifts to knowing <span className="text-primary font-bold">"what" to do</span>, not in "doing" it.
+        AI handles rule-based, repetitive, information-heavy tasks <span className="text-primary">faster, cheaper, and at scale</span>.
+        Our role moves up the stack - to knowing <span className="text-primary font-bold">what</span> to do, not "doing" it.
       </SerifStatement>
-      <p className="font-display text-sm uppercase tracking-[0.3em] text-muted-foreground mt-10 font-bold">The human role shifts up the stack.</p>
+      <p className="font-display text-sm uppercase tracking-[0.3em] text-muted-foreground mt-10 font-bold">Execution gets cheap. Judgment gets scarce.</p>
     </Slide>
   </div>,
 
   <WhiteSlide className="cross-grid-light">
     <div className="relative z-10">
-      <p className="font-display text-sm uppercase tracking-[0.35em] text-light-muted font-bold mb-10">Industry Leaders</p>
+      <p className="font-display text-sm uppercase tracking-[0.35em] text-light-muted font-bold mb-10">What the people building this are saying</p>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
         {[
           { quote: "The future of work is not about AI replacing people. It's about people who use AI replacing people who don't.", author: "Satya Nadella", role: "CEO, Microsoft" },
@@ -224,63 +428,72 @@ const humanValueDesktop = [
     </div>
   </WhiteSlide>,
 
+  // Reframed Nadella moment - this is WHY the AI Lab exists
+  <div className="relative w-full h-full flex items-center justify-center diagonal-lines">
+    <Slide className="relative z-10">
+      <SerifStatement>
+        That Nadella quote is exactly why I'm <span className="text-primary font-bold">not waiting.</span>
+        It's why we're building the <span className="text-primary">AI Lab.</span>
+      </SerifStatement>
+      <p className="font-serif text-lg md:text-xl italic text-muted-foreground mt-10 max-w-3xl mx-auto">
+        Instead of telling everyone "this is on you," I want to say: this is why I want to help.
+      </p>
+    </Slide>
+  </div>,
+
   <WhiteSlide>
-    <p className="font-display text-sm uppercase tracking-[0.35em] text-light-muted font-bold mb-6">Industry Reality</p>
+    <p className="font-display text-sm uppercase tracking-[0.35em] text-light-muted font-bold mb-6">The Pattern</p>
     <h2 className="font-title text-5xl md:text-7xl uppercase leading-[0.9] tracking-tight mb-12">
-      Order-Taking<span className="highlight-green">Dies.</span>
+      Pulled<span className="highlight-green">Up.</span>
     </h2>
     <div className="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-8">
       <div>
-        <h3 className="font-display text-lg font-extrabold uppercase mb-4">The shift</h3>
+        <h3 className="font-display text-lg font-extrabold uppercase mb-4">What's getting automated</h3>
         <p className="text-light-secondary text-base leading-relaxed mb-4">
-          Software will get better. AI-empowered systems will draft proposals, generate pricing comparisons, and source products instantly.
-        </p>
-        <p className="text-light-secondary text-base leading-relaxed mb-4">
-          More people will use more tools to do the work we do now. If we continue to be just order-takers, we'll be beaten out by alternatives that make it easier and quicker.
+          Drafting proposals. Generating pricing comparisons. Sourcing products. The transactional middle is being absorbed - in our industry just like it was in travel and retail.
         </p>
       </div>
       <div>
-        <h3 className="font-display text-lg font-extrabold uppercase mb-4">The precedent</h3>
+        <h3 className="font-display text-lg font-extrabold uppercase mb-4">Where we get to live</h3>
         <p className="text-light-secondary text-base leading-relaxed mb-4">
-          Industries like travel and retail eliminated transactional middlemen when search became automated.
+          Making sure the proposal solves the right problem. Making sure the strategy holds. Designing the moment around the merch.
         </p>
         <p className="text-light text-base leading-relaxed font-medium">
-          This will happen to us, too.
+          We get pulled up the value chain. That's a good thing if we're ready for it.
         </p>
       </div>
     </div>
-    <p className="mt-10 border-t border-light pt-6">
-      <span className="text-brand-green font-display font-bold uppercase text-sm">Conclusion:</span>{" "}
-      <span className="font-bold text-base">Evolve from "order takers" to collaborators and advisors.</span>
-    </p>
   </WhiteSlide>,
 
-  <PromptSlide question="If AI handled 50% of admin tomorrow, would our reps know what to do with the extra time?" />,
+  <PromptSlide question="If AI handled half your admin tomorrow, what would you do with the time?" />,
 
   <div className="relative w-full h-full flex items-center justify-center dot-grid overflow-hidden">
     <div className="absolute right-0 top-1/2 -translate-y-1/2 font-display text-[20rem] md:text-[28rem] font-black text-foreground/[0.04] leading-none select-none pointer-events-none">02</div>
     <Slide className="relative z-10">
       <div className="inline-block px-5 py-2 rounded-sm bg-primary text-primary-foreground font-display text-base font-bold tracking-widest uppercase mb-6">Shift #2</div>
-      <BigText>Death of<br />transactional <span className="highlight-green">sales.</span></BigText>
+      <BigText>We get pulled<br />up the <span className="highlight-green">stack.</span></BigText>
       <p className="mt-8 text-muted-foreground font-light max-w-3xl leading-relaxed text-lg md:text-xl">
-        We win on framing, interpretation, judgement, context, and strategy - not on sending catalogues.
+        Less doing, more deciding. Framing the problem. Defining success. Owning the outcome. That's what AI can't replace.
       </p>
     </Slide>
   </div>,
 ];
 
 const orgChartDesktop = [
-  <SectionOpener icon={IconOrgChart} number="03" superTitle="The Future of AI" title={<>The org chart is<br /><span className="highlight-green">dissolving.</span></>} monogramSrc={bbMonogram} />,
+  <SectionOpener icon={IconOrgChart} number="03" superTitle="Don't miss this." title={<>The org chart is<br /><span className="highlight-green">dissolving.</span></>} monogramSrc={bbMonogram} />,
 
   <div className="relative w-full h-full flex items-center justify-center diagonal-lines">
-    <Slide className="relative z-10">
-      <SerifStatement>
-        For 2,000 years, a leader could manage <span className="text-primary">3 to 8 people</span>.
-        That number hasn't changed since the Roman military.
-        It's why we have <span className="text-primary font-bold">hierarchies.</span>
-      </SerifStatement>
-      <p className="font-display text-sm uppercase tracking-[0.3em] text-muted-foreground mt-10 font-bold">AI doesn't need layers to coordinate.</p>
-    </Slide>
+    <div className="relative z-10 w-full max-w-7xl mx-auto px-8 md:px-16 grid md:grid-cols-[1.3fr_1fr] gap-12 md:gap-16 items-center">
+      <div className="text-left">
+        <p className="font-serif text-3xl md:text-5xl lg:text-6xl leading-[1.15] tracking-tight">
+          For 2,000 years, a leader could manage <span className="text-primary">3 to 8 people</span>.
+          That number hasn't changed since the Roman military.
+          It's why we have <span className="text-primary font-bold">hierarchies.</span>
+        </p>
+        <p className="font-display text-sm uppercase tracking-[0.3em] text-muted-foreground mt-8 font-bold">AI doesn't need layers to coordinate.</p>
+      </div>
+      <SpanOfControlDiagram />
+    </div>
   </div>,
 
   <WhiteSlide>
@@ -293,12 +506,12 @@ const orgChartDesktop = [
       <GridCard superTitle="DRIs" title="Directly Responsible." body="Own a specific problem for 90 days with cross-team authority." />
       <GridCard superTitle="Player-Coaches" title="Build + Develop." body="Build things and develop people at the same time." />
     </div>
-    <p className="mt-10 text-light-muted text-sm italic">Source: Sequoia Capital — "From Hierarchy to Intelligence"</p>
+    <p className="mt-10 text-light-muted text-sm italic">Source: Sequoia Capital - "From Hierarchy to Intelligence"</p>
   </WhiteSlide>,
 
   <div className="relative w-full h-full flex items-center justify-center dot-grid">
     <div className="relative z-10 w-full max-w-6xl px-8 md:px-16">
-      <p className="font-display text-sm uppercase tracking-[0.35em] text-muted-foreground font-bold mb-10">Two Opposing Forces</p>
+      <p className="font-display text-sm uppercase tracking-[0.35em] text-muted-foreground font-bold mb-10">Two Forces, Pulling in Opposite Directions</p>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-10">
         <div>
           <h3 className="font-display text-lg font-extrabold uppercase mb-4">Inside Our Walls</h3>
@@ -306,7 +519,7 @@ const orgChartDesktop = [
             "Growing the team" starts to look less like adding headcount and more like increasing <span className="text-foreground font-medium">leverage per person</span>.
           </p>
           <p className="text-muted-foreground text-base leading-relaxed">
-            The question shifts from "who do we hire next?" to "how do we make every person <span className="text-foreground font-medium">3x more effective</span>?"
+            From "who do we hire next?" to "how do we make every person here <span className="text-foreground font-medium">3x more effective</span>?"
           </p>
         </div>
         <div>
@@ -326,9 +539,9 @@ const orgChartDesktop = [
     <Slide className="relative z-10">
       <SerifStatement>
         If management layers compress, the people who remain become <span className="text-primary font-bold">more important</span>, not less.
-        They hold more authority. They care more about culture and belonging.
+        More authority. Closer to the work. Closer to the culture.
       </SerifStatement>
-      <p className="font-display text-sm uppercase tracking-[0.3em] text-muted-foreground mt-10 font-bold">That's a very good thing for a company that manufactures belonging.</p>
+      <p className="font-display text-sm uppercase tracking-[0.3em] text-muted-foreground mt-10 font-bold">A very good thing for a company that manufactures belonging.</p>
     </Slide>
   </div>,
 
@@ -338,27 +551,27 @@ const orgChartDesktop = [
       <div className="inline-block px-5 py-2 rounded-sm bg-primary text-primary-foreground font-display text-base font-bold tracking-widest uppercase mb-6">Shift #3</div>
       <BigText>Leverage per<br />person, not <span className="highlight-green">headcount.</span></BigText>
       <p className="mt-8 text-muted-foreground font-light max-w-3xl leading-relaxed text-lg md:text-xl">
-        Management becomes coaching. The "doing" part of management is what AI absorbs first. The thinking part - judgment, coaching, strategy - stays human.
+        Management becomes coaching. The "doing" part of management gets absorbed. The thinking part - judgment, coaching, strategy - stays human.
       </p>
     </Slide>
   </div>,
 ];
 
 const agentsDesktop = [
-  <SectionOpener icon={IconAgent} number="04" superTitle="The Future of AI" title={<>Agents are doing<br />the <span className="highlight-green">work.</span></>} monogramSrc={bbMonogram} />,
+  <SectionOpener icon={IconAgent} number="04" superTitle="Don't miss this." title={<>Agents are doing<br />the <span className="highlight-green">work.</span></>} monogramSrc={bbMonogram} />,
 
   <div className="relative w-full h-full flex items-center justify-center diagonal-lines">
     <Slide className="relative z-10">
       <SerifStatement>
-        A month ago, AI was a <span className="text-primary">tool</span>. You prompt it. It responds. You review.
-        What's changed is the speed at which the biggest players are converging on the same conclusion:
-        <span className="text-primary font-bold"> agents should do the work, not just assist with it.</span>
+        Last year, AI was a <span className="text-primary">tool</span>. You prompt it. It responds. You review.
+        The biggest players are converging on something different now:
+        <span className="text-primary font-bold"> agents that do the work, not just help with it.</span>
       </SerifStatement>
     </Slide>
   </div>,
 
   <WhiteSlide>
-    <p className="font-display text-sm uppercase tracking-[0.35em] text-light-muted font-bold mb-6">The Convergence</p>
+    <p className="font-display text-sm uppercase tracking-[0.35em] text-light-muted font-bold mb-6">From Assistant to Operator</p>
     <h2 className="font-title text-5xl md:text-7xl uppercase leading-[0.9] tracking-tight mb-12">
       <span className="text-light">3 Signals.</span><br />Same <span className="highlight-green">Direction.</span>
     </h2>
@@ -369,53 +582,28 @@ const agentsDesktop = [
     </div>
   </WhiteSlide>,
 
-  <div className="relative w-full h-full flex items-center justify-center dot-grid">
-    <div className="relative z-10 w-full max-w-6xl px-8 md:px-16">
-      <p className="font-display text-sm uppercase tracking-[0.35em] text-muted-foreground font-bold mb-10">Beyond Code</p>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-8">
-        <div>
-          <h3 className="font-display text-lg font-extrabold uppercase mb-4">The First Domino</h3>
-          <p className="text-muted-foreground text-base leading-relaxed mb-4">
-            Coding is the most visible example because it's the easiest to agentify. But it's just the first domino.
-          </p>
-          <p className="text-muted-foreground text-base leading-relaxed">
-            <span className="text-foreground font-medium">$200B+</span> in agentic AI spending projected for 2026. Marketing is next.
-          </p>
-        </div>
-        <div>
-          <h3 className="font-display text-lg font-extrabold uppercase mb-4">The Wild Stuff</h3>
-          <p className="text-muted-foreground text-base leading-relaxed mb-4">
-            Dario Amodei gives a <span className="text-foreground font-medium">70-80% probability</span> that 2026 sees the first billion-dollar company run by a single person.
-          </p>
-          <p className="text-muted-foreground text-base leading-relaxed">
-            A dev built an AI agent that generated <span className="text-foreground font-medium">$100K+ in autonomous revenue</span>.
-          </p>
-        </div>
-      </div>
-    </div>
-  </div>,
-
-  <div className="relative w-full h-full flex items-center justify-center dot-grid-bold">
-    <Slide className="relative z-10">
-      <p className="font-display text-sm uppercase tracking-[0.35em] text-muted-foreground font-bold mb-8">The Zero-Employee Company</p>
-      <SerifStatement>
-        What if you didn't need <span className="text-primary">employees</span> at all?
-      </SerifStatement>
-      <p className="text-muted-foreground font-light max-w-3xl mx-auto leading-relaxed text-lg md:text-xl mt-8">
-        Dario Amodei gives a <span className="text-foreground font-medium">70-80% probability</span> that 2026 sees the first billion-dollar company run by a single person. It might already be happening.
-      </p>
-    </Slide>
-  </div>,
-
   <WhiteSlide>
     <p className="font-display text-sm uppercase tracking-[0.35em] text-light-muted font-bold mb-6">Case Study</p>
-    <h2 className="font-title text-5xl md:text-7xl uppercase leading-[0.9] tracking-tight mb-12">
+    <h2 className="font-title text-5xl md:text-7xl uppercase leading-[0.9] tracking-tight mb-10">
       <span className="text-light">$20K to</span><br /><span className="highlight-green">$1.8 Billion.</span>
     </h2>
-    <div className="grid grid-cols-1 md:grid-cols-3 gap-x-16 gap-y-8">
-      <GridCard superTitle="The Founders" title="2 people. That's it." body="Matthew Gallagher and his brother built a telehealth company using AI agents for nearly everything — operations, support, marketing, fulfillment." />
-      <GridCard superTitle="The Investment" title="$20,000 to start." body="No VC. No team of 50. Just a small bet, AI tools, and a relentless focus on delivering outcomes to patients." />
-      <GridCard superTitle="The Result" title="$1.8B projected in 2026." body="$401 million in sales in 2025. On track to nearly 5x this year. The most compelling proof that the zero-employee model works." />
+    <div className="grid grid-cols-1 md:grid-cols-[1fr_1fr] gap-x-12 gap-y-8 items-center">
+      <div className="space-y-5">
+        <div>
+          <p className="font-display text-xs uppercase tracking-[0.25em] text-light-muted font-bold mb-1">The Founders</p>
+          <p className="text-light text-lg md:text-xl font-medium">2 people. That's it.</p>
+          <p className="text-light-secondary text-sm leading-relaxed">Matthew Gallagher and his brother - telehealth company run on AI agents for operations, support, marketing, fulfillment.</p>
+        </div>
+        <div>
+          <p className="font-display text-xs uppercase tracking-[0.25em] text-light-muted font-bold mb-1">The Investment</p>
+          <p className="text-light text-lg md:text-xl font-medium">$20,000 to start. No VC.</p>
+        </div>
+        <div>
+          <p className="font-display text-xs uppercase tracking-[0.25em] text-light-muted font-bold mb-1">The Trajectory</p>
+          <p className="text-light text-lg md:text-xl font-medium">$401M in 2025. On track to nearly 5x.</p>
+        </div>
+      </div>
+      <TelehealthScaleChart />
     </div>
   </WhiteSlide>,
 
@@ -425,20 +613,20 @@ const agentsDesktop = [
         This isn't a tech story.<br />It's a <span className="text-primary font-bold">leverage</span> story.
       </SerifStatement>
       <p className="text-muted-foreground font-light max-w-3xl mx-auto leading-relaxed text-lg md:text-xl mt-8">
-        Two people. No employees. AI handling operations, support, and scale. The question isn't whether this is possible. It's whether your competitors figure it out before you do.
+        The same AI tools available to a 2-person startup are available to everyone - including us.
       </p>
     </Slide>
   </div>,
 
   <div className="relative w-full h-full flex items-center justify-center cross-grid">
     <Slide className="relative z-10">
-      <p className="font-display text-sm uppercase tracking-[0.35em] text-muted-foreground font-bold mb-8">Sequoia Capital</p>
+      <p className="font-display text-sm uppercase tracking-[0.35em] text-muted-foreground font-bold mb-8">Sequoia Capital - "Services: The New Software"</p>
       <SerifStatement>
         The next trillion-dollar company won't sell <span className="text-primary">tools</span>.
         It will sell <span className="text-primary font-bold">outcomes.</span>
       </SerifStatement>
       <p className="text-muted-foreground font-light max-w-3xl mx-auto leading-relaxed text-lg md:text-xl mt-8">
-        For every dollar companies spend on software, they spend 6 dollars on services. The opportunity isn't in building better tools. It's in delivering better outcomes.
+        For every $1 spent on software, companies spend $6 on services. The opportunity isn't in better tools. It's in better outcomes.
       </p>
     </Slide>
   </div>,
@@ -446,16 +634,16 @@ const agentsDesktop = [
   <div className="relative w-full h-full flex items-center justify-center diagonal-lines">
     <Slide className="relative z-10">
       <div className="text-left max-w-3xl">
-        <p className="font-serif text-lg md:text-xl lg:text-2xl italic text-muted-foreground mb-8">Think about that in the context of what we do.</p>
+        <p className="font-serif text-lg md:text-xl lg:text-2xl italic text-muted-foreground mb-8">In our context...</p>
         <div className="border-l-4 border-primary/40 pl-6 mb-10 space-y-4">
           <p className="text-xl md:text-2xl text-muted-foreground font-light leading-relaxed">We don't sell <span className="text-foreground font-medium">t-shirts</span>.</p>
           <p className="text-xl md:text-2xl text-muted-foreground font-light leading-relaxed">We sell the <span className="text-foreground font-medium">experience</span> around the t-shirt.</p>
-          <p className="text-xl md:text-2xl text-muted-foreground font-light leading-relaxed">The <span className="text-foreground font-medium">brand moment</span>. The <span className="text-foreground font-medium">culture artifact</span>. The <span className="text-foreground font-medium">belonging signal</span>.</p>
+          <p className="text-xl md:text-2xl text-muted-foreground font-light leading-relaxed">The <span className="text-foreground font-medium">brand moment.</span> The <span className="text-foreground font-medium">culture artifact.</span> The <span className="text-foreground font-medium">belonging signal.</span></p>
         </div>
         <div className="border-t border-muted-foreground/20 pt-6">
           <p className="font-display text-sm uppercase tracking-[0.3em] text-primary font-bold mb-3">The More AI Commoditizes Logistics</p>
           <p className="text-base md:text-lg text-muted-foreground font-light leading-relaxed">
-            The more the value shifts to what we're actually good at: <span className="text-primary font-bold">designing the moment.</span>
+            The more value shifts to what we're actually good at: <span className="text-primary font-bold">designing the moment.</span>
           </p>
         </div>
       </div>
@@ -468,56 +656,75 @@ const agentsDesktop = [
       <div className="inline-block px-5 py-2 rounded-sm bg-primary text-primary-foreground font-display text-base font-bold tracking-widest uppercase mb-6">Shift #4</div>
       <BigText>Sell outcomes,<br />not <span className="highlight-green">tools.</span></BigText>
       <p className="mt-8 text-muted-foreground font-light max-w-3xl leading-relaxed text-lg md:text-xl">
-        The companies that win aren't the ones with the best software. They're the ones that deliver outcomes people trust.
+        The companies that win deliver outcomes people trust. That's exactly what we already do.
       </p>
     </Slide>
   </div>,
 ];
 
 const identityDesktop = [
-  <SectionOpener icon={IconIdentity} number="05" superTitle="The Future of AI" title={<>AI will restructure<br />the employer-employee <span className="highlight-green">relationship.</span></>} monogramSrc={bbMonogram} />,
+  <SectionOpener icon={IconIdentity} number="05" superTitle="Don't miss this." title={<>The workforce is<br /><span className="highlight-green">shifting.</span></>} monogramSrc={bbMonogram} />,
 
+  // Reframed numbers slide - context for anxiety, not a scare
+  <WhiteSlide>
+    <p className="font-display text-sm uppercase tracking-[0.35em] text-light-muted font-bold mb-6">Why there's so much anxiety right now</p>
+    <h2 className="font-title text-5xl md:text-7xl uppercase leading-[0.9] tracking-tight mb-12">
+      <span className="text-light">What most people</span><span className="highlight-green">hear.</span>
+    </h2>
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-x-16 gap-y-8">
+      <NumberedItem num="80%" title="Believe AI will impact their work" desc="Workers surveyed about AI's effect on their tasks." />
+      <NumberedItem num="50%" title="Worry their job could be automated" desc="Workers who already use AI at work." />
+      <NumberedItem num="76K+" title="Jobs eliminated in 2025" desc="Data entry, telemarketing, admin support roles." />
+    </div>
+    <p className="mt-10 text-light-secondary text-base leading-relaxed max-w-3xl">
+      These numbers are real. They're exactly why so many people feel uneasy about AI right now. <span className="text-light font-medium">But they're not the whole story.</span>
+    </p>
+  </WhiteSlide>,
+
+  // Reframed - the BB version
   <div className="relative w-full h-full flex items-center justify-center diagonal-lines">
     <BgImage src={abstractIdentity} opacity="opacity-[0.05]" />
     <Slide className="relative z-10">
       <SerifStatement>
-        AI will change workforce structures, whether through efficiency gains, consolidation or augmentation.
-        The workforce <span className="text-primary font-bold">will</span> shift. It's not a question of "if" but one of <span className="text-primary">"when."</span>
+        We're not trying to do more with <span className="text-primary">fewer</span> people.
+        We're trying to make every person on this team <span className="text-primary font-bold">more powerful, more effective, more valuable.</span>
       </SerifStatement>
+      <p className="font-serif text-lg md:text-xl italic text-muted-foreground mt-10 max-w-3xl mx-auto">
+        AI isn't here to replace you. It's here to make you better at what you already do well.
+      </p>
     </Slide>
   </div>,
 
-  <WhiteSlide>
-    <p className="font-display text-sm uppercase tracking-[0.35em] text-light-muted font-bold mb-6">Workforce Data</p>
-    <h2 className="font-title text-5xl md:text-7xl uppercase leading-[0.9] tracking-tight mb-12">
-      <span className="text-light">The</span><span className="highlight-green">Numbers</span>
-    </h2>
-    <div className="grid grid-cols-1 md:grid-cols-3 gap-x-16 gap-y-8">
-      <NumberedItem num="80%" title="Believe AI will impact their daily work" desc="Workers surveyed about AI's effect on their tasks." />
-      <NumberedItem num="50%" title="Worry their job could be automated" desc="Workers who already use AI at work." />
-      <NumberedItem num="76K+" title="Jobs eliminated in 2025" desc="Data entry, telemarketing, and admin support roles." />
-    </div>
-  </WhiteSlide>,
+  // Reframed "vulnerable position" - drop binary, keep upside
+  <div className="relative w-full h-full flex items-center justify-center cross-grid">
+    <Slide className="relative z-10">
+      <SerifStatement>
+        The people who lean into this stuff get to <span className="text-primary font-bold">shape what comes next.</span>
+        That's why we're making space for as many of you as possible to be part of this.
+      </SerifStatement>
+      <p className="font-display text-sm uppercase tracking-[0.3em] text-muted-foreground mt-10 font-bold">Nobody is a lost cause for being in the 98%. The whole point is to bring people across.</p>
+    </Slide>
+  </div>,
 
-  <PromptSlide question="What part of your daily work could AI help you do faster or better?" />,
+  <PromptSlide question="What part of your daily work would you most want AI to take off your plate?" />,
 
   <WhiteSlide className="diagonal-lines-light">
     <div className="relative z-10 text-center">
       <p className="font-serif text-3xl md:text-4xl lg:text-5xl italic leading-snug max-w-5xl mx-auto text-light">
-        That doesn't mean merch and swag <span className="text-brand-green font-bold">go away.</span>
+        Merch and swag don't <span className="text-brand-green font-bold">go away.</span>
       </p>
       <p className="font-display text-sm uppercase tracking-[0.3em] text-light-muted mt-10 font-bold">
-        As AI reshapes work, belonging shifts from employer identity to community identity.
+        As work shifts, belonging moves from employer identity to community identity.
       </p>
     </div>
   </WhiteSlide>,
 
   <div className="relative w-full h-full flex items-center justify-center dot-grid">
     <div className="relative z-10 w-full max-w-6xl px-8 md:px-16">
-      <p className="font-display text-sm uppercase tracking-[0.35em] text-muted-foreground font-bold mb-10">The Opportunity</p>
+      <p className="font-display text-sm uppercase tracking-[0.35em] text-muted-foreground font-bold mb-10">Where Belonging Relocates</p>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
-        <GridCard superTitle="Internal" title="More intentional." body="Merch must reflect culture and values, not just fill closets." />
-        <GridCard superTitle="External" title="More tribal." body="Build tribes - customers, advocates, insiders, power users, culture ambassadors." />
+        <GridCard superTitle="Internal" title="More intentional." body="Merch reflects culture and values, not just fills closets." />
+        <GridCard superTitle="External" title="More tribal." body="Build tribes - customers, advocates, insiders, ambassadors." />
         <GridCard superTitle="Identity" title="Badge signalling." body="Move from 'gifting employees' to 'manufacturing belonging.'" />
       </div>
     </div>
@@ -527,21 +734,21 @@ const identityDesktop = [
     <div className="absolute right-0 top-1/2 -translate-y-1/2 font-display text-[20rem] md:text-[28rem] font-black text-foreground/[0.04] leading-none select-none pointer-events-none">05</div>
     <Slide className="relative z-10">
       <div className="inline-block px-5 py-2 rounded-sm bg-primary text-primary-foreground font-display text-base font-bold tracking-widest uppercase mb-6">Shift #5</div>
-      <BigText>The workforce<br />is <span className="highlight-green">shifting.</span></BigText>
+      <BigText>Belonging is<br /><span className="highlight-green">expanding.</span></BigText>
       <p className="mt-8 text-muted-foreground font-light max-w-3xl leading-relaxed text-lg md:text-xl">
-        Merch becomes badge signalling, not office swag. Move from "gifting employees" to "manufacturing belonging."
+        Tie our growth to payroll size and we're tied to a shrinking lever. Tie it to identity and belonging and we're tied to something expanding.
       </p>
     </Slide>
   </div>,
 ];
 
 const buyersDesktop = [
-  <SectionOpener icon={IconTarget} number="06" superTitle="The Future of AI" title={<>When machines are<br />the <span className="highlight-green">buyers.</span></>} monogramSrc={bbMonogram} />,
+  <SectionOpener icon={IconTarget} number="06" superTitle="Don't miss this." title={<>The buyer isn't<br />a <span className="highlight-green">person</span> anymore.</>} monogramSrc={bbMonogram} />,
 
   <div className="relative w-full h-full flex items-center justify-center diagonal-lines">
     <Slide className="relative z-10">
       <SerifStatement>
-        Everything above leads to a question I don't think enough people in our industry are asking:
+        Everything above leads to a question I don't think enough people in our industry are sitting with:
         <br /><br />
         If AI is making the decisions... <span className="text-primary font-bold">who are we selling to?</span>
       </SerifStatement>
@@ -555,7 +762,7 @@ const buyersDesktop = [
     </h2>
     <div className="grid grid-cols-1 md:grid-cols-3 gap-x-16 gap-y-8">
       <NumberedItem num="45%" title="Use AI as primary research" desc="B2B buyers already using AI to identify new suppliers." />
-      <NumberedItem num="⅔" title="Trust AI agents for vendor research" desc="Rely on agents as much as — or more than — Google." />
+      <NumberedItem num="⅔" title="Trust AI agents for vendor research" desc="Rely on agents as much as - or more than - Google." />
       <NumberedItem num="90%" title="Of B2B purchases by 2028" desc="$15 trillion in spending mediated by AI agents." />
     </div>
   </WhiteSlide>,
@@ -570,7 +777,7 @@ const buyersDesktop = [
           </p>
         </div>
         <p className="text-muted-foreground font-light max-w-3xl leading-relaxed text-lg md:text-xl">
-          The agent researches. Compares. Shortlists. Maybe it even places the order. The human doesn't visit a website. Doesn't read an email. <span className="text-foreground font-medium">Doesn't take a sales call.</span>
+          The agent researches. Compares. Shortlists. Maybe even places the order. The human doesn't visit a website. Doesn't read an email. <span className="text-foreground font-medium">Doesn't take a sales call.</span>
         </p>
       </div>
     </Slide>
@@ -578,7 +785,7 @@ const buyersDesktop = [
 
   <WhiteSlide className="dot-grid-light">
     <div className="relative z-10">
-      <p className="font-display text-sm uppercase tracking-[0.35em] text-light-muted font-bold mb-10">Two Lanes</p>
+      <p className="font-display text-sm uppercase tracking-[0.35em] text-light-muted font-bold mb-10">Two Lanes - Both Worth Building</p>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-10">
         <div>
           <div className="w-16 h-16 rounded-sm bg-brand-green/10 flex items-center justify-center mb-6">
@@ -595,7 +802,7 @@ const buyersDesktop = [
           </div>
           <h3 className="font-title text-2xl md:text-3xl uppercase tracking-tight leading-tight mb-4">Lane 2: <span className="highlight-green">Agent</span> Buyer</h3>
           <p className="text-light-secondary text-base leading-relaxed">
-            Are we structured data an AI can parse? Are our case studies machine-readable? Are we in the right databases and data feeds? It's a completely different muscle.
+            Are we structured data an AI can parse? Are our case studies machine-readable? Are we in the right databases and feeds? A completely different muscle.
           </p>
         </div>
       </div>
@@ -609,11 +816,11 @@ const buyersDesktop = [
         Will they push back when my idea is off?
         Will they design an experience that makes our people <span className="text-primary font-bold">feel something</span>?
       </SerifStatement>
-      <p className="font-display text-sm uppercase tracking-[0.3em] text-muted-foreground mt-10 font-bold">The agent can shortlist vendors. But it can't feel the culture of a brand.</p>
+      <p className="font-display text-sm uppercase tracking-[0.3em] text-muted-foreground mt-10 font-bold">The agent can shortlist vendors. It can't feel the culture of a brand.</p>
     </Slide>
   </div>,
 
-  <PromptSlide question="How would an AI procurement agent describe Brand Blvd? Would it even find us?" />,
+  <PromptSlide question="If an AI agent had to describe Brand Blvd in 2 sentences, what would we want it to say?" />,
 
   <div className="relative w-full h-full flex items-center justify-center dot-grid overflow-hidden">
     <div className="absolute right-0 top-1/2 -translate-y-1/2 font-display text-[20rem] md:text-[28rem] font-black text-foreground/[0.04] leading-none select-none pointer-events-none">06</div>
@@ -621,25 +828,161 @@ const buyersDesktop = [
       <div className="inline-block px-5 py-2 rounded-sm bg-primary text-primary-foreground font-display text-base font-bold tracking-widest uppercase mb-6">Shift #6</div>
       <BigText>We sell what<br />machines can't <span className="highlight-green">evaluate.</span></BigText>
       <p className="mt-8 text-muted-foreground font-light max-w-3xl leading-relaxed text-lg md:text-xl">
-        Transactional vendors get eaten alive by agentic procurement. But companies that sell belonging? That's where the human picks up the phone.
+        Transactional vendors get eaten by agentic procurement. Companies that sell belonging? That's where the human picks up the phone.
+      </p>
+    </Slide>
+  </div>,
+];
+
+const aiLabDesktop = [
+  // Section opener
+  <SectionOpener icon={IconAgent} number="07" superTitle="The AI Lab" title={<>What we're<br /><span className="highlight-green">building.</span></>} monogramSrc={bbMonogram} />,
+
+  // Hammer - simple version
+  <div className="relative w-full h-full flex items-center justify-center dot-grid overflow-hidden">
+    <Slide className="relative z-10">
+      <p className="font-display text-sm uppercase tracking-[0.35em] text-muted-foreground font-bold mb-8">So what is the AI Lab?</p>
+      <BigText>A small pilot.<br />Real work. <span className="highlight-green">3 months.</span></BigText>
+      <p className="mt-10 text-muted-foreground font-light max-w-3xl leading-relaxed text-lg md:text-xl">
+        Leadership plus 3 to 5 team members. Learning to actually use AI as a working tool. Not theory. Not tutorials. Building real things for your real job.
+      </p>
+    </Slide>
+  </div>,
+
+  // Honest-part - SerifStatement
+  <div className="relative w-full h-full flex items-center justify-center cross-grid">
+    <Slide className="relative z-10">
+      <SerifStatement>
+        I don't have this all <span className="text-primary">figured out.</span> Nobody does.
+        The tools are moving too fast for anyone to have a perfect playbook.
+      </SerifStatement>
+      <p className="font-serif text-lg md:text-xl italic text-muted-foreground mt-10 max-w-3xl mx-auto">
+        So we're going to learn together as we go. That's kind of the point.
+      </p>
+    </Slide>
+  </div>,
+
+  // What we'll be working on - combined curriculum map
+  <WhiteSlide>
+    <p className="font-display text-sm uppercase tracking-[0.35em] text-light-muted font-bold mb-4">What we'll be working on</p>
+    <h2 className="font-title text-4xl md:text-6xl uppercase leading-[0.9] tracking-tight mb-10">
+      <span className="text-light">The</span><span className="highlight-green">Curriculum.</span>
+    </h2>
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-6 items-start">
+      <div>
+        <div className="flex items-center gap-3 mb-5">
+          <span className="font-display text-xs uppercase tracking-[0.25em] text-brand-green font-black">Track 1</span>
+          <span className="h-px flex-1 bg-light/20" />
+          <span className="font-display text-xs uppercase tracking-[0.25em] text-light-muted font-bold">Foundations</span>
+        </div>
+        <div className="space-y-4">
+          {[
+            { n: "01", t: "Spot the workflows", d: "Which pieces of your day-to-day are good candidates to hand over to AI." },
+            { n: "02", t: "What a skill is", d: "How it helps AI do a job the way you'd do it." },
+            { n: "03", t: "What an agent is", d: "How it's different from just chatting with ChatGPT." },
+            { n: "04", t: "Build things yourself", d: "Not watching someone else do it - doing it." },
+          ].map((i) => (
+            <div key={i.n} className="flex gap-4 items-start">
+              <span className="font-title text-xl md:text-2xl text-brand-green font-black leading-none pt-1 w-10 shrink-0">{i.n}</span>
+              <div>
+                <p className="font-display text-base md:text-lg font-extrabold text-light leading-tight">{i.t}</p>
+                <p className="text-light-secondary text-sm leading-snug mt-1">{i.d}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+      <div>
+        <div className="flex items-center gap-3 mb-5">
+          <span className="font-display text-xs uppercase tracking-[0.25em] text-brand-green font-black">Track 2</span>
+          <span className="h-px flex-1 bg-light/20" />
+          <span className="font-display text-xs uppercase tracking-[0.25em] text-light-muted font-bold">Applied</span>
+        </div>
+        <div className="space-y-4">
+          {[
+            { n: "05", t: "Use the tools that exist", d: "Not the ones coming someday - the ones shipping right now." },
+            { n: "06", t: "Run things on autopilot", d: "Set systems up so they keep working without you." },
+            { n: "07", t: "Schedule tasks", d: "Work happens while you sleep." },
+            { n: "08", t: "Connect your tools", d: "Your systems learn to talk to each other." },
+          ].map((i) => (
+            <div key={i.n} className="flex gap-4 items-start">
+              <span className="font-title text-xl md:text-2xl text-brand-green font-black leading-none pt-1 w-10 shrink-0">{i.n}</span>
+              <div>
+                <p className="font-display text-base md:text-lg font-extrabold text-light leading-tight">{i.t}</p>
+                <p className="text-light-secondary text-sm leading-snug mt-1">{i.d}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+    <p className="font-display text-xs md:text-sm uppercase tracking-[0.3em] text-light-muted font-bold mt-8 text-center">Understand the ideas → build with them.</p>
+  </WhiteSlide>,
+
+  // No CS degree required
+  <div className="relative w-full h-full flex items-center justify-center diagonal-lines">
+    <Slide className="relative z-10">
+      <SerifStatement>
+        None of that requires a <span className="text-primary">computer science degree.</span>
+        It requires <span className="text-primary font-bold">curiosity</span>, willingness to try things, and time to practice.
+      </SerifStatement>
+    </Slide>
+  </div>,
+
+  // Time commitment - 12-week pilot timeline
+  <div className="relative w-full h-full flex items-center justify-center bg-light-surface text-light dot-grid-light overflow-hidden">
+    <div className="relative z-10 w-full max-w-6xl mx-auto px-8 md:px-16">
+      <p className="font-display text-sm uppercase tracking-[0.35em] text-light-muted font-bold mb-4 text-center">The time commitment</p>
+      <h2 className="font-title text-4xl md:text-6xl uppercase leading-[0.9] tracking-tight mb-10 text-center">
+        <span className="text-light">That's</span><span className="highlight-green">it.</span>
+      </h2>
+      <PilotTimeline />
+      <p className="text-center text-light-secondary text-base md:text-lg leading-relaxed max-w-3xl mx-auto mt-10">
+        12 weeks. 12 live sessions. 3 shipped builds. Plus whatever you build on your own between sessions.
+      </p>
+    </div>
+  </div>,
+
+  // Impact statement - SerifStatement
+  <div className="relative w-full h-full flex items-center justify-center cross-grid">
+    <Slide className="relative z-10">
+      <SerifStatement>
+        Tasks that used to eat <span className="text-primary">hours</span> will take <span className="text-primary font-bold">minutes.</span>
+        Things you used to put off will get done automatically.
+      </SerifStatement>
+      <p className="font-serif text-lg md:text-xl italic text-muted-foreground mt-10 max-w-3xl mx-auto">
+        More of the work you love. Less of what drains you.
+      </p>
+    </Slide>
+  </div>,
+
+  // This is the beginning - transition
+  <div className="relative w-full h-full flex items-center justify-center dot-grid overflow-hidden">
+    <div className="absolute right-0 top-1/2 -translate-y-1/2 font-display text-[20rem] md:text-[28rem] font-black text-foreground/[0.04] leading-none select-none pointer-events-none">07</div>
+    <Slide className="relative z-10">
+      <div className="inline-block px-5 py-2 rounded-sm bg-primary text-primary-foreground font-display text-base font-bold tracking-widest uppercase mb-6">The AI Lab</div>
+      <BigText>This isn't a one-<br />and-done. <span className="highlight-green">It's the beginning.</span></BigText>
+      <p className="mt-8 text-muted-foreground font-light max-w-3xl leading-relaxed text-lg md:text-xl">
+        The people in this first cohort become the teachers for everyone else. This is something we want the whole team to be part of over time.
       </p>
     </Slide>
   </div>,
 ];
 
 const closingDesktop = [
+  // Recap of 6 shifts
   <div className="relative w-full h-full flex items-center justify-center bg-light-surface text-light dot-grid-light overflow-hidden">
     <div className="relative z-10 w-full max-w-4xl mx-auto px-8 md:px-16 text-center">
       <img src={bbLogoHorizontal} alt="BrandBlvd" className="h-8 md:h-10 mb-14 mx-auto invert" />
-      <p className="font-serif text-xl md:text-2xl italic text-light-muted mb-10">6 shifts. One direction.</p>
+      <p className="font-serif text-xl md:text-2xl italic text-light-muted mb-10">6 things the 2% are watching. One invitation.</p>
       <div className="space-y-6 text-left max-w-2xl mx-auto">
         <div className="flex items-center gap-5">
           <div className="flex-shrink-0 w-14 h-14 md:w-16 md:h-16 rounded-sm bg-brand-green/10 flex items-center justify-center">
             <IconFastForward size={32} className="text-brand-green md:w-10 md:h-10" />
           </div>
           <div>
-            <p className="text-light-muted text-xs font-light">01 — AI is compressing time across everything.</p>
-            <h3 className="font-title text-xl md:text-2xl uppercase tracking-tight leading-tight mt-1 text-light">Instant is the new <span className="highlight-green">standard.</span></h3>
+            <p className="text-light-muted text-xs font-light">01 - Expectations have shifted.</p>
+            <h3 className="font-title text-xl md:text-2xl uppercase tracking-tight leading-tight mt-1 text-light">Good enough, right <span className="highlight-green">now.</span></h3>
           </div>
         </div>
         <div className="flex items-center gap-5">
@@ -647,8 +990,8 @@ const closingDesktop = [
             <IconStacks size={32} className="text-brand-green md:w-10 md:h-10" />
           </div>
           <div>
-            <p className="text-light-muted text-xs font-light">02 — AI is taking over the "doing."</p>
-            <h3 className="font-title text-xl md:text-2xl uppercase tracking-tight leading-tight mt-1 text-light">Death of transactional <span className="highlight-green">sales.</span></h3>
+            <p className="text-light-muted text-xs font-light">02 - AI is taking over the "doing."</p>
+            <h3 className="font-title text-xl md:text-2xl uppercase tracking-tight leading-tight mt-1 text-light">We get pulled up the <span className="highlight-green">stack.</span></h3>
           </div>
         </div>
         <div className="flex items-center gap-5">
@@ -656,7 +999,7 @@ const closingDesktop = [
             <IconOrgChart size={32} className="text-brand-green md:w-10 md:h-10" />
           </div>
           <div>
-            <p className="text-light-muted text-xs font-light">03 — The org chart is dissolving.</p>
+            <p className="text-light-muted text-xs font-light">03 - The org chart is dissolving.</p>
             <h3 className="font-title text-xl md:text-2xl uppercase tracking-tight leading-tight mt-1 text-light">Leverage per person, not <span className="highlight-green">headcount.</span></h3>
           </div>
         </div>
@@ -665,7 +1008,7 @@ const closingDesktop = [
             <IconAgent size={32} className="text-brand-green md:w-10 md:h-10" />
           </div>
           <div>
-            <p className="text-light-muted text-xs font-light">04 — Agents are doing the work.</p>
+            <p className="text-light-muted text-xs font-light">04 - Agents are doing the work.</p>
             <h3 className="font-title text-xl md:text-2xl uppercase tracking-tight leading-tight mt-1 text-light">Sell outcomes, not <span className="highlight-green">tools.</span></h3>
           </div>
         </div>
@@ -674,8 +1017,8 @@ const closingDesktop = [
             <IconIdentity size={32} className="text-brand-green md:w-10 md:h-10" />
           </div>
           <div>
-            <p className="text-light-muted text-xs font-light">05 — AI will restructure the employer-employee relationship.</p>
-            <h3 className="font-title text-xl md:text-2xl uppercase tracking-tight leading-tight mt-1 text-light">The workforce is <span className="highlight-green">shifting.</span></h3>
+            <p className="text-light-muted text-xs font-light">05 - The workforce is shifting.</p>
+            <h3 className="font-title text-xl md:text-2xl uppercase tracking-tight leading-tight mt-1 text-light">Belonging is <span className="highlight-green">expanding.</span></h3>
           </div>
         </div>
         <div className="flex items-center gap-5">
@@ -683,25 +1026,59 @@ const closingDesktop = [
             <IconTarget size={32} className="text-brand-green md:w-10 md:h-10" />
           </div>
           <div>
-            <p className="text-light-muted text-xs font-light">06 — When machines are the buyers.</p>
+            <p className="text-light-muted text-xs font-light">06 - The buyer isn't a person anymore.</p>
             <h3 className="font-title text-xl md:text-2xl uppercase tracking-tight leading-tight mt-1 text-light">We sell what machines can't <span className="highlight-green">evaluate.</span></h3>
           </div>
         </div>
       </div>
-      <div className="border-t border-light mt-10 pt-8 text-center">
-        <p className="font-serif text-xl md:text-2xl italic text-light-secondary mb-2">Paying attention is half the battle.</p>
-        <h2 className="font-title text-4xl md:text-6xl uppercase tracking-tight">
-          The other half takes <span className="highlight-green">all of us.</span>
-        </h2>
-      </div>
     </div>
+  </div>,
+
+  // Build the muscle
+  <div className="relative w-full h-full flex items-center justify-center cross-grid">
+    <Slide className="relative z-10">
+      <SerifStatement>
+        The companies that win in this aren't the ones who <span className="text-primary">predict the future</span> correctly.
+        They're the ones who build the <span className="text-primary font-bold">muscle to adapt continuously.</span>
+      </SerifStatement>
+      <p className="font-display text-sm uppercase tracking-[0.3em] text-muted-foreground mt-10 font-bold">That's what the AI Lab is for.</p>
+    </Slide>
+  </div>,
+
+  // Soft close - the invitation
+  <div className="relative w-full h-full flex items-center justify-center diagonal-lines">
+    <Slide className="relative z-10">
+      <div className="text-left max-w-3xl">
+        <p className="font-serif text-2xl md:text-3xl italic text-foreground leading-snug mb-8">
+          If any of this gets you excited - or even just curious - that's enough.
+        </p>
+        <div className="border-l-4 border-primary/40 pl-6 mb-8 space-y-4">
+          <p className="text-lg md:text-xl text-muted-foreground font-light leading-relaxed">
+            You don't need to be an AI expert. You just need to <span className="text-foreground font-medium">want to learn.</span>
+          </p>
+          <p className="text-lg md:text-xl text-muted-foreground font-light leading-relaxed">
+            And if this round isn't the right timing, that's OK too. We see this growing into something bigger - more cohorts, more people, <span className="text-foreground font-medium">more ways to bring everyone along.</span>
+          </p>
+        </div>
+        <p className="font-serif text-xl md:text-2xl italic text-muted-foreground">This is just the beginning.</p>
+      </div>
+    </Slide>
+  </div>,
+
+  // Final
+  <div className="relative w-full h-full flex items-center justify-center dot-grid-bold glow-br overflow-hidden">
+    <Slide className="relative z-10 text-center">
+      <BigText>Let's go build<br />some <span className="highlight-green">cool things.</span></BigText>
+      <p className="font-serif text-xl md:text-2xl italic text-muted-foreground mt-10 max-w-2xl mx-auto">
+        Apply for the AI Lab. We'd love to have you.
+      </p>
+    </Slide>
   </div>,
 ];
 
-/* ─── Mobile overrides (only where mobile layout differs from desktop) ─── */
+/* ─── Mobile overrides ─── */
 
 const titleMobile = [
-  // Cover
   <div className="relative w-full h-full flex items-center justify-center dot-grid-bold glow-br overflow-hidden">
     <div className="absolute right-0 bottom-0 font-display text-[30rem] font-black text-foreground/[0.03] leading-none select-none pointer-events-none">
       AI
@@ -709,167 +1086,163 @@ const titleMobile = [
     <div className="relative z-10 px-8 text-left max-w-5xl">
       <img src={bbLogoHorizontal} alt="BrandBlvd" className="h-10 mb-12" />
       <h1 className="font-title text-5xl uppercase leading-[1.05] tracking-tight">
-        The Future<br />of <span className="highlight-green">AI.</span>
+        Don't<br /><span className="highlight-green">miss</span> this.
       </h1>
-      <p className="font-serif text-xl italic text-muted-foreground mt-8 max-w-2xl">
-        What's happening, what it means for us, and why we're not standing still.
+      <p className="font-serif text-lg italic text-muted-foreground mt-8 max-w-2xl">
+        Why I started the AI Lab, and why I want as many of you in it as possible.
       </p>
     </div>
   </div>,
 
-  <PromptSlide question="What is 1 way AI has changed how you act or make decisions?" />,
+  <div className="relative w-full h-full flex items-center justify-center cross-grid">
+    <div className="relative z-10 px-8 w-full">
+      <p className="font-display text-xs uppercase tracking-[0.35em] text-muted-foreground font-bold mb-6">Andrej Karpathy - April 9, 2026</p>
+      <p className="font-serif text-2xl leading-[1.2] tracking-tight">
+        2 groups right now. The <span className="text-primary font-bold">98%</span> who tried ChatGPT and moved on. The <span className="text-primary font-bold">2%</span> watching it do things that would have been science fiction 2 years ago.
+      </p>
+      <div className="mt-8 flex justify-center">
+        <NinetyEightTwoChart size={220} />
+      </div>
+    </div>
+  </div>,
 
-  // Overview — 6 topics
+  <div className="relative w-full h-full flex items-center justify-center diagonal-lines">
+    <Slide className="relative z-10">
+      <SerifStatement>
+        I've been spending a lot of time in the <span className="text-primary font-bold">2%</span>. And I want to bring as many of you over as I can.
+      </SerifStatement>
+    </Slide>
+  </div>,
+
+  <PromptSlide question="Where do you think you sit right now - closer to the 98 or the 2?" />,
+
   <div className="relative w-full h-full flex items-center justify-center bg-light-surface text-light dot-grid-light overflow-hidden">
     <div className="relative z-10 w-full px-8 text-center">
-      <p className="font-serif text-xl italic text-light-muted mb-10">6 shifts we believe will reshape our business and our industry.</p>
+      <p className="font-serif text-lg italic text-light-muted mb-10">6 things the 2% are watching - and what I think they mean for us.</p>
       <div className="space-y-5 text-left">
         <div className="flex items-center gap-4">
           <div className="flex-shrink-0 w-12 h-12 rounded-sm bg-brand-green/10 flex items-center justify-center">
             <IconFastForward size={28} className="text-brand-green" />
           </div>
-          <h3 className="font-title text-lg uppercase tracking-tight leading-tight text-light">AI is compressing time across <span className="highlight-green">everything.</span></h3>
+          <h3 className="font-title text-base uppercase tracking-tight leading-tight text-light">Expectations have <span className="highlight-green">shifted.</span></h3>
         </div>
         <div className="flex items-center gap-4">
           <div className="flex-shrink-0 w-12 h-12 rounded-sm bg-brand-green/10 flex items-center justify-center">
             <IconStacks size={28} className="text-brand-green" />
           </div>
-          <h3 className="font-title text-lg uppercase tracking-tight leading-tight text-light">AI is taking over the <span className="highlight-green">"doing."</span></h3>
+          <h3 className="font-title text-base uppercase tracking-tight leading-tight text-light">AI is taking over the <span className="highlight-green">"doing."</span></h3>
         </div>
         <div className="flex items-center gap-4">
           <div className="flex-shrink-0 w-12 h-12 rounded-sm bg-brand-green/10 flex items-center justify-center">
             <IconOrgChart size={28} className="text-brand-green" />
           </div>
-          <h3 className="font-title text-lg uppercase tracking-tight leading-tight text-light">The org chart is <span className="highlight-green">dissolving.</span></h3>
+          <h3 className="font-title text-base uppercase tracking-tight leading-tight text-light">The org chart is <span className="highlight-green">dissolving.</span></h3>
         </div>
         <div className="flex items-center gap-4">
           <div className="flex-shrink-0 w-12 h-12 rounded-sm bg-brand-green/10 flex items-center justify-center">
             <IconAgent size={28} className="text-brand-green" />
           </div>
-          <h3 className="font-title text-lg uppercase tracking-tight leading-tight text-light">Agents are doing the <span className="highlight-green">work.</span></h3>
+          <h3 className="font-title text-base uppercase tracking-tight leading-tight text-light">Agents are doing the <span className="highlight-green">work.</span></h3>
         </div>
         <div className="flex items-center gap-4">
           <div className="flex-shrink-0 w-12 h-12 rounded-sm bg-brand-green/10 flex items-center justify-center">
             <IconIdentity size={28} className="text-brand-green" />
           </div>
-          <h3 className="font-title text-lg uppercase tracking-tight leading-tight text-light">The workforce is <span className="highlight-green">shifting.</span></h3>
+          <h3 className="font-title text-base uppercase tracking-tight leading-tight text-light">The workforce is <span className="highlight-green">shifting.</span></h3>
         </div>
         <div className="flex items-center gap-4">
           <div className="flex-shrink-0 w-12 h-12 rounded-sm bg-brand-green/10 flex items-center justify-center">
             <IconTarget size={28} className="text-brand-green" />
           </div>
-          <h3 className="font-title text-lg uppercase tracking-tight leading-tight text-light">Machines are becoming the <span className="highlight-green">buyers.</span></h3>
+          <h3 className="font-title text-base uppercase tracking-tight leading-tight text-light">The buyer isn't a <span className="highlight-green">person</span> anymore.</h3>
         </div>
       </div>
     </div>
   </div>,
 ];
 
-const instantMobile = [
-  <SectionOpener icon={IconFastForward} number="01" superTitle="The Future of AI" title={<>AI is compressing time<br />across <span className="highlight-green">everything.</span></>} />,
+const expectationsMobile = [
+  <SectionOpener icon={IconFastForward} number="01" superTitle="Don't miss this." title={<>Expectations have<br /><span className="highlight-green">shifted.</span></>} />,
 
   <div className="relative w-full h-full flex items-center justify-center diagonal-lines">
     <BgImage src={abstractSpeed} opacity="opacity-[0.04]" />
     <Slide className="relative z-10">
       <SerifStatement>
-        AI tools have moved from novelty to <span className="text-primary">household names</span>.
-        They're training people to expect immediate results.
-        Not faster. <span className="text-primary font-bold">Immediate.</span>
+        AI is training people to expect <span className="text-primary">immediate</span>. Not faster. <span className="text-primary font-bold">Immediate.</span>
       </SerifStatement>
+      <p className="font-display text-xs uppercase tracking-[0.3em] text-muted-foreground mt-8 font-bold">37% of consumers go to AI first instead of Google.</p>
     </Slide>
   </div>,
 
   <Slide><GrowthChart /></Slide>,
 
-  <div className="relative w-full h-full flex items-center justify-center dot-grid">
-    <div className="relative z-10 w-full max-w-6xl px-8">
-      <p className="font-display text-sm uppercase tracking-[0.35em] text-muted-foreground font-bold mb-8">Investment Signals</p>
-      <div className="grid grid-cols-1 gap-y-8">
-        <GridCard superTitle="OpenAI" title="$100B Round · $850B Valuation." body="Largest single funding round in technology history." />
-        <GridCard superTitle="Nvidia" title="$3T+ Market Cap." body="Stock grew 200%+ in a single year on AI chip demand." />
-        <GridCard superTitle="Lovable" title="$330M Raised · 1 Year Old." body="One of the largest early-stage rounds for an AI-native dev platform." />
-        <GridCard superTitle="Anthropic" title="$30B at $380B Valuation." body="Revenue growing 10x annually, less than 3 years old." />
-      </div>
-    </div>
-  </div>,
-
-  <div className="w-full h-full bg-light-surface text-light flex items-center justify-center px-8">
-    <div className="w-full max-w-6xl">
-      <p className="font-display text-sm uppercase tracking-[0.35em] text-light-muted font-bold mb-6">What's Changing</p>
-      <h2 className="font-title text-4xl uppercase leading-[0.9] tracking-tight mb-8 break-words">
-        <span className="text-light">Expectation</span><br className="md:hidden" /><span className="highlight-green">Shifts</span>
-      </h2>
-      <div className="grid grid-cols-1 gap-y-6">
-        <NumberedItem num="1" title="Patience is collapsing" desc="ChatGPT can help you compare car models immediately." />
-        <NumberedItem num="2" title={'"Good enough" is immediate'} desc="Fast is better than perfect - i.e. NotebookLM." />
-        <NumberedItem num="3" title="Exploration cost is nearing 0" desc='"Generate 3 themes for a campaign."' />
-        <NumberedItem num="4" title="Self-sufficiency is increasing" desc="AI can help people do everything now." />
-      </div>
-    </div>
-  </div>,
-
   <div className="relative w-full h-full flex items-center justify-center cross-grid">
     <Slide className="relative z-10">
       <SerifStatement>
-        AI is not just improving productivity. <span className="text-primary font-bold">It's rewiring expectation.</span>
+        <span className="text-primary">"Good enough, right now"</span> beats <span className="text-primary font-bold">"perfect, later."</span>
       </SerifStatement>
-      <p className="font-display text-sm uppercase tracking-[0.3em] text-muted-foreground mt-10 font-bold">The speed of AI is setting the speed of everything.</p>
+      <p className="font-serif text-base italic text-muted-foreground mt-8 max-w-3xl mx-auto">
+        A background cut that took 30 minutes in Photoshop now takes 5 seconds in Canva. That's the new floor.
+      </p>
+    </Slide>
+  </div>,
+
+  <div className="relative w-full h-full flex items-center justify-center diagonal-lines">
+    <Slide className="relative z-10">
+      <SerifStatement>
+        The 2% have been re-trained. They explore more, compare more, iterate more - <span className="text-primary font-bold">before they ever pick up the phone.</span>
+      </SerifStatement>
     </Slide>
   </div>,
 
   <div className="relative w-full h-full flex items-center justify-center diagonal-lines">
     <Slide className="relative z-10">
       <div className="text-left max-w-3xl">
-        <p className="font-serif text-base italic text-muted-foreground mb-6">If we operate with...</p>
+        <p className="font-serif text-base italic text-muted-foreground mb-6">A gap is opening up in the industry.</p>
         <div className="border-l-4 border-primary/40 pl-5 mb-8 space-y-3">
-          <p className="text-lg text-muted-foreground font-light leading-relaxed"><span className="text-foreground font-medium">48-hour</span> quote turnarounds</p>
-          <p className="text-lg text-muted-foreground font-light leading-relaxed"><span className="text-foreground font-medium">3-day</span> proof cycles</p>
-          <p className="text-lg text-muted-foreground font-light leading-relaxed">Reorders buried in <span className="text-foreground font-medium">email chains</span></p>
+          <p className="text-lg text-muted-foreground font-light leading-relaxed">What clients <span className="text-foreground font-medium">are starting to expect</span></p>
+          <p className="text-lg text-muted-foreground font-light leading-relaxed">vs. what most agencies <span className="text-foreground font-medium">deliver.</span></p>
         </div>
-        <p className="font-serif text-base italic text-foreground mb-6">
-          ...we'll feel analog in a digital world.
-        </p>
         <div className="border-t border-muted-foreground/20 pt-5">
-          <p className="font-display text-sm uppercase tracking-[0.3em] text-primary font-bold mb-2">Reality Check</p>
+          <p className="font-display text-sm uppercase tracking-[0.3em] text-primary font-bold mb-2">The Opening</p>
           <p className="text-sm text-muted-foreground font-light leading-relaxed">
-            Buyers will expect real-time pricing, proofs, and ordering - <span className="text-primary font-bold">delays will feel broken.</span>
+            Both the <span className="text-primary font-bold">risk and the opportunity</span> live here.
           </p>
         </div>
       </div>
     </Slide>
   </div>,
 
-  <PromptSlide question="If you were our client, what part of our process would frustrate you?" />,
+  <PromptSlide question="What's something you've seen a client expect lately that they wouldn't have asked for a year ago?" />,
 
   <div className="relative w-full h-full flex items-center justify-center dot-grid overflow-hidden">
     <div className="absolute right-0 top-1/2 -translate-y-1/2 font-display text-[12rem] font-black text-foreground/[0.04] leading-none select-none pointer-events-none">01</div>
     <Slide className="relative z-10">
       <div className="inline-block px-5 py-2 rounded-sm bg-primary text-primary-foreground font-display text-base font-bold tracking-widest uppercase mb-6">Shift #1</div>
-      <BigText>Instant is the<br />new <span className="highlight-green">standard.</span></BigText>
+      <BigText>Good enough,<br />right <span className="highlight-green">now.</span></BigText>
       <p className="mt-8 text-muted-foreground font-light max-w-3xl leading-relaxed text-lg">
-        Automate reorders, quoting, proofs, and standard workflows. Remove unnecessary delay.
+        The floor moved. Velocity beats precision at the front of the process.
       </p>
     </Slide>
   </div>,
 ];
 
 const humanValueMobile = [
-  <SectionOpener icon={IconStacks} number="02" superTitle="The Future of AI" title={<>AI is taking over<br />the <span className="highlight-green">"doing."</span></>} />,
+  <SectionOpener icon={IconStacks} number="02" superTitle="Don't miss this." title={<>AI is taking over<br />the <span className="highlight-green">"doing."</span></>} />,
 
   <div className="relative w-full h-full flex items-center justify-center cross-grid">
     <BgImage src={abstractStack} opacity="opacity-[0.05]" />
     <Slide className="relative z-10">
       <SerifStatement>
-        AI can do rule-based, repetitive, information-heavy tasks <span className="text-primary">faster, cheaper, and at scale</span>.
-        Our role shifts to knowing <span className="text-primary font-bold">"what" to do</span>, not in "doing" it.
+        AI handles the rule-based, information-heavy stuff <span className="text-primary">faster, cheaper, at scale</span>. Our role moves to knowing <span className="text-primary font-bold">what</span> to do.
       </SerifStatement>
-      <p className="font-display text-sm uppercase tracking-[0.3em] text-muted-foreground mt-10 font-bold">The human role shifts up the stack.</p>
+      <p className="font-display text-sm uppercase tracking-[0.3em] text-muted-foreground mt-10 font-bold">Execution gets cheap. Judgment gets scarce.</p>
     </Slide>
   </div>,
 
   <div className="w-full h-full bg-light-surface text-light flex items-center justify-center px-8 cross-grid-light">
     <div className="w-full max-w-6xl relative z-10">
-      <p className="font-display text-sm uppercase tracking-[0.35em] text-light-muted font-bold mb-10">Industry Leaders</p>
+      <p className="font-display text-sm uppercase tracking-[0.35em] text-light-muted font-bold mb-10">What people building this are saying</p>
       <div className="grid grid-cols-1 gap-8">
         {[
           { quote: "The future of work is not about AI replacing people. It's about people who use AI replacing people who don't.", author: "Satya Nadella", role: "CEO, Microsoft" },
@@ -882,53 +1255,55 @@ const humanValueMobile = [
     </div>
   </div>,
 
+  <div className="relative w-full h-full flex items-center justify-center diagonal-lines">
+    <Slide className="relative z-10">
+      <SerifStatement>
+        That Nadella quote is exactly why I'm <span className="text-primary font-bold">not waiting.</span> It's why we're building the <span className="text-primary">AI Lab.</span>
+      </SerifStatement>
+    </Slide>
+  </div>,
+
   <div className="w-full h-full bg-light-surface text-light flex items-center justify-center px-8">
     <div className="w-full max-w-6xl">
-      <p className="font-display text-sm uppercase tracking-[0.35em] text-light-muted font-bold mb-6">Industry Reality</p>
+      <p className="font-display text-sm uppercase tracking-[0.35em] text-light-muted font-bold mb-6">The Pattern</p>
       <h2 className="font-title text-4xl uppercase leading-[0.9] tracking-tight mb-8 break-words">
-        Order-Taking<br className="md:hidden" /><span className="highlight-green">Dies.</span>
+        Pulled<br className="md:hidden" /><span className="highlight-green">Up.</span>
       </h2>
       <div className="space-y-4">
         <p className="text-light-secondary text-sm leading-relaxed">
-          Software will get better. AI-empowered systems will draft proposals, generate pricing comparisons, and source products instantly.
+          Drafting proposals, generating pricing, sourcing - the transactional middle is being absorbed.
         </p>
         <p className="text-light-secondary text-sm leading-relaxed">
-          More people will use more tools to do the work we do now. If we continue to be just order-takers, we'll be beaten out by alternatives that make it easier and quicker.
+          We get to live closer to the value: making sure the proposal solves the right problem. Designing the moment around the merch.
         </p>
-        <p className="text-light-secondary text-sm leading-relaxed">
-          Industries like travel and retail eliminated transactional middlemen when search became automated. <span className="text-light font-medium">This will happen to us, too.</span>
+        <p className="text-light text-sm leading-relaxed font-medium">
+          Pulled up the value chain. That's a good thing if we're ready for it.
         </p>
       </div>
-      <p className="mt-6 border-t border-light pt-4">
-        <span className="text-brand-green font-display font-bold uppercase text-sm">Conclusion:</span>{" "}
-        <span className="font-bold text-sm">Evolve from "order takers" to collaborators and advisors.</span>
-      </p>
     </div>
   </div>,
 
-  <PromptSlide question="If AI handled 50% of admin tomorrow, would our reps know what to do with the extra time?" />,
+  <PromptSlide question="If AI handled half your admin tomorrow, what would you do with the time?" />,
 
   <div className="relative w-full h-full flex items-center justify-center dot-grid overflow-hidden">
     <div className="absolute right-0 top-1/2 -translate-y-1/2 font-display text-[12rem] font-black text-foreground/[0.04] leading-none select-none pointer-events-none">02</div>
     <Slide className="relative z-10">
       <div className="inline-block px-5 py-2 rounded-sm bg-primary text-primary-foreground font-display text-base font-bold tracking-widest uppercase mb-6">Shift #2</div>
-      <BigText>Death of<br />transactional <span className="highlight-green">sales.</span></BigText>
+      <BigText>We get pulled<br />up the <span className="highlight-green">stack.</span></BigText>
       <p className="mt-8 text-muted-foreground font-light max-w-3xl leading-relaxed text-lg">
-        We win on framing, interpretation, judgement, context, and strategy - not on sending catalogues.
+        Less doing, more deciding. That's what AI can't replace.
       </p>
     </Slide>
   </div>,
 ];
 
 const orgChartMobile = [
-  <SectionOpener icon={IconOrgChart} number="03" superTitle="The Future of AI" title={<>The org chart is<br /><span className="highlight-green">dissolving.</span></>} />,
+  <SectionOpener icon={IconOrgChart} number="03" superTitle="Don't miss this." title={<>The org chart is<br /><span className="highlight-green">dissolving.</span></>} />,
 
   <div className="relative w-full h-full flex items-center justify-center diagonal-lines">
     <Slide className="relative z-10">
       <SerifStatement>
-        For 2,000 years, a leader could manage <span className="text-primary">3 to 8 people</span>.
-        That number hasn't changed since the Roman military.
-        It's why we have <span className="text-primary font-bold">hierarchies.</span>
+        For 2,000 years, a leader could manage <span className="text-primary">3 to 8 people</span>. That number hasn't changed since the Roman military.
       </SerifStatement>
       <p className="font-display text-sm uppercase tracking-[0.3em] text-muted-foreground mt-10 font-bold">AI doesn't need layers to coordinate.</p>
     </Slide>
@@ -942,7 +1317,7 @@ const orgChartMobile = [
       </h2>
       <div className="grid grid-cols-1 gap-y-6">
         <GridCard superTitle="ICs" title="Individual Contributors." body="Use the AI model for context instead of waiting for management approval." />
-        <GridCard superTitle="DRIs" title="Directly Responsible." body="Own a specific problem for 90 days with cross-team authority." />
+        <GridCard superTitle="DRIs" title="Directly Responsible." body="Own a problem for 90 days with cross-team authority." />
         <GridCard superTitle="Player-Coaches" title="Build + Develop." body="Build things and develop people at the same time." />
       </div>
     </div>
@@ -953,7 +1328,7 @@ const orgChartMobile = [
       <SerifStatement>
         If management layers compress, the people who remain become <span className="text-primary font-bold">more important</span>, not less.
       </SerifStatement>
-      <p className="font-display text-sm uppercase tracking-[0.3em] text-muted-foreground mt-10 font-bold">That's a very good thing for a company that manufactures belonging.</p>
+      <p className="font-display text-sm uppercase tracking-[0.3em] text-muted-foreground mt-10 font-bold">A very good thing for a company that manufactures belonging.</p>
     </Slide>
   </div>,
 
@@ -963,27 +1338,27 @@ const orgChartMobile = [
       <div className="inline-block px-5 py-2 rounded-sm bg-primary text-primary-foreground font-display text-base font-bold tracking-widest uppercase mb-6">Shift #3</div>
       <BigText>Leverage per<br />person, not <span className="highlight-green">headcount.</span></BigText>
       <p className="mt-8 text-muted-foreground font-light max-w-3xl leading-relaxed text-lg">
-        Management becomes coaching. The thinking part - judgment, coaching, strategy - stays human.
+        Management becomes coaching. Judgment, coaching, strategy stay human.
       </p>
     </Slide>
   </div>,
 ];
 
 const agentsMobile = [
-  <SectionOpener icon={IconAgent} number="04" superTitle="The Future of AI" title={<>Agents are doing<br />the <span className="highlight-green">work.</span></>} />,
+  <SectionOpener icon={IconAgent} number="04" superTitle="Don't miss this." title={<>Agents are doing<br />the <span className="highlight-green">work.</span></>} />,
 
   <div className="relative w-full h-full flex items-center justify-center diagonal-lines">
     <Slide className="relative z-10">
       <SerifStatement>
-        The biggest players are converging on the same conclusion:
-        <span className="text-primary font-bold"> agents should do the work, not just assist with it.</span>
+        The biggest players are converging:
+        <span className="text-primary font-bold"> agents that do the work, not just help with it.</span>
       </SerifStatement>
     </Slide>
   </div>,
 
   <div className="w-full h-full bg-light-surface text-light flex items-center justify-center px-8">
     <div className="w-full max-w-6xl">
-      <p className="font-display text-sm uppercase tracking-[0.35em] text-light-muted font-bold mb-6">The Convergence</p>
+      <p className="font-display text-sm uppercase tracking-[0.35em] text-light-muted font-bold mb-6">From Assistant to Operator</p>
       <h2 className="font-title text-4xl uppercase leading-[0.9] tracking-tight mb-8">
         <span className="text-light">3 Signals.</span><br />Same <span className="highlight-green">Direction.</span>
       </h2>
@@ -995,15 +1370,6 @@ const agentsMobile = [
     </div>
   </div>,
 
-  <div className="relative w-full h-full flex items-center justify-center dot-grid-bold">
-    <Slide className="relative z-10">
-      <p className="font-display text-sm uppercase tracking-[0.35em] text-muted-foreground font-bold mb-6">The Zero-Employee Company</p>
-      <SerifStatement>
-        What if you didn't need <span className="text-primary">employees</span> at all?
-      </SerifStatement>
-    </Slide>
-  </div>,
-
   <div className="w-full h-full bg-light-surface text-light flex items-center justify-center px-8">
     <div className="w-full max-w-6xl">
       <p className="font-display text-sm uppercase tracking-[0.35em] text-light-muted font-bold mb-6">Case Study</p>
@@ -1012,7 +1378,7 @@ const agentsMobile = [
       </h2>
       <div className="grid grid-cols-1 gap-y-6">
         <GridCard superTitle="The Founders" title="2 people. That's it." body="Matthew Gallagher and his brother built a telehealth company using AI agents for nearly everything." />
-        <GridCard superTitle="The Investment" title="$20,000 to start." body="No VC. No team of 50. Just AI tools and a focus on delivering outcomes." />
+        <GridCard superTitle="The Investment" title="$20,000 to start." body="No VC. No team of 50. Just AI tools and a focus on outcomes." />
         <GridCard superTitle="The Result" title="$1.8B projected in 2026." body="$401M in 2025 sales. On track to nearly 5x this year." />
       </div>
     </div>
@@ -1028,10 +1394,9 @@ const agentsMobile = [
 
   <div className="relative w-full h-full flex items-center justify-center cross-grid">
     <Slide className="relative z-10">
-      <p className="font-display text-sm uppercase tracking-[0.35em] text-muted-foreground font-bold mb-6">Sequoia Capital</p>
+      <p className="font-display text-xs uppercase tracking-[0.35em] text-muted-foreground font-bold mb-6">Sequoia Capital</p>
       <SerifStatement>
-        The next trillion-dollar company won't sell <span className="text-primary">tools</span>.
-        It will sell <span className="text-primary font-bold">outcomes.</span>
+        The next trillion-dollar company won't sell <span className="text-primary">tools</span>. It will sell <span className="text-primary font-bold">outcomes.</span>
       </SerifStatement>
     </Slide>
   </div>,
@@ -1042,7 +1407,7 @@ const agentsMobile = [
         <div className="border-l-4 border-primary/40 pl-5 mb-6 space-y-3">
           <p className="text-lg text-muted-foreground font-light leading-relaxed">We don't sell <span className="text-foreground font-medium">t-shirts</span>.</p>
           <p className="text-lg text-muted-foreground font-light leading-relaxed">We sell the <span className="text-foreground font-medium">experience</span> around the t-shirt.</p>
-          <p className="text-lg text-muted-foreground font-light leading-relaxed">The <span className="text-foreground font-medium">brand moment</span>. The <span className="text-foreground font-medium">belonging signal</span>.</p>
+          <p className="text-lg text-muted-foreground font-light leading-relaxed">The <span className="text-foreground font-medium">brand moment.</span> The <span className="text-foreground font-medium">belonging signal.</span></p>
         </div>
         <div className="border-t border-muted-foreground/20 pt-5">
           <p className="text-sm text-muted-foreground font-light leading-relaxed">
@@ -1059,58 +1424,69 @@ const agentsMobile = [
       <div className="inline-block px-5 py-2 rounded-sm bg-primary text-primary-foreground font-display text-base font-bold tracking-widest uppercase mb-6">Shift #4</div>
       <BigText>Sell outcomes,<br />not <span className="highlight-green">tools.</span></BigText>
       <p className="mt-8 text-muted-foreground font-light max-w-3xl leading-relaxed text-lg">
-        The companies that win deliver outcomes people trust.
+        That's exactly what we already do.
       </p>
     </Slide>
   </div>,
 ];
 
 const identityMobile = [
-  <SectionOpener icon={IconIdentity} number="05" superTitle="The Future of AI" title={<>AI will restructure<br />the employer-employee <span className="highlight-green">relationship.</span></>} />,
+  <SectionOpener icon={IconIdentity} number="05" superTitle="Don't miss this." title={<>The workforce is<br /><span className="highlight-green">shifting.</span></>} />,
+
+  <div className="w-full h-full bg-light-surface text-light flex items-center justify-center px-8">
+    <div className="w-full max-w-6xl">
+      <p className="font-display text-sm uppercase tracking-[0.35em] text-light-muted font-bold mb-6">Why there's so much anxiety right now</p>
+      <h2 className="font-title text-4xl uppercase leading-[0.9] tracking-tight mb-8">
+        <span className="text-light">What most people</span><br /><span className="highlight-green">hear.</span>
+      </h2>
+      <div className="grid grid-cols-1 gap-y-6">
+        <NumberedItem num="80%" title="Believe AI will impact their work" desc="Workers surveyed about AI's effect on their tasks." />
+        <NumberedItem num="50%" title="Worry their job could be automated" desc="Workers who already use AI at work." />
+        <NumberedItem num="76K+" title="Jobs eliminated in 2025" desc="Data entry, telemarketing, admin support roles." />
+      </div>
+      <p className="mt-6 text-light-secondary text-sm leading-relaxed">
+        These numbers are real. But <span className="text-light font-medium">they're not the whole story.</span>
+      </p>
+    </div>
+  </div>,
 
   <div className="relative w-full h-full flex items-center justify-center diagonal-lines">
     <BgImage src={abstractIdentity} opacity="opacity-[0.05]" />
     <Slide className="relative z-10">
       <SerifStatement>
-        AI will change workforce structures, whether through efficiency gains, consolidation or augmentation.
-        The workforce <span className="text-primary font-bold">will</span> shift. It's not a question of "if" but one of <span className="text-primary">"when."</span>
+        We're not trying to do more with <span className="text-primary">fewer</span> people. We're trying to make every person on this team <span className="text-primary font-bold">more powerful.</span>
       </SerifStatement>
     </Slide>
   </div>,
 
-  <div className="w-full h-full bg-light-surface text-light flex items-center justify-center px-8">
-    <div className="w-full max-w-6xl">
-      <p className="font-display text-sm uppercase tracking-[0.35em] text-light-muted font-bold mb-6">Workforce Data</p>
-      <h2 className="font-title text-4xl uppercase leading-[0.9] tracking-tight mb-8">
-        <span className="text-light">The</span><span className="highlight-green">Numbers</span>
-      </h2>
-      <div className="grid grid-cols-1 gap-y-6">
-        <NumberedItem num="80%" title="Believe AI will impact their daily work" desc="Workers surveyed about AI's effect on their tasks." />
-        <NumberedItem num="50%" title="Worry their job could be automated" desc="Workers who already use AI at work." />
-        <NumberedItem num="76K+" title="Jobs eliminated in 2025" desc="Data entry, telemarketing, and admin support roles." />
-      </div>
-    </div>
+  <div className="relative w-full h-full flex items-center justify-center cross-grid">
+    <Slide className="relative z-10">
+      <SerifStatement>
+        The people who lean into this stuff get to <span className="text-primary font-bold">shape what comes next.</span>
+      </SerifStatement>
+      <p className="font-display text-sm uppercase tracking-[0.3em] text-muted-foreground mt-10 font-bold">Nobody is a lost cause for being in the 98%.</p>
+    </Slide>
   </div>,
 
-  <PromptSlide question="What part of your daily work could AI help you do faster or better?" />,
+  <PromptSlide question="What part of your daily work would you most want AI to take off your plate?" />,
 
   <div className="w-full h-full bg-light-surface text-light flex items-center justify-center px-8 diagonal-lines-light">
     <div className="relative z-10 text-center">
       <p className="font-serif text-2xl italic leading-snug max-w-5xl mx-auto text-light">
-        That doesn't mean merch and swag <span className="text-brand-green font-bold">go away.</span>
+        Merch and swag don't <span className="text-brand-green font-bold">go away.</span>
       </p>
       <p className="font-display text-sm uppercase tracking-[0.3em] text-light-muted mt-10 font-bold">
-        As AI reshapes work, belonging shifts from employer identity to community identity.
+        Belonging moves from employer identity to community identity.
       </p>
     </div>
   </div>,
 
   <div className="relative w-full h-full flex items-center justify-center dot-grid">
     <div className="relative z-10 w-full max-w-6xl px-8">
-      <p className="font-display text-sm uppercase tracking-[0.35em] text-muted-foreground font-bold mb-10">The Opportunity</p>
+      <p className="font-display text-sm uppercase tracking-[0.35em] text-muted-foreground font-bold mb-10">Where Belonging Relocates</p>
       <div className="grid grid-cols-1 gap-8">
-        <GridCard superTitle="Internal" title="More intentional." body="Merch must reflect culture and values, not just fill closets." />
-        <GridCard superTitle="External" title="More tribal." body="Build tribes - customers, advocates, insiders, power users, culture ambassadors." />
+        <GridCard superTitle="Internal" title="More intentional." body="Merch reflects culture and values, not just fills closets." />
+        <GridCard superTitle="External" title="More tribal." body="Build tribes - customers, advocates, insiders, ambassadors." />
         <GridCard superTitle="Identity" title="Badge signalling." body="Move from 'gifting employees' to 'manufacturing belonging.'" />
       </div>
     </div>
@@ -1120,16 +1496,16 @@ const identityMobile = [
     <div className="absolute right-0 top-1/2 -translate-y-1/2 font-display text-[12rem] font-black text-foreground/[0.04] leading-none select-none pointer-events-none">05</div>
     <Slide className="relative z-10">
       <div className="inline-block px-5 py-2 rounded-sm bg-primary text-primary-foreground font-display text-base font-bold tracking-widest uppercase mb-6">Shift #5</div>
-      <BigText>The workforce<br />is <span className="highlight-green">shifting.</span></BigText>
+      <BigText>Belonging is<br /><span className="highlight-green">expanding.</span></BigText>
       <p className="mt-8 text-muted-foreground font-light max-w-3xl leading-relaxed text-lg">
-        Merch becomes badge signalling, not office swag. Move from "gifting employees" to "manufacturing belonging."
+        Tied to identity and belonging, we're tied to something expanding.
       </p>
     </Slide>
   </div>,
 ];
 
 const buyersMobile = [
-  <SectionOpener icon={IconTarget} number="06" superTitle="The Future of AI" title={<>When machines are<br />the <span className="highlight-green">buyers.</span></>} />,
+  <SectionOpener icon={IconTarget} number="06" superTitle="Don't miss this." title={<>The buyer isn't<br />a <span className="highlight-green">person</span> anymore.</>} />,
 
   <div className="relative w-full h-full flex items-center justify-center diagonal-lines">
     <Slide className="relative z-10">
@@ -1147,7 +1523,7 @@ const buyersMobile = [
       </h2>
       <div className="grid grid-cols-1 gap-y-6">
         <NumberedItem num="45%" title="Use AI as primary research" desc="B2B buyers using AI to identify new suppliers." />
-        <NumberedItem num="⅔" title="Trust AI agents for vendor research" desc="Rely on agents as much as — or more than — Google." />
+        <NumberedItem num="⅔" title="Trust AI agents for vendor research" desc="Rely on agents as much as - or more than - Google." />
         <NumberedItem num="90%" title="Of B2B purchases by 2028" desc="$15 trillion mediated by AI agents." />
       </div>
     </div>
@@ -1160,7 +1536,7 @@ const buyersMobile = [
         <div>
           <h3 className="font-title text-xl uppercase tracking-tight leading-tight mb-3">Lane 1: <span className="highlight-green">Human</span> Buyer</h3>
           <p className="text-light-secondary text-sm leading-relaxed">
-            Relationships, trust, and personal service still win. Double down on the human stuff.
+            Relationships, trust, personal service still win. Double down on the human stuff.
           </p>
         </div>
         <div>
@@ -1176,13 +1552,12 @@ const buyersMobile = [
   <div className="relative w-full h-full flex items-center justify-center diagonal-lines">
     <Slide className="relative z-10">
       <SerifStatement>
-        An AI agent can't evaluate: does this company <span className="text-primary">understand my brand</span>?
-        Will they design an experience that makes our people <span className="text-primary font-bold">feel something</span>?
+        An AI agent can't evaluate: does this company <span className="text-primary">understand my brand</span>? Will they design an experience that makes our people <span className="text-primary font-bold">feel something</span>?
       </SerifStatement>
     </Slide>
   </div>,
 
-  <PromptSlide question="How would an AI procurement agent describe Brand Blvd? Would it even find us?" />,
+  <PromptSlide question="If an AI agent had to describe Brand Blvd in 2 sentences, what would we want it to say?" />,
 
   <div className="relative w-full h-full flex items-center justify-center dot-grid overflow-hidden">
     <div className="absolute right-0 top-1/2 -translate-y-1/2 font-display text-[12rem] font-black text-foreground/[0.04] leading-none select-none pointer-events-none">06</div>
@@ -1190,7 +1565,102 @@ const buyersMobile = [
       <div className="inline-block px-5 py-2 rounded-sm bg-primary text-primary-foreground font-display text-base font-bold tracking-widest uppercase mb-6">Shift #6</div>
       <BigText>We sell what<br />machines can't <span className="highlight-green">evaluate.</span></BigText>
       <p className="mt-8 text-muted-foreground font-light max-w-3xl leading-relaxed text-lg">
-        Transactional vendors get eaten alive. Companies that sell belonging? That's where the human picks up the phone.
+        That's where the human picks up the phone.
+      </p>
+    </Slide>
+  </div>,
+];
+
+const aiLabMobile = [
+  <SectionOpener icon={IconAgent} number="07" superTitle="The AI Lab" title={<>What we're<br /><span className="highlight-green">building.</span></>} />,
+
+  <div className="relative w-full h-full flex items-center justify-center dot-grid overflow-hidden">
+    <Slide className="relative z-10">
+      <p className="font-display text-sm uppercase tracking-[0.35em] text-muted-foreground font-bold mb-6">So what is the AI Lab?</p>
+      <BigText>A small pilot.<br />Real work. <span className="highlight-green">3 months.</span></BigText>
+      <p className="mt-8 text-muted-foreground font-light leading-relaxed text-base">
+        Leadership plus 3 to 5 team members. Learning to actually use AI as a working tool.
+      </p>
+    </Slide>
+  </div>,
+
+  <div className="relative w-full h-full flex items-center justify-center cross-grid">
+    <Slide className="relative z-10">
+      <SerifStatement>
+        I don't have this all <span className="text-primary">figured out.</span> Nobody does. We're going to learn together.
+      </SerifStatement>
+    </Slide>
+  </div>,
+
+  <div className="w-full h-full bg-light-surface text-light flex items-center justify-center px-8">
+    <div className="w-full max-w-6xl">
+      <p className="font-display text-sm uppercase tracking-[0.35em] text-light-muted font-bold mb-6">What we'll be working on</p>
+      <h2 className="font-title text-3xl uppercase leading-[0.9] tracking-tight mb-6">
+        <span className="text-light">The</span><span className="highlight-green">Work</span>
+      </h2>
+      <div className="grid grid-cols-1 gap-y-5">
+        <NumberedItem num="01" title="Spot the workflows" desc="Pieces of your day that are good candidates for AI." />
+        <NumberedItem num="02" title="What a skill is" desc="Helping AI do a job the way you'd do it." />
+        <NumberedItem num="03" title="What an agent is" desc="Different from just chatting with ChatGPT." />
+        <NumberedItem num="04" title="Build these things" desc="Not watching - doing." />
+      </div>
+    </div>
+  </div>,
+
+  <div className="w-full h-full bg-light-surface text-light flex items-center justify-center px-8">
+    <div className="w-full max-w-6xl">
+      <p className="font-display text-sm uppercase tracking-[0.35em] text-light-muted font-bold mb-6">Real skills</p>
+      <h2 className="font-title text-3xl uppercase leading-[0.9] tracking-tight mb-6">
+        <span className="text-light">More</span><span className="highlight-green">Skills</span>
+      </h2>
+      <div className="grid grid-cols-1 gap-y-5">
+        <NumberedItem num="05" title="Use tools that exist now" desc="Not someday - today." />
+        <NumberedItem num="06" title="Run on autopilot" desc="Systems that keep working without you." />
+        <NumberedItem num="07" title="Schedule tasks" desc="Work happens while you sleep." />
+        <NumberedItem num="08" title="Connect your tools" desc="Systems that talk to each other." />
+      </div>
+    </div>
+  </div>,
+
+  <div className="relative w-full h-full flex items-center justify-center diagonal-lines">
+    <Slide className="relative z-10">
+      <SerifStatement>
+        No <span className="text-primary">CS degree</span> required. Just <span className="text-primary font-bold">curiosity</span> and time to practice.
+      </SerifStatement>
+    </Slide>
+  </div>,
+
+  <div className="w-full h-full bg-light-surface text-light flex items-center justify-center px-8 dot-grid-light">
+    <div className="relative z-10 w-full max-w-6xl">
+      <p className="font-display text-sm uppercase tracking-[0.35em] text-light-muted font-bold mb-6">The time commitment</p>
+      <h2 className="font-title text-3xl uppercase leading-[0.9] tracking-tight mb-6">
+        <span className="text-light">That's</span><span className="highlight-green">it.</span>
+      </h2>
+      <div className="grid grid-cols-1 gap-y-6">
+        <NumberedItem num="90m" title="Per week" desc="Live working session together." />
+        <NumberedItem num="½ day" title="Per month" desc="Deeper build - ship something real." />
+        <NumberedItem num="+" title="Homework" desc="Building on your own between sessions." />
+      </div>
+    </div>
+  </div>,
+
+  <div className="relative w-full h-full flex items-center justify-center cross-grid">
+    <Slide className="relative z-10">
+      <SerifStatement>
+        Hours become <span className="text-primary font-bold">minutes.</span> The tedious gets done automatically.
+      </SerifStatement>
+      <p className="font-serif text-base italic text-muted-foreground mt-8 max-w-3xl mx-auto">
+        More of the work you love. Less of what drains you.
+      </p>
+    </Slide>
+  </div>,
+
+  <div className="relative w-full h-full flex items-center justify-center dot-grid overflow-hidden">
+    <Slide className="relative z-10">
+      <div className="inline-block px-4 py-2 rounded-sm bg-primary text-primary-foreground font-display text-sm font-bold tracking-widest uppercase mb-5">The AI Lab</div>
+      <BigText>It's the <span className="highlight-green">beginning.</span></BigText>
+      <p className="mt-6 text-muted-foreground font-light leading-relaxed text-base">
+        The first cohort becomes the teachers for everyone else.
       </p>
     </Slide>
   </div>,
@@ -1200,70 +1670,65 @@ const closingMobile = [
   <div className="relative w-full h-full flex items-center justify-center bg-light-surface text-light dot-grid-light overflow-hidden">
     <div className="relative z-10 w-full px-8 text-center">
       <img src={bbLogoHorizontal} alt="BrandBlvd" className="h-7 mb-10 mx-auto invert" />
-      <p className="font-serif text-lg italic text-light-muted mb-8">6 shifts. One direction.</p>
+      <p className="font-serif text-base italic text-light-muted mb-8">6 things the 2% are watching. One invitation.</p>
       <div className="space-y-4 text-left">
-        <div className="flex items-center gap-3">
-          <div className="flex-shrink-0 w-10 h-10 rounded-sm bg-brand-green/10 flex items-center justify-center">
-            <IconFastForward size={22} className="text-brand-green" />
+        {[
+          { Icon: IconFastForward, num: "01", topic: "Expectations have shifted.", title: "Good enough, right now." },
+          { Icon: IconStacks, num: "02", topic: "AI is taking over the doing.", title: "Pulled up the stack." },
+          { Icon: IconOrgChart, num: "03", topic: "The org chart is dissolving.", title: "Leverage per person." },
+          { Icon: IconAgent, num: "04", topic: "Agents are doing the work.", title: "Sell outcomes." },
+          { Icon: IconIdentity, num: "05", topic: "The workforce is shifting.", title: "Belonging is expanding." },
+          { Icon: IconTarget, num: "06", topic: "The buyer isn't a person anymore.", title: "What machines can't evaluate." },
+        ].map(({ Icon, num, topic, title }) => (
+          <div key={num} className="flex items-center gap-3">
+            <div className="flex-shrink-0 w-10 h-10 rounded-sm bg-brand-green/10 flex items-center justify-center">
+              <Icon size={22} className="text-brand-green" />
+            </div>
+            <div>
+              <p className="text-light-muted text-[10px] font-light">{num} - {topic}</p>
+              <h3 className="font-title text-sm uppercase tracking-tight leading-tight mt-0.5 text-light">{title}</h3>
+            </div>
           </div>
-          <div>
-            <p className="text-light-muted text-[10px] font-light">01 — AI is compressing time.</p>
-            <h3 className="font-title text-base uppercase tracking-tight leading-tight mt-0.5 text-light">Instant is the new <span className="highlight-green">standard.</span></h3>
-          </div>
-        </div>
-        <div className="flex items-center gap-3">
-          <div className="flex-shrink-0 w-10 h-10 rounded-sm bg-brand-green/10 flex items-center justify-center">
-            <IconStacks size={22} className="text-brand-green" />
-          </div>
-          <div>
-            <p className="text-light-muted text-[10px] font-light">02 — AI is taking over the "doing."</p>
-            <h3 className="font-title text-base uppercase tracking-tight leading-tight mt-0.5 text-light">Death of transactional <span className="highlight-green">sales.</span></h3>
-          </div>
-        </div>
-        <div className="flex items-center gap-3">
-          <div className="flex-shrink-0 w-10 h-10 rounded-sm bg-brand-green/10 flex items-center justify-center">
-            <IconOrgChart size={22} className="text-brand-green" />
-          </div>
-          <div>
-            <p className="text-light-muted text-[10px] font-light">03 — The org chart is dissolving.</p>
-            <h3 className="font-title text-base uppercase tracking-tight leading-tight mt-0.5 text-light">Leverage per person, not <span className="highlight-green">headcount.</span></h3>
-          </div>
-        </div>
-        <div className="flex items-center gap-3">
-          <div className="flex-shrink-0 w-10 h-10 rounded-sm bg-brand-green/10 flex items-center justify-center">
-            <IconAgent size={22} className="text-brand-green" />
-          </div>
-          <div>
-            <p className="text-light-muted text-[10px] font-light">04 — Agents are doing the work.</p>
-            <h3 className="font-title text-base uppercase tracking-tight leading-tight mt-0.5 text-light">Sell outcomes, not <span className="highlight-green">tools.</span></h3>
-          </div>
-        </div>
-        <div className="flex items-center gap-3">
-          <div className="flex-shrink-0 w-10 h-10 rounded-sm bg-brand-green/10 flex items-center justify-center">
-            <IconIdentity size={22} className="text-brand-green" />
-          </div>
-          <div>
-            <p className="text-light-muted text-[10px] font-light">05 — The workforce is shifting.</p>
-            <h3 className="font-title text-base uppercase tracking-tight leading-tight mt-0.5 text-light">The workforce is <span className="highlight-green">shifting.</span></h3>
-          </div>
-        </div>
-        <div className="flex items-center gap-3">
-          <div className="flex-shrink-0 w-10 h-10 rounded-sm bg-brand-green/10 flex items-center justify-center">
-            <IconTarget size={22} className="text-brand-green" />
-          </div>
-          <div>
-            <p className="text-light-muted text-[10px] font-light">06 — Machines are the buyers.</p>
-            <h3 className="font-title text-base uppercase tracking-tight leading-tight mt-0.5 text-light">We sell what machines can't <span className="highlight-green">evaluate.</span></h3>
-          </div>
-        </div>
-      </div>
-      <div className="border-t border-light mt-6 pt-6 text-center">
-        <p className="font-serif text-lg italic text-light-secondary mb-2">Paying attention is half the battle.</p>
-        <h2 className="font-title text-3xl uppercase tracking-tight">
-          The other half takes <span className="highlight-green">all of us.</span>
-        </h2>
+        ))}
       </div>
     </div>
+  </div>,
+
+  <div className="relative w-full h-full flex items-center justify-center cross-grid">
+    <Slide className="relative z-10">
+      <SerifStatement>
+        The companies that win build the <span className="text-primary font-bold">muscle to adapt continuously.</span>
+      </SerifStatement>
+      <p className="font-display text-sm uppercase tracking-[0.3em] text-muted-foreground mt-10 font-bold">That's what the AI Lab is for.</p>
+    </Slide>
+  </div>,
+
+  <div className="relative w-full h-full flex items-center justify-center diagonal-lines">
+    <Slide className="relative z-10">
+      <div className="text-left max-w-3xl">
+        <p className="font-serif text-xl italic text-foreground leading-snug mb-6">
+          If any of this gets you excited - or even just curious - that's enough.
+        </p>
+        <div className="border-l-4 border-primary/40 pl-5 mb-6 space-y-3">
+          <p className="text-base text-muted-foreground font-light leading-relaxed">
+            You don't need to be an AI expert. You just need to <span className="text-foreground font-medium">want to learn.</span>
+          </p>
+          <p className="text-base text-muted-foreground font-light leading-relaxed">
+            And if this round isn't right, that's OK too - more cohorts are coming.
+          </p>
+        </div>
+        <p className="font-serif text-lg italic text-muted-foreground">This is just the beginning.</p>
+      </div>
+    </Slide>
+  </div>,
+
+  <div className="relative w-full h-full flex items-center justify-center dot-grid-bold glow-br overflow-hidden">
+    <Slide className="relative z-10 text-center">
+      <BigText>Let's go build<br />some <span className="highlight-green">cool things.</span></BigText>
+      <p className="font-serif text-lg italic text-muted-foreground mt-8 max-w-2xl mx-auto">
+        Apply for the AI Lab. We'd love to have you.
+      </p>
+    </Slide>
   </div>,
 ];
 
@@ -1271,8 +1736,8 @@ const closingMobile = [
 
 const bbAndAi: PresentationConfig = {
   slug: "bb-and-ai",
-  title: "Brand BB and AI - Brand Blvd",
-  description: "What's happening with AI, what it means for our team, and why we're not standing still.",
+  title: "Don't miss this. - Brand Blvd AI Lab",
+  description: "Why I started the AI Lab, and why I want as many of you in it as possible.",
   themeId: "brand-blvd-v2",
 
   sections: [
@@ -1284,15 +1749,15 @@ const bbAndAi: PresentationConfig = {
       mobileSlides: titleMobile,
     },
     {
-      id: "instant",
-      label: "Instant",
+      id: "expectations",
+      label: "Expectations",
       icon: IconFastForward,
-      desktopSlides: instantDesktop,
-      mobileSlides: instantMobile,
+      desktopSlides: expectationsDesktop,
+      mobileSlides: expectationsMobile,
     },
     {
       id: "human-value",
-      label: "Human Value",
+      label: "The Doing",
       icon: IconStacks,
       desktopSlides: humanValueDesktop,
       mobileSlides: humanValueMobile,
@@ -1313,7 +1778,7 @@ const bbAndAi: PresentationConfig = {
     },
     {
       id: "identity",
-      label: "Identity",
+      label: "Workforce",
       icon: IconIdentity,
       desktopSlides: identityDesktop,
       mobileSlides: identityMobile,
@@ -1326,8 +1791,15 @@ const bbAndAi: PresentationConfig = {
       mobileSlides: buyersMobile,
     },
     {
+      id: "ai-lab",
+      label: "The AI Lab",
+      icon: IconAgent,
+      desktopSlides: aiLabDesktop,
+      mobileSlides: aiLabMobile,
+    },
+    {
       id: "closing",
-      label: "Summary",
+      label: "Invitation",
       icon: IconClosing,
       desktopSlides: closingDesktop,
       mobileSlides: closingMobile,

@@ -127,11 +127,6 @@ const s = StyleSheet.create({
     color: "#111827",
     lineHeight: 1.4,
   },
-  divider: {
-    height: 0.5,
-    backgroundColor: "#E5E7EB",
-    marginVertical: 6,
-  },
   footer: {
     flexDirection: "row",
     alignItems: "center",
@@ -168,555 +163,614 @@ const SlideBlock = ({
 
 const PromptBlock = ({ num, question }: { num: number; question: string }) => (
   <View style={s.promptBlock} wrap={false}>
-    <Text style={s.promptLabel}>SLIDE {num} — DISCUSSION</Text>
+    <Text style={s.promptLabel}>SLIDE {num} - DISCUSSION</Text>
     <Text style={s.promptText}>{question}</Text>
   </View>
 );
 
 const PresenterNotesPDF = () => (
-  <Document title="Presenter Notes — The Future of Our Industry" author="BrandBlvd">
+  <Document title="Presenter Notes - Don't miss this." author="BrandBlvd">
     <Page size="LETTER" style={s.page}>
-      {/* ─── Title Area ─── */}
+      {/* Title */}
       <Text style={s.titleLabel}>PRESENTER NOTES</Text>
-      <Text style={s.titleText}>The future of our industry</Text>
+      <Text style={s.titleText}>Don't miss this.</Text>
       <View style={s.greenBar} />
-      <Text style={s.subtitle}>Brand Blvd · Confidential</Text>
+      <Text style={s.subtitle}>Brand Blvd AI Lab kickoff - internal</Text>
 
-      {/* ═══════════════════════════════════════
-          SECTION 1: Title
-         ═══════════════════════════════════════ */}
-      <Text style={s.sectionHeader}>Title</Text>
+      {/* SECTION: Home / Title */}
+      <Text style={s.sectionHeader}>Home</Text>
 
       <SlideBlock
         num={1}
-        desc="Cover slide — large AI typography, Brand Blvd logo, subtitle."
+        desc="Cover - 'Don't miss this.' Subtitle: why I started the AI Lab."
         points={[
-          "Welcome everyone. Today we're talking about AI — not as a buzzword, but as a force reshaping our industry.",
-          "This isn't speculative. This is happening now, and it affects how we sell, how we operate, and what we sell.",
-          "Three big shifts: time compression, the death of transactional work, and the restructuring of identity and belonging.",
+          "Frame this as a team conversation, not a presentation. The whole point is to bring people in - not push them.",
+          "This is why the AI Lab exists, and the goal is to get as many of us in it as possible.",
+          "Tone: exciting, not scary. We're going to look at what's actually happening and what we get to do about it.",
         ]}
       />
 
-      <PromptBlock num={2} question="What is 1 way AI has changed how you act or make decisions?" />
+      <SlideBlock
+        num={2}
+        desc="Karpathy quote - 98/2 framing. The organizing idea for the talk."
+        points={[
+          "98% tried ChatGPT once and moved on. 2% are watching it do real work.",
+          "Both groups are looking at the same tech, totally different realities. That gap is what we're walking through today.",
+          "Don't make people feel bad for being in the 98%. Most of the world is. The point is to bring people across.",
+        ]}
+      />
 
       <SlideBlock
         num={3}
-        desc="Overview — three pillars with icons."
+        desc="'I've been spending a lot of time in the 2%.'"
         points={[
-          "AI is compressing time across everything — speed is the new default.",
-          "AI is taking over the 'doing' — execution is cheap, judgment is scarce.",
-          "AI will restructure the employer-employee relationship — identity shifts from employer to community.",
-          "These three themes are the backbone of the presentation. Everything ties back here.",
+          "Personal note: I'm not an expert. I've just been paying attention - reading, building, experimenting.",
+          "I want to bring as many of you over as I can. That's the whole thesis of the AI Lab.",
+          "Invitation, not a warning.",
         ]}
       />
 
-      {/* ═══════════════════════════════════════
-          SECTION 2: AI is Compressing Time
-         ═══════════════════════════════════════ */}
-      <Text style={s.sectionHeader}>AI is compressing time</Text>
-
-      <SlideBlock
-        num={4}
-        desc="Section opener — '01: AI is compressing time across everything.'"
-        points={[
-          "This section is about speed — adoption speed, expectation speed, decision speed.",
-          "AI tools are no longer niche. ChatGPT is a household name. 23% of Super Bowl ads were AI-focused.",
-          "37% of consumers now go to AI first instead of Google. 50% of Google searches include AI summaries.",
-          "AI is training people to expect immediate results. Not faster — immediate.",
-        ]}
-      />
+      <PromptBlock num={4} question="Where do you think you sit right now - closer to the 98 or the 2?" />
 
       <SlideBlock
         num={5}
-        desc="Serif statement — 'household names' and 'immediate' emphasized."
+        desc="6 Shifts overview - Expectations, Doing, Org charts, Agents, Workforce, Buyers."
         points={[
-          "The perception shift matters most: AI feels 'magic' and 'all-knowing.'",
-          "People put something in, get an answer out. Instantly. That resets what 'responsive' means.",
-          "AI is reshaping patience, redefining how we value advice, and how we judge competence.",
+          "Map of where we're going: 6 things the 2% are watching.",
+          "Each one ends with what I think it means for us at Brand Blvd.",
         ]}
       />
 
+      {/* SECTION: Expectations */}
+      <Text style={s.sectionHeader}>01 - Expectations</Text>
+
       <SlideBlock
         num={6}
-        desc="Growth chart — time to 100M users comparison."
+        desc="Section opener - 'Expectations have shifted.'"
         points={[
-          "ChatGPT reached 100M users 27x faster than Facebook.",
-          "When something spreads that fast, it feels inevitable. Entire categories compress from years to months.",
-          "This isn't just a tech stat — it changes consumer psychology about what's normal.",
+          "Shift 1 of 6. AI has reset what 'good enough' and 'on time' mean.",
+          "Don't frame as 'we're behind.' Frame as 'the floor moved - we get to choose which side of it we're on.'",
         ]}
       />
 
       <SlideBlock
         num={7}
-        desc="Investment signals grid — OpenAI, NVIDIA, Lovable, Anthropic."
+        desc="Serif - 'immediate, not faster.'"
         points={[
-          "Capital follows conviction. These numbers show where the smart money is going.",
-          "OpenAI: $100B round at $850B valuation — largest single funding round in tech history.",
-          "NVIDIA: $3T+ market cap, stock grew 200% in one year on AI chip demand.",
-          "Lovable: $330M raised at 1 year old — massive early-stage AI-native round.",
-          "Anthropic: $30B at $380B valuation, revenue growing 10x annually, only 3 years old.",
-          "Markets don't place trillion-dollar bets on trends. They place them on transformations.",
+          "AI isn't just training people to expect faster. Immediate.",
+          "37% of consumers go to AI first instead of Google. Nearly 50% of searches include AI summaries.",
+          "That expectation leaks into every conversation - including the ones clients have with us.",
         ]}
       />
 
       <SlideBlock
         num={8}
-        desc="White slide — Expectation Shifts (4 numbered items)."
+        desc="Growth chart - time to 100M users."
         points={[
-          "Patience is collapsing: buying a car used to mean driving between dealerships. Now ChatGPT compares models instantly.",
-          "'Good enough' is immediate: background removal in Photoshop took 30 min. Canva does it in 5 seconds.",
-          "Exploration cost is nearing 0: 3 campaign directions used to require meetings and agencies. Now it's a prompt.",
-          "Self-sufficiency is increasing: people ask AI before calling a specialist.",
-          "When this becomes normal in one domain, it becomes expected in all domains.",
+          "ChatGPT hit 100M users in 2 months. Facebook took 4.5 years. 27x faster.",
+          "This is the adoption curve that trained the new expectation.",
         ]}
       />
 
       <SlideBlock
         num={9}
-        desc="Serif statement — 'It's rewiring expectation.'"
+        desc="'Good enough, right now' beats 'perfect, later.'"
         points={[
-          "This is the key takeaway: AI isn't just a productivity tool. It changes what people expect.",
-          "The speed of AI is becoming the speed benchmark for everything else.",
+          "Heart of the shift: velocity over precision at the front of the process.",
+          "Photographer example - 30 minutes of lasso-tool background cutting replaced by 5 seconds in Canva.",
+          "Think about what this means for quoting, proofing, sourcing.",
         ]}
       />
 
       <SlideBlock
         num={10}
-        desc="The 'analog in a digital world' slide — 48-hour turnarounds, 3-day proofs."
+        desc="Serif - explore more, before they pick up the phone."
         points={[
-          "If we still operate with 48-hour quote turnarounds, 3-day proof cycles, reorders buried in email — we feel broken, not just slow.",
-          "Buyers will expect real-time pricing, instant proofs, and seamless ordering.",
-          "This is both the threat and the opportunity.",
+          "The 2% explore more, compare more, iterate more - before they ever reach out.",
+          "Exploration used to cost money, time, coordination. Now it costs a prompt.",
+          "Clients arrive to the conversation further along than they used to.",
         ]}
       />
-
-      <PromptBlock num={11} question="If you were our client, what part of our process would frustrate you?" />
 
       <SlideBlock
-        num={12}
-        desc="Shift #1 takeaway — 'Instant is the new standard.'"
+        num={11}
+        desc="The Gap - reframe."
         points={[
-          "Automate reorders, quoting, proofs, and standard workflows.",
-          "Remove unnecessary delay. Operational excellence buys us the right to be strategic.",
-          "This is the foundation — get the basics to instant so we can focus on high-value work.",
+          "Reframe: we're not 'behind.'",
+          "A gap is opening between what clients are starting to expect and what most agencies are set up to deliver.",
+          "That gap is where both the risk AND the opportunity live - we get to choose which side we're on.",
+          "Avoid 'if we don't move we die' tone. Honest framing: agencies that close this gap get pulled forward.",
         ]}
       />
 
-      {/* ═══════════════════════════════════════
-          SECTION 3: AI is Taking Over the "Doing"
-         ═══════════════════════════════════════ */}
-      <Text style={s.sectionHeader}>Companies are investing like it's permanent</Text>
+      <PromptBlock num={12} question="What's something you've seen a client expect lately that they wouldn't have asked for a year ago?" />
 
       <SlideBlock
         num={13}
-        desc="Section opener — '02: AI is taking over the doing.'"
+        desc="Shift #1 - 'Good enough, right now.'"
         points={[
-          "This section is about the human role. If AI handles execution, what do we do?",
-          "AI outperforms humans in measurable domains: coding benchmarks, math olympiad, 90th percentile Bar Exam.",
-          "Execution is dramatically cheaper and faster. The barrier to 'doing something' has collapsed.",
+          "The floor of 'good enough' moved. Velocity beats precision at the front of the process.",
+          "The AI Lab is where we figure out how to meet the new floor together - without losing craft on the back end.",
         ]}
       />
 
+      {/* SECTION: The Doing */}
+      <Text style={s.sectionHeader}>02 - The Doing</Text>
+
       <SlideBlock
         num={14}
-        desc="Serif statement — rule-based tasks faster, cheaper, at scale."
+        desc="Section opener - 'AI is taking over the doing.'"
         points={[
-          "AI can generate 10 campaign ideas in seconds. But it doesn't know which aligns with your brand, fits your culture, or will actually drive behavior.",
-          "The human role shifts: less about doing, more about deciding what should be done.",
-          "Framing the problem correctly. Defining success. Applying judgment. Taking responsibility.",
+          "Shift 2 of 6. The 'doing' is being absorbed - drafting, sourcing, comparing, generating.",
+          "Point isn't 'we're being replaced.' It's 'we get pulled up the value chain.'",
         ]}
       />
 
       <SlideBlock
         num={15}
-        desc="Industry leaders quotes — Nadella, Benioff, Amodei."
+        desc="Serif - execution cheap, judgment scarce."
         points={[
-          "Nadella (Microsoft): 'People who use AI will replace people who don't.'",
-          "Benioff (Salesforce): 'AI helps salespeople spend more time with customers, less on admin.'",
-          "Amodei (Anthropic): 'In 12 months, AI writes all the code.' — and this was said months ago.",
-          "These are not hypotheticals. These are CEOs restructuring trillion-dollar companies around this thesis.",
+          "AI handles rule-based, repetitive, information-heavy work faster, cheaper, at scale.",
+          "Our role moves up the stack - to knowing what to do, not doing it.",
+          "Execution gets cheap. Judgment gets scarce. That's the trade we want.",
         ]}
       />
 
       <SlideBlock
         num={16}
-        desc="White slide — 'Order-Taking Dies.'"
+        desc="Industry quotes - Nadella, Benioff, Amodei."
         points={[
-          "Software will draft proposals, compare pricing, and source products instantly.",
-          "If we remain order-takers, we compete against something we can never keep up with.",
-          "Industries like travel and retail already eliminated transactional middlemen. Same pressure applies to us.",
-          "Conclusion: evolve from order-takers to collaborators and advisors.",
+          "Nadella: people who use AI replace people who don't.",
+          "Benioff: real value is helping salespeople spend more time with customers, less on admin.",
+          "Amodei: 90% of code AI-written in 3-6 months, all of it in 12.",
+          "These are CEOs restructuring trillion-dollar companies around this thesis.",
         ]}
       />
 
-      <PromptBlock num={17} question="If AI handled 50% of admin tomorrow, would our reps know what to do with the extra time?" />
+      <SlideBlock
+        num={17}
+        desc="Nadella reframe - the WHY of the AI Lab."
+        points={[
+          "Reframe Nadella. Honest reading isn't 'figure it out yourself or get replaced.'",
+          "Honest reading is: that's exactly why I'm not waiting. That's why we're building the AI Lab.",
+          "Instead of 'this is on you' - the message is 'this is why I want to help.'",
+        ]}
+      />
 
       <SlideBlock
         num={18}
-        desc="Shift #2 takeaway — 'Death of transactional sales.'"
+        desc="Pulled Up - what's automated vs. where we live."
         points={[
-          "We win on framing, interpretation, judgment, context, and strategy — not on sending catalogues.",
-          "If AI drafts proposals, we ensure they solve the right problem. If AI sources merch, we design the moment around it.",
-          "We're not losing value — we're being forced up the value chain.",
+          "What's automated: drafting proposals, pricing comparisons, sourcing - the transactional middle. Same as travel and retail.",
+          "Where we live: making sure the proposal solves the right problem. Designing the moment around the merch.",
+          "We get pulled up the value chain. Good thing if we're ready for it.",
         ]}
       />
 
-      {/* ═══════════════════════════════════════
-          SECTION 4: What Can't Be Replaced
-         ═══════════════════════════════════════ */}
-      <Text style={s.sectionHeader}>What can't be replaced</Text>
-
-      <SlideBlock
-        num={19}
-        desc="Section opener — '03: AI will restructure the employer-employee relationship.'"
-        points={[
-          "This section is about identity, belonging, and what happens when work becomes more transactional.",
-          "For over a century, work has been the primary anchor of identity: income, community, social status, daily rhythm.",
-          "AI increases output per employee. Fewer people produce more. Middle layers compress.",
-        ]}
-      />
+      <PromptBlock num={19} question="If AI handled half your admin tomorrow, what would you do with the time?" />
 
       <SlideBlock
         num={20}
-        desc="Serif statement — workforce will shift, not if but when."
+        desc="Shift #2 - 'We get pulled up the stack.'"
         points={[
-          "This isn't alarmist — it's structural. Headcount becomes less correlated with output.",
-          "Companies will hire more selectively, automate more aggressively, consolidate roles.",
-          "Work becomes less about time spent and more about value created.",
-          "When employment becomes more transactional, people seek belonging elsewhere.",
+          "Less doing, more deciding. Framing the problem. Defining success. Owning the outcome.",
+          "That's what AI can't replace - and that's the work we get to focus on.",
         ]}
       />
+
+      {/* SECTION: Org Charts */}
+      <Text style={s.sectionHeader}>03 - Org Charts</Text>
 
       <SlideBlock
         num={21}
-        desc="White slide — The Numbers (80%, 50%, 76K+)."
+        desc="Section opener - 'The org chart is dissolving.'"
         points={[
-          "80% of people believe AI will impact their daily work.",
-          "50% worry their job could be automated.",
-          "76K+ jobs eliminated in 2025 — data entry, telemarketing, admin support.",
-          "The signal is consistent: work is being restructured.",
+          "Shift 3 of 6. Hierarchies exist because for 2,000 years a person could only manage 3-8 people.",
+          "AI breaks that constraint.",
         ]}
       />
 
-      <PromptBlock num={22} question="If our clients reduced headcount by 20%, what happens to our revenue?" />
+      <SlideBlock
+        num={22}
+        desc="Serif - Roman military, span of control."
+        points={[
+          "3-8 person span of control hasn't changed since the Roman military.",
+          "That's why we have hierarchies. AI doesn't need layers to coordinate.",
+        ]}
+      />
 
       <SlideBlock
         num={23}
-        desc="'That doesn't mean merch goes away' — serif statement on white."
+        desc="Block case study - 3 roles, not 10 layers."
         points={[
-          "Key reframe: merch doesn't disappear. The driver changes.",
-          "As AI reshapes work, belonging shifts from employer identity to community identity.",
-          "People still need to belong somewhere. That need gets stronger when institutional stability weakens.",
+          "Block (Square + Cash App) is restructuring around AI: 3 roles replace 10 layers.",
+          "ICs use AI for context. DRIs own a problem for 90 days. Player-coaches build and develop.",
+          "Source: Sequoia Capital - 'From Hierarchy to Intelligence.' Happening now, not someday.",
         ]}
       />
 
       <SlideBlock
         num={24}
-        desc="The Opportunity grid — Internal, External, Identity."
+        desc="Two Forces - inside vs. outside our walls."
         points={[
-          "Internal: merch must reflect culture and values, not just fill closets.",
-          "External: build tribes — customers, advocates, insiders, culture ambassadors.",
-          "Identity: move from 'gifting employees' to 'manufacturing belonging.'",
-          "If we tie growth to payroll size, we're tied to a shrinking lever. Tie it to identity and belonging instead.",
+          "Inside: 'growing the team' looks less like headcount, more like leverage per person.",
+          "From 'who do we hire next?' to 'how do we make every person 3x more effective?'",
+          "Outside: clients will have flatter orgs. The org chart your SDR mapped last year might not exist next year.",
         ]}
       />
 
       <SlideBlock
         num={25}
-        desc="Shift #3 takeaway — 'Identity-driven community merch.'"
+        desc="Serif - remaining people become more important."
         points={[
-          "Merch becomes badge signalling, not office swag.",
-          "This is our biggest strategic pivot: from HR-driven fulfillment to culture-driven branding.",
-          "The opportunity is expanding, not shrinking — if we position correctly.",
+          "When management layers compress, the people who remain become MORE important.",
+          "More authority. Closer to the work. Closer to the culture.",
+          "A very good thing for a company that manufactures belonging.",
         ]}
       />
-
-      {/* ═══════════════════════════════════════
-          SECTION 5: 30-Day Update Intro
-         ═══════════════════════════════════════ */}
-      <Text style={s.sectionHeader}>30-day update intro</Text>
 
       <SlideBlock
         num={26}
-        desc="'30 Days Later' title slide — white background, +30 watermark."
+        desc="Shift #3 - 'Leverage per person, not headcount.'"
         points={[
-          "Transition moment: I wrote the original article about a month ago. I thought it would hold up. It didn't.",
-          "Not because I was wrong — but because new signals emerged faster than I expected.",
-          "The speed I wrote about in section 1 is happening to the article itself. That's the meta-lesson.",
+          "Management becomes coaching. The 'doing' part of management gets absorbed.",
+          "Judgment, coaching, strategy stay human.",
         ]}
       />
+
+      {/* SECTION: Agents */}
+      <Text style={s.sectionHeader}>04 - Agents</Text>
 
       <SlideBlock
         num={27}
-        desc="Three new themes overview — org charts, agents, buyers."
+        desc="Section opener - 'Agents are doing the work.'"
         points={[
-          "Three things have shifted my thinking: the org chart is dissolving, agents are doing the work, machines are becoming the buyers.",
-          "Consider this the 'yes, and...' to everything in the first half.",
+          "Shift 4 of 6. Last year AI was a tool. Now it's becoming an operator.",
         ]}
       />
 
-      {/* ═══════════════════════════════════════
-          SECTION 6: The Org Chart is Dissolving
-         ═══════════════════════════════════════ */}
-      <Text style={s.sectionHeader}>The org chart is dissolving</Text>
-
       <SlideBlock
         num={28}
-        desc="Section opener — '04: The org chart is dissolving.'"
+        desc="Serif - tool to agent shift."
         points={[
-          "For 2,000 years, a leader could manage 3-8 people. That's why hierarchies exist.",
-          "Middle management exists to coordinate — aggregate, translate, route information.",
-          "AI doesn't need layers to coordinate. It doesn't need weekly pipeline reviews or 3-day spreadsheet builds.",
+          "From 'AI-assisted' to 'AI-executed.'",
+          "Biggest players converging on agents that do the work, not just help.",
+          "Most important update from a year ago.",
         ]}
       />
 
       <SlideBlock
         num={29}
-        desc="Serif statement — Roman military, hierarchies, AI doesn't need layers."
+        desc="3 Signals Same Direction - Claude Code, OpenClaw, Cursor."
         points={[
-          "The span-of-control constraint has been fixed for 2,000 years. AI breaks it.",
-          "Sequoia Capital published 'From Hierarchy to Intelligence' — profiling how Block is restructuring.",
-          "This isn't theoretical. Companies are already doing it.",
+          "Claude Code: $2.5B annual revenue. 4% of all GitHub commits - doubled in a month.",
+          "OpenClaw: 250K GitHub stars in 60 days - surpassed React's 10-year record.",
+          "Cursor: $2B+ annual revenue. Describe in English, it writes/tests/demos.",
+          "3 signals pointing the same direction.",
         ]}
       />
 
       <SlideBlock
         num={30}
-        desc="Case Study: Block — 3 Roles, Not 10 Layers."
+        desc="Case Study - $20K to $1.8B (Gallagher)."
         points={[
-          "Block (Square + Cash App) built a 'Company World Model' — AI that maintains a live picture of the entire operation.",
-          "Result: 3 roles replace 10 layers. ICs use AI for context. DRIs own problems for 90 days. Player-coaches build and develop.",
-          "The manager role transforms from information processor to coach and decision-maker.",
-          "Source: Sequoia Capital.",
+          "Matthew Gallagher and his brother. 2 people. $20K. No VC.",
+          "Built a telehealth company using AI agents for operations, support, marketing, fulfillment.",
+          "$401M in 2025 sales. Projected $1.8B in 2026.",
+          "Proof point that small + AI-leveraged can play at massive scale.",
         ]}
       />
 
       <SlideBlock
         num={31}
-        desc="Two opposing forces — inside vs. outside our walls."
+        desc="Serif - 'this is a leverage story.'"
         points={[
-          "Inside: 'growing the team' looks less like headcount, more like leverage per person.",
-          "The question shifts from 'who do we hire?' to 'how do we make every person 3x more effective?'",
-          "Outside: companies we sell to will have flatter orgs, fewer decision-makers, fewer middle managers.",
-          "The org chart your SDR mapped last year might not exist next year.",
+          "Not a tech story. A leverage story.",
+          "Same AI tools available to that 2-person startup are available to us.",
+          "Question isn't 'is this possible?' It's 'who figures it out first?'",
         ]}
       />
 
       <SlideBlock
         num={32}
-        desc="Serif statement — remaining people become more important, not less."
+        desc="Sequoia - 'Services: The New Software.'"
         points={[
-          "If management layers compress, the people who remain hold more authority and care more about culture.",
-          "That's a very good thing for a company that manufactures belonging.",
-          "Fewer people, but each one matters more. Our product becomes more valuable, not less.",
+          "Next trillion-dollar company won't sell tools. It will sell outcomes.",
+          "For every $1 spent on software, companies spend $6 on services.",
         ]}
       />
 
       <SlideBlock
         num={33}
-        desc="Shift #4 takeaway — 'Leverage per person, not headcount.'"
+        desc="'We don't sell t-shirts.'"
         points={[
-          "Management becomes coaching. AI absorbs the 'doing' part of management first.",
-          "The thinking part — judgment, coaching, strategy — stays human.",
-          "This applies to our team and our clients' teams.",
+          "We don't sell t-shirts. We sell the experience around the t-shirt.",
+          "Brand moment. Culture artifact. Belonging signal.",
+          "More AI commoditizes logistics, more value shifts to designing the moment.",
         ]}
       />
-
-      {/* ═══════════════════════════════════════
-          SECTION 7: Agents Are the New Workforce
-         ═══════════════════════════════════════ */}
-      <Text style={s.sectionHeader}>Agents are doing the work</Text>
 
       <SlideBlock
         num={34}
-        desc="Section opener — '05: Agents are doing the work.'"
+        desc="Shift #4 - 'Sell outcomes, not tools.'"
         points={[
-          "A month ago, AI was a tool — prompt, respond, review. Now the biggest players agree: agents should do the work, not just assist.",
-          "This is the most important shift in the update section.",
+          "Companies that win deliver outcomes people trust.",
+          "That's what we already do - keep leaning in.",
         ]}
       />
 
+      {/* SECTION: Workforce */}
+      <Text style={s.sectionHeader}>05 - Workforce</Text>
+
       <SlideBlock
         num={35}
-        desc="Serif statement — agents should do the work, not just assist."
+        desc="Section opener - 'The workforce is shifting.'"
         points={[
-          "The language has changed from 'AI-assisted' to 'AI-executed.'",
-          "We went from 'use AI to help' to 'AI does it and you review.'",
-          "This is a fundamental shift in the human-AI relationship.",
+          "Shift 5 of 6. Manage tone carefully here. Replace anxiety with agency.",
+          "Don't pretend the numbers aren't real - acknowledge them, then reframe.",
         ]}
       />
 
       <SlideBlock
         num={36}
-        desc="The Convergence — Claude Code, OpenClaw, Cursor stats."
+        desc="'What most people hear' - 80%, 50%, 76K+."
         points={[
-          "Claude Code: $2.5B annual revenue. 4% of all GitHub commits — doubled in a single month.",
-          "OpenClaw: 250K GitHub stars in 60 days, surpassing React's 10-year record. 3.2M monthly active users.",
-          "Cursor: $2B+ annual revenue. Describe what you want in English — it writes, tests, and demos it.",
-          "These aren't 3 competing tools. They're 3 signals pointing the same direction.",
+          "80% believe AI will impact their work. 50% worry about automation. 76K+ jobs eliminated in 2025.",
+          "Frame as 'what most people hear' - context for the anxiety, not a scare tactic.",
+          "Pivot: these are real, but they're not the whole story.",
         ]}
       />
 
       <SlideBlock
         num={37}
-        desc="Beyond Code — first domino, $200B+ agentic spending."
+        desc="'Fewer people' reframed - the BB version."
         points={[
-          "Coding is the most visible example because it's easiest to agentify. But it's just the first domino.",
-          "$200B+ in agentic AI spending projected for 2026. Marketing is next.",
-          "Dario Amodei gives 70-80% probability that 2026 sees the first billion-dollar company run by a single person.",
+          "Most important slide in the section.",
+          "We're NOT trying to do more with fewer people. We're trying to make every person more powerful, more effective, more valuable.",
+          "AI isn't here to replace you. It's here to make you better at what you already do well. Say it directly.",
         ]}
       />
 
       <SlideBlock
         num={38}
-        desc="The Zero-Employee Company question."
+        desc="'Shape what comes next' + nobody is a lost cause."
         points={[
-          "What if you didn't need employees at all? This reframes the question entirely.",
-          "From 'will AI take jobs?' to 'what does a company even look like when agents can do the work?'",
-          "This isn't science fiction. It might already be happening.",
+          "The people who lean in get to shape what comes next.",
+          "We're making space for as many of you as possible to be part of this.",
+          "Nobody is a lost cause for being in the 98%. The whole point of the AI Lab is to bring people across.",
         ]}
       />
 
-      <SlideBlock
-        num={39}
-        desc="Case Study: $20K to $1.8 Billion telehealth company."
-        points={[
-          "Matthew Gallagher and his brother: 2 people, $20K to start, no VC, no team of 50.",
-          "Built a telehealth company using AI agents for operations, support, marketing, fulfillment.",
-          "$401M in 2025 sales. Projected $1.8B in 2026 — nearly 5x growth.",
-          "The most compelling proof that the zero-employee model works at scale.",
-        ]}
-      />
+      <PromptBlock num={39} question="What part of your daily work would you most want AI to take off your plate?" />
 
       <SlideBlock
         num={40}
-        desc="'This isn't a tech story. It's a leverage story.'"
+        desc="Merch and swag don't go away."
         points={[
-          "Two people. No employees. AI handling operations, support, and scale.",
-          "The question isn't whether this is possible. It's whether your competitors figure it out before you do.",
+          "Merch and swag don't go away.",
+          "As work shifts, belonging moves from employer identity to community identity.",
+          "Need is changing - it's not disappearing.",
         ]}
       />
 
       <SlideBlock
         num={41}
-        desc="Sequoia Capital — 'sell outcomes, not tools.'"
+        desc="Where Belonging Relocates - Internal / External / Identity."
         points={[
-          "Sequoia published 'Services: The New Software.' The next trillion-dollar company won't sell tools — it will sell outcomes.",
-          "For every dollar spent on software, companies spend $6 on services.",
-          "We don't sell t-shirts. We sell the experience around the t-shirt — the brand moment, the culture artifact, the belonging signal.",
-          "The more AI commoditizes logistics, the more value shifts to designing the moment.",
+          "Internal: more intentional - reflects culture and values, not just fills closets.",
+          "External: more tribal - tribes of customers, advocates, insiders, ambassadors.",
+          "Identity: badge signalling - move from 'gifting employees' to 'manufacturing belonging.'",
         ]}
       />
 
       <SlideBlock
         num={42}
-        desc="Shift #5 takeaway — 'Sell outcomes, not tools.'"
+        desc="Shift #5 - 'Belonging is expanding.'"
         points={[
-          "The companies that win aren't the ones with the best software. They deliver outcomes people trust.",
-          "This is our strategic position: we sell what automation can't replicate.",
+          "Tie our growth to payroll size, we're tied to a shrinking lever.",
+          "Tie it to identity and belonging, we're tied to something expanding.",
+          "Optimistic flip on the workforce shift - and why BB is well-positioned.",
         ]}
       />
 
-      {/* ═══════════════════════════════════════
-          SECTION 8: Leverage is Being Redefined (Buyers)
-         ═══════════════════════════════════════ */}
-      <Text style={s.sectionHeader}>When machines are the buyers</Text>
+      {/* SECTION: Buyers */}
+      <Text style={s.sectionHeader}>06 - Buyers</Text>
 
       <SlideBlock
         num={43}
-        desc="Section opener — '06: When machines are the buyers.'"
+        desc="Section opener - 'The buyer isn't a person anymore.'"
         points={[
-          "Everything above leads to a question not enough people are asking: if AI is making the decisions, who are we selling to?",
-          "This isn't philosophical. It's literal and it's already happening.",
+          "Shift 6 of 6. The question almost nobody in our industry is asking yet.",
         ]}
       />
 
       <SlideBlock
         num={44}
-        desc="Serif statement — 'who are we selling to?'"
+        desc="Serif - 'who are we selling to?'"
         points={[
-          "Pause and let this land. The buyer might not be a person anymore.",
-          "This changes everything about how we position, how we're found, and how we close.",
+          "If AI is making the decisions, who are we actually selling to?",
+          "Pause and let it land. The buyer might not be a person anymore.",
         ]}
       />
 
       <SlideBlock
         num={45}
-        desc="Agentic Procurement numbers — 45%, two-thirds, 90%."
+        desc="Agentic Procurement Numbers - 45%, ⅔, 90%."
         points={[
-          "45% of B2B buyers already use AI as primary research method for identifying new suppliers.",
-          "Two-thirds of B2B buyers use AI agents for vendor research — rely on them as much as or more than Google.",
-          "By 2028: 90% of all B2B purchases mediated by AI agents — $15 trillion in spending through machines.",
+          "45% of B2B buyers already use AI as primary research method for suppliers.",
+          "Two-thirds trust AI agents for vendor research as much as or more than Google.",
+          "By 2028: 90% of B2B purchases mediated by AI agents - $15T in spending.",
         ]}
       />
 
       <SlideBlock
         num={46}
-        desc="The procurement manager scenario — 500 branded polos."
+        desc="Procurement scenario - 500 branded polos."
         points={[
-          "Tomorrow's scenario: 'I need 500 branded polos, $25K budget, find me 3 vendors.'",
-          "The agent researches, compares, shortlists. Maybe places the order.",
+          "Tomorrow's brief: '500 branded polos, $25K, August retreat. Find me 3 vendors.'",
+          "Agent researches, compares, shortlists. Maybe places the order.",
           "The human doesn't visit a website, read an email, or take a sales call.",
-          "If we're not structured data an AI can parse, we don't exist in this world.",
         ]}
       />
 
       <SlideBlock
         num={47}
-        desc="Two Lanes — Human Buyer vs. Agent Buyer."
+        desc="Two Lanes - Human Buyer / Agent Buyer."
         points={[
-          "Lane 1 (Human Buyer): relationships, trust, personal service still win. Double down on the human stuff.",
-          "Lane 2 (Agent Buyer): structured data, machine-readable case studies, right databases. Completely different muscle.",
-          "It's not replacing the human sales process. It's adding a second, parallel track.",
-          "We need to build for both simultaneously.",
+          "Lane 1 (Human): relationships, trust, personal service still win. Reading the room is the differentiator.",
+          "Lane 2 (Agent): structured data, machine-readable case studies, right databases.",
+          "Not replacing the human sales process. Adding a second, parallel track.",
         ]}
       />
 
       <SlideBlock
         num={48}
-        desc="Serif statement — AI can't evaluate 'does this company understand my brand?'"
+        desc="Serif - 'agent can't evaluate.'"
         points={[
-          "An AI agent can't evaluate brand understanding, creative pushback, or emotional design.",
-          "Transactional vendors get eaten alive by agentic procurement.",
-          "But companies that sell belonging, creative strategy, brand moments? That's where the human picks up the phone.",
-          "The agent can shortlist. But it can't feel the culture of a brand. That's our moat.",
+          "Agent can't evaluate: does this company understand my brand? Will they push back? Will they make our people feel something?",
+          "Agent can shortlist vendors. Can't feel the culture of a brand. That's our moat.",
         ]}
       />
 
-      <PromptBlock num={49} question="How would an AI procurement agent describe Brand Blvd? Would it even find us?" />
+      <PromptBlock num={49} question="If an AI agent had to describe Brand Blvd in 2 sentences, what would we want it to say?" />
 
       <SlideBlock
         num={50}
-        desc="Shift #6 takeaway — 'We sell what machines can't evaluate.'"
+        desc="Shift #6 - 'We sell what machines can't evaluate.'"
         points={[
-          "Transactional vendors get eaten alive. Companies that sell belonging win.",
-          "We're selling something machines can't evaluate. That might be the best competitive moat in an agentic world.",
+          "Transactional vendors get eaten by agentic procurement.",
+          "Companies that sell belonging? That's where the human picks up the phone.",
         ]}
       />
 
-      {/* ═══════════════════════════════════════
-          SECTION 9: Closing
-         ═══════════════════════════════════════ */}
-      <Text style={s.sectionHeader}>Closing</Text>
+      {/* SECTION: The AI Lab */}
+      <Text style={s.sectionHeader}>07 - The AI Lab</Text>
 
       <SlideBlock
         num={51}
-        desc="Meta-lesson — 'I had to update this 30 days later. That's the point.'"
+        desc="Section opener - 'The AI Lab - what we're building.'"
         points={[
-          "I wrote the original article to make a point about speed. Then I had to update it 30 days later.",
-          "That's the meta-lesson. The world is changing faster than our ability to document it.",
-          "The companies that win are not the ones who predict the future correctly. They build the muscle to adapt continuously.",
+          "Pivot point. We've been teasing the AI Lab throughout. Now we say what it is.",
+          "This is the payoff - not homework. Keep the energy up.",
         ]}
       />
 
       <SlideBlock
         num={52}
-        desc="Final slide — 'Paying attention is half the battle. The other half is doing something about it.'"
+        desc="Hammer - 'A small pilot. Real work. 3 months.'"
         points={[
-          "Recap the 6 shifts: instant is the standard, death of transactional sales, identity-driven merch, leverage per person, sell outcomes, sell what machines can't evaluate.",
-          "Paying attention is half the battle. The other half is doing something about it.",
-          "That's what we're doing at Brand Blvd. This isn't just an observation — it's a call to action.",
-          "Thank the room. Open for questions or discussion.",
+          "Simple version: leadership + 3-5 team members. 3 months.",
+          "Real work - not theory, not tutorials.",
+        ]}
+      />
+
+      <SlideBlock
+        num={53}
+        desc="Serif - 'I don't have this all figured out.'"
+        points={[
+          "Say it out loud. Tools moving too fast for anyone to have a perfect playbook.",
+          "We're learning together. How fast we go depends on who's in the room.",
+          "Humility builds trust - and invites people to shape it with you.",
+        ]}
+      />
+
+      <SlideBlock
+        num={54}
+        desc="What we'll be working on - part 1 (items 01-04)."
+        points={[
+          "Spot workflows, what a skill is, what an agent is, build it yourself.",
+          "Concrete things - not theory. You'll actually do them.",
+        ]}
+      />
+
+      <SlideBlock
+        num={55}
+        desc="What we'll be working on - part 2 (items 05-08)."
+        points={[
+          "Use the tools that exist now, automate, schedule, connect systems.",
+          "'Work happens while you sleep' usually lands - make eye contact there.",
+        ]}
+      />
+
+      <SlideBlock
+        num={56}
+        desc="Serif - 'No CS degree required.'"
+        points={[
+          "Reassurance moment. Curiosity + willingness + practice. That's the prereq.",
+          "If someone's worried about being 'technical enough,' this is for them.",
+        ]}
+      />
+
+      <SlideBlock
+        num={57}
+        desc="The time commitment - 90m / half day / homework."
+        points={[
+          "90 minutes per week. Half day per month. Homework in between.",
+          "Say it plainly. People want to know the ask.",
+          "That's it. 3 months. Real skills they'll use every day after.",
+        ]}
+      />
+
+      <SlideBlock
+        num={58}
+        desc="Serif - 'Hours become minutes.'"
+        points={[
+          "The promise isn't 'you'll be better at AI.' It's a different relationship with your own work.",
+          "Hours become minutes. Tedious stuff gets done automatically.",
+          "More of what you love. Less of what drains you.",
+        ]}
+      />
+
+      <SlideBlock
+        num={59}
+        desc="'This isn't one-and-done. It's the beginning.'"
+        points={[
+          "First cohort becomes the teachers for everyone else.",
+          "Not one-and-done - something the whole team becomes part of over time.",
+          "Sets up the final soft-close.",
+        ]}
+      />
+
+      {/* SECTION: Invitation / Closing */}
+      <Text style={s.sectionHeader}>Invitation</Text>
+
+      <SlideBlock
+        num={60}
+        desc="Recap of all 6 shifts."
+        points={[
+          "1) Close the gap. 2) Pulled up the stack. 3) Leverage per person. 4) Sell outcomes. 5) Belonging is expanding. 6) Sell what machines can't evaluate.",
+          "Pause here. Let people see the whole map together.",
+        ]}
+      />
+
+      <SlideBlock
+        num={61}
+        desc="Build the muscle to adapt continuously."
+        points={[
+          "Companies that win aren't the ones who predict the future correctly.",
+          "They build the muscle to adapt continuously.",
+          "That's what the AI Lab is for - not training, not a course, a muscle we build together.",
+        ]}
+      />
+
+      <SlideBlock
+        num={62}
+        desc="Soft close - the invitation."
+        points={[
+          "Read this slowly. This is the actual ask. Tone matters.",
+          "If any of this gets you excited - or even just curious - that's enough.",
+          "You don't need to be an expert. You just need to want to learn.",
+          "If this round isn't the right timing, that's OK. More cohorts coming. Pull, not push.",
+        ]}
+      />
+
+      <SlideBlock
+        num={63}
+        desc="Final - 'Let's go build some cool things.'"
+        points={[
+          "End on the line: 'Let's go build some cool things.'",
+          "Apply for the AI Lab. We'd love to have you.",
+          "Don't moralize. Don't end on stakes. End on excitement and the open door.",
         ]}
       />
 

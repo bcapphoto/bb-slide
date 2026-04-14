@@ -11,7 +11,6 @@ import type { PresentationConfig } from "./presentation.types";
 const presentationLoaders: Record<string, () => Promise<{ default: PresentationConfig }>> = {
   "future-of-ai": () => import("./future-of-ai"),
   "bb-and-ai": () => import("./bb-and-ai"),
-  "bb-and-ai-v2": () => import("./bb-and-ai-v2"),
   "ic-recruitment": () => import("./ic-recruitment"),
 };
 

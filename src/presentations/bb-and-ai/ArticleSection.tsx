@@ -1,9 +1,9 @@
-import { lazy, Suspense, useState } from "react";
-import { IconFastForward, IconStacks, IconIdentity, IconOrgChart, IconAgent, IconTarget } from "@/components/SectionIcons";
+import { useState } from "react";
+import { IconStacks, IconIdentity, IconOrgChart, IconAgent, IconTarget, IconFastForward, IconRocket } from "@/components/SectionIcons";
 import bbLogoHorizontal from "@/assets/bb-logo-horizontal-white.svg";
 import { Download } from "lucide-react";
 
-const SectionDivider = ({ icon: Icon, label }: { icon: React.ComponentType<{ size?: number; className?: string }>; label: string }) => (
+const SectionDivider = ({ icon: Icon }: { icon: React.ComponentType<{ size?: number; className?: string }> }) => (
   <div className="flex items-center gap-6 my-20 md:my-28">
     <div className="flex-shrink-0 w-16 h-16 rounded-sm bg-brand-green/10 flex items-center justify-center">
       <Icon size={36} className="text-brand-green" />
@@ -12,6 +12,33 @@ const SectionDivider = ({ icon: Icon, label }: { icon: React.ComponentType<{ siz
       <div className="h-px bg-gray-200" />
     </div>
   </div>
+);
+
+const P = ({ children }: { children: React.ReactNode }) => (
+  <p className="text-lg leading-[1.8] text-gray-700 mb-5">{children}</p>
+);
+
+const PLast = ({ children }: { children: React.ReactNode }) => (
+  <p className="text-lg leading-[1.8] text-gray-700 mb-10">{children}</p>
+);
+
+const H2 = ({ children }: { children: React.ReactNode }) => (
+  <h2 className="font-serif text-3xl md:text-4xl leading-tight text-gray-900 mb-10">{children}</h2>
+);
+
+const H3 = ({ children }: { children: React.ReactNode }) => (
+  <h3 className="font-display text-sm uppercase tracking-[0.3em] text-gray-500 mb-5 mt-14">{children}</h3>
+);
+
+const A = ({ href, children }: { href: string; children: React.ReactNode }) => (
+  <a
+    href={href}
+    target="_blank"
+    rel="noopener noreferrer"
+    className="text-gray-900 underline decoration-brand-green/60 decoration-1 underline-offset-4 hover:decoration-brand-green transition-colors"
+  >
+    {children}
+  </a>
 );
 
 const ArticleSection = () => {
@@ -25,7 +52,7 @@ const ArticleSection = () => {
     const url = URL.createObjectURL(blob);
     const a = document.createElement("a");
     a.href = url;
-    a.download = "AI-and-the-Future-of-Our-Work.pdf";
+    a.download = "Dont-Miss-This-Brand-Blvd-AI.pdf";
     a.click();
     URL.revokeObjectURL(url);
     setShowPdf(false);
@@ -49,605 +76,438 @@ const ArticleSection = () => {
           </button>
         </div>
         <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl leading-[1.15] tracking-tight text-gray-900 mb-6">
-          AI and the future of our work
+          Don't miss this.
         </h1>
         <p className="text-lg leading-[1.8] text-gray-500 mb-6">
-          What's happening, what it means for us, and why we're not standing still.
+          Why I started the AI Lab, and why I want as many of you in it as possible.
         </p>
         <div className="w-16 h-1 bg-brand-green" />
       </header>
 
-      {/* ─── Intro ─── */}
-      <p className="text-lg leading-[1.8] text-gray-700 mb-5">
-        I want to be straight with you. This isn't a corporate memo about "embracing innovation." This is me sharing what I'm seeing, what I'm thinking, and what it means for all of us - every single person at Brand Blvd.
-      </p>
-      <p className="text-lg leading-[1.8] text-gray-700 mb-5">
-        AI is moving faster than most people realize. And the things happening right now - not in 5 years, not in 10 years, right now - are going to change how we work, how our clients buy, and what our industry looks like.
-      </p>
-      <p className="text-lg leading-[1.8] text-gray-700 mb-10">
-        Some of what you're about to read might scare you. Good. It should make you pay attention. But I also want you to know: we're paying attention too. And we're doing something about it.
-      </p>
-
-      {/* ─── SECTION 1 ─── */}
-      <SectionDivider icon={IconFastForward} label="Compressing Time" />
-
-      <h2 className="font-serif text-3xl md:text-4xl leading-tight text-gray-900 mb-10">
-        AI is compressing time across everything
-      </h2>
-
-      <h3 className="font-display text-sm uppercase tracking-[0.3em] text-gray-500 mb-5 mt-14">
-        The speed of adoption
-      </h3>
-      <p className="text-lg leading-[1.8] text-gray-700 mb-5">
-        AI tools have moved from novelty to household names. We're no longer in the "early adopter" phase - we're firmly in mainstream adoption. ChatGPT is a household name. AI is daily news. Every week brings a new breakthrough. Even at the Super Bowl - traditionally an indicator of mass-market interest -23% of ads were AI-focused.
-      </p>
-      <p className="text-lg leading-[1.8] text-gray-700 mb-5">
-        37% of consumers now go to AI first instead of Google to search. And nearly 50% of Google searches now include AI summaries. This is not a niche experiment. It is infrastructure. It's a paradigm shift.
-      </p>
-      <p className="text-lg leading-[1.8] text-gray-700 mb-5">
-        AI has developed a reputation for being "magic" and "all-knowing." You put something in and get an answer out. Instantly. That shift in perception is what matters - AI is training people to expect immediate results. Not faster. Immediate.
-      </p>
-      <p className="text-lg leading-[1.8] text-gray-700 mb-5">
-        AI is reshaping patience. It's redefining what "responsive" means. It's altering how people look at services, how they value advice, and how they judge competence.
-      </p>
-      <p className="text-lg leading-[1.8] text-gray-700 mb-10">
-        The speed of AI is becoming the speed benchmark for everything else. Including what our clients expect from us.
-      </p>
-
-      <h3 className="font-display text-sm uppercase tracking-[0.3em] text-gray-500 mb-5 mt-14">
-        Time to 100M users
-      </h3>
-      <p className="text-lg leading-[1.8] text-gray-700 mb-5">
-        ChatGPT reached 100 million users 27x faster than Facebook.
-      </p>
-      <p className="text-lg leading-[1.8] text-gray-700 mb-10">
-        AI isn't just fast - it's resetting what adoption looks like. Entire categories now compress from years to months. That changes consumer psychology. If something spreads that fast, it feels inevitable. And it changes the expectations of the people we serve.
-      </p>
-
-      <h3 className="font-display text-sm uppercase tracking-[0.3em] text-gray-500 mb-5 mt-14">
-        Investment signals
-      </h3>
-      <p className="text-lg leading-[1.8] text-gray-700 mb-5">
-        Capital follows conviction. And capital is flowing aggressively into AI.
-      </p>
-      <ul className="space-y-4 mb-10">
-        <li className="text-lg leading-[1.8] text-gray-700 pl-6 border-l-2 border-brand-green/40">
-          <span className="text-gray-900">OpenAI</span> raised $100B round at a $850B valuation. It's the largest single funding round in technology history.
-        </li>
-        <li className="text-lg leading-[1.8] text-gray-700 pl-6 border-l-2 border-brand-green/40">
-          <span className="text-gray-900">NVIDIA</span> is at a $3T+ Market Cap. Their stock grew 200% in a single year on AI chip demand. Today, they are one of the most valuable companies in the world.
-        </li>
-        <li className="text-lg leading-[1.8] text-gray-700 pl-6 border-l-2 border-brand-green/40">
-          <span className="text-gray-900">Lovable</span> is only 1 year old and raised $330M, marking it as one of the largest early-stage rounds for an AI-native platform.
-        </li>
-        <li className="text-lg leading-[1.8] text-gray-700 pl-6 border-l-2 border-brand-green/40">
-          <span className="text-gray-900">Anthropic</span> raised $30B at $380B valuation. Their revenue has grown 10x annually, and they're only 3 years old.
-        </li>
+      {/* ─── Intro: Bryan's observation, then Karpathy tip of hat ─── */}
+      <P>
+        For months now, I've been noticing something. Two groups forming around AI, right in front of us.
+      </P>
+      <P>
+        One group tried ChatGPT once - probably the free version, probably a while ago - saw it make something up, laughed at it, and moved on. That's most people.
+      </P>
+      <P>
+        The other group is using the latest tools every day. Watching them do things that would have been science fiction 2 years ago. Building with them. Shipping with them. The people in that group aren't a little impressed. They're stunned.
+      </P>
+      <P>
+        Both groups are looking at the same technology. They're coming away with completely different realities. And they're talking past each other.
+      </P>
+      <P>
+        Andrej Karpathy - one of the founders of OpenAI, formerly ran AI at Tesla - <A href="https://x.com/karpathy/status/2042334451611693415">named this split recently</A> better than I could. He called it the 98 and the 2. That framing stuck with me because it's exactly what I've been watching happen.
+      </P>
+      <P>
+        I've been spending a lot of time in the 2%. Not because I'm an expert. Not because I think I'm special. Because I've been paying close attention - reading, building, experimenting, watching what the frontier looks like. And what I'm seeing is exciting. A little overwhelming. And honestly, something I can't keep to myself.
+      </P>
+      <P>
+        The short version: AI is moving faster than almost anyone is ready for. ChatGPT hit 100 million users 27x faster than Facebook. OpenAI raised $100B at an $850B valuation. Nvidia sits above $3T. Anthropic is 3 years old and growing revenue 10x a year. Markets don't place trillion-dollar bets on trends. They place them on transformations. This isn't a wave. It's the tide.
+      </P>
+      <P>
+        Here's the thing though. I've been building tools, systems, automations. Having a lot of conversations. Doing a lot of discovery. Experimenting. Trying to streamline as much as I can and help as many people on the team as possible.
+      </P>
+      <P>
+        But I don't want to be the only one who can do this stuff. I don't want to be the only one who sees where things are going, or the only one who gets how incredible the frontier actually is right now. I want to replicate this across the team. Teach everyone to fish instead of just handing out fish.
+      </P>
+      <P>
+        So here's what I want to walk you through. Six shifts I've been watching, what they mean for us, and then what we're doing about it.
+      </P>
+      <ul className="space-y-2 mb-5 pl-6 border-l-2 border-brand-green/40">
+        <li className="text-lg leading-[1.8] text-gray-700">1. Expectations have shifted.</li>
+        <li className="text-lg leading-[1.8] text-gray-700">2. AI is taking over the "doing."</li>
+        <li className="text-lg leading-[1.8] text-gray-700">3. The org chart is dissolving.</li>
+        <li className="text-lg leading-[1.8] text-gray-700">4. Agents are doing the work.</li>
+        <li className="text-lg leading-[1.8] text-gray-700">5. The workforce is shifting.</li>
+        <li className="text-lg leading-[1.8] text-gray-700">6. The buyer isn't a person anymore.</li>
       </ul>
-      <p className="text-lg leading-[1.8] text-gray-700 mb-10">
-        Markets don't place trillion-dollar bets on trends. They place them on transformations.
-      </p>
+      <PLast>
+        And at the end, I want to tell you about the AI Lab we're launching at Brand Blvd. I'm genuinely excited for you to hear about it.
+      </PLast>
 
-      <h3 className="font-display text-sm uppercase tracking-[0.3em] text-gray-500 mb-5 mt-14">
-        Expectation shifts
-      </h3>
+      {/* ─── SECTION 1: Expectations ─── */}
+      <SectionDivider icon={IconFastForward} />
 
-      <h4 className="font-serif text-xl text-gray-900 mb-3 mt-10">Patience is collapsing</h4>
-      <p className="text-lg leading-[1.8] text-gray-700 mb-5">
-        We used to tolerate friction because information had gatekeepers.
-      </p>
-      <p className="text-lg leading-[1.8] text-gray-700 mb-5">
-        Buying a car meant driving between dealerships, sitting across from salespeople, negotiating, and gathering brochures. Then websites reduced that friction. Now AI eliminates most of it.
-      </p>
-      <p className="text-lg leading-[1.8] text-gray-700 mb-4">
-        Today, you can ask ChatGPT to compare 2 vehicles and receive:
-      </p>
-      <ul className="list-disc pl-8 space-y-1 text-lg text-gray-700 mb-5">
-        <li>Feature breakdowns</li>
-        <li>Video reviews</li>
-        <li>Consumer complaints</li>
-        <li>Forum insights</li>
-        <li>Known defects</li>
-        <li>Ownership cost comparisons</li>
-      </ul>
-      <p className="text-lg leading-[1.8] text-gray-700 mb-5">
-        ... all in minutes.
-      </p>
-      <p className="text-lg leading-[1.8] text-gray-700 mb-10">
-        When that becomes normal in one domain, it becomes expected in all domains. Including ours.
-      </p>
+      <H2>Expectations have shifted.</H2>
 
-      <h4 className="font-serif text-xl text-gray-900 mb-3 mt-10">"Good enough" is immediate</h4>
-      <p className="text-lg leading-[1.8] text-gray-700 mb-5">
-        We are increasingly accepting that "done" beats "perfect."
-      </p>
-      <p className="text-lg leading-[1.8] text-gray-700 mb-5">
-        As a photographer, I used to manually remove backgrounds in Photoshop using the lasso tool. It took 20-30 minutes. It was billable time. Now? I upload it to Canva, click a button and 5 seconds later it's done.
-      </p>
-      <p className="text-lg leading-[1.8] text-gray-700 mb-5">
-        Is it pixel-perfect? Maybe not. But it's good enough. And it's instant.
-      </p>
-      <p className="text-lg leading-[1.8] text-gray-700 mb-10">
-        The market is shifting toward velocity over precision - especially in early-stage decisions. Think about how that applies to our quoting, our proofing, our sourcing.
-      </p>
+      <H3>The floor of "good enough" just moved</H3>
+      <P>
+        AI is training people to expect immediate. Not faster. Immediate. 37% of consumers now go to AI first instead of Google. Nearly 50% of Google searches include AI summaries. When the default answer to "how do I do this?" is 5 seconds and not 5 minutes, patience collapses.
+      </P>
+      <PLast>
+        We used to tolerate friction because information had gatekeepers. AI eliminated the gatekeepers. And once that becomes normal in one domain, it becomes expected in all of them - including ours.
+      </PLast>
 
-      <h4 className="font-serif text-xl text-gray-900 mb-3 mt-10">Exploration cost is nearing 0</h4>
-      <p className="text-lg leading-[1.8] text-gray-700 mb-4">
-        There was a time when exploring options had a real cost. If you wanted:
-      </p>
-      <ul className="list-disc pl-8 space-y-1 text-lg text-gray-700 mb-5">
-        <li>3 campaign directions</li>
-        <li>2 pricing models</li>
-        <li>5 taglines</li>
-        <li>Multiple design explorations</li>
-      </ul>
-      <p className="text-lg leading-[1.8] text-gray-700 mb-5">
-        You scheduled meetings. You waited for creative. You paid agencies. You moved slowly. Exploration required money, time, and coordination. Now? You type a prompt. You get ideation in seconds.
-      </p>
-      <p className="text-lg leading-[1.8] text-gray-700 mb-4">
-        The cost of exploring ideas is approaching zero. When exploration becomes free, behaviour changes:
-      </p>
-      <ul className="list-disc pl-8 space-y-1 text-lg text-gray-700 mb-10">
-        <li>People test more.</li>
-        <li>Compare more.</li>
-        <li>Iterate more.</li>
-        <li>Expect more options faster.</li>
-      </ul>
+      <H3>"Good enough, right now" beats "perfect, later"</H3>
+      <P>
+        As a photographer, I used to spend 20 to 30 minutes cutting backgrounds in Photoshop with the lasso tool. It was billable time. Now I upload to Canva, click a button, and 5 seconds later it's done.
+      </P>
+      <P>
+        Is it pixel-perfect? Maybe not. But it's good enough. And it's instant. Multiply that by every small decision people make in a day and you can see the shift - the market is moving toward velocity over precision, especially in early-stage decisions.
+      </P>
+      <PLast>
+        Think about what that means for quoting, for proofing, for sourcing. A 48-hour quote turnaround in a world where AI gives you 3 options in 3 seconds doesn't feel slow. It feels broken.
+      </PLast>
 
-      <h4 className="font-serif text-xl text-gray-900 mb-3 mt-10">Self-sufficiency is increasing</h4>
-      <p className="text-lg leading-[1.8] text-gray-700 mb-5">
-        AI reduces early-stage dependence on specialists. Before calling a doctor, many people ask ChatGPT about symptoms. Before calling an agency, they generate campaign ideas themselves. Before contacting a consultant, they test their thinking alone.
-      </p>
-      <p className="text-lg leading-[1.8] text-gray-700 mb-10">
-        The dependency curve is flattening. And when dependency decreases, tolerance for delay decreases too.
-      </p>
+      <H3>Exploration is free</H3>
+      <P>
+        There was a time when exploring options had a real cost. 3 campaign directions. 5 taglines. Multiple design explorations. That used to mean meetings, creative waits, agency fees. Now? Type a prompt. Get ideation in seconds.
+      </P>
+      <PLast>
+        When exploration becomes free, behaviour changes. People test more. Compare more. Iterate more. And they expect more options, faster - before they ever pick up the phone.
+      </PLast>
 
-      <h4 className="font-serif text-xl text-gray-900 mb-3 mt-10">What this means for us</h4>
-      <p className="text-lg leading-[1.8] text-gray-700 mb-4">
-        AI is not just improving productivity - it is rewiring expectations. If we operate with:
-      </p>
-      <ul className="list-disc pl-8 space-y-1 text-lg text-gray-700 mb-5">
-        <li>48-hour quote turnarounds</li>
-        <li>3-day proof cycles</li>
-        <li>Reorders buried in email chains</li>
-      </ul>
-      <p className="text-lg leading-[1.8] text-gray-700 mb-5">
-        We feel analog in a digital world.
-      </p>
-      <p className="text-lg leading-[1.8] text-gray-700 mb-10">
-        Our clients will expect real-time pricing, instant proofs, and seamless ordering. Delays won't feel slow. They'll feel broken. That's both the threat and the opportunity. And it's why we need to move - together - on how we use AI in our own workflows.
-      </p>
+      <H3>Why this matters to us</H3>
+      <P>
+        The 2% have already been re-trained by these tools. They expect instant. They explore more, compare more, iterate more. They reach for an agency, a vendor, a specialist much later in their process than they used to.
+      </P>
+      <P>
+        And here's the framing I want to land on - because it'd be easy to read this as "we're too slow." That's not the point.
+      </P>
+      <P>
+        The gap between what clients are starting to expect and what most agencies are set up to deliver is widening. That gap is where both the risk and the opportunity live. The agencies that close it get pulled toward the new defaults. The ones that don't slowly look analog.
+      </P>
+      <PLast>
+        We get to choose which side of that gap we're on. That's why the AI Lab matters now and not in 2 years.
+      </PLast>
 
-      {/* ─── SECTION 2 ─── */}
-      <SectionDivider icon={IconStacks} label="The Doing" />
+      {/* ─── SECTION 2: The Doing ─── */}
+      <SectionDivider icon={IconStacks} />
 
-      <h2 className="font-serif text-3xl md:text-4xl leading-tight text-gray-900 mb-10">
-        AI is taking over the "doing"
-      </h2>
+      <H2>AI is taking over the "doing."</H2>
 
-      <h3 className="font-display text-sm uppercase tracking-[0.3em] text-gray-500 mb-5 mt-14">
-        The human role shifts
-      </h3>
-      <p className="text-lg leading-[1.8] text-gray-700 mb-5">
-        AI can perform rule-based, repetitive, information-heavy tasks faster, cheaper, and at scale. Increasingly, it can also handle complex cognitive tasks at levels comparable to - and sometimes exceeding - trained professionals.
-      </p>
-      <p className="text-lg leading-[1.8] text-gray-700 mb-4">
-        AI is already outperforming humans in measurable domains:
-      </p>
-      <ul className="list-disc pl-8 space-y-2 text-lg text-gray-700 mb-5">
-        <li>In software engineering benchmarks, AI models fix real-world coding issues with higher success rates than many individual developers.</li>
-        <li>In 2025, AI systems from OpenAI and Google reportedly achieved performance equivalent to a gold medal on International Mathematical Olympiad-level problems.</li>
-        <li>GPT-4 (which is 3 versions old) scored in the 90th percentile on the Bar Exam.</li>
-      </ul>
-      <p className="text-lg leading-[1.8] text-gray-700 mb-5">
-        The point is not that AI is smarter. The point is that execution has become dramatically cheaper and faster. The barrier to doing something has collapsed. And when execution becomes easy, it also becomes easy to execute the wrong thing - very quickly.
-      </p>
-      <p className="text-lg leading-[1.8] text-gray-700 mb-4">
-        AI can generate 10 campaign ideas in seconds. But it does not know:
-      </p>
-      <ul className="list-disc pl-8 space-y-1 text-lg text-gray-700 mb-5">
-        <li>Which aligns with your brand.</li>
-        <li>Which fits your culture.</li>
-        <li>Which is politically viable internally.</li>
-        <li>Which will actually drive behaviour.</li>
-      </ul>
-      <p className="text-lg leading-[1.8] text-gray-700 mb-5">
-        That is where human value shifts. AI compresses execution. Humans must provide direction.
-      </p>
-      <p className="text-lg leading-[1.8] text-gray-700 mb-4">
-        Our role - every single one of us - becomes less about doing the doing, and more about:
-      </p>
-      <ul className="list-disc pl-8 space-y-1 text-lg text-gray-700 mb-5">
-        <li>Deciding what should be done.</li>
-        <li>Framing the problem correctly.</li>
-        <li>Defining success.</li>
-        <li>Applying judgment.</li>
-        <li>Taking responsibility for outcomes.</li>
-      </ul>
-      <p className="text-lg leading-[1.8] text-gray-700 mb-10">
-        The human role shifts up the stack. That's not a nice theory. That's the reality we're walking into.
-      </p>
+      <H3>Execution gets cheap. Judgment gets scarce.</H3>
+      <P>
+        AI handles rule-based, repetitive, information-heavy tasks faster, cheaper, and at scale. And it's increasingly handling complex cognitive work too - GPT-4 (3 versions old now) scored in the 90th percentile of the Bar Exam. AI systems hit gold-medal level on the International Mathematical Olympiad in 2025.
+      </P>
+      <P>
+        The point isn't that AI is smarter than us. The point is that execution has gotten dramatically cheaper. The barrier to doing something has collapsed.
+      </P>
+      <P>
+        AI can generate 10 campaign ideas in seconds. But it doesn't know which one fits your brand, your culture, what's politically viable, or what will actually move people. That's where we live. Our role becomes less about the doing, and more about deciding what should be done. Framing the problem. Defining success. Owning the outcome.
+      </P>
+      <PLast>
+        The human role shifts up the stack. That's not theory - that's what the 2% are building around right now.
+      </PLast>
 
-      <h3 className="font-display text-sm uppercase tracking-[0.3em] text-gray-500 mb-5 mt-14">
-        Industry leaders
-      </h3>
-      <p className="text-lg leading-[1.8] text-gray-700 mb-6">
-        Leaders aren't debating whether AI will change execution. They're debating how fast.
-      </p>
+      <H3>What the people building this are saying</H3>
       <div className="space-y-6 mb-10">
         <blockquote className="border-l-2 border-brand-green/40 pl-6 text-lg italic text-gray-600 leading-[1.8]">
           "The future of work is not about AI replacing people. It's about people who use AI replacing people who don't."
-          <footer className="not-italic text-sm text-gray-500 mt-2">-- Satya Nadella, CEO, Microsoft</footer>
+          <footer className="not-italic text-sm text-gray-500 mt-2">- Satya Nadella, CEO, Microsoft</footer>
         </blockquote>
         <blockquote className="border-l-2 border-brand-green/40 pl-6 text-lg italic text-gray-600 leading-[1.8]">
           "The real value of AI is helping salespeople spend more time with customers and less time doing administrative work."
-          <footer className="not-italic text-sm text-gray-500 mt-2">-- Marc Benioff, CEO, Salesforce</footer>
+          <footer className="not-italic text-sm text-gray-500 mt-2">- Marc Benioff, CEO, Salesforce</footer>
         </blockquote>
         <blockquote className="border-l-2 border-brand-green/40 pl-6 text-lg italic text-gray-600 leading-[1.8]">
           "We'll be there in 3-6 months, where AI is writing 90% of the code - and in 12 months, AI writes all of it."
-          <footer className="not-italic text-sm text-gray-500 mt-2">-- Dario Amodei, CEO, Anthropic</footer>
+          <footer className="not-italic text-sm text-gray-500 mt-2">- Dario Amodei, CEO, Anthropic</footer>
         </blockquote>
       </div>
-      <p className="text-lg leading-[1.8] text-gray-700 mb-10">
-        Read that Nadella quote again. People who use AI will replace people who don't. That's not a threat from the outside. That's a challenge from the inside. It's on every one of us to learn these tools.
-      </p>
+      <P>
+        I don't share the Nadella quote to scare anyone. I share it because it's why I'm not waiting. It's why we're building the AI Lab. Instead of telling everyone "this is on you," I want to say: this is why I want to help.
+      </P>
+      <PLast>
+        The Lab exists so we can learn these tools together, on company time, with real projects from our real work. That's a much better answer than "good luck out there."
+      </PLast>
 
-      <h3 className="font-display text-sm uppercase tracking-[0.3em] text-gray-500 mb-5 mt-14">
-        Order-taking dies
-      </h3>
-      <p className="text-lg leading-[1.8] text-gray-700 mb-4">
-        Software and systems will improve rapidly. They will do things like:
-      </p>
-      <ul className="list-disc pl-8 space-y-1 text-lg text-gray-700 mb-5">
-        <li>Draft proposals instantly.</li>
-        <li>Compare pricing automatically.</li>
-        <li>Source products at scale.</li>
-      </ul>
-      <p className="text-lg leading-[1.8] text-gray-700 mb-5">
-        More buyers will use tools to do portions of our current work themselves. Automation will take a lot of the "busy work" off our hands. If we remain order-takers, we compete against something we can never keep up with.
-      </p>
-      <p className="text-lg leading-[1.8] text-gray-700 mb-5">
-        Industries like travel and retail eliminated transactional middlemen when search became automated. That same pressure will apply here.
-      </p>
-      <p className="text-lg leading-[1.8] text-gray-700 mb-4">
-        As execution gets automated, we must move closer to impact.
-      </p>
-      <ul className="list-disc pl-8 space-y-2 text-lg text-gray-700 mb-5">
-        <li>If AI drafts proposals, we ensure they solve the right problem.</li>
-        <li>If AI generates comparisons, we ensure alignment with the strategy.</li>
-        <li>If AI sources merch instantly, we design the moment around it.</li>
-      </ul>
-      <p className="text-lg leading-[1.8] text-gray-700 mb-10">
-        We are not losing value. We are being forced up the value chain. And that's actually a good thing - if we're ready for it.
-      </p>
+      <H3>Why this matters to us</H3>
+      <P>
+        AI-empowered systems can draft proposals, compare pricing, and source products instantly. More buyers will use those tools to do parts of our current work themselves. Travel and retail already lost their transactional middlemen when search got automated. The same pressure is heading toward our industry.
+      </P>
+      <P>
+        That doesn't break us. It pushes us closer to where the value actually is.
+      </P>
+      <PLast>
+        If AI drafts the proposal, we make sure it solves the right problem. If AI generates comparisons, we make sure the strategy holds together. If AI sources the merch, we design the moment around it. We're not losing value - we're being pulled up the value chain. That's a good thing if we're ready for it.
+      </PLast>
 
-      {/* ─── SECTION 3 ─── */}
-      <SectionDivider icon={IconOrgChart} label="Org Charts" />
+      {/* ─── SECTION 3: Org charts ─── */}
+      <SectionDivider icon={IconOrgChart} />
 
-      <h2 className="font-serif text-3xl md:text-4xl leading-tight text-gray-900 mb-10">
-        The org chart is dissolving
-      </h2>
+      <H2>The org chart is dissolving.</H2>
 
-      <h3 className="font-display text-sm uppercase tracking-[0.3em] text-gray-500 mb-5 mt-14">
-        The management layer problem
-      </h3>
-      <p className="text-lg leading-[1.8] text-gray-700 mb-5">
-        For 2,000 years, organizations have been designed around one constraint: a leader can only effectively manage 3 to 8 people. That's it. That number hasn't changed since the Roman military. It's why we have hierarchies. It's why we have middle management. It's why every company ends up looking roughly the same from the top down.
-      </p>
-      <p className="text-lg leading-[1.8] text-gray-700 mb-5">
-        The entire purpose of those layers is coordination. Information flows up. Decisions flow down. Middle management exists to aggregate, translate, and route.
-      </p>
-      <p className="text-lg leading-[1.8] text-gray-700 mb-5">
-        Here's the thing... AI doesn't need layers to coordinate. It doesn't need a weekly pipeline review to know what's happening. It doesn't need someone spending 3 days building a spreadsheet just so a VP can ask a question about trends. It doesn't need a standing meeting to surface data that should have been surfaced automatically.
-      </p>
-      <p className="text-lg leading-[1.8] text-gray-700 mb-5">
-        Sequoia Capital published a piece recently called "From Hierarchy to Intelligence." It profiles how Block (the company behind Cash App and Square) is replacing what hierarchy does - the coordination function itself. Not giving employees AI tools and calling it innovation. Actually restructuring.
-      </p>
-      <p className="text-lg leading-[1.8] text-gray-700 mb-5">
-        They built what they call a "Company World Model" - an AI system that maintains a continuously updated picture of the entire operation. The AI holds the context that managers used to hold. The result? 3 roles instead of 10 layers:
-      </p>
+      <H3>A 2,000-year-old constraint just broke</H3>
+      <P>
+        For 2,000 years, organizations have been built around 1 constraint: a leader can effectively manage 3 to 8 people. That number hasn't changed since the Roman military. It's why we have hierarchies. It's why middle management exists - to aggregate, translate, and route.
+      </P>
+      <P>
+        Here's the thing... AI doesn't need layers to coordinate. It doesn't need a weekly pipeline review to know what's happening. It doesn't need 3 days of spreadsheet building so a VP can ask a question about trends.
+      </P>
+      <P>
+        Sequoia Capital published a piece called "From Hierarchy to Intelligence" profiling Block (the company behind Cash App and Square). They built what they call a "Company World Model" - an AI system that maintains a continuously updated picture of the entire operation. The result? 3 roles instead of 10 layers:
+      </P>
       <ul className="space-y-4 mb-10">
         <li className="text-lg leading-[1.8] text-gray-700 pl-6 border-l-2 border-brand-green/40">
           <span className="text-gray-900">Individual contributors</span> who use the model for context instead of waiting for management approval.
         </li>
         <li className="text-lg leading-[1.8] text-gray-700 pl-6 border-l-2 border-brand-green/40">
-          <span className="text-gray-900">Directly Responsible Individuals</span> who own a specific problem for 90 days with cross-team authority.
+          <span className="text-gray-900">Directly Responsible Individuals</span> who own a problem for 90 days with cross-team authority.
         </li>
         <li className="text-lg leading-[1.8] text-gray-700 pl-6 border-l-2 border-brand-green/40">
           <span className="text-gray-900">Player-coaches</span> who build things and develop people at the same time.
         </li>
       </ul>
-      <p className="text-lg leading-[1.8] text-gray-700 mb-10">
-        No information routers. No meeting schedulers. No slide-deck preparers. The manager role doesn't disappear. But it transforms from information processor to coach and decision-maker. The "doing" part of management - gathering data, building reports, spotting trends - that's exactly the kind of work AI absorbs first. The thinking part - judgment, coaching, strategy - that stays human.
-      </p>
+      <PLast>
+        The "doing" part of management - gathering data, building reports, spotting trends - that's the stuff AI absorbs first. The thinking part - judgment, coaching, strategy - stays human.
+      </PLast>
 
-      <h3 className="font-display text-sm uppercase tracking-[0.3em] text-gray-500 mb-5 mt-14">
-        What this changes
-      </h3>
-      <p className="text-lg leading-[1.8] text-gray-700 mb-5">
-        2 things. And they pull in opposite directions, which is what makes this interesting.
-      </p>
-      <p className="text-lg leading-[1.8] text-gray-700 mb-5">
-        Inside our walls, "growing the team" starts to look less like adding headcount and more like increasing leverage per person. The question shifts from "who do we hire next?" to "how do we make every person 3x more effective?" That includes you. That's literally about your role.
-      </p>
-      <p className="text-lg leading-[1.8] text-gray-700 mb-4">
-        Outside our walls, the companies we're selling to are going to look different:
-      </p>
-      <ul className="list-disc pl-8 space-y-1 text-lg text-gray-700 mb-5">
-        <li>Flatter orgs.</li>
-        <li>Fewer decision-makers.</li>
-        <li>Fewer middle managers to navigate in a deal.</li>
-        <li>The org chart your SDR mapped last year might not exist next year.</li>
-      </ul>
-      <p className="text-lg leading-[1.8] text-gray-700 mb-5">
-        But here's the part that actually makes me optimistic... If management layers compress, the people who remain become more important, not less. They're higher leverage. They hold more authority. They care more about culture and belonging because they're closer to the work.
-      </p>
-      <p className="text-lg leading-[1.8] text-gray-700 mb-10">
-        That's a very good thing for a company that manufactures belonging.
-      </p>
+      <H3>Why this matters to us</H3>
+      <P>
+        2 things. They pull in opposite directions, which is what makes it interesting.
+      </P>
+      <P>
+        Inside our walls, "growing the team" starts to look less like adding headcount and more like increasing leverage per person. The question shifts from "who do we hire next?" to "how do we make every person on this team 3x more effective?"
+      </P>
+      <P>
+        Outside our walls, the companies we sell to are going to look different. Flatter orgs. Fewer decision-makers. The org chart your SDR mapped last year might not exist next year.
+      </P>
+      <PLast>
+        Here's the part that makes me optimistic. If management layers compress, the people who remain become more important, not less. Higher leverage. More authority. Closer to the work and to the culture. That's a very good thing for a company that manufactures belonging.
+      </PLast>
 
-      {/* ─── SECTION 4 ─── */}
-      <SectionDivider icon={IconAgent} label="Agents" />
+      {/* ─── SECTION 4: Agents ─── */}
+      <SectionDivider icon={IconAgent} />
 
-      <h2 className="font-serif text-3xl md:text-4xl leading-tight text-gray-900 mb-10">
-        Agents are doing the work
-      </h2>
+      <H2>Agents are doing the work.</H2>
 
-      <h3 className="font-display text-sm uppercase tracking-[0.3em] text-gray-500 mb-5 mt-14">
-        The convergence
-      </h3>
-      <p className="text-lg leading-[1.8] text-gray-700 mb-5">
-        When I say AI is "taking over the doing," I don't just mean it's a tool you prompt and review. That was last year. What's happening now is different. The biggest players in tech are converging on the same conclusion: AI agents should do the work, not just assist with it.
-      </p>
-      <p className="text-lg leading-[1.8] text-gray-700 mb-4">
-        3 examples from the last few months:
-      </p>
+      <H3>From assistant to operator</H3>
+      <P>
+        When I say AI is "taking over the doing," I don't just mean it's a tool you prompt and review. That was last year. The biggest players in tech are converging on the same conclusion: AI agents should do the work, not just help with it.
+      </P>
       <ul className="space-y-4 mb-10">
         <li className="text-lg leading-[1.8] text-gray-700 pl-6 border-l-2 border-brand-green/40">
-          <span className="text-gray-900">Anthropic's Claude</span> shipped 74 releases in 52 days. Claude Code now generates over $2.5 billion in annual revenue and accounts for more than half of all enterprise spending on Anthropic products. 4% of all public GitHub commits are now authored by Claude Code - a number that doubled in a single month.
+          <span className="text-gray-900">Anthropic's Claude</span> shipped 74 releases in 52 days. Claude Code generates over $2.5 billion in annual revenue. 4% of all public GitHub commits are now authored by Claude Code - a number that doubled in 1 month.
         </li>
         <li className="text-lg leading-[1.8] text-gray-700 pl-6 border-l-2 border-brand-green/40">
-          <span className="text-gray-900">OpenClaw</span> launched and hit 250,000 GitHub stars in 60 days - surpassing React's 10-year record. It now has 3.2 million monthly active users. Its traffic grew 925% in a single month.
+          <span className="text-gray-900">OpenClaw</span> hit 250,000 GitHub stars in 60 days - surpassing React's 10-year record. 3.2 million monthly active users. Traffic grew 925% in a single month.
         </li>
         <li className="text-lg leading-[1.8] text-gray-700 pl-6 border-l-2 border-brand-green/40">
-          <span className="text-gray-900">Cursor</span> launched version 3 on April 2. You describe what you want built in plain English and the system writes it, tests it, and demos it. Their revenue doubled in 3 months. They're at over $2 billion annually.
+          <span className="text-gray-900">Cursor</span> launched version 3 on April 2. You describe what you want in plain English and it writes, tests, and demos it. Revenue doubled in 3 months. They're at over $2B annually.
         </li>
       </ul>
-      <p className="text-lg leading-[1.8] text-gray-700 mb-10">
+      <PLast>
         These aren't 3 competing tools. They're 3 signals pointing the same direction: AI isn't assisting anymore. It's executing.
-      </p>
+      </PLast>
 
-      <h3 className="font-display text-sm uppercase tracking-[0.3em] text-gray-500 mb-5 mt-14">
-        Beyond code
-      </h3>
-      <p className="text-lg leading-[1.8] text-gray-700 mb-5">
-        Coding is the most visible example because it's the easiest to agentify. The inputs and outputs are structured. The feedback loops are fast. But it's just the first domino.
-      </p>
-      <p className="text-lg leading-[1.8] text-gray-700 mb-5">
-        Marketing is next. The $200+ billion in agentic AI spending projected for 2026 isn't speculative - it's capital chasing a thesis that agents can deploy complex work products in domains that are finally ready to receive them. Security teams are using agents to analyze unfamiliar code. Research teams are using them to build data visualizations. Non-technical employees are using them to debug network issues.
-      </p>
-      <p className="text-lg leading-[1.8] text-gray-700 mb-5">
-        And then there's the really wild stuff. An open-source project called Paperclip launched in March 2026 and hit 30,000 GitHub stars in 3 weeks. What does it do? It lets you build a company run entirely by AI agents. Org charts, budgets, reporting lines, governance - all orchestrated by agents. Zero humans required.
-      </p>
-      <p className="text-lg leading-[1.8] text-gray-700 mb-10">
-        A developer named Nat Eliason built an AI agent called Felix using OpenClaw. It operates autonomously and has generated over $100,000 in revenue.
-      </p>
+      <H3>$20K to $1.8B with 2 people</H3>
+      <P>
+        The example I can't stop thinking about is Matthew Gallagher.
+      </P>
+      <P>
+        Gallagher and his brother launched a telehealth company with $20,000 in startup capital. No venture funding. Just the 2 of them and AI agents handling nearly everything - operations, customer support, marketing, fulfillment. The agents don't assist. They run the business.
+      </P>
+      <P>
+        In 2025, they did $401 million in sales. In 2026, they're on track for $1.8 billion. 2 people. No employees. A $20,000 bet turned into one of the fastest-growing companies in the country.
+      </P>
+      <PLast>
+        This isn't a tech story. It's a leverage story. The same AI tools available to a 2-person startup are available to everyone - including us. The question is who figures out how to use them first.
+      </PLast>
 
-      <h3 className="font-display text-sm uppercase tracking-[0.3em] text-gray-500 mb-5 mt-14">
-        The zero-employee company
-      </h3>
-      <p className="text-lg leading-[1.8] text-gray-700 mb-5">
-        But the example that really makes this real - the one I can't stop thinking about - is Matthew Gallagher.
-      </p>
-      <p className="text-lg leading-[1.8] text-gray-700 mb-5">
-        Gallagher and his brother launched a telehealth company with $20,000 in startup capital. No venture funding. No team of 50. Just the two of them and AI agents handling nearly everything - operations, customer support, marketing, fulfillment. The agents don't assist. They run the business.
-      </p>
-      <p className="text-lg leading-[1.8] text-gray-700 mb-5">
-        In 2025, they did $401 million in sales. In 2026, they're on track for $1.8 billion. Two people. No employees. A $20,000 bet turned into one of the fastest-growing companies in the country.
-      </p>
-      <p className="text-lg leading-[1.8] text-gray-700 mb-5">
-        This isn't a tech story. It's a leverage story. The same AI tools available to a two-person telehealth startup are available to everyone. The question is who figures out how to use them first.
-      </p>
-      <p className="text-lg leading-[1.8] text-gray-700 mb-10">
-        Dario Amodei, CEO of Anthropic, gives a 70-80% probability that 2026 is the year we see the first billion-dollar company run by a single person. Looking at Gallagher's numbers, it might already be happening.
-      </p>
-
-      <h3 className="font-display text-sm uppercase tracking-[0.3em] text-gray-500 mb-5 mt-14">
-        Services are the new software
-      </h3>
-      <p className="text-lg leading-[1.8] text-gray-700 mb-5">
-        Sequoia Capital published a piece I think is one of the most important things I've read this year. It's called "Services: The New Software." The argument: the next trillion-dollar company won't sell tools. It will sell outcomes.
-      </p>
-      <p className="text-lg leading-[1.8] text-gray-700 mb-4">
-        They break work into 2 categories:
-      </p>
+      <H3>Why this matters to us</H3>
+      <P>
+        Sequoia published another piece I think is one of the most important things I've read this year: <A href="https://www.sequoiacap.com/article/ais-600b-question/">"AI's $600B Question"</A> set the scale of this shift, and their follow-up "Services: The New Software" named the mechanism. The argument: the next trillion-dollar company won't sell tools. It will sell outcomes. They split work into 2 categories:
+      </P>
       <ul className="space-y-4 mb-5">
         <li className="text-lg leading-[1.8] text-gray-700 pl-6 border-l-2 border-brand-green/40">
-          <span className="text-gray-900">Intelligence</span> - rule-based tasks. Coding, testing, contract drafting, invoice matching. Things with clear inputs and outputs.
+          <span className="text-gray-900">Intelligence</span> - rule-based tasks. Coding, testing, drafting, matching. Clear inputs and outputs.
         </li>
         <li className="text-lg leading-[1.8] text-gray-700 pl-6 border-l-2 border-brand-green/40">
-          <span className="text-gray-900">Judgment</span> - experience-driven decisions. What to build. When to ship. What strategy to pursue. Things that require context, intuition, and accountability.
+          <span className="text-gray-900">Judgment</span> - experience-driven decisions. What to build. When to ship. What to push back on. Things that need context, intuition, and accountability.
         </li>
       </ul>
-      <p className="text-lg leading-[1.8] text-gray-700 mb-5">
-        AI has crossed the threshold where it handles most intelligence work autonomously. What remains is judgment. And here's the kicker: for every dollar companies spend on software, they spend 6 dollars on services. The opportunity isn't in building better tools. It's in delivering better outcomes.
-      </p>
-      <p className="text-lg leading-[1.8] text-gray-700 mb-5">
-        Think about that in the context of what we do. We don't sell t-shirts. We sell the experience around the t-shirt - the brand moment, the culture artifact, the belonging signal. The more AI commoditizes the logistics of merch, the more the value shifts to what we're actually good at: designing the moment. Framing the story. Understanding what the brand needs before they can articulate it.
-      </p>
-      <p className="text-lg leading-[1.8] text-gray-700 mb-10">
-        That's what each of you does every day. And it's the thing AI can't replace.
-      </p>
+      <P>
+        AI has crossed the line where it handles most intelligence work autonomously. What's left is judgment. And for every dollar companies spend on software, they spend 6 on services. The opportunity isn't in better tools. It's in better outcomes.
+      </P>
+      <PLast>
+        Now think about that in our context. We don't sell t-shirts. We sell the experience around the t-shirt - the brand moment, the culture artifact, the belonging signal. The more AI commoditizes the logistics of merch, the more the value shifts to what we're actually good at: designing the moment, framing the story, understanding what the brand needs before they can articulate it. That's what each of you does every day. And it's the thing AI can't replace.
+      </PLast>
 
-      {/* ─── SECTION 5 ─── */}
-      <SectionDivider icon={IconIdentity} label="Identity" />
+      {/* ─── SECTION 5: Workforce / Identity ─── */}
+      <SectionDivider icon={IconIdentity} />
 
-      <h2 className="font-serif text-3xl md:text-4xl leading-tight text-gray-900 mb-10">
-        The workforce is shifting
-      </h2>
+      <H2>The workforce is shifting.</H2>
 
-      <h3 className="font-display text-sm uppercase tracking-[0.3em] text-gray-500 mb-5 mt-14">
-        This is the part that gets personal
-      </h3>
-      <p className="text-lg leading-[1.8] text-gray-700 mb-5">
-        I'm not going to sugarcoat this. The workforce will shift. Not incrementally, but structurally.
-      </p>
-      <p className="text-lg leading-[1.8] text-gray-700 mb-4">
-        For over a century, work has been the primary anchor of our identity. We always ask, "Where do you work?" or "What do you do?" Employment has shaped:
-      </p>
-      <ul className="list-disc pl-8 space-y-1 text-lg text-gray-700 mb-5">
-        <li>Income</li>
-        <li>Community</li>
-        <li>Social status</li>
-        <li>Daily rhythm</li>
-        <li>Personal identity</li>
-      </ul>
-      <p className="text-lg leading-[1.8] text-gray-700 mb-5">
-        But AI will disrupt the mechanics of work itself. Not just jobs, not just the work, but the very structure and meaning of work, and our relationship with it.
-      </p>
-      <p className="text-lg leading-[1.8] text-gray-700 mb-4">
-        AI increases output per employee. We know that. This means:
-      </p>
-      <ul className="list-disc pl-8 space-y-1 text-lg text-gray-700 mb-5">
-        <li>Fewer people can produce more.</li>
-        <li>Repetitive tasks disappear.</li>
-        <li>Middle layers compress.</li>
-        <li>Knowledge work becomes augmented.</li>
-      </ul>
-
-      <h3 className="font-display text-sm uppercase tracking-[0.3em] text-gray-500 mb-5 mt-14">
-        The numbers
-      </h3>
+      <H3>Why there's so much anxiety right now</H3>
+      <P>
+        Here's some context for why AI feels heavy in the air. These are the numbers most people hear:
+      </P>
       <ul className="list-disc pl-8 space-y-2 text-lg text-gray-700 mb-5">
         <li>80% of people believe AI will impact their daily work.</li>
-        <li>50% of people worry their job could be automated.</li>
+        <li>50% worry their job could be automated.</li>
         <li>76K+ jobs eliminated in 2025.</li>
       </ul>
-      <p className="text-lg leading-[1.8] text-gray-700 mb-10">
-        Even if these numbers fluctuate year to year, the signal is consistent: work is being restructured. And you're probably feeling some of that already.
-      </p>
+      <P>
+        These aren't fake numbers. They're real, and they're exactly why so many people feel uneasy about AI right now. If all you ever hear is "automation eliminated 76,000 jobs," of course that's where your head goes.
+      </P>
+      <P>
+        But that's the part of the story most people are getting. It's not the only part.
+      </P>
+      <PLast>
+        Here at Brand Blvd, we're not trying to do more with fewer people. We're trying to make every person on this team more powerful, more effective, more valuable. AI isn't here to replace you. It's here to make you better at what you already do well. That's the version of this story I want us to be living in.
+      </PLast>
 
-      <h3 className="font-display text-sm uppercase tracking-[0.3em] text-gray-500 mb-5 mt-14">
-        Here's what I want you to hear
-      </h3>
-      <p className="text-lg leading-[1.8] text-gray-700 mb-5">
-        This isn't alarmist. I'm not saying we'll see mass unemployment overnight. But headcount starts to become less correlated with output. Companies everywhere will hire more selectively, automate more aggressively, consolidate roles, and expect higher leverage per person.
-      </p>
-      <p className="text-lg leading-[1.8] text-gray-700 mb-5">
-        Work will become increasingly less about time spent and more about value created.
-      </p>
-      <p className="text-lg leading-[1.8] text-gray-700 mb-5">
-        Here's the good news: that's exactly the shift we're making at Brand Blvd. We're not trying to do more with fewer people. We're trying to make every person on this team more powerful, more effective, and more valuable. AI isn't here to replace you. It's here to make you 3x better at what you already do.
-      </p>
-      <p className="text-lg leading-[1.8] text-gray-700 mb-10">
-        But that only works if you lean in. The people who learn AI, who adopt these tools, who experiment and push - they become irreplaceable. The people who wait and see? That's the vulnerable position.
-      </p>
+      <H3>Where the upside actually is</H3>
+      <P>
+        Work is moving away from time spent and toward value created. That's the real shift.
+      </P>
+      <P>
+        The people who lean into this stuff get to shape what comes next. They get to decide what their role looks like in 2 years instead of being handed it. That's why we're making space for as many of you as possible to be part of this. Not as a test. As an invitation.
+      </P>
+      <PLast>
+        Nobody on this team is a lost cause for being in the 98%. The whole point of the Lab is to bring people across.
+      </PLast>
 
-      <h3 className="font-display text-sm uppercase tracking-[0.3em] text-gray-500 mb-5 mt-14">
-        What this means for our industry
-      </h3>
-      <p className="text-lg leading-[1.8] text-gray-700 mb-5">
-        If employee attachment weakens across the market, merch budgets tied strictly to payroll size are vulnerable. But the need for belonging does not disappear - it just relocates.
-      </p>
-      <p className="text-lg leading-[1.8] text-gray-700 mb-5">
-        Work becomes a function, and identity becomes something broader. Community, values, tribe - those anchors strengthen when institutional stability weakens.
-      </p>
+      <H3>Why this matters to us</H3>
+      <P>
+        If employee attachment to traditional jobs weakens across the market, merch budgets tied strictly to payroll size are vulnerable. But the need for belonging doesn't disappear - it relocates.
+      </P>
+      <P>
+        Work becomes a function. Identity becomes something broader. Community, values, tribe - those anchors strengthen when institutional stability weakens.
+      </P>
       <ul className="space-y-4 mb-10">
         <li className="text-lg leading-[1.8] text-gray-700 pl-6 border-l-2 border-brand-green/40">
-          <span className="text-gray-900">Internal</span> - Merch must reflect culture and values, not just fill closets.
+          <span className="text-gray-900">Internal</span> - Merch reflects culture and values, not just fills closets.
         </li>
         <li className="text-lg leading-[1.8] text-gray-700 pl-6 border-l-2 border-brand-green/40">
-          <span className="text-gray-900">External</span> - Build tribes of customers, advocates, insiders, and culture ambassadors.
+          <span className="text-gray-900">External</span> - Build tribes of customers, advocates, insiders, ambassadors.
         </li>
         <li className="text-lg leading-[1.8] text-gray-700 pl-6 border-l-2 border-brand-green/40">
           <span className="text-gray-900">Identity</span> - Move from "gifting employees" to "manufacturing belonging."
         </li>
       </ul>
-      <p className="text-lg leading-[1.8] text-gray-700 mb-10">
-        If we tie our growth to payroll size, we're tied to a shrinking lever. If we tie our growth to identity and belonging, we tie our growth to something expanding. That's the shift. And every person in this room is part of making it happen.
-      </p>
+      <PLast>
+        If we tie our growth to payroll size, we're tied to a shrinking lever. If we tie our growth to identity and belonging, we're tied to something expanding. That's the shift. And every person on this team is part of making it happen.
+      </PLast>
 
-      {/* ─── SECTION 6 ─── */}
-      <SectionDivider icon={IconTarget} label="Buyers" />
+      {/* ─── SECTION 6: Buyers ─── */}
+      <SectionDivider icon={IconTarget} />
 
-      <h2 className="font-serif text-3xl md:text-4xl leading-tight text-gray-900 mb-10">
-        When machines are the buyers
-      </h2>
+      <H2>The buyer isn't a person anymore.</H2>
 
-      <h3 className="font-display text-sm uppercase tracking-[0.3em] text-gray-500 mb-5 mt-14">
-        The question no one is asking
-      </h3>
-      <p className="text-lg leading-[1.8] text-gray-700 mb-5">
-        Here's the section that kept me up at night. And honestly? I'm still not sure I've fully wrapped my head around it.
-      </p>
-      <p className="text-lg leading-[1.8] text-gray-700 mb-5">
-        Everything above - the flattening org charts, the agents doing work, the shift toward outcomes - all of it leads to a question that I don't think enough people in our industry are asking: If AI is making the decisions... who are we selling to?
-      </p>
-      <p className="text-lg leading-[1.8] text-gray-700 mb-4">
-        I don't mean philosophically. I mean literally:
-      </p>
+      <H3>The question I don't think enough people are asking</H3>
+      <P>
+        Everything above leads to a question I don't see enough people in our industry sitting with: if AI is making the decisions, who are we actually selling to?
+      </P>
       <ul className="list-disc pl-8 space-y-2 text-lg text-gray-700 mb-5">
         <li>45% of B2B buyers already use AI as their primary research method for identifying new suppliers.</li>
         <li>Two-thirds of B2B buyers use AI agents for vendor research and rely on them as much as - or more than - Google.</li>
-        <li>By 2028, analysts predict AI agents will mediate 90% of all B2B purchases -$15 trillion in spending through machines.</li>
+        <li>By 2028, analysts predict AI agents will mediate 90% of all B2B purchases - $15 trillion in spending through machines.</li>
       </ul>
-      <p className="text-lg leading-[1.8] text-gray-700 mb-5">
-        Think about what happens when a procurement manager needs branded merch for an event. Today, they might Google it. Ask a colleague. Check their inbox for a vendor they've used before.
-      </p>
-      <p className="text-lg leading-[1.8] text-gray-700 mb-5">
-        Tomorrow? They tell their AI procurement agent: "I need 500 branded polos for a company retreat in August. Budget is $25K. Find me 3 vendors with fast turnaround, good reviews, and sustainability options."
-      </p>
-      <p className="text-lg leading-[1.8] text-gray-700 mb-10">
-        The agent researches. Compares. Shortlists. Maybe it even places the order. The human doesn't visit a website. Doesn't read an email. Doesn't take a sales call.
-      </p>
+      <P>
+        Today, a procurement manager who needs branded merch for an event might Google it, ask a colleague, or check their inbox for a vendor they've used before.
+      </P>
+      <PLast>
+        Tomorrow, they tell their AI procurement agent: "I need 500 branded polos for a company retreat in August. Budget is $25K. Find me 3 vendors with fast turnaround, good reviews, and sustainability options." The agent researches, compares, shortlists. Maybe even places the order. The human doesn't visit a website. Doesn't read an email. Doesn't take a sales call.
+      </PLast>
 
-      <h3 className="font-display text-sm uppercase tracking-[0.3em] text-gray-500 mb-5 mt-14">
-        Two lanes
-      </h3>
-      <p className="text-lg leading-[1.8] text-gray-700 mb-5">
-        Will every company operate this way? No. Not yet. Enterprise adoption curves are messy. Small businesses will lag. Relationship-heavy industries will resist longer. There will be a long, uneven transition where some buyers are fully agentic and others still want to pick up the phone.
-      </p>
-      <p className="text-lg leading-[1.8] text-gray-700 mb-4">
-        But the direction is clear. And it creates 2 distinct lanes:
-      </p>
+      <H3>Two lanes</H3>
+      <P>
+        Will every company operate this way? No. Not yet. Adoption curves are messy. There will be a long, uneven transition where some buyers are fully agentic and others still want to pick up the phone. But the direction is clear, and it creates 2 distinct lanes:
+      </P>
       <ul className="space-y-4 mb-10">
         <li className="text-lg leading-[1.8] text-gray-700 pl-6 border-l-2 border-brand-green/40">
-          <span className="text-gray-900">Lane 1:</span> Companies where a human is still the buyer. Relationships, trust, and personal service still win. The SDR call matters. Showing up and reading the room is the differentiator. We double down on the human stuff.
+          <span className="text-gray-900">Lane 1:</span> A human is still the buyer. Relationships, trust, and personal service still win. The SDR call matters. Showing up and reading the room is the differentiator. We double down on the human stuff.
         </li>
         <li className="text-lg leading-[1.8] text-gray-700 pl-6 border-l-2 border-brand-green/40">
-          <span className="text-gray-900">Lane 2:</span> Companies where an agent is doing the research, shortlisting, or buying. The question becomes: how does Brand Blvd show up when the first touchpoint is an algorithm, not a person? Are we structured data that an AI can parse? Are our case studies and value propositions machine-readable? Are we in the right databases and data feeds?
+          <span className="text-gray-900">Lane 2:</span> An agent is doing the research, shortlisting, or buying. How does Brand Blvd show up when the first touchpoint is an algorithm? Are we structured data an AI can parse? Are our case studies machine-readable? Are we in the right databases and feeds?
         </li>
       </ul>
-      <p className="text-lg leading-[1.8] text-gray-700 mb-10">
-        It's a completely different muscle. And it's not replacing the human sales process. It's adding a second, parallel track. Both of these are things we need to get good at - together.
-      </p>
+      <PLast>
+        It's not replacing the human sales process. It's adding a second, parallel track. Both are muscles we get to build - together.
+      </PLast>
 
-      <h3 className="font-display text-sm uppercase tracking-[0.3em] text-gray-500 mb-5 mt-14">
-        Why I'm actually optimistic
-      </h3>
-      <p className="text-lg leading-[1.8] text-gray-700 mb-5">
-        OK so here's why I'm actually optimistic about this. If AI agents are handling the intelligence work of procurement - comparing prices, checking specs, evaluating turnaround times - then the only differentiator in that layer is data. And data is a commodity.
-      </p>
-      <p className="text-lg leading-[1.8] text-gray-700 mb-4">
+      <H3>Why this matters to us</H3>
+      <P>
+        If AI agents are handling the intelligence work of procurement - comparing prices, checking specs, evaluating turnaround - the only differentiator in that layer is data. And data is a commodity.
+      </P>
+      <P>
         But here's what an AI procurement agent can't evaluate:
-      </p>
+      </P>
       <ul className="list-disc pl-8 space-y-1 text-lg text-gray-700 mb-5">
         <li>Does this company actually understand my brand?</li>
         <li>Will they push back when my idea is off?</li>
         <li>Will they design a merch experience that makes our people feel something?</li>
       </ul>
-      <p className="text-lg leading-[1.8] text-gray-700 mb-5">
-        That's judgment. That's the thing Sequoia was talking about - work that requires context, intuition, accountability. And that's exactly where we live. That's what you do every single day.
-      </p>
-      <p className="text-lg leading-[1.8] text-gray-700 mb-5">
-        The transactional vendors - the ones just fulfilling orders - will get eaten alive by agentic procurement. An AI agent doesn't need a sales rep to place a reorder. It just does it. The order-takers? This is how they die. Not slowly. Fast.
-      </p>
-      <p className="text-lg leading-[1.8] text-gray-700 mb-5">
-        But the companies that sell belonging, that design brand moments, that bring creative strategy to the table? Those are the ones the human decision-maker still picks up the phone for.
-      </p>
-      <p className="text-lg leading-[1.8] text-gray-700 mb-10">
-        The agent can shortlist vendors. But it can't feel the culture of a brand. We're not selling t-shirts. We're selling something machines can't evaluate. And that might be the best competitive moat in an agentic world.
-      </p>
+      <P>
+        That's judgment. That's the work that requires context, intuition, accountability. That's exactly where we live. The transactional vendors - the ones just fulfilling orders - get eaten by agentic procurement. An AI agent doesn't need a sales rep to place a reorder. It just does it.
+      </P>
+      <PLast>
+        But the companies that sell belonging, design brand moments, bring creative strategy to the table - those are the ones the human decision-maker still picks up the phone for. The agent can shortlist vendors. It can't feel the culture of a brand. We're not selling t-shirts. We're selling something machines can't evaluate. That might be the best competitive moat in an agentic world.
+      </PLast>
+
+      {/* ─── SECTION 7: The AI Lab ─── */}
+      <SectionDivider icon={IconRocket} />
+
+      <H2>So what is the AI Lab?</H2>
+
+      <P>
+        I've been talking about the AI Lab throughout this piece, but I haven't really told you what it is. So here's the simple version.
+      </P>
+      <P>
+        The AI Lab is a small pilot group - leadership plus 3 to 5 team members - who will spend the next 3 months learning how to actually use AI as a working tool. Not theory. Not tutorials. Building real things for your real job.
+      </P>
+      <P>
+        Here's the honest part: I don't have this all figured out. Nobody does. The tools are moving too fast for anyone to have a perfect playbook. So we're going to learn together as we go. How fast we move, what we build, what we focus on - a lot of that will depend on who's in the room. That's kind of the point.
+      </P>
+
+      <H3>What we'll be working on</H3>
+      <ul className="space-y-4 mb-10">
+        <li className="text-lg leading-[1.8] text-gray-700 pl-6 border-l-2 border-brand-green/40">
+          How to spot the workflows in your day-to-day that are good candidates to hand over to AI.
+        </li>
+        <li className="text-lg leading-[1.8] text-gray-700 pl-6 border-l-2 border-brand-green/40">
+          What a "skill" is and how it helps AI do a job the way you'd do it.
+        </li>
+        <li className="text-lg leading-[1.8] text-gray-700 pl-6 border-l-2 border-brand-green/40">
+          What an "agent" is and how it's different from just chatting with ChatGPT.
+        </li>
+        <li className="text-lg leading-[1.8] text-gray-700 pl-6 border-l-2 border-brand-green/40">
+          How to actually build these things yourself.
+        </li>
+        <li className="text-lg leading-[1.8] text-gray-700 pl-6 border-l-2 border-brand-green/40">
+          How to use the tools that exist right now.
+        </li>
+        <li className="text-lg leading-[1.8] text-gray-700 pl-6 border-l-2 border-brand-green/40">
+          How to set things up so they run on autopilot.
+        </li>
+        <li className="text-lg leading-[1.8] text-gray-700 pl-6 border-l-2 border-brand-green/40">
+          How to schedule tasks so work happens while you sleep.
+        </li>
+        <li className="text-lg leading-[1.8] text-gray-700 pl-6 border-l-2 border-brand-green/40">
+          How to connect your tools so your systems can talk to each other.
+        </li>
+      </ul>
+      <PLast>
+        None of that requires a computer science degree. It requires curiosity, willingness to try things, and time to practice.
+      </PLast>
+
+      <H3>The time commitment</H3>
+      <ul className="space-y-4 mb-10">
+        <li className="text-lg leading-[1.8] text-gray-700 pl-6 border-l-2 border-brand-green/40">
+          <span className="text-gray-900">90 minutes per week</span> - a live working session.
+        </li>
+        <li className="text-lg leading-[1.8] text-gray-700 pl-6 border-l-2 border-brand-green/40">
+          <span className="text-gray-900">A half day per month</span> - for a deeper build.
+        </li>
+        <li className="text-lg leading-[1.8] text-gray-700 pl-6 border-l-2 border-brand-green/40">
+          <span className="text-gray-900">Homework in between</span> - you'll be building on your own too.
+        </li>
+      </ul>
+      <PLast>
+        That's it. 3 months. Real work. Real skills. Real things you'll use every day after.
+      </PLast>
+
+      <H3>The impact</H3>
+      <P>
+        If this goes the way I think it can, the people who come out of this pilot won't just be "better at AI." They'll have a different relationship with their own work. Tasks that used to eat hours will take minutes. Things you used to put off because they were tedious will get done automatically. You'll be able to do more of what you actually love, and less of the stuff that drains you.
+      </P>
+      <PLast>
+        And the people in this first cohort will become the teachers for everyone else. This isn't a one-and-done program - it's the beginning of something we want the whole team to be part of over time.
+      </PLast>
 
       {/* ─── CLOSING ─── */}
       <div className="my-20 md:my-28">
@@ -655,29 +515,29 @@ const ArticleSection = () => {
         <h3 className="font-serif text-2xl md:text-3xl leading-tight text-gray-900 mb-6">
           So where does that leave us?
         </h3>
-        <p className="text-lg leading-[1.8] text-gray-700 mb-5">
-          I shared all of this because you deserve to see what we're seeing. Not the filtered version. Not the corporate-approved summary. The real picture.
-        </p>
-        <p className="text-lg leading-[1.8] text-gray-700 mb-5">
-          AI is compressing time. It's taking over execution. It's dissolving org charts. Agents are doing work that humans used to do. The workforce is restructuring. And the way people buy is changing.
-        </p>
-        <p className="text-lg leading-[1.8] text-gray-700 mb-5">
+        <P>
+          I shared all of this because you deserve to see what I'm seeing. Not the filtered version. Not the corporate-approved summary. The actual picture of what the 2% are already building around.
+        </P>
+        <P>
+          AI is compressing time. It's taking over execution. It's dissolving org charts. Agents are doing work humans used to do. The way people buy is changing.
+        </P>
+        <P>
           That's a lot. I know.
-        </p>
-        <p className="text-lg leading-[1.8] text-gray-700 mb-5">
-          But here's the thing I want to leave you with: we're not standing still. We're watching the signals. We're investing in AI across Brand Blvd. We're building the tools and the processes to make sure every person on this team is more effective, more valuable, and more prepared for what's coming.
-        </p>
-        <p className="text-lg leading-[1.8] text-gray-700 mb-5">
-          The companies that win are not the ones who predict the future correctly. They're the ones who build the muscle to adapt continuously. To watch the signals. To ask the hard questions. To be willing to say, "what we believed last month needs revising."
-        </p>
-        <p className="text-lg leading-[1.8] text-gray-700 mb-5">
-          That's what we're doing. Not because we have all the answers. But because we're paying attention.
-        </p>
-        <p className="text-lg leading-[1.8] text-gray-700 mb-5">
-          And in a world moving this fast, paying attention is half the battle.
-        </p>
+        </P>
+        <P>
+          The companies that win in this aren't the ones who predict the future correctly. They're the ones who build the muscle to adapt continuously. To watch the signals. To ask the hard questions. To be willing to say, "what we believed last month needs revising." That's what the AI Lab is for.
+        </P>
+        <P>
+          If any of this gets you excited - or even just curious - that's enough. Apply. You don't need to be an AI expert. You just need to want to learn.
+        </P>
+        <P>
+          And if this round isn't the right timing for you, that's OK too. Based on how this pilot goes, we see this growing into something bigger - more cohorts, more people, more ways to make sure everyone on this team has the skills to thrive as things keep moving faster around us.
+        </P>
+        <P>
+          This is just the beginning.
+        </P>
         <p className="text-lg leading-[1.8] text-gray-700 font-medium">
-          The other half? That takes all of us.
+          Let's go build some cool things.
         </p>
       </div>
 
