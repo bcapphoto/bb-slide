@@ -16,6 +16,11 @@ const presentations: Record<string, { title: string; description: string }> = {
     description:
       "How artificial intelligence is reshaping expectations, value, and identity — and what it means for us.",
   },
+  "bb-and-ai": {
+    title: "Don't miss this. - Brand Blvd AI Lab",
+    description:
+      "Why I started the AI Lab, and why I want as many of you in it as possible.",
+  },
   "ic-recruitment": {
     title: "Why Bring Your Book to Brand Blvd",
     description:
