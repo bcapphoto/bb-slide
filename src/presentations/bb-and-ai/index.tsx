@@ -541,7 +541,7 @@ const orgChartDesktop = [
         If management layers compress, the people who remain become <span className="text-primary font-bold">more important</span>, not less.
         More authority. Closer to the work. Closer to the culture.
       </SerifStatement>
-      <p className="font-display text-sm uppercase tracking-[0.3em] text-muted-foreground mt-10 font-bold">A very good thing for a company that manufactures belonging.</p>
+      <p className="font-display text-sm uppercase tracking-[0.3em] text-muted-foreground mt-10 font-bold">A very good thing for a company built on relationships and creative thinking.</p>
     </Slide>
   </div>,
 
@@ -828,7 +828,7 @@ const buyersDesktop = [
       <div className="inline-block px-5 py-2 rounded-sm bg-primary text-primary-foreground font-display text-base font-bold tracking-widest uppercase mb-6">Shift #6</div>
       <BigText>We sell what<br />machines can't <span className="highlight-green">evaluate.</span></BigText>
       <p className="mt-8 text-muted-foreground font-light max-w-3xl leading-relaxed text-lg md:text-xl">
-        Transactional vendors get eaten by agentic procurement. Companies that sell belonging? That's where the human picks up the phone.
+        The commoditized layer of the market gets disrupted. Judgment, relationships, and creative strategy - that's where the human picks up the phone.
       </p>
     </Slide>
   </div>,
@@ -1328,7 +1328,7 @@ const orgChartMobile = [
       <SerifStatement>
         If management layers compress, the people who remain become <span className="text-primary font-bold">more important</span>, not less.
       </SerifStatement>
-      <p className="font-display text-sm uppercase tracking-[0.3em] text-muted-foreground mt-10 font-bold">A very good thing for a company that manufactures belonging.</p>
+      <p className="font-display text-sm uppercase tracking-[0.3em] text-muted-foreground mt-10 font-bold">A very good thing for a company built on relationships and creative thinking.</p>
     </Slide>
   </div>,
 

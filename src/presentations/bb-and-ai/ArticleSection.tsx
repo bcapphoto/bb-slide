@@ -145,7 +145,7 @@ const ArticleSection = () => {
         As a photographer, I used to spend 20 to 30 minutes cutting backgrounds in Photoshop with the lasso tool. It was billable time. Now I upload to Canva, click a button, and 5 seconds later it's done.
       </P>
       <P>
-        Is it pixel-perfect? Maybe not. But it's good enough. And it's instant. Multiply that by every small decision people make in a day and you can see the shift - the market is moving toward velocity over precision, especially in early-stage decisions.
+        The point isn't that quality stops mattering. It's that AI is collapsing the time between "I need this" and "here it is." The gap between fast and thoughtful is closing. Multiply that by every small decision people make in a day and you can see the shift.
       </P>
       <PLast>
         Think about what that means for quoting, for proofing, for sourcing. A 48-hour quote turnaround in a world where AI gives you 3 options in 3 seconds doesn't feel slow. It feels broken.
@@ -266,7 +266,7 @@ const ArticleSection = () => {
         Outside our walls, the companies we sell to are going to look different. Flatter orgs. Fewer decision-makers. The org chart your SDR mapped last year might not exist next year.
       </P>
       <PLast>
-        Here's the part that makes me optimistic. If management layers compress, the people who remain become more important, not less. Higher leverage. More authority. Closer to the work and to the culture. That's a very good thing for a company that manufactures belonging.
+        Here's the part that makes me optimistic. If management layers compress, the people who remain become more important, not less. Higher leverage. More authority. Closer to the work and to the culture. That's a very good thing for a company built on relationships and creative thinking.
       </PLast>
 
       {/* ─── SECTION 4: Agents ─── */}
@@ -323,7 +323,7 @@ const ArticleSection = () => {
         AI has crossed the line where it handles most intelligence work autonomously. What's left is judgment. And for every dollar companies spend on software, they spend 6 on services. The opportunity isn't in better tools. It's in better outcomes.
       </P>
       <PLast>
-        Now think about that in our context. We don't sell t-shirts. We sell the experience around the t-shirt - the brand moment, the culture artifact, the belonging signal. The more AI commoditizes the logistics of merch, the more the value shifts to what we're actually good at: designing the moment, framing the story, understanding what the brand needs before they can articulate it. That's what each of you does every day. And it's the thing AI can't replace.
+        Now think about that in our context. The more AI handles the transactional layer of this industry, the more value shifts to strategy, creative thinking, and the ability to understand what a client needs before they can articulate it. That's not a new skill for this team - it's what we've always done. AI just makes the case for it louder. And it's the thing AI can't replace.
       </PLast>
 
       {/* ─── SECTION 5: Workforce / Identity ─── */}
@@ -433,10 +433,10 @@ const ArticleSection = () => {
         <li>Will they design a merch experience that makes our people feel something?</li>
       </ul>
       <P>
-        That's judgment. That's the work that requires context, intuition, accountability. That's exactly where we live. The transactional vendors - the ones just fulfilling orders - get eaten by agentic procurement. An AI agent doesn't need a sales rep to place a reorder. It just does it.
+        That's judgment. That's the work that requires context, intuition, accountability. That's exactly where we live. The vendors competing purely on speed and price will feel this first - an AI agent can reorder from a catalogue without a sales rep involved. That commoditized layer of the market gets disrupted.
       </P>
       <PLast>
-        But the companies that sell belonging, design brand moments, bring creative strategy to the table - those are the ones the human decision-maker still picks up the phone for. The agent can shortlist vendors. It can't feel the culture of a brand. We're not selling t-shirts. We're selling something machines can't evaluate. That might be the best competitive moat in an agentic world.
+        What doesn't get disrupted is judgment, relationships, and creative strategy - and that's exactly where we're focused. The agent can shortlist vendors. It can't feel the culture of a brand. That might be the best competitive moat in an agentic world.
       </PLast>
 
       {/* ─── SECTION 7: The AI Lab ─── */}
