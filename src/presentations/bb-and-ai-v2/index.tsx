@@ -121,39 +121,109 @@ const SpanOfControlDiagram = () => {
   );
 };
 
-/* ─── Telehealth scale bar chart: $20K → $401M → $1.8B ─── */
+/* ─── Telehealth hockey-stick line chart: $20K → $401M → $1.8B ─── */
 const TelehealthScaleChart = () => {
-  // Use log scale so $20K is visible alongside $1.8B
-  const values = [
-    { label: "$20K", sub: "Starting capital", v: 20_000, tone: "muted" as const },
-    { label: "$401M", sub: "2025 sales", v: 401_000_000, tone: "muted" as const },
-    { label: "$1.8B", sub: "2026 projected", v: 1_800_000_000, tone: "primary" as const },
+  // Linear scale so the hockey-stick shape reads immediately.
+  // $20K rounds to ~0 on this scale, which is the whole point.
+  const W = 600;
+  const H = 280;
+  const pad = { l: 50, r: 50, t: 50, b: 55 };
+  const pts = [
+    { label: "$20K", sub: "Start", v: 0.00002 },
+    { label: "$401M", sub: "2025 sales", v: 0.401 },
+    { label: "$1.8B", sub: "2026 est.", v: 1.8 },
   ];
-  const max = Math.log10(Math.max(...values.map((x) => x.v)));
-  const min = Math.log10(Math.min(...values.map((x) => x.v)));
-  const heightFor = (v: number) => {
-    const norm = (Math.log10(v) - min) / (max - min);
-    return 20 + norm * 180;
-  };
+  const maxV = 1.8;
+  const xFor = (i: number) => pad.l + (i / (pts.length - 1)) * (W - pad.l - pad.r);
+  const yFor = (v: number) => H - pad.b - (v / maxV) * (H - pad.t - pad.b);
+  const coords = pts.map((p, i) => ({ ...p, x: xFor(i), y: yFor(p.v) }));
+  // Smooth bezier between points for the hockey-stick feel
+  // Straight segments so the geometry stays true-to-scale (hockey stick emerges from the data, not easing).
+  const path = coords.reduce((d, p, i) => (i === 0 ? `M ${p.x} ${p.y}` : `${d} L ${p.x} ${p.y}`), "");
+  const areaPath = `${path} L ${coords[coords.length - 1].x} ${H - pad.b} L ${coords[0].x} ${H - pad.b} Z`;
   return (
     <div className="w-full max-w-3xl mx-auto">
-      <div className="flex items-end justify-between gap-8 md:gap-16 h-[240px] border-b-2 border-light/30 pb-0">
-        {values.map((item) => (
-          <div key={item.label} className="flex-1 flex flex-col items-center justify-end h-full">
-            <p className={`font-title text-2xl md:text-4xl uppercase tracking-tight mb-2 ${item.tone === "primary" ? "text-light" : "text-light-secondary"}`}>{item.label}</p>
-            <div
-              className={`w-full rounded-t-sm ${item.tone === "primary" ? "bg-brand-green" : "bg-light/40"}`}
-              style={{ height: `${heightFor(item.v)}px` }}
-            />
+      <svg viewBox={`0 0 ${W} ${H}`} className="w-full h-auto">
+        {/* baseline */}
+        <line x1={pad.l} y1={H - pad.b} x2={W - pad.r} y2={H - pad.b} stroke="hsl(var(--light) / 0.25)" strokeWidth="1.5" />
+        {/* area fill */}
+        <path d={areaPath} fill="hsl(var(--brand) / 0.15)" />
+        {/* line */}
+        <path d={path} fill="none" stroke="hsl(var(--brand))" strokeWidth="4" strokeLinecap="round" />
+        {/* points + labels */}
+        {coords.map((p, i) => (
+          <g key={p.label}>
+            <circle cx={p.x} cy={p.y} r={i === coords.length - 1 ? 8 : 5} fill="hsl(var(--brand))" stroke="hsl(var(--light-surface))" strokeWidth="3" />
+            <text
+              x={p.x}
+              y={p.y - 18}
+              textAnchor={i === coords.length - 1 ? "end" : i === 0 ? "start" : "middle"}
+              className="fill-light font-title"
+              style={{ fontSize: i === coords.length - 1 ? 30 : 20, fontWeight: 800, letterSpacing: "-0.02em" }}
+            >
+              {p.label}
+            </text>
+            <text
+              x={p.x}
+              y={H - pad.b + 22}
+              textAnchor="middle"
+              className="fill-light-muted font-display"
+              style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase" }}
+            >
+              {p.sub.toUpperCase()}
+            </text>
+          </g>
+        ))}
+      </svg>
+    </div>
+  );
+};
+
+/* ─── AI Lab pilot timeline: 12 weeks, weekly sessions + monthly builds ─── */
+const PilotTimeline = () => {
+  const weeks = Array.from({ length: 12 }, (_, i) => i + 1);
+  return (
+    <div className="w-full max-w-5xl mx-auto">
+      {/* Month markers */}
+      <div className="grid grid-cols-3 gap-4 mb-3">
+        {["Month 1", "Month 2", "Month 3"].map((m) => (
+          <div key={m} className="text-center">
+            <p className="font-display text-xs uppercase tracking-[0.3em] text-light-muted font-bold">{m}</p>
           </div>
         ))}
       </div>
-      <div className="flex justify-between gap-8 md:gap-16 mt-3">
-        {values.map((item) => (
-          <p key={item.label} className="flex-1 font-display text-[10px] md:text-xs uppercase tracking-[0.2em] text-light-muted font-bold text-center">{item.sub}</p>
-        ))}
+      {/* Timeline track */}
+      <div className="relative">
+        <div className="absolute left-0 right-0 top-1/2 -translate-y-1/2 h-[2px] bg-light/20" />
+        <div className="relative grid grid-cols-12 gap-2 items-center py-6">
+          {weeks.map((w) => {
+            const isBuild = w % 4 === 0;
+            return (
+              <div key={w} className="flex flex-col items-center">
+                {isBuild ? (
+                  <div className="w-10 h-10 md:w-12 md:h-12 rounded-sm bg-brand-green flex items-center justify-center shadow-sm">
+                    <span className="font-display text-[9px] md:text-[10px] uppercase tracking-wide font-black text-light">½ day</span>
+                  </div>
+                ) : (
+                  <div className="w-3 h-3 md:w-4 md:h-4 rounded-full bg-light/50 border-2 border-light/30" />
+                )}
+                <span className="font-display text-[10px] uppercase tracking-wider text-light-muted mt-2">W{w}</span>
+              </div>
+            );
+          })}
+        </div>
       </div>
-      <p className="text-center font-display text-[10px] md:text-xs uppercase tracking-[0.3em] text-light-muted mt-6">Log scale - each step is ~1000x</p>
+      {/* Legend */}
+      <div className="flex flex-wrap gap-6 md:gap-8 justify-center mt-6">
+        <div className="flex items-center gap-2">
+          <span className="w-3 h-3 rounded-full bg-light/50 border-2 border-light/30" />
+          <span className="font-display text-xs uppercase tracking-[0.2em] text-light-secondary font-bold">90 min / week - live session</span>
+        </div>
+        <div className="flex items-center gap-2">
+          <span className="w-4 h-4 rounded-sm bg-brand-green" />
+          <span className="font-display text-xs uppercase tracking-[0.2em] text-light-secondary font-bold">½ day / month - ship something real</span>
+        </div>
+      </div>
     </div>
   );
 };
@@ -792,32 +862,61 @@ const aiLabDesktop = [
     </Slide>
   </div>,
 
-  // What we'll be working on - 8 bullets split across 2 slides (part 1)
+  // What we'll be working on - combined curriculum map
   <WhiteSlide>
-    <p className="font-display text-sm uppercase tracking-[0.35em] text-light-muted font-bold mb-6">What we'll be working on</p>
-    <h2 className="font-title text-5xl md:text-7xl uppercase leading-[0.9] tracking-tight mb-12">
-      <span className="text-light">The</span><span className="highlight-green">Work</span>
+    <p className="font-display text-sm uppercase tracking-[0.35em] text-light-muted font-bold mb-4">What we'll be working on</p>
+    <h2 className="font-title text-4xl md:text-6xl uppercase leading-[0.9] tracking-tight mb-10">
+      <span className="text-light">The</span><span className="highlight-green">Curriculum.</span>
     </h2>
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-8">
-      <NumberedItem num="01" title="Spot the workflows" desc="Which pieces of your day-to-day are good candidates to hand over to AI." />
-      <NumberedItem num="02" title="What a skill is" desc="How it helps AI do a job the way you'd do it." />
-      <NumberedItem num="03" title="What an agent is" desc="How it's different from just chatting with ChatGPT." />
-      <NumberedItem num="04" title="Build these things yourself" desc="Not watching someone else do it - doing it." />
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-6 items-start">
+      <div>
+        <div className="flex items-center gap-3 mb-5">
+          <span className="font-display text-xs uppercase tracking-[0.25em] text-brand-green font-black">Track 1</span>
+          <span className="h-px flex-1 bg-light/20" />
+          <span className="font-display text-xs uppercase tracking-[0.25em] text-light-muted font-bold">Foundations</span>
+        </div>
+        <div className="space-y-4">
+          {[
+            { n: "01", t: "Spot the workflows", d: "Which pieces of your day-to-day are good candidates to hand over to AI." },
+            { n: "02", t: "What a skill is", d: "How it helps AI do a job the way you'd do it." },
+            { n: "03", t: "What an agent is", d: "How it's different from just chatting with ChatGPT." },
+            { n: "04", t: "Build things yourself", d: "Not watching someone else do it - doing it." },
+          ].map((i) => (
+            <div key={i.n} className="flex gap-4 items-start">
+              <span className="font-title text-xl md:text-2xl text-brand-green font-black leading-none pt-1 w-10 shrink-0">{i.n}</span>
+              <div>
+                <p className="font-display text-base md:text-lg font-extrabold text-light leading-tight">{i.t}</p>
+                <p className="text-light-secondary text-sm leading-snug mt-1">{i.d}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+      <div>
+        <div className="flex items-center gap-3 mb-5">
+          <span className="font-display text-xs uppercase tracking-[0.25em] text-brand-green font-black">Track 2</span>
+          <span className="h-px flex-1 bg-light/20" />
+          <span className="font-display text-xs uppercase tracking-[0.25em] text-light-muted font-bold">Applied</span>
+        </div>
+        <div className="space-y-4">
+          {[
+            { n: "05", t: "Use the tools that exist", d: "Not the ones coming someday - the ones shipping right now." },
+            { n: "06", t: "Run things on autopilot", d: "Set systems up so they keep working without you." },
+            { n: "07", t: "Schedule tasks", d: "Work happens while you sleep." },
+            { n: "08", t: "Connect your tools", d: "Your systems learn to talk to each other." },
+          ].map((i) => (
+            <div key={i.n} className="flex gap-4 items-start">
+              <span className="font-title text-xl md:text-2xl text-brand-green font-black leading-none pt-1 w-10 shrink-0">{i.n}</span>
+              <div>
+                <p className="font-display text-base md:text-lg font-extrabold text-light leading-tight">{i.t}</p>
+                <p className="text-light-secondary text-sm leading-snug mt-1">{i.d}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
     </div>
-  </WhiteSlide>,
-
-  // What we'll be working on - part 2
-  <WhiteSlide>
-    <p className="font-display text-sm uppercase tracking-[0.35em] text-light-muted font-bold mb-6">What we'll be working on</p>
-    <h2 className="font-title text-5xl md:text-7xl uppercase leading-[0.9] tracking-tight mb-12">
-      <span className="text-light">Real</span><span className="highlight-green">Skills</span>
-    </h2>
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-8">
-      <NumberedItem num="05" title="Use the tools that exist" desc="Not the ones coming someday - the ones that exist right now." />
-      <NumberedItem num="06" title="Run things on autopilot" desc="Set systems up so they keep working without you." />
-      <NumberedItem num="07" title="Schedule tasks" desc="Work happens while you sleep." />
-      <NumberedItem num="08" title="Connect your tools" desc="Your systems learn to talk to each other." />
-    </div>
+    <p className="font-display text-xs md:text-sm uppercase tracking-[0.3em] text-light-muted font-bold mt-8 text-center">Understand the ideas → build with them.</p>
   </WhiteSlide>,
 
   // No CS degree required
@@ -830,18 +929,17 @@ const aiLabDesktop = [
     </Slide>
   </div>,
 
-  // Time commitment - 3 cards
+  // Time commitment - 12-week pilot timeline
   <div className="relative w-full h-full flex items-center justify-center bg-light-surface text-light dot-grid-light overflow-hidden">
-    <div className="relative z-10 w-full max-w-5xl mx-auto px-8 md:px-16">
-      <p className="font-display text-sm uppercase tracking-[0.35em] text-light-muted font-bold mb-6">The time commitment</p>
-      <h2 className="font-title text-5xl md:text-7xl uppercase leading-[0.9] tracking-tight mb-12">
+    <div className="relative z-10 w-full max-w-6xl mx-auto px-8 md:px-16">
+      <p className="font-display text-sm uppercase tracking-[0.35em] text-light-muted font-bold mb-4 text-center">The time commitment</p>
+      <h2 className="font-title text-4xl md:text-6xl uppercase leading-[0.9] tracking-tight mb-10 text-center">
         <span className="text-light">That's</span><span className="highlight-green">it.</span>
       </h2>
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-x-10 gap-y-8">
-        <NumberedItem num="90m" title="Per week" desc="A live working session together." />
-        <NumberedItem num="½ day" title="Per month" desc="A deeper build - ship something real." />
-        <NumberedItem num="+" title="Homework" desc="Building on your own between sessions." />
-      </div>
+      <PilotTimeline />
+      <p className="text-center text-light-secondary text-base md:text-lg leading-relaxed max-w-3xl mx-auto mt-10">
+        12 weeks. 12 live sessions. 3 shipped builds. Plus whatever you build on your own between sessions.
+      </p>
     </div>
   </div>,
 
