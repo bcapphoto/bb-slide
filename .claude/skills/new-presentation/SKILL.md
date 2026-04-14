@@ -110,6 +110,17 @@ After creating the module, update `src/presentations/index.ts` to add the new pr
 "<slug>": () => import("./<slug>"),
 ```
 
+Then register the slug for social sharing in `netlify/edge-functions/og-meta.ts` so Facebook/LinkedIn/Twitter scrapers get the right `og:image`, title, and description. Add an entry to the `presentations` dict:
+
+```typescript
+"<slug>": {
+  title: "<Presentation title> - Brand Blvd",
+  description: "<One-line description matching the article's lede>",
+},
+```
+
+The OG image itself is generated separately via `/refresh-og-image` and lives at `public/og/<slug>.png` - the edge function just points at it. Without this registration, scrapers fall through to the bare `index.html` and show no preview image.
+
 ### 5. Generate Presenter Notes
 
 After the article and slides are built, generate the presenter notes. Use `/generate-presenter-notes` or follow its workflow to create:
