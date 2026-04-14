@@ -124,7 +124,7 @@ const brandBlvd: Theme = {
     glow: {
       position: "85% 75%",
       color: "186 35% 16%",
-      opacity: 0.8,
+      opacity: 0,
     },
     grainOpacity: 0.02,
   },

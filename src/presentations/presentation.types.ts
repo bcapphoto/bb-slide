@@ -18,6 +18,8 @@ export interface PresentationSection {
   desktopSlides: React.ReactNode[];
   /** Mobile slides (wrapped in MobileSection) — if omitted, desktopSlides are used */
   mobileSlides?: React.ReactNode[];
+  /** Background variant — controls sidebar nav contrast. Defaults to "dark". */
+  variant?: "light" | "dark";
 }
 
 export interface PresentationConfig {

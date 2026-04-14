@@ -61,6 +61,7 @@ export default function PresentationShell({ config }: Props) {
   const containerRef = useRef<HTMLDivElement>(null);
   const slidesRef = useRef<Record<number, number>>({});
   const [activeSlide, setActiveSlide] = useState(0);
+  const [isLightBg, setIsLightBg] = useState(false);
   const [showMobileIndicator, setShowMobileIndicator] = useState(false);
   const mobileIndicatorTimeout = useRef<ReturnType<typeof setTimeout>>();
 
@@ -194,6 +195,52 @@ export default function PresentationShell({ config }: Props) {
     },
     [sectionNames, slideTotals, TOTAL_SECTIONS, goToSection, activeSection]
   );
+
+  // Auto-detect whether the active slide has a light background.
+  // Samples the element behind the sidebar position and walks up the DOM
+  // computing the resolved background color's luminance.
+  useEffect(() => {
+    if (isMobile || isOgMode) return;
+
+    const parseRgb = (str: string): [number, number, number, number] | null => {
+      const m = str.match(/rgba?\(([^)]+)\)/);
+      if (!m) return null;
+      const parts = m[1].split(",").map((s) => parseFloat(s.trim()));
+      if (parts.length < 3) return null;
+      const [r, g, b] = parts;
+      const a = parts.length >= 4 ? parts[3] : 1;
+      return [r, g, b, a];
+    };
+
+    const detect = () => {
+      // Sample the slide content, away from the sidebar and its buttons.
+      // We pick a point left of the sidebar and slightly above center.
+      const x = Math.max(40, window.innerWidth - 200);
+      const y = Math.round(window.innerHeight * 0.25);
+      let el = document.elementFromPoint(x, y) as HTMLElement | null;
+      while (el) {
+        const bg = getComputedStyle(el).backgroundColor;
+        const rgba = parseRgb(bg);
+        if (rgba && rgba[3] > 0.1) {
+          const [r, g, b] = rgba;
+          // Relative luminance (sRGB)
+          const lum = (0.2126 * r + 0.7152 * g + 0.0722 * b) / 255;
+          setIsLightBg(lum > 0.6);
+          return;
+        }
+        el = el.parentElement;
+      }
+      setIsLightBg(false);
+    };
+
+    // Allow transform/scroll transitions to settle before sampling
+    const t = setTimeout(detect, 50);
+    const t2 = setTimeout(detect, 750);
+    return () => {
+      clearTimeout(t);
+      clearTimeout(t2);
+    };
+  }, [activeSection, activeSlide, isMobile, isOgMode]);
 
   // Keyboard navigation
   useEffect(() => {
@@ -354,12 +401,38 @@ export default function PresentationShell({ config }: Props) {
           </div>
 
             {/* Vertical section nav sidebar */}
+            {(() => {
+              const navColors = isLightBg
+                ? {
+                    line: "bg-[hsl(var(--light-text)/0.15)]",
+                    progress: "bg-[hsl(var(--light-text)/0.6)]",
+                    labelActive: "text-[hsl(var(--light-text))]",
+                    labelIdle: "text-[hsl(var(--light-text-muted))]",
+                    iconActive:
+                      "text-[hsl(var(--light-surface))] bg-[hsl(var(--light-text))]",
+                    iconPast:
+                      "text-[hsl(var(--light-text)/0.7)] bg-[hsl(var(--light-text)/0.1)]",
+                    iconIdle:
+                      "text-[hsl(var(--light-text)/0.35)] hover:text-[hsl(var(--light-text)/0.7)] bg-transparent hover:bg-[hsl(var(--light-text)/0.08)]",
+                  }
+                : {
+                    line: "bg-muted-foreground/10",
+                    progress: "bg-primary/40",
+                    labelActive: "text-primary",
+                    labelIdle: "text-muted-foreground",
+                    iconActive:
+                      "text-primary-foreground bg-primary shadow-[0_0_12px_hsl(var(--primary)/0.3)]",
+                    iconPast: "text-primary/60 bg-primary/10",
+                    iconIdle:
+                      "text-muted-foreground/30 hover:text-muted-foreground/60 bg-transparent hover:bg-muted/30",
+                  };
+              return (
             <div className="fixed right-0 top-1/2 -translate-y-1/2 flex flex-col items-end z-[60] cursor-default py-10 pr-5 pl-4">
               {/* Connecting line */}
-              <div className="absolute right-[21px] top-10 bottom-10 w-[1px] bg-muted-foreground/10" />
+              <div className={`absolute right-[21px] top-10 bottom-10 w-[1px] transition-colors duration-500 ${navColors.line}`} />
               {/* Progress fill on connecting line */}
               <div
-                className="absolute right-[21px] top-10 w-[1px] bg-primary/40 transition-all duration-500 ease-out"
+                className={`absolute right-[21px] top-10 w-[1px] transition-all duration-500 ease-out ${navColors.progress}`}
                 style={{
                   height: TOTAL_SECTIONS > 1
                     ? `${(activeSection / (TOTAL_SECTIONS - 1)) * 100}%`
@@ -383,8 +456,8 @@ export default function PresentationShell({ config }: Props) {
                     <span
                       className={`font-display text-[10px] uppercase tracking-[0.2em] transition-all duration-300 whitespace-nowrap ${
                         isActive
-                          ? "opacity-100 text-primary translate-x-0"
-                          : "opacity-0 group-hover:opacity-60 translate-x-2 group-hover:translate-x-0 text-muted-foreground"
+                          ? `opacity-100 translate-x-0 ${navColors.labelActive}`
+                          : `opacity-0 group-hover:opacity-60 translate-x-2 group-hover:translate-x-0 ${navColors.labelIdle}`
                       }`}
                     >
                       {item.label}
@@ -393,10 +466,10 @@ export default function PresentationShell({ config }: Props) {
                     <div
                       className={`relative flex items-center justify-center w-7 h-7 rounded-full transition-all duration-300 ${
                         isActive
-                          ? "text-primary-foreground bg-primary shadow-[0_0_12px_hsl(var(--primary)/0.3)]"
+                          ? navColors.iconActive
                           : isPast
-                            ? "text-primary/60 bg-primary/10"
-                            : "text-muted-foreground/30 hover:text-muted-foreground/60 bg-transparent hover:bg-muted/30"
+                            ? navColors.iconPast
+                            : navColors.iconIdle
                       }`}
                     >
                       <Icon size={14} />
@@ -405,6 +478,8 @@ export default function PresentationShell({ config }: Props) {
                 );
               })}
             </div>
+              );
+            })()}
 
             <CursorNav
               onNavigate={handleNavigate}

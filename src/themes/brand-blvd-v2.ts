@@ -128,8 +128,8 @@ const brandBlvdV2: Theme = {
     },
     glow: {
       position: "85% 75%",
-      color: "78 40% 20%",              // Subtle Signal-tinted glow
-      opacity: 0.6,
+      color: "78 40% 20%",
+      opacity: 0,                       // Disabled — off-brand gradient removed
     },
     grainOpacity: 0.015,
   },
