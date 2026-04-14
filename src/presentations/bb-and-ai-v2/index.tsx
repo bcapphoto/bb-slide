@@ -78,6 +78,86 @@ const NinetyEightTwoChart = ({ size = 340 }: { size?: number }) => {
   );
 };
 
+/* ─── Span-of-control org diagram ─── */
+const SpanOfControlDiagram = () => {
+  // Traditional hierarchy: 1 -> 4 -> 16 (3 layers)
+  // AI-enabled: 1 -> 16 (flat)
+  const primary = "hsl(var(--primary))";
+  const muted = "hsl(var(--muted-foreground) / 0.35)";
+  const line = "hsl(var(--muted-foreground) / 0.25)";
+  return (
+    <div className="grid grid-cols-2 gap-8 md:gap-12 w-full max-w-xl">
+      <div className="flex flex-col items-center">
+        <p className="font-display text-[10px] md:text-xs uppercase tracking-[0.2em] text-muted-foreground font-bold mb-4">Traditional</p>
+        <svg viewBox="0 0 200 140" className="w-full">
+          <line x1="100" y1="20" x2="50" y2="60" stroke={line} strokeWidth="1" />
+          <line x1="100" y1="20" x2="150" y2="60" stroke={line} strokeWidth="1" />
+          {[30, 60, 90, 110, 140, 170].map((x) => (
+            <line key={x} x1={x < 100 ? 50 : 150} y1="60" x2={x} y2="110" stroke={line} strokeWidth="1" />
+          ))}
+          <circle cx="100" cy="20" r="6" fill={primary} />
+          <circle cx="50" cy="60" r="5" fill={muted} />
+          <circle cx="150" cy="60" r="5" fill={muted} />
+          {[30, 60, 90, 110, 140, 170].map((x) => (
+            <circle key={x} cx={x} cy="110" r="3" fill={muted} />
+          ))}
+        </svg>
+        <p className="font-display text-xs text-muted-foreground mt-3 text-center">Layers to coordinate</p>
+      </div>
+      <div className="flex flex-col items-center">
+        <p className="font-display text-[10px] md:text-xs uppercase tracking-[0.2em] text-primary font-bold mb-4">With AI</p>
+        <svg viewBox="0 0 200 140" className="w-full">
+          {[20, 45, 70, 95, 120, 145, 170].map((x) => (
+            <line key={x} x1="100" y1="30" x2={x} y2="100" stroke={line} strokeWidth="1" />
+          ))}
+          <circle cx="100" cy="30" r="6" fill={primary} />
+          {[20, 45, 70, 95, 120, 145, 170].map((x) => (
+            <circle key={x} cx={x} cy="100" r="3" fill={muted} />
+          ))}
+        </svg>
+        <p className="font-display text-xs text-muted-foreground mt-3 text-center">Context replaces layers</p>
+      </div>
+    </div>
+  );
+};
+
+/* ─── Telehealth scale bar chart: $20K → $401M → $1.8B ─── */
+const TelehealthScaleChart = () => {
+  // Use log scale so $20K is visible alongside $1.8B
+  const values = [
+    { label: "$20K", sub: "Starting capital", v: 20_000, tone: "muted" as const },
+    { label: "$401M", sub: "2025 sales", v: 401_000_000, tone: "muted" as const },
+    { label: "$1.8B", sub: "2026 projected", v: 1_800_000_000, tone: "primary" as const },
+  ];
+  const max = Math.log10(Math.max(...values.map((x) => x.v)));
+  const min = Math.log10(Math.min(...values.map((x) => x.v)));
+  const heightFor = (v: number) => {
+    const norm = (Math.log10(v) - min) / (max - min);
+    return 20 + norm * 180;
+  };
+  return (
+    <div className="w-full max-w-3xl mx-auto">
+      <div className="flex items-end justify-between gap-8 md:gap-16 h-[240px] border-b-2 border-light/30 pb-0">
+        {values.map((item) => (
+          <div key={item.label} className="flex-1 flex flex-col items-center justify-end h-full">
+            <p className={`font-title text-2xl md:text-4xl uppercase tracking-tight mb-2 ${item.tone === "primary" ? "text-light" : "text-light-secondary"}`}>{item.label}</p>
+            <div
+              className={`w-full rounded-t-sm ${item.tone === "primary" ? "bg-brand-green" : "bg-light/40"}`}
+              style={{ height: `${heightFor(item.v)}px` }}
+            />
+          </div>
+        ))}
+      </div>
+      <div className="flex justify-between gap-8 md:gap-16 mt-3">
+        {values.map((item) => (
+          <p key={item.label} className="flex-1 font-display text-[10px] md:text-xs uppercase tracking-[0.2em] text-light-muted font-bold text-center">{item.sub}</p>
+        ))}
+      </div>
+      <p className="text-center font-display text-[10px] md:text-xs uppercase tracking-[0.3em] text-light-muted mt-6">Log scale - each step is ~1000x</p>
+    </div>
+  );
+};
+
 /* ─── Desktop slide content ─── */
 
 const titleDesktop = [
@@ -333,14 +413,17 @@ const orgChartDesktop = [
   <SectionOpener icon={IconOrgChart} number="03" superTitle="Don't miss this." title={<>The org chart is<br /><span className="highlight-green">dissolving.</span></>} monogramSrc={bbMonogram} />,
 
   <div className="relative w-full h-full flex items-center justify-center diagonal-lines">
-    <Slide className="relative z-10">
-      <SerifStatement>
-        For 2,000 years, a leader could manage <span className="text-primary">3 to 8 people</span>.
-        That number hasn't changed since the Roman military.
-        It's why we have <span className="text-primary font-bold">hierarchies.</span>
-      </SerifStatement>
-      <p className="font-display text-sm uppercase tracking-[0.3em] text-muted-foreground mt-10 font-bold">AI doesn't need layers to coordinate.</p>
-    </Slide>
+    <div className="relative z-10 w-full max-w-7xl mx-auto px-8 md:px-16 grid md:grid-cols-[1.3fr_1fr] gap-12 md:gap-16 items-center">
+      <div className="text-left">
+        <p className="font-serif text-3xl md:text-5xl lg:text-6xl leading-[1.15] tracking-tight">
+          For 2,000 years, a leader could manage <span className="text-primary">3 to 8 people</span>.
+          That number hasn't changed since the Roman military.
+          It's why we have <span className="text-primary font-bold">hierarchies.</span>
+        </p>
+        <p className="font-display text-sm uppercase tracking-[0.3em] text-muted-foreground mt-8 font-bold">AI doesn't need layers to coordinate.</p>
+      </div>
+      <SpanOfControlDiagram />
+    </div>
   </div>,
 
   <WhiteSlide>
@@ -431,13 +514,26 @@ const agentsDesktop = [
 
   <WhiteSlide>
     <p className="font-display text-sm uppercase tracking-[0.35em] text-light-muted font-bold mb-6">Case Study</p>
-    <h2 className="font-title text-5xl md:text-7xl uppercase leading-[0.9] tracking-tight mb-12">
+    <h2 className="font-title text-5xl md:text-7xl uppercase leading-[0.9] tracking-tight mb-10">
       <span className="text-light">$20K to</span><br /><span className="highlight-green">$1.8 Billion.</span>
     </h2>
-    <div className="grid grid-cols-1 md:grid-cols-3 gap-x-16 gap-y-8">
-      <GridCard superTitle="The Founders" title="2 people. That's it." body="Matthew Gallagher and his brother built a telehealth company using AI agents for nearly everything - operations, support, marketing, fulfillment." />
-      <GridCard superTitle="The Investment" title="$20,000 to start." body="No VC. No team of 50. Just a small bet, AI tools, and a focus on delivering outcomes to patients." />
-      <GridCard superTitle="The Result" title="$1.8B projected in 2026." body="$401 million in 2025 sales. On track to nearly 5x this year." />
+    <div className="grid grid-cols-1 md:grid-cols-[1fr_1fr] gap-x-12 gap-y-8 items-center">
+      <div className="space-y-5">
+        <div>
+          <p className="font-display text-xs uppercase tracking-[0.25em] text-light-muted font-bold mb-1">The Founders</p>
+          <p className="text-light text-lg md:text-xl font-medium">2 people. That's it.</p>
+          <p className="text-light-secondary text-sm leading-relaxed">Matthew Gallagher and his brother - telehealth company run on AI agents for operations, support, marketing, fulfillment.</p>
+        </div>
+        <div>
+          <p className="font-display text-xs uppercase tracking-[0.25em] text-light-muted font-bold mb-1">The Investment</p>
+          <p className="text-light text-lg md:text-xl font-medium">$20,000 to start. No VC.</p>
+        </div>
+        <div>
+          <p className="font-display text-xs uppercase tracking-[0.25em] text-light-muted font-bold mb-1">The Trajectory</p>
+          <p className="text-light text-lg md:text-xl font-medium">$401M in 2025. On track to nearly 5x.</p>
+        </div>
+      </div>
+      <TelehealthScaleChart />
     </div>
   </WhiteSlide>,
 
