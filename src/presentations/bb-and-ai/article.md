@@ -19,66 +19,90 @@ sections:
     icon: rocket
 ---
 
-For months now, I've been noticing something. Two groups forming around AI, right in front of us.
+For months now, I've been noticing something interesting around AI adoption.
 
-One group tried ChatGPT once - probably the free version, probably a while ago - saw it make something up, laughed at it, and moved on. That's most people.
+There are 2 diverging groups: 
 
-The other group is using the latest tools every day. Watching them do things that would have been science fiction 2 years ago. Building with them. Shipping with them. The people in that group aren't a little impressed. They're stunned.
+1. One group tried ChatGPT, probably the free version, probably a while ago. They thought it was novel, watched it hallucinate a bit, they use it sometimes or they moved on. That's most people.
+
+2. The other group is using the latest tools every day. They're doing things that would have been science fiction 2 years ago. They're building. Shipping. These people aren't just impressed. They're stunned. 
 
 Both groups are looking at the same technology. They're coming away with completely different realities. And they're talking past each other.
 
-Andrej Karpathy - one of the founders of OpenAI, formerly ran AI at Tesla - [named this split recently](https://x.com/karpathy/status/2042334451611693415) better than I could. He called it the 98 and the 2. That framing stuck with me because it's exactly what I've been watching happen.
+Andrej Karpathy - one of the founders of OpenAI, formerly ran AI at Tesla - [named this split recently](https://x.com/karpathy/status/2042334451611693415) better than I could. He called it the 98 and the 2 and that framing stuck with me because it's exactly what I've been watching happen.
 
-I've been spending a lot of time in the 2%. Not because I'm an expert. Not because I think I'm special. Because I've been paying close attention - reading, building, experimenting, watching what the frontier looks like. And what I'm seeing is exciting. A little overwhelming. And honestly, something I can't keep to myself.
+I spend most of my time in the 2%. 
 
-The short version: AI is moving faster than almost anyone is ready for. ChatGPT hit 100 million users 27x faster than Facebook. OpenAI raised $100B at an $850B valuation. Nvidia sits above $3T. Anthropic is 3 years old and growing revenue 10x a year. Markets don't place trillion-dollar bets on trends. They place them on transformations. This isn't a wave. It's the tide.
+Not because I'm an expert. 
 
-Here's the thing though. I've been building tools, systems, automations. Having a lot of conversations. Doing a lot of discovery. Experimenting. Trying to streamline as much as I can and help as many people on the team as possible.
+Not because I think I'm special. 
 
-But I don't want to be the only one who can do this stuff. I don't want to be the only one who sees where things are going, or the only one who gets how incredible the frontier actually is right now. I want to replicate this across the team. Teach everyone to fish instead of just handing out fish.
+But because I've been paying attention; reading, building, experimenting, watching from the front lines. What I'm seeing is exciting. It's a little overwhelming. And honestly, it's not something I want to keep to myself.
 
-So here's what I want to walk you through. Six shifts I've been watching, what they mean for us, and then what we're doing about it.
+AI is moving faster than almost anyone is ready for. ChatGPT hit 100 million users 27x faster than Facebook. OpenAI raised $100B at an $850B valuation. Nvidia is worth over $3T. Anthropic is 3 years old and growing revenue 10x a year. Markets don't place trillion-dollar bets on trends. They place them on transformations. This isn't a wave. It's the tide.
+
+Here's the thing though ...
+
+I've been building tools, systems and automations here at Brand Blvd ever since I started. I've been having lots of conversations, asking questions, doing lots of discovery. I've been experimenting. I've been trying to streamline as much as I can and help as many people on the team as possible.
+
+That's my job. 
+
+But I don't want to be the only one who can do this stuff. I don't want to be the only one who sees where things are going, or the only one who gets how incredible things are. I want to replicate that across the team. I want to teach everyone to fish instead of just giving out fish.
+
+First, I'm going to tell you what I've seen in AI land. Then I'm going to tell you what I think they mean for us. Then I'm going to tell you what we're going to do about it. 
+
+The 6 shifts that AI have brought are: 
 
 - 1. Expectations have shifted.
 - 2. AI is taking over the "doing."
 - 3. The org chart is dissolving.
 - 4. Agents are doing the work.
 - 5. The workforce is shifting.
-- 6. The buyer isn't a person anymore.
-
-And at the end, I want to tell you about the AI Lab we're launching at Brand Blvd. I'm genuinely excited for you to hear about it.
+- 6. The buyer may not be a person anymore.
 
 ## Expectations have shifted.
 
 ### The floor of "good enough" just moved
 
-AI is training people to expect immediate. Not faster. Immediate. 37% of consumers now go to AI first instead of Google. Nearly 50% of Google searches include AI summaries. When the default answer to "how do I do this?" is 5 seconds and not 5 minutes, patience collapses.
+AI is training people to expect immediate. Not faster. Immediate. 37% of consumers now go to AI first instead of Google. Nearly half of Google searches include AI summaries. When the default answer to "how do I do this?" is 5 seconds and not 5 minutes, patience collapses.
 
-We used to tolerate friction because information had gatekeepers. AI eliminated the gatekeepers. And once that becomes normal in one domain, it becomes expected in all of them - including ours.
+We used to tolerate friction because information had gatekeepers. 
+
+AI eliminated the gatekeepers. And once that becomes normal in one domain, it becomes expected in all of them - including ours.
 
 ### "Good enough, right now" beats "perfect, later"
 
-As a photographer, I used to spend 20 to 30 minutes cutting backgrounds in Photoshop with the lasso tool. It was billable time. Now I upload to Canva, click a button, and 5 seconds later it's done.
+As a photographer, I used to spend 20 to 30 minutes cutting backgrounds in Photoshop with the lasso tool. It was billable time. I was the expert and the only one who could do it. Now, anyone can upload a photo to Canva, click a button, and 5 seconds later it's done.
 
-The point isn't that quality stops mattering. It's that AI is collapsing the time between "I need this" and "here it is." The gap between fast and thoughtful is closing. Multiply that by every small decision people make in a day and you can see the shift.
+The point isn't that quality stops mattering. 
 
-Think about what that means for quoting, for proofing, for sourcing. A 48-hour quote turnaround in a world where AI gives you 3 options in 3 seconds doesn't feel slow. It feels broken.
+It's that AI is collapsing the time between "I need this" and "here it is." The gap between fast and thoughtful is closing. Multiply that by every small decision people make in a day and you can see the shift.
+
+Think about what that means for the work that we do. A 48-hour quote turnaround on a proof, in a world where AI gives you 3 options in 3 seconds doesn't feel slow. It feels broken.
 
 ### Exploration is free
 
-There was a time when exploring options had a real cost. 3 campaign directions. 5 taglines. Multiple design explorations. That used to mean meetings, creative waits, agency fees. Now? Type a prompt. Get ideation in seconds.
+There was a time when exploring options had a real cost. 
+
+3 campaign directions. 5 taglines. Multiple design explorations.
+
+That used to mean meetings, waiting for creative work, agency fees. 
+
+Now? Type a prompt. You get ideation in seconds.
 
 When exploration becomes free, behaviour changes. People test more. Compare more. Iterate more. And they expect more options, faster - before they ever pick up the phone.
 
 ### Why this matters to us
 
-The 2% have already been re-trained by these tools. They expect instant. They explore more, compare more, iterate more. They reach for an agency, a vendor, a specialist much later in their process than they used to.
+People are starting to expect instant. They are exploring more, comparing more, iterating more on their own. Now, they're reaching for an agency or a vendor or a specialist much later in their process than they used to.
 
-And here's the framing I want to land on - because it'd be easy to read this as "we're too slow." That's not the point.
+Don't be mistaken though.
 
-The gap between what clients are starting to expect and what most agencies are set up to deliver is widening. That gap is where both the risk and the opportunity live. The agencies that close it get pulled toward the new defaults. The ones that don't slowly look analog.
+I'm not saying "we're too slow" - that's not the point.
 
-We get to choose which side of that gap we're on. That's why the AI Lab matters now and not in 2 years.
+What I'm saying is that the gap between what clients are going to start to expect and what most distributors and agencies are set up to deliver is widening. That gap is where both the risk and the opportunity live. The agencies that close it get pulled toward the new defaults. The ones that don't slowly look analog.
+
+We get to choose which side of that gap we're on. 
 
 ## AI is taking over the "doing."
 
@@ -86,11 +110,11 @@ We get to choose which side of that gap we're on. That's why the AI Lab matters 
 
 AI handles rule-based, repetitive, information-heavy tasks faster, cheaper, and at scale. And it's increasingly handling complex cognitive work too - GPT-4 (3 versions old now) scored in the 90th percentile of the Bar Exam. AI systems hit gold-medal level on the International Mathematical Olympiad in 2025.
 
-The point isn't that AI is smarter than us. The point is that execution has gotten dramatically cheaper. The barrier to doing something has collapsed.
+The point isn't that AI is smarter than us. Although some would argue that is true. The point is that execution has become dramatically cheaper. The barrier to doing something has collapsed.
 
 AI can generate 10 campaign ideas in seconds. But it doesn't know which one fits your brand, your culture, what's politically viable, or what will actually move people. That's where we live. Our role becomes less about the doing, and more about deciding what should be done. Framing the problem. Defining success. Owning the outcome.
 
-The human role shifts up the stack. That's not theory - that's what the 2% are building around right now.
+When you can "do" something quicker than ever, that also means you can "do" the wrong thing quicker than ever. So taste and judgement are more important than ever before. That's why our role and our value shifts up the stack. 
 
 ### What the people building this are saying
 
@@ -106,9 +130,13 @@ The human role shifts up the stack. That's not theory - that's what the 2% are b
 >
 > — Dario Amodei, CEO, Anthropic
 
-I don't share the Nadella quote to scare anyone. I share it because it's why I'm not waiting. It's why we're building the AI Lab. Instead of telling everyone "this is on you," I want to say: this is why I want to help.
+There's some doom and gloom and scare tactics around AI that has people thinking it'll replace them. Let's be clear - will there be some displacement in the work force? Certainly. But I believe it'll mostly be the case for those who don't adapt and change and elevate. The ones who are displaced are the ones who don't shift their value up the stack. 
 
-The Lab exists so we can learn these tools together, on company time, with real projects from our real work. That's a much better answer than "good luck out there."
+I don't say that to scare anyone.
+
+I share it because it's why we're not waiting.
+
+Instead of saying "figure it out" we are saying "we want to help."
 
 ### Why this matters to us
 
@@ -118,37 +146,43 @@ That doesn't break us. It pushes us closer to where the value actually is.
 
 If AI drafts the proposal, we make sure it solves the right problem. If AI generates comparisons, we make sure the strategy holds together. If AI sources the merch, we design the moment around it. We're not losing value - we're being pulled up the value chain. That's a good thing if we're ready for it.
 
-## The org chart is dissolving.
+## The org chart is shifting.
 
 ### A 2,000-year-old constraint just broke
 
 For 2,000 years, organizations have been built around 1 constraint: a leader can effectively manage 3 to 8 people. That number hasn't changed since the Roman military. It's why we have hierarchies. It's why middle management exists - to aggregate, translate, and route.
 
-Here's the thing... AI doesn't need layers to coordinate. It doesn't need a weekly pipeline review to know what's happening. It doesn't need 3 days of spreadsheet building so a VP can ask a question about trends.
+Here's the thing, though ... 
 
-Sequoia Capital published a piece called "From Hierarchy to Intelligence" profiling Block (the company behind Cash App and Square). They built what they call a "Company World Model" - an AI system that maintains a continuously updated picture of the entire operation. The result? 3 roles instead of 10 layers:
+AI doesn't need layers to coordinate. 
 
-- **Individual contributors** who use the model for context instead of waiting for management approval.
-- **Directly Responsible Individuals** who own a problem for 90 days with cross-team authority.
-- **Player-coaches** who build things and develop people at the same time.
+AI doesn't need a weekly pipeline review to know what's happening. It doesn't need 3 days of spreadsheet building to get answers about trends.
 
-The "doing" part of management - gathering data, building reports, spotting trends - that's the stuff AI absorbs first. The thinking part - judgment, coaching, strategy - stays human.
+Sequoia Capital published a piece called "From Hierarchy to Intelligence" profiling Block (the company behind Cash App and Square), who built a "Company World Model" - an AI system that maintains a continuously updated picture of the entire operation. 
+
+The result is that there are 3 roles with AI managing the whole middle management layer. That "doing" part of management - gathering data, building reports, spotting trends - that's the stuff AI absorbs first. 
+
+But the thinking part - judgment, coaching, strategy - well, that stays human.
 
 ### Why this matters to us
 
-2 things. They pull in opposite directions, which is what makes it interesting.
+This matters for 2 reasons. 
 
-Inside our walls, "growing the team" starts to look less like adding headcount and more like increasing leverage per person. The question shifts from "who do we hire next?" to "how do we make every person on this team 3x more effective?"
+First, inside our walls - "growing our team" starts to look less like adding headcount and more like increasing leverage per person. The question shifts from "who do we hire next?" to "how do we make every person on this team 3x more effective?"
 
-Outside our walls, the companies we sell to are going to look different. Flatter orgs. Fewer decision-makers. The org chart your SDR mapped last year might not exist next year.
+And second, outside our walls - the companies we sell to are going to look different. Flatter orgs. Fewer decision-makers. The org chart we mapped last year might not exist next year.
 
-Here's the part that makes me optimistic. If management layers compress, the people who remain become more important, not less. Higher leverage. More authority. Closer to the work and to the culture. That's a very good thing for a company built on relationships and creative thinking.
+But! Here's the good news. 
+
+If management layers compress, the people who remain become more important, not less. Higher leverage. More authority. Closer to the work and to the culture. That's a good thing for a company like ours - one built on relationships and creative thinking.
 
 ## Agents are doing the work.
 
 ### From assistant to operator
 
-When I say AI is "taking over the doing," I don't just mean it's a tool you prompt and review. That was last year. The biggest players in tech are converging on the same conclusion: AI agents should do the work, not just help with it.
+The biggest players in tech are all converging on the same conclusion right now, and that is that AI agents should "do" the work, not just "help" with it.
+
+For example ...
 
 - **Anthropic's Claude** shipped 74 releases in 52 days. Claude Code generates over $2.5 billion in annual revenue. 4% of all public GitHub commits are now authored by Claude Code - a number that doubled in 1 month.
 - **OpenClaw** hit 250,000 GitHub stars in 60 days - surpassing React's 10-year record. 3.2 million monthly active users. Traffic grew 925% in a single month.
@@ -158,30 +192,46 @@ These aren't 3 competing tools. They're 3 signals pointing the same direction: A
 
 ### $20K to $1.8B with 2 people
 
-The example I can't stop thinking about is Matthew Gallagher.
+Here's a unicorn of an example. 
 
-Gallagher and his brother launched a telehealth company with $20,000 in startup capital. No venture funding. Just the 2 of them and AI agents handling nearly everything - operations, customer support, marketing, fulfillment. The agents don't assist. They run the business.
+Matthew Gallagher launched a telehealth company with $20,000. He set up his company with AI agents handling nearly everything - operations, customer support, marketing, fulfillment. The agents don't assist. They run the business.
 
-In 2025, they did $401 million in sales. In 2026, they're on track for $1.8 billion. 2 people. No employees. A $20,000 bet turned into one of the fastest-growing companies in the country.
+In 2025, they did $401 million in sales. He just hired his brother. In 2026, they're on track for $1.8 billion. 2 people. No employees. A $20,000 bet turned into one of the fastest-growing companies in the country.
 
-This isn't a tech story. It's a leverage story. The same AI tools available to a 2-person startup are available to everyone - including us. The question is who figures out how to use them first.
+It's a unicorn. Yes. This isn't a tech story, though.
+
+It's a leverage story.
+
+Those same AI tools are available to everyone, including us.
+
+The important question is - who figures out how to use them first? And are they pointing them at the right problems? 
 
 ### Why this matters to us
 
-Sequoia published another piece I think is one of the most important things I've read this year: ["AI's $600B Question"](https://www.sequoiacap.com/article/ais-600b-question/) set the scale of this shift, and their follow-up "Services: The New Software" named the mechanism. The argument: the next trillion-dollar company won't sell tools. It will sell outcomes. They split work into 2 categories:
+Sequoia published a great article called "Services: The New Software" and made the argument that the opportunities of the future don't depend on selling tools, but on selling outcomes. 
+
+They split work into 2 categories:
 
 - **Intelligence** - rule-based tasks. Coding, testing, drafting, matching. Clear inputs and outputs.
 - **Judgment** - experience-driven decisions. What to build. When to ship. What to push back on. Things that need context, intuition, and accountability.
 
-AI has crossed the line where it handles most intelligence work autonomously. What's left is judgment. And for every dollar companies spend on software, they spend 6 on services. The opportunity isn't in better tools. It's in better outcomes.
+AI has crossed the line where it handles most intelligence work autonomously. What's left is judgment. And for every dollar companies spend on software, they spend 6 on services. 
 
-Now think about that in our context. The more AI handles the transactional layer of this industry, the more value shifts to strategy, creative thinking, and the ability to understand what a client needs before they can articulate it. That's not a new skill for this team - it's what we've always done. AI just makes the case for it louder. And it's the thing AI can't replace.
+The opportunity isn't in better tools. It's in better outcomes.
+
+Now think about that in our context at Brand Blvd. 
+
+The more AI handles the transactional layer of this industry, the more value shifts to strategy, creative thinking, and the ability to understand what a client needs before they can articulate it. 
+
+That's not a new skill for this team - it's what we've always done. AI just makes the case for it louder. And it's the thing AI can't replace.
 
 ## The workforce is shifting.
 
 ### Why there's so much anxiety right now
 
-Here's some context for why AI feels heavy in the air. These are the numbers most people hear:
+Here's some context for why AI feels heavy. 
+
+These are the numbers most people hear:
 
 * 80% of people believe AI will impact their daily work.
 * 50% worry their job could be automated.
@@ -189,31 +239,21 @@ Here's some context for why AI feels heavy in the air. These are the numbers mos
 
 These aren't fake numbers. They're real, and they're exactly why so many people feel uneasy about AI right now. If all you ever hear is "automation eliminated 76,000 jobs," of course that's where your head goes.
 
-But that's the part of the story most people are getting. It's not the only part.
-
-Here at Brand Blvd, we're not trying to do more with fewer people. We're trying to make every person on this team more powerful, more effective, more valuable. AI isn't here to replace you. It's here to make you better at what you already do well. That's the version of this story I want us to be living in.
-
-### Where the upside actually is
-
-Work is moving away from time spent and toward value created. That's the real shift.
-
-The people who lean into this stuff get to shape what comes next. They get to decide what their role looks like in 2 years instead of being handed it. That's why we're making space for as many of you as possible to be part of this. Not as a test. As an invitation.
-
-Nobody on this team is a lost cause for being in the 98%. The whole point of the Lab is to bring people across.
+But, at Brand Blvd, we're not trying to do more with fewer people. We're trying to make every person on this team more powerful, more effective, more valuable. AI isn't here to replace you. It's here to make you better at what you already do well. That's the version of this story I want us to be living in.
 
 ### Why this matters to us
 
-If employee attachment to traditional jobs weakens across the market, merch budgets tied strictly to payroll size are vulnerable. But the need for belonging doesn't disappear - it relocates.
+A lot of companies aren't like us. 
 
-Work becomes a function. Identity becomes something broader. Community, values, tribe - those anchors strengthen when institutional stability weakens.
+The employer/employee relationship is going to shift. No doubt. So if employee attachment to traditional jobs weakens across the market, merch budgets tied strictly to payroll size are vulnerable. But the need for belonging doesn't disappear - it relocates.
 
-- **Internal** - Merch reflects culture and values, not just fills closets.
-- **External** - Build tribes of customers, advocates, insiders, ambassadors.
-- **Identity** - Move from "gifting employees" to "manufacturing belonging."
+Work becomes a function. 
 
-If we tie our growth to payroll size, we're tied to a shrinking lever. If we tie our growth to identity and belonging, we're tied to something expanding. That's the shift. And every person on this team is part of making it happen.
+Identity becomes something broader. 
 
-## The buyer isn't a person anymore.
+Community, values, tribe - those anchors strengthen when institutional stability weakens. If we tie our growth to payroll size, we're tied to a potentially shrinking lever. If we tie our growth to identity and belonging, we're tied to something expanding. 
+
+## The buyer may not be a person anymore.
 
 ### The question I don't think enough people are asking
 
