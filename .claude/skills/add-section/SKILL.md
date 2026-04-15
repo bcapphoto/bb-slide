@@ -66,9 +66,13 @@ Same content, adjusted for single-column layout with slightly smaller text.
 #### Critical Rules
 
 - **Text colors on dark backgrounds**: Use `text-foreground` and `text-muted-foreground`. NEVER use `text-gray-*` on dark-background slides (`dot-grid`, `dot-grid-bold`, `diagonal-lines`, `cross-grid`, `glow-br`).
-- **Text colors on white backgrounds**: Use `text-gray-900`, `text-gray-600`, `text-gray-500` as normal.
+- **Text colors on white backgrounds**: Use the theme-aware light utilities — `text-light`, `text-light-secondary`, `text-light-muted`, `border-light`, `bg-light-surface`. See the Text Color Rules in `/Users/bcap/Development/bb-slide/CLAUDE.md`.
 - **Vary background patterns** across sections for visual rhythm.
-- **Each section needs both desktop and mobile arrays.**
+- **~50/50 dark/light balance.** The whole presentation (existing + new sections combined) should sit around half dark, half light. Before finalizing, count dark vs light across both desktop and mobile arrays — if the new section tips the deck outside ~40-60%, flip 1-2 of your new slides to rebalance.
+  - Light tends to suit: stat callouts, case studies, pull quotes, "why this matters" conclusions, curriculum/structured lists, frame-shifting moments.
+  - Dark tends to suit: section openers, mood-setting serif statements, data-heavy charts, cinematic transitions.
+  - When flipping dark → light: change `diagonal-lines` / `cross-grid` / `dot-grid` to `bg-light-surface text-light <pattern>-light`, swap `text-muted-foreground` → `text-light-muted`, `text-foreground` → `text-light`.
+- **Each section needs both desktop and mobile arrays** — and the same beats should land on the same tone across both.
 
 ### 5. Add Sections to PresentationConfig
 

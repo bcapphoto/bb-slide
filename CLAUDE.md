@@ -105,6 +105,7 @@ Brand Blvd has an authoritative visual design system documented in `design.md` a
 - Articles are the source of truth — slides are derived from article content
 - Presenter notes must stay in sync with slides and article — update them whenever slides or article change
 - PDF accent color comes from `theme.pdf.accentColor`
+- **Aim for roughly 50/50 dark/light slide balance** in every deck (both desktop and mobile arrays) — all-dark decks feel monotonous; light slides give stats, pull quotes, case studies, and "why this matters" moments room to breathe. Count tones after drafting and rebalance before shipping.
 
 ### Text Color Rules (Critical)
 - **Dark-background slides** (`dot-grid`, `dot-grid-bold`, `diagonal-lines`, `cross-grid`, `glow-br`) — use theme-aware classes: `text-foreground`, `text-muted-foreground`, `text-primary`

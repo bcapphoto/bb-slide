@@ -66,6 +66,17 @@ Check that sections use different background patterns. If 3+ consecutive section
 - Dark options: `dot-grid`, `dot-grid-bold`, `diagonal-lines`, `cross-grid`, `glow-br`
 - Light options: `dot-grid-light`, `cross-grid-light`, `diagonal-lines-light`
 
+### 5a. Dark/Light Balance (~50/50)
+
+Count dark vs light slides in each array (desktop AND mobile). The whole deck should sit roughly 50/50 — anything outside ~40-60% in either direction is a finding. All-dark decks feel monotonous; light slides give pull quotes, stats, case studies, and "why this matters" moments room to breathe.
+
+- **Dark-background slides** (count as dark): any slide using `dot-grid`, `dot-grid-bold`, `diagonal-lines`, `cross-grid`, `glow-br` as its outer pattern, plus bare `<Slide>` containers and `SectionOpener` (uses dark `dot-grid`), `PromptSlide` (dark default).
+- **Light-background slides** (count as light): `WhiteSlide`, any slide with `bg-light-surface` or `*-light` pattern variants on the outer container.
+
+If the ratio is off, flag it as an Issue and recommend 2-4 candidate flips — typically back-to-back serif-statement slides, case-study / pull-quote / "why this matters" slides, or frame-shifting moments. When recommending a flip, note that BOTH the background pattern AND all child text color classes must change per the Text Color Rules in `/Users/bcap/Development/bb-slide/CLAUDE.md` (`text-muted-foreground` → `text-light-muted`, `text-foreground` → `text-light`, etc.).
+
+Also check desktop/mobile tonal parity: the same narrative beat should land on the same tone in both arrays.
+
 ### 6. TypeScript Compilation
 
 ```bash

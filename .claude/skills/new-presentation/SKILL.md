@@ -79,6 +79,12 @@ Always read these files to understand the patterns:
 
 4. **Background patterns**: Use `dot-grid`, `dot-grid-bold`, `diagonal-lines`, `cross-grid`, `glow-br` on dark slides. Use `dot-grid-light`, `cross-grid-light`, `diagonal-lines-light` on white slides. Vary them across sections for visual rhythm.
 
+   **~50/50 dark/light balance (required).** Aim for roughly half of the slides in each array (desktop AND mobile) to be light-background, half dark. All-dark decks feel monotonous and heavy; clustered tonal runs are fine, but the whole deck should breathe.
+   - **Suits light** (Canvas / `WhiteSlide` / `*-light` patterns): big stat callouts, case studies, pull quotes, "why this matters" conclusion slides, Sequoia-style frame-shifting moments, curriculum/structured lists, recap slides.
+   - **Suits dark** (default Imprint / `dot-grid` / `diagonal-lines` / `cross-grid`): section openers, hero/cover slides, mood-setting serif statements, data-heavy charts that rely on Imprint contrast, cinematic "tide" or transition moments.
+   - **Check step:** after drafting the slides arrays, count the dark vs light slides in each array. If either side is outside ~40-60%, flip 2-4 of the weakest-tone candidates (usually back-to-back serif statements) to the opposite tone. When flipping, update BOTH the background pattern class AND the text color classes per the Text Color Rules in the root `CLAUDE.md` (`/Users/bcap/Development/bb-slide/CLAUDE.md`) — e.g. `diagonal-lines` → `bg-light-surface text-light diagonal-lines-light`, `text-muted-foreground` → `text-light-muted`, `text-foreground` → `text-light`.
+   - Keep desktop and mobile arrays in sync: if a beat lands on a light slide on desktop, keep it light on mobile.
+
 5. **Text color rules for dark vs white backgrounds** (critical — getting this wrong makes text invisible):
    - **Dark-background slides** (`dot-grid`, `dot-grid-bold`, `diagonal-lines`, `cross-grid`, `glow-br`): Use `text-foreground` for headings/emphasis and `text-muted-foreground` for body text. NEVER use `text-gray-*` classes — they are dark colors on a dark background and become unreadable.
    - **White-background slides** (`WhiteSlide`, `bg-white`, or `*-light` pattern variants): Use Tailwind gray classes (`text-gray-900`, `text-gray-600`, `text-gray-500`) as normal.
