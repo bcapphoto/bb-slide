@@ -180,6 +180,28 @@ body {
 .text-light-muted { color: hsl(var(--light-text-muted)); }
 .border-light { border-color: hsl(var(--light-border)); }
 
+/* ─── Signal green text on light backgrounds → highlight pill ─── */
+/* On dark slides text-primary = Signal text (high contrast). On Canvas slides, */
+/* Signal as raw text color is illegible — apply the highlight pill treatment instead. */
+.bg-light-surface .text-primary {
+  background-color: hsl(${colors.primary});
+  color: hsl(${colors.primaryForeground});
+  padding: ${spacing.highlightPadding};
+  display: inline;
+  line-height: 1.35;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+}
+.bg-light-surface .text-primary\\/80 {
+  background-color: hsl(${colors.primary} / 0.8);
+  color: hsl(${colors.primaryForeground});
+  padding: ${spacing.highlightPadding};
+  display: inline;
+  line-height: 1.35;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+}
+
 /* ─── Animations ─── */
 @keyframes fade-up {
   0% { opacity: 0; transform: translateY(20px); }

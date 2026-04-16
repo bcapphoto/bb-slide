@@ -1,24 +1,24 @@
 # Life is better on the Blvd.
 
-*Why bring your book to Brand Blvd.*
+*We'd love to have you join us at Brand Blvd!*
 
 ---
 
-Thanks for the conversation.
+You've already built a great book of business. You've got the clients and the relationships. You know promo. You know what it takes to win. 
 
-Here's the thing — your book is yours. You built it. But the system behind you? It's probably not keeping up.
+But the system behind you? It's probably not keeping up.
 
 You're waiting on mockups. Chasing approvals. Spending hours on stuff that isn't selling.
 
-**You don't need more motivation. You need better infrastructure.**
+**You need a better system. You need a better team.**
 
-> You run your book like a business. We make your business better.
+> You run your book. We make your business better.
 
 ---
 
 ## Walk into every meeting with an unfair advantage.
 
-Most reps show up with a PDF and a pitch. Here's what you show up with at Brand Blvd:
+Most reps show up with a PDF and a pitch. Not at Brand Blvd. Here's what you show up with at Brand Blvd:
 
 - **Custom mockups** — AI-generated, branded to your client, built in seconds
 - **Pitch decks** — Fully designed, client-ready, done before you finish your coffee
