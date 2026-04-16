@@ -64,6 +64,7 @@ Plus seamless Canada + US logistics and execution — your clients get North Ame
 - **Best-in-class CRM and sales tools** to manage your pipeline like a real business
 - **Preferred supplier pricing** that protects your margin on every quote
 - **Sales collateral and enablement** that makes every touchpoint sharper
+- **Finance and POs are handled.** We manage the back-end, so you can stay in front of clients. 
 
 ---
 
@@ -72,8 +73,9 @@ Plus seamless Canada + US logistics and execution — your clients get North Ame
 You sell. We'll handle everything else. 
 
 - **Design team** — In-house creatives for the big pitches that win new business
-- **Customer service** — Production, order management, fulfillment — handled
+- **Customer service** — Production, order management, invoicing and payments and fulfillment — handled
 - **Sales development** — Help sourcing contacts and prospects when you want to grow
+- **Finance team** - 
 - **Self-promo budget** — Show up with branded materials that make an impression
 - **Sample budget** — Put product in your prospects' hands from day one
 
