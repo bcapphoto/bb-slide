@@ -412,6 +412,7 @@ const PresenterNotesPDF = () => (
           "Best-in-class CRM: Manage your pipeline like a real business, not sticky notes.",
           "Preferred supplier pricing: Protect your margin on every single quote.",
           "Sales collateral and enablement: Every touchpoint sharper, every conversation stronger.",
+          "Finance and POs handled: We manage the back-end so the rep stays in front of clients.",
           "You run your book like a business — we make your business better.",
           "These are the back-office advantages that compound over time.",
         ]}
@@ -475,7 +476,7 @@ const PresenterNotesPDF = () => (
         desc="Grid — Design team, customer service, sales development."
         points={[
           "Design team: In-house creatives for the big pitches that win new business.",
-          "Customer service: Production, order management, fulfillment — all handled so you stay in front of clients.",
+          "Customer service: Production, order management, invoicing and payments and fulfillment — all handled so you stay in front of clients.",
           "Sales development: Help sourcing contacts and prospects when you want to grow your book.",
           "These aren't promises — they're people already in place.",
         ]}

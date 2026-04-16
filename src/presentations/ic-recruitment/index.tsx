@@ -278,10 +278,11 @@ const buildDesktop = [
     <h2 className="font-title text-5xl md:text-7xl uppercase leading-[0.9] tracking-tight mb-12">
       <span className="text-gray-900">Run it like a </span><span className="highlight-green">business.</span>
     </h2>
-    <div className="grid grid-cols-1 md:grid-cols-3 gap-x-12 gap-y-8">
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-8">
       <NumberedItem num="1" title="Best-in-class CRM" desc="Sales tools to manage your pipeline like the real business it is." />
       <NumberedItem num="2" title="Preferred supplier pricing" desc="Protect your margin on every single quote." />
       <NumberedItem num="3" title="Sales collateral & enablement" desc="Every touchpoint sharper, every conversation stronger." />
+      <NumberedItem num="4" title="Finance & POs handled" desc="We manage the back-end, so you can stay in front of clients." />
     </div>
   </WhiteSlide>,
 
@@ -335,7 +336,7 @@ const teamDesktop = [
       <p className="font-display text-sm uppercase tracking-[0.35em] text-light-muted font-bold mb-10">Your Team</p>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
         <GridCard superTitle="Creative" title="Design team." body="In-house creatives for the big pitches that win new business." />
-        <GridCard superTitle="Operations" title="Customer service." body="Production, order management, fulfillment — all handled." />
+        <GridCard superTitle="Operations" title="Customer service." body="Production, order management, invoicing and payments and fulfillment — all handled." />
         <GridCard superTitle="Growth" title="Sales development." body="Help sourcing contacts and prospects when you want to grow." />
       </div>
     </div>
@@ -655,6 +656,7 @@ const buildMobile = [
         <NumberedItem num="1" title="Best-in-class CRM" desc="Manage your pipeline like the real business it is." />
         <NumberedItem num="2" title="Preferred supplier pricing" desc="Protect your margin on every quote." />
         <NumberedItem num="3" title="Sales collateral & enablement" desc="Every touchpoint sharper." />
+        <NumberedItem num="4" title="Finance & POs handled" desc="We manage the back-end, so you can stay in front of clients." />
       </div>
     </div>
   </div>,
@@ -696,7 +698,7 @@ const teamMobile = [
       <p className="font-display text-sm uppercase tracking-[0.35em] text-light-muted font-bold mb-10">Your Team</p>
       <div className="grid grid-cols-1 gap-8">
         <GridCard superTitle="Creative" title="Design team." body="In-house creatives for the big pitches." />
-        <GridCard superTitle="Operations" title="Customer service." body="Production, order management, fulfillment — handled." />
+        <GridCard superTitle="Operations" title="Customer service." body="Production, order management, invoicing and payments and fulfillment — handled." />
         <GridCard superTitle="Growth" title="Sales development." body="Help sourcing contacts and prospects." />
       </div>
     </div>

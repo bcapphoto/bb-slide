@@ -147,11 +147,12 @@ const notes: Record<string, string[][]> = {
     [
       "This section is about the business infrastructure — the systems that help run your book like a real business.",
     ],
-    // Slide 1: Numbered list — CRM, pricing, enablement
+    // Slide 1: Numbered list — CRM, pricing, enablement, finance/POs
     [
       "Best-in-class CRM and sales tools to manage pipeline like a real business, not a spreadsheet.",
       "Preferred supplier pricing protects margin on every single quote — directly impacts take-home.",
       "Sales collateral and enablement makes every touchpoint sharper and more professional.",
+      "Finance and POs are handled — we manage the back-end so the rep stays in front of clients.",
     ],
     // Slide 2: Statement — motivation vs. infrastructure
     [
@@ -175,12 +176,12 @@ const notes: Record<string, string[][]> = {
     ],
     // Slide 1: Statement — You sell. We handle everything else.
     [
-      "Their only job is to sell. Everything else — design, production, order management, fulfillment — is handled by real people who know their accounts.",
+      "Their only job is to sell. Everything else — design, production, order management, invoicing, payments, fulfillment — is handled by real people who know their accounts.",
     ],
     // Slide 2: Three-card grid — design, CS, sales dev
     [
       "Design team: in-house creatives for the big pitches — real designers, not outsourced.",
-      "Customer service: production, order management, fulfillment — the rep never chases an order.",
+      "Customer service: production, order management, invoicing and payments, fulfillment — the rep never chases an order.",
       "Sales development: proactive help sourcing contacts and prospects when they want to grow.",
     ],
     // Slide 3: Creative work gallery — real decks from the in-house team
