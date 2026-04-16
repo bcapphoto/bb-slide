@@ -106,6 +106,7 @@ Brand Blvd has an authoritative visual design system documented in `design.md` a
 - Presenter notes must stay in sync with slides and article — update them whenever slides or article change
 - PDF accent color comes from `theme.pdf.accentColor`
 - **Aim for roughly 50/50 dark/light slide balance** in every deck (both desktop and mobile arrays) — all-dark decks feel monotonous; light slides give stats, pull quotes, case studies, and "why this matters" moments room to breathe. Count tones after drafting and rebalance before shipping.
+- **Break big text blocks with double line breaks** — for any slide where a `SerifStatement`, `BigText`, or body paragraph holds multiple sentences or distinct thoughts, insert `<br /><br />` between the logical groups (not a single `<br />`). The extra blank line gives the eye a rest, sets the rhythm for how the slide should read aloud, and prevents the "wall of italic serif" effect. A single sentence needs no break. Two sentences that make one point can stay on one line. Two sentences that pivot (setup → payoff, before → after, "X. But Y.") get `<br /><br />` between them.
 
 ### Text Color Rules (Critical)
 - **Dark-background slides** (`dot-grid`, `dot-grid-bold`, `diagonal-lines`, `cross-grid`, `glow-br`) — use theme-aware classes: `text-foreground`, `text-muted-foreground`, `text-primary`

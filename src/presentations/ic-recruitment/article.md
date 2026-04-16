@@ -12,26 +12,34 @@ You're waiting on mockups. Chasing approvals. Spending hours on stuff that isn't
 
 **You need a better system. You need a better team.**
 
-> You run your book. We make your business better.
+Brand Blvd can be that team. We'd love for you to join us!
 
 ---
 
 ## Walk into every meeting with an unfair advantage.
 
-Most reps show up with a PDF and a pitch. Not at Brand Blvd. Here's what you show up with at Brand Blvd:
+Most reps show up with a PDF and a pitch. Not our people, though. When you're on the Brand Blvd team, here's what you show up with: 
 
 - **Custom mockups** — AI-generated, branded to your client, built in seconds
-- **Pitch decks** — Fully designed, client-ready, done before you finish your coffee
-- **Demo stores** — Live, clickable company stores your prospect can browse on the spot
+- **Pitch decks** — Fully designed, client-ready, done before your morning coffee
+- **Demo stores** — Live, clickable company stores your prospect can try on the spot
 - **Creative concepts** — Ideas turned into polished presentations, not napkin sketches
 
-All of this is powered by **Magic Merch Maker** — our all-in-one AI platform built in-house at Brand Blvd. It does company research automatically, generates product ideas tailored to your client's brand, creates AI mockups in seconds, assembles Creative Concept Decks, and even spins up a live demo store — all before the meeting starts.
-
-It's not a collection of disconnected tools. It's a single pipeline: research a prospect, generate ideas, build mockups, assemble a pitch, and launch a store. End to end.
+All of this is powered by **Magic Merch Maker** — our in-house, custom-built AI-first sales enablement tool. It does company research automatically, generates product ideas tailored to your client's brand, creates AI mockups in seconds, assembles Creative Concept Decks, and even spins up a live demo store — all before the meeting starts!
 
 | Before | After |
 |--------|-------|
-| You spend half your week building proposals and chasing mockups. | You spend it closing. Magic Merch Maker does the rest. |
+| You spend half your week building mockups and chasing approvals. | You spend it closing. Magic Merch Maker does the rest. |
+
+---
+
+## See the magic in action
+
+Don't just take our word for it. Meet Bryan, our VP of Growth and Innovation. He has almost 15 of SaaS experience and building products and brings that level of innovation to Brand Blvd. Watch him see what you can do with Magic Merch Maker. 
+
+(Video)
+
+And this is just the beginning ... 
 
 ---
 
@@ -47,7 +55,7 @@ In-house creative team. Full production and execution under one roof. Magic Merc
 |--------|-------|
 | You're a product rep in a commodity conversation. | You're a creative partner your clients can't replace. |
 
-> Plus seamless Canada + U.S. execution — your clients get North American reach with zero friction.
+Plus seamless Canada + US logistics and execution — your clients get North American reach with zero friction.
 
 ---
 
@@ -59,9 +67,9 @@ In-house creative team. Full production and execution under one roof. Magic Merc
 
 ---
 
-## You sell. We handle everything else.
+## A full team behind you. Not a phone tree.
 
-Not a phone tree. A full team.
+You sell. We'll handle everything else. 
 
 - **Design team** — In-house creatives for the big pitches that win new business
 - **Customer service** — Production, order management, fulfillment — handled
@@ -71,12 +79,26 @@ Not a phone tree. A full team.
 
 ---
 
-*Let's keep the conversation going.*
+## Like what you see? Let's not overthink it. 
 
-You already know us. If any of this sounds like the upgrade you've been looking for, let's talk.
+If you’re even a little curious, we should talk. 
 
-**Jill Pascuzzi**
-VP of Sales, USA — Brand Blvd
-jpascuzzi@brandblvd.com
-1-844-639-7924 ext. 248
-brandblvd.com
+Worst case? You get a fresh perspective on how this industry could work. 
+
+Best case? Things start to move a whole lot faster. 
+
+I’d genuinely love to meet you. Pick your move: 
+
+DM me on LinkedIn (https://www.linkedin.com/in/jillpascuzzi/)  
+
+Call me (Old school still works) 905-988-6910 
+
+Text Me (new school is even better) 
+
+Shoot me an email (jpascuzzi@brandblvd.com 
+
+Book a meeting  (https://meetings.hubspot.com/jill-pascuzzi/lets-talk)  
+
+Or don’t. But you’ll probably keep doing things the same way. 
+
+And if you’ve read this far… I’m guessing you’re ready for something different. 

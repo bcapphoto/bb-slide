@@ -213,7 +213,9 @@ export const MMMShowcaseDesktop = () => (
 );
 
 /* ─── Product Gallery (real AI mockups from MMM) ─── */
-const products = [
+type Product = { src: string; company: string; product: string };
+
+const products1: Product[] = [
   { src: "/images/mmm-products/tudor-recruitment-kit.jpg", company: "Tudor Watch", product: "Recruitment Kit" },
   { src: "/images/mmm-products/gateway-spring-kit.jpg", company: "Gateway Dealer Network", product: "Spring Gifting Kit" },
   { src: "/images/mmm-products/eclipse-backpack.jpg", company: "Eclipse Automation", product: "Nomad Renew Backpack" },
@@ -222,7 +224,17 @@ const products = [
   { src: "/images/mmm-products/canadian-tire-soft-cooler.jpg", company: "Canadian Tire", product: "Soft Pack Cooler" },
 ];
 
-export const MMMProductGalleryDesktop = () => (
+// TODO: Replace these 6 placeholders with real product images for the second gallery slide.
+const products2: Product[] = [
+  { src: "/images/mmm-products/placeholder-1.jpg", company: "Client Name", product: "Product Name" },
+  { src: "/images/mmm-products/placeholder-2.jpg", company: "Client Name", product: "Product Name" },
+  { src: "/images/mmm-products/placeholder-3.jpg", company: "Client Name", product: "Product Name" },
+  { src: "/images/mmm-products/placeholder-4.jpg", company: "Client Name", product: "Product Name" },
+  { src: "/images/mmm-products/placeholder-5.jpg", company: "Client Name", product: "Product Name" },
+  { src: "/images/mmm-products/placeholder-6.jpg", company: "Client Name", product: "Product Name" },
+];
+
+const GalleryDesktop = ({ products }: { products: Product[] }) => (
   <div className="w-full max-w-6xl px-8 md:px-16">
     <p className="font-display text-sm uppercase tracking-[0.35em] text-gray-500 font-bold mb-2">Real AI Mockups</p>
     <h2 className="font-title text-4xl md:text-5xl uppercase leading-[0.9] tracking-tight mb-3">
@@ -246,7 +258,7 @@ export const MMMProductGalleryDesktop = () => (
   </div>
 );
 
-export const MMMProductGalleryMobile = () => (
+const GalleryMobile = ({ products }: { products: Product[] }) => (
   <div className="w-full px-8">
     <p className="font-display text-sm uppercase tracking-[0.35em] text-gray-500 font-bold mb-2">Real AI Mockups</p>
     <h2 className="font-title text-3xl uppercase leading-[0.9] tracking-tight mb-3">
@@ -268,6 +280,11 @@ export const MMMProductGalleryMobile = () => (
     </div>
   </div>
 );
+
+export const MMMProductGalleryDesktop = () => <GalleryDesktop products={products1} />;
+export const MMMProductGalleryMobile = () => <GalleryMobile products={products1} />;
+export const MMMProductGallery2Desktop = () => <GalleryDesktop products={products2} />;
+export const MMMProductGallery2Mobile = () => <GalleryMobile products={products2} />;
 
 /* ─── Full MMM Showcase (used in mobile slide) ─── */
 export const MMMShowcaseMobile = () => (

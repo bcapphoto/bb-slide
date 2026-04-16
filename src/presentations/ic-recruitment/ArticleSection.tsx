@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { IconRocket, IconLightbulb, IconChart, IconTeam } from "@/components/SectionIcons";
 import bbLogoHorizontal from "@/assets/bb-logo-horizontal-white.svg";
-import { Download } from "lucide-react";
+import { Download, Play, Linkedin, Phone, MessageSquare, Mail, Calendar } from "lucide-react";
 
 const SectionDivider = ({ icon: Icon }: { icon: React.ComponentType<{ size?: number; className?: string }> }) => (
   <div className="flex items-center gap-6 my-20 md:my-28">
@@ -52,28 +52,46 @@ const ArticleSection = () => {
             Life is better on the Blvd.
           </h1>
           <p className="font-serif text-xl md:text-2xl italic text-gray-500 mb-6">
-            Why bring your book to Brand Blvd.
+            We'd love to have you join us at Brand Blvd!
           </p>
           <div className="w-16 h-1 bg-brand-green" />
         </header>
 
+        {/* Jill's welcome video */}
+        <div className="mb-16">
+          <div className="relative bg-gray-900 rounded-lg overflow-hidden mb-4 aspect-video flex items-center justify-center">
+            <div className="absolute inset-0 bg-gradient-to-br from-gray-800 to-gray-950" />
+            <div className="relative z-10 flex flex-col items-center justify-center text-center px-6 py-10">
+              <div className="w-20 h-20 rounded-full bg-brand-green/90 flex items-center justify-center mb-6 shadow-lg">
+                <Play size={32} className="text-gray-900 ml-1" fill="currentColor" />
+              </div>
+              <p className="font-display text-xs uppercase tracking-[0.3em] text-brand-green font-bold mb-2">A Personal Welcome</p>
+              <p className="font-serif text-2xl md:text-3xl text-white mb-2">Jill Pascuzzi</p>
+              <p className="text-gray-400 text-sm md:text-base">VP of Sales, USA - Brand Blvd</p>
+            </div>
+          </div>
+          <p className="text-gray-500 text-sm italic leading-relaxed text-center">
+            Video walkthrough - available in the live presentation.
+          </p>
+        </div>
+
         {/* Intro */}
         <div className="mb-16">
           <p className="text-gray-600 text-lg leading-relaxed mb-6">
-            Thanks for the conversation.
+            You've already built a great book of business. You've got the clients and the relationships. You know promo. You know what it takes to win.
           </p>
           <p className="text-gray-600 text-lg leading-relaxed mb-6">
-            Here's the thing — your book is yours. You built it. But the system behind you? It's probably not keeping up.
+            But the system behind you? It's probably not keeping up.
           </p>
           <p className="text-gray-600 text-lg leading-relaxed mb-6">
             You're waiting on mockups. Chasing approvals. Spending hours on stuff that isn't selling.
           </p>
-          <p className="text-gray-700 text-lg leading-relaxed font-medium mb-6">
-            You don't need more motivation. You need better infrastructure.
+          <p className="text-gray-800 text-xl font-medium leading-relaxed mb-6">
+            You need a better system. You need a better team.
           </p>
           <div className="border-l-4 border-brand-green pl-5 my-8">
             <p className="text-gray-800 text-xl font-medium leading-relaxed">
-              You run your book like a business. We make your business better.
+              Brand Blvd can be that team. We'd love for you to join us!
             </p>
           </div>
         </div>
@@ -86,40 +104,37 @@ const ArticleSection = () => {
         </h2>
 
         <p className="text-gray-600 text-lg leading-relaxed mb-6">
-          Most reps show up with a PDF and a pitch. Here's what you show up with at Brand Blvd:
+          Most reps show up with a PDF and a pitch. Not our people, though. When you're on the Brand Blvd team, here's what you show up with:
         </p>
 
         <ul className="space-y-4 mb-8">
           <li className="flex items-start gap-3">
             <span className="w-2 h-2 rounded-full bg-brand-green mt-2.5 flex-shrink-0" />
-            <span className="text-gray-700 text-lg leading-relaxed"><strong>Custom mockups</strong> — AI-generated, branded to your client, built in seconds</span>
+            <span className="text-gray-700 text-lg leading-relaxed"><strong>Custom mockups</strong> - AI-generated, branded to your client, built in seconds</span>
           </li>
           <li className="flex items-start gap-3">
             <span className="w-2 h-2 rounded-full bg-brand-green mt-2.5 flex-shrink-0" />
-            <span className="text-gray-700 text-lg leading-relaxed"><strong>Pitch decks</strong> — Fully designed, client-ready, done before you finish your coffee</span>
+            <span className="text-gray-700 text-lg leading-relaxed"><strong>Pitch decks</strong> - Fully designed, client-ready, done before your morning coffee</span>
           </li>
           <li className="flex items-start gap-3">
             <span className="w-2 h-2 rounded-full bg-brand-green mt-2.5 flex-shrink-0" />
-            <span className="text-gray-700 text-lg leading-relaxed"><strong>Demo stores</strong> — Live, clickable company stores your prospect can browse on the spot</span>
+            <span className="text-gray-700 text-lg leading-relaxed"><strong>Demo stores</strong> - Live, clickable company stores your prospect can try on the spot</span>
           </li>
           <li className="flex items-start gap-3">
             <span className="w-2 h-2 rounded-full bg-brand-green mt-2.5 flex-shrink-0" />
-            <span className="text-gray-700 text-lg leading-relaxed"><strong>Creative concepts</strong> — Ideas turned into polished presentations, not napkin sketches</span>
+            <span className="text-gray-700 text-lg leading-relaxed"><strong>Creative concepts</strong> - Ideas turned into polished presentations, not napkin sketches</span>
           </li>
         </ul>
 
         <p className="text-gray-600 text-lg leading-relaxed mb-6">
-          All of this is powered by <strong>Magic Merch Maker</strong> — our all-in-one AI platform built in-house at Brand Blvd. It does company research automatically, generates product ideas tailored to your client's brand, creates AI mockups in seconds, assembles Creative Concept Decks, and even spins up a live demo store — all before the meeting starts.
-        </p>
-        <p className="text-gray-600 text-lg leading-relaxed mb-6">
-          It's not a collection of disconnected tools. It's a single pipeline: research a prospect, generate ideas, build mockups, assemble a pitch, and launch a store. End to end.
+          All of this is powered by <strong>Magic Merch Maker</strong> - our in-house, custom-built AI-first sales enablement tool. It does company research automatically, generates product ideas tailored to your client's brand, creates AI mockups in seconds, assembles Creative Concept Decks, and even spins up a live demo store - all before the meeting starts!
         </p>
 
         <div className="bg-gray-50 rounded-lg p-6 md:p-8 mb-8">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div>
               <p className="font-display text-xs uppercase tracking-[0.3em] text-gray-500 font-bold mb-2">Before</p>
-              <p className="text-gray-600 leading-relaxed">You spend half your week building proposals and chasing mockups.</p>
+              <p className="text-gray-600 leading-relaxed">You spend half your week building mockups and chasing approvals.</p>
             </div>
             <div>
               <p className="font-display text-xs uppercase tracking-[0.3em] text-brand-green font-bold mb-2">After</p>
@@ -128,7 +143,39 @@ const ArticleSection = () => {
           </div>
         </div>
 
-        {/* SECTION 2: Sell Ideas */}
+        {/* SECTION 2: See the Magic in Action */}
+        <SectionDivider icon={IconLightbulb} />
+
+        <h2 className="font-serif text-3xl md:text-4xl leading-tight text-gray-900 mb-10">
+          See the magic in action.
+        </h2>
+
+        <p className="text-gray-600 text-lg leading-relaxed mb-8">
+          Don't just take our word for it. Meet Bryan, our VP of Growth and Innovation. He has almost 15 years of SaaS experience building products, and he brings that level of innovation to Brand Blvd. Watch him show you what you can do with Magic Merch Maker.
+        </p>
+
+        {/* Video Callout */}
+        <div className="relative bg-gray-900 rounded-lg overflow-hidden mb-8 aspect-video flex items-center justify-center">
+          <div className="absolute inset-0 bg-gradient-to-br from-gray-800 to-gray-950" />
+          <div className="relative z-10 flex flex-col items-center justify-center text-center px-6 py-10">
+            <div className="w-20 h-20 rounded-full bg-brand-green/90 flex items-center justify-center mb-6 shadow-lg">
+              <Play size={32} className="text-gray-900 ml-1" fill="currentColor" />
+            </div>
+            <p className="font-display text-xs uppercase tracking-[0.3em] text-brand-green font-bold mb-2">Video Walkthrough</p>
+            <p className="font-serif text-2xl md:text-3xl text-white mb-2">Bryan Caporicci</p>
+            <p className="text-gray-400 text-sm md:text-base">VP of Growth and Innovation, Brand Blvd</p>
+          </div>
+        </div>
+
+        <p className="text-gray-500 text-sm italic leading-relaxed mb-8 text-center">
+          Video walkthrough - available in the live presentation.
+        </p>
+
+        <p className="text-gray-800 text-xl font-medium leading-relaxed">
+          And this is just the beginning...
+        </p>
+
+        {/* SECTION 3: Sell Ideas */}
         <SectionDivider icon={IconLightbulb} />
 
         <h2 className="font-serif text-3xl md:text-4xl leading-tight text-gray-900 mb-10">
@@ -162,11 +209,11 @@ const ArticleSection = () => {
 
         <div className="border-l-4 border-brand-green pl-5 my-8">
           <p className="text-gray-800 text-xl font-medium leading-relaxed">
-            Plus seamless Canada + U.S. execution — your clients get North American reach with zero friction.
+            Plus seamless Canada + US logistics and execution - your clients get North American reach with zero friction.
           </p>
         </div>
 
-        {/* SECTION 3: Build Bigger */}
+        {/* SECTION 4: Build Bigger */}
         <SectionDivider icon={IconChart} />
 
         <h2 className="font-serif text-3xl md:text-4xl leading-tight text-gray-900 mb-10">
@@ -188,54 +235,157 @@ const ArticleSection = () => {
           </li>
         </ul>
 
-        {/* SECTION 4: Full Team */}
+        {/* SECTION 5: Full Team */}
         <SectionDivider icon={IconTeam} />
 
         <h2 className="font-serif text-3xl md:text-4xl leading-tight text-gray-900 mb-10">
-          You sell. We handle everything else.
+          A full team behind you. Not a phone tree.
         </h2>
 
         <p className="text-gray-600 text-lg leading-relaxed mb-8">
-          Not a phone tree. A full team.
+          You sell. We'll handle everything else.
         </p>
 
         <ul className="space-y-4 mb-8">
           <li className="flex items-start gap-3">
             <span className="w-2 h-2 rounded-full bg-brand-green mt-2.5 flex-shrink-0" />
-            <span className="text-gray-700 text-lg leading-relaxed"><strong>Design team</strong> — In-house creatives for the big pitches that win new business</span>
+            <span className="text-gray-700 text-lg leading-relaxed"><strong>Design team</strong> - In-house creatives for the big pitches that win new business</span>
           </li>
           <li className="flex items-start gap-3">
             <span className="w-2 h-2 rounded-full bg-brand-green mt-2.5 flex-shrink-0" />
-            <span className="text-gray-700 text-lg leading-relaxed"><strong>Customer service</strong> — Production, order management, fulfillment — handled</span>
+            <span className="text-gray-700 text-lg leading-relaxed"><strong>Customer service</strong> - Production, order management, fulfillment, all handled</span>
           </li>
           <li className="flex items-start gap-3">
             <span className="w-2 h-2 rounded-full bg-brand-green mt-2.5 flex-shrink-0" />
-            <span className="text-gray-700 text-lg leading-relaxed"><strong>Sales development</strong> — Help sourcing contacts and prospects when you want to grow</span>
+            <span className="text-gray-700 text-lg leading-relaxed"><strong>Sales development</strong> - Help sourcing contacts and prospects when you want to grow</span>
           </li>
           <li className="flex items-start gap-3">
             <span className="w-2 h-2 rounded-full bg-brand-green mt-2.5 flex-shrink-0" />
-            <span className="text-gray-700 text-lg leading-relaxed"><strong>Self-promo budget</strong> — Show up with branded materials that make an impression</span>
+            <span className="text-gray-700 text-lg leading-relaxed"><strong>Self-promo budget</strong> - Show up with branded materials that make an impression</span>
           </li>
           <li className="flex items-start gap-3">
             <span className="w-2 h-2 rounded-full bg-brand-green mt-2.5 flex-shrink-0" />
-            <span className="text-gray-700 text-lg leading-relaxed"><strong>Sample budget</strong> — Put product in your prospects' hands from day one</span>
+            <span className="text-gray-700 text-lg leading-relaxed"><strong>Sample budget</strong> - Put product in your prospects' hands from day one</span>
           </li>
         </ul>
 
-        {/* Closing */}
-        <div className="border-t border-gray-200 mt-20 pt-12 text-center">
-          <p className="font-serif text-2xl md:text-3xl italic text-gray-600 mb-4">
-            Let's keep the conversation going.
+        {/* Closing CTA */}
+        <div className="mt-20 pt-12 border-t border-gray-200">
+          <h2 className="font-serif text-3xl md:text-4xl leading-tight text-gray-900 mb-8">
+            Like what you see? Let's not overthink it.
+          </h2>
+
+          <p className="text-gray-600 text-lg leading-relaxed mb-6">
+            If you're even a little curious, we should talk.
           </p>
-          <p className="text-gray-500 text-base leading-relaxed mb-8">
-            You already know us. If any of this sounds like the upgrade you've been looking for, let's talk.
+          <p className="text-gray-600 text-lg leading-relaxed mb-6">
+            Worst case? You get a fresh perspective on how this industry could work.
           </p>
-          <div className="inline-block border border-gray-200 rounded-lg px-8 py-6 text-left">
-            <p className="font-display text-sm uppercase tracking-[0.2em] text-brand-green font-bold mb-2">Jill Pascuzzi</p>
-            <p className="text-gray-600 text-sm">VP of Sales, USA — Brand Blvd</p>
-            <p className="text-gray-600 text-sm">jpascuzzi@brandblvd.com</p>
-            <p className="text-gray-600 text-sm">1-844-639-7924 ext. 248</p>
-            <p className="text-gray-600 text-sm">brandblvd.com</p>
+          <p className="text-gray-600 text-lg leading-relaxed mb-8">
+            Best case? Things start to move a whole lot faster.
+          </p>
+
+          <p className="text-gray-800 text-lg leading-relaxed font-medium mb-8">
+            I'd genuinely love to meet you. Pick your move:
+          </p>
+
+          {/* Jill's Contact Card */}
+          <div className="bg-gray-50 border border-gray-200 rounded-lg p-6 md:p-8 mb-10">
+            <div className="mb-6 pb-6 border-b border-gray-200">
+              <p className="font-display text-sm uppercase tracking-[0.2em] text-brand-green font-bold mb-2">Jill Pascuzzi</p>
+              <p className="text-gray-600 text-sm">Brand Blvd</p>
+            </div>
+
+            <ul className="space-y-4">
+              <li>
+                <a
+                  href="https://www.linkedin.com/in/jillpascuzzi/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-start gap-4 group"
+                >
+                  <span className="flex-shrink-0 w-10 h-10 rounded-sm bg-brand-green/10 flex items-center justify-center group-hover:bg-brand-green/20 transition-colors">
+                    <Linkedin size={18} className="text-brand-green" />
+                  </span>
+                  <span className="flex-1 pt-1">
+                    <span className="block text-gray-900 font-medium group-hover:text-brand-green transition-colors">DM me on LinkedIn</span>
+                    <span className="block text-gray-500 text-sm">linkedin.com/in/jillpascuzzi</span>
+                  </span>
+                </a>
+              </li>
+
+              <li>
+                <a
+                  href="tel:+19059886910"
+                  className="flex items-start gap-4 group"
+                >
+                  <span className="flex-shrink-0 w-10 h-10 rounded-sm bg-brand-green/10 flex items-center justify-center group-hover:bg-brand-green/20 transition-colors">
+                    <Phone size={18} className="text-brand-green" />
+                  </span>
+                  <span className="flex-1 pt-1">
+                    <span className="block text-gray-900 font-medium group-hover:text-brand-green transition-colors">Call me</span>
+                    <span className="block text-gray-500 text-sm">905-988-6910 (old school still works)</span>
+                  </span>
+                </a>
+              </li>
+
+              <li>
+                <a
+                  href="sms:+19059886910"
+                  className="flex items-start gap-4 group"
+                >
+                  <span className="flex-shrink-0 w-10 h-10 rounded-sm bg-brand-green/10 flex items-center justify-center group-hover:bg-brand-green/20 transition-colors">
+                    <MessageSquare size={18} className="text-brand-green" />
+                  </span>
+                  <span className="flex-1 pt-1">
+                    <span className="block text-gray-900 font-medium group-hover:text-brand-green transition-colors">Text me</span>
+                    <span className="block text-gray-500 text-sm">905-988-6910 (new school is even better)</span>
+                  </span>
+                </a>
+              </li>
+
+              <li>
+                <a
+                  href="mailto:jpascuzzi@brandblvd.com"
+                  className="flex items-start gap-4 group"
+                >
+                  <span className="flex-shrink-0 w-10 h-10 rounded-sm bg-brand-green/10 flex items-center justify-center group-hover:bg-brand-green/20 transition-colors">
+                    <Mail size={18} className="text-brand-green" />
+                  </span>
+                  <span className="flex-1 pt-1">
+                    <span className="block text-gray-900 font-medium group-hover:text-brand-green transition-colors">Shoot me an email</span>
+                    <span className="block text-gray-500 text-sm">jpascuzzi@brandblvd.com</span>
+                  </span>
+                </a>
+              </li>
+
+              <li>
+                <a
+                  href="https://meetings.hubspot.com/jill-pascuzzi/lets-talk"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-start gap-4 group"
+                >
+                  <span className="flex-shrink-0 w-10 h-10 rounded-sm bg-brand-green/10 flex items-center justify-center group-hover:bg-brand-green/20 transition-colors">
+                    <Calendar size={18} className="text-brand-green" />
+                  </span>
+                  <span className="flex-1 pt-1">
+                    <span className="block text-gray-900 font-medium group-hover:text-brand-green transition-colors">Book a meeting</span>
+                    <span className="block text-gray-500 text-sm">meetings.hubspot.com/jill-pascuzzi/lets-talk</span>
+                  </span>
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          <p className="text-gray-600 text-lg leading-relaxed mb-6">
+            Or don't. But you'll probably keep doing things the same way.
+          </p>
+
+          <div className="border-l-4 border-brand-green pl-5 my-8">
+            <p className="text-gray-800 text-xl font-medium leading-relaxed">
+              And if you've read this far... I'm guessing you're ready for something different.
+            </p>
           </div>
         </div>
 

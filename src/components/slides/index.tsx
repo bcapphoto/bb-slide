@@ -99,13 +99,13 @@ export const MobileSection = ({ children, className = "" }: { children: React.Re
 );
 
 /* ─── Interactive prompt/discussion slide ─── */
-export const PromptSlide = ({ question }: { question: string }) => (
+export const PromptSlide = ({ question, label = "Discussion" }: { question: string; label?: string }) => (
   <div className="relative w-full h-full flex items-center justify-center overflow-hidden">
     <div className="absolute inset-0 flex items-center justify-center select-none pointer-events-none">
       <span className="font-serif text-[20rem] md:text-[28rem] text-foreground/[0.03] leading-none">?</span>
     </div>
     <div className="relative z-10 px-8 md:px-20 lg:px-32 max-w-5xl text-center">
-      <p className="font-display text-sm uppercase tracking-[0.35em] text-primary font-bold mb-8">Discussion</p>
+      <p className="font-display text-sm uppercase tracking-[0.35em] text-primary font-bold mb-8">{label}</p>
       <p className="font-serif text-2xl md:text-4xl lg:text-5xl italic leading-snug">{question}</p>
     </div>
   </div>
