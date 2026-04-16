@@ -270,13 +270,14 @@ const ArticlePDF = () => (
       <Bullet>Best-in-class CRM and sales tools to manage your pipeline like a real business</Bullet>
       <Bullet>Preferred supplier pricing that protects your margin on every quote</Bullet>
       <Bullet>Sales collateral and enablement that makes every touchpoint sharper</Bullet>
+      <Bullet>Finance and POs are handled. We manage the back-end, so you can stay in front of clients.</Bullet>
 
       {/* Section 4 */}
       <Divider />
       <Text style={s.h2}>You sell. We handle everything else.</Text>
       <Text style={s.pLast}>Not a phone tree. A full team.</Text>
       <Bullet>Design team — In-house creatives for the big pitches that win new business</Bullet>
-      <Bullet>Customer service — Production, order management, fulfillment — handled</Bullet>
+      <Bullet>Customer service — Production, order management, invoicing and payments, and fulfillment — handled</Bullet>
       <Bullet>Sales development — Help sourcing contacts and prospects when you want to grow</Bullet>
       <Bullet>Self-promo budget — Show up with branded materials that make an impression</Bullet>
       <Bullet>Sample budget — Put product in your prospects' hands from day one</Bullet>

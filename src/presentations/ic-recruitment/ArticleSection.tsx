@@ -273,6 +273,10 @@ const ArticleSection = () => {
             <span className="w-2 h-2 rounded-full bg-brand-green mt-2.5 flex-shrink-0" />
             <span className="text-gray-700 text-lg leading-relaxed"><strong>Sales collateral and enablement</strong> that makes every touchpoint sharper</span>
           </li>
+          <li className="flex items-start gap-3">
+            <span className="w-2 h-2 rounded-full bg-brand-green mt-2.5 flex-shrink-0" />
+            <span className="text-gray-700 text-lg leading-relaxed"><strong>Finance and POs are handled.</strong> We manage the back-end, so you can stay in front of clients.</span>
+          </li>
         </ul>
 
         {/* SECTION 5: Full Team */}
@@ -293,7 +297,7 @@ const ArticleSection = () => {
           </li>
           <li className="flex items-start gap-3">
             <span className="w-2 h-2 rounded-full bg-brand-green mt-2.5 flex-shrink-0" />
-            <span className="text-gray-700 text-lg leading-relaxed"><strong>Customer service</strong> - Production, order management, fulfillment, all handled</span>
+            <span className="text-gray-700 text-lg leading-relaxed"><strong>Customer service</strong> - Production, order management, invoicing and payments, and fulfillment - handled</span>
           </li>
           <li className="flex items-start gap-3">
             <span className="w-2 h-2 rounded-full bg-brand-green mt-2.5 flex-shrink-0" />
