@@ -183,16 +183,22 @@ const notes: Record<string, string[][]> = {
       "Customer service: production, order management, fulfillment — the rep never chases an order.",
       "Sales development: proactive help sourcing contacts and prospects when they want to grow.",
     ],
-    // Slide 3: Show up ready — budgets
+    // Slide 3: Creative work gallery — real decks from the in-house team
+    [
+      "Proof slide: real creative work from the in-house team — this is what 'design team' actually means.",
+      "The 'View the full deck' button opens a lightbox with all 30 pages of a real client deck (Redhead Brands apparel concepts).",
+      "Use this moment to stop talking and let the work speak — scroll a few pages live if the conversation is going well.",
+    ],
+    // Slide 4: Show up ready — budgets
     [
       "Self-promo budget: branded materials — business cards, leave-behinds, branded merch — that make a professional impression.",
       "Sample budget: put product in a prospect's hands from day one. Nothing closes like a physical sample.",
     ],
-    // Slide 4: Discussion prompt
+    // Slide 5: Discussion prompt
     [
       "Discussion: 'What would you do differently if you had a full team backing every deal?'",
     ],
-    // Slide 5: Section summary — You sell. We handle everything else.
+    // Slide 6: Section summary — You sell. We handle everything else.
     [
       "Design, customer service, sales development, budgets, and infrastructure — all behind every deal.",
     ],

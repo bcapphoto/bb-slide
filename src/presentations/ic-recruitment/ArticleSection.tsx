@@ -2,6 +2,28 @@ import { useState } from "react";
 import { IconRocket, IconLightbulb, IconChart, IconTeam } from "@/components/SectionIcons";
 import bbLogoHorizontal from "@/assets/bb-logo-horizontal-white.svg";
 import { Download, Play, Linkedin, Phone, MessageSquare, Mail, Calendar } from "lucide-react";
+import { MMMArticleGallery, TeamCreativeArticleGallery } from "./TeamCreativeUI";
+
+const mmmGalleryAll: string[] = [
+  "lifestyle_1771623752575.jpg",
+  "lifestyle_1771864508176.jpg",
+  "lifestyle_1771949969169.jpg",
+  "lifestyle_1771970952692.jpg",
+  "lifestyle_1772116231422.jpg",
+  "lifestyle_1772289610212.jpg",
+  "lifestyle_1772553153837.jpg",
+  "lifestyle_1772553162379.jpg",
+  "lifestyle_1773685480355.jpg",
+  "lifestyle_1773929954800.jpg",
+  "lifestyle_1774026059126.jpg",
+  "lifestyle_1774275098208.jpg",
+  "lifestyle_1774446919145.jpg",
+  "lifestyle_1774458491605.jpg",
+  "lifestyle_1775489367391.jpg",
+  "lifestyle_1775845343465.jpg",
+  "lifestyle_1776268893751.jpg",
+  "lifestyle_1776337898138.jpg",
+].map((f) => `/images/mmm-gallery/${f}`);
 
 const SectionDivider = ({ icon: Icon }: { icon: React.ComponentType<{ size?: number; className?: string }> }) => (
   <div className="flex items-center gap-6 my-20 md:my-28">
@@ -171,9 +193,18 @@ const ArticleSection = () => {
           Video walkthrough - available in the live presentation.
         </p>
 
-        <p className="text-gray-800 text-xl font-medium leading-relaxed">
+        <p className="text-gray-800 text-xl font-medium leading-relaxed mb-10">
           And this is just the beginning...
         </p>
+
+        {/* MMM AI-generated mockups gallery */}
+        <div className="mb-10">
+          <p className="font-display text-xs uppercase tracking-[0.3em] text-gray-500 font-bold mb-3">Real AI Mockups</p>
+          <p className="text-gray-600 text-base leading-relaxed mb-5">
+            A few of the mockups our team has built with Magic Merch Maker - every one of these was AI-generated in seconds, branded to the client, ready to present.
+          </p>
+          <MMMArticleGallery images={mmmGalleryAll} />
+        </div>
 
         {/* SECTION 3: Sell Ideas */}
         <SectionDivider icon={IconLightbulb} />
@@ -193,6 +224,15 @@ const ArticleSection = () => {
         <p className="text-gray-600 text-lg leading-relaxed mb-6">
           In-house creative team. Full production and execution under one roof. Magic Merch Maker handles the research and ideation; our creative team brings it to life. You pitch bigger because you can actually deliver bigger.
         </p>
+
+        {/* Team Creative work gallery + PDF lightbox */}
+        <div className="mb-10">
+          <p className="font-display text-xs uppercase tracking-[0.3em] text-gray-500 font-bold mb-3">Real Creative Work</p>
+          <p className="text-gray-600 text-base leading-relaxed mb-5">
+            A peek at some of the decks our in-house creative team has put together - the kind of work that turns a meeting into a pitch, and a pitch into a win.
+          </p>
+          <TeamCreativeArticleGallery />
+        </div>
 
         <div className="bg-gray-50 rounded-lg p-6 md:p-8 mb-8">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">

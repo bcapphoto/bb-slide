@@ -28,6 +28,7 @@ import {
 import ArticleSection from "./ArticleSection";
 import PresenterNotesSection from "./PresenterNotesSection";
 import { MMMProductGalleryDesktop, MMMProductGalleryMobile, MMMProductGallery2Desktop, MMMProductGallery2Mobile } from "./MagicMerchUI";
+import { TeamCreativeGalleryDesktop, TeamCreativeGalleryMobile } from "./TeamCreativeUI";
 import { VideoSlide, VideoSlideDark } from "./VideoPlaceholder";
 
 import bbLogoHorizontal from "@/assets/bb-logo-horizontal-white.svg";
@@ -340,7 +341,12 @@ const teamDesktop = [
     </div>
   </div>,
 
-  // 4. White slide with 2 numbered items
+  // 4. Team Creative gallery — real creative work from the in-house design team
+  <div className="relative w-full h-full flex items-center justify-center bg-light-surface text-light overflow-hidden">
+    <TeamCreativeGalleryDesktop />
+  </div>,
+
+  // 5. White slide with 2 numbered items
   <WhiteSlide>
     <p className="font-display text-sm uppercase tracking-[0.35em] text-gray-500 font-bold mb-6">Plus</p>
     <h2 className="font-title text-5xl md:text-7xl uppercase leading-[0.9] tracking-tight mb-12">
@@ -352,10 +358,10 @@ const teamDesktop = [
     </div>
   </WhiteSlide>,
 
-  // 5. Prompt slide
+  // 6. Prompt slide
   <PromptSlide label="Ask yourself" question="What would you do differently if you had a full team backing every deal?" />,
 
-  // 6. Dark BigText payoff
+  // 7. Dark BigText payoff
   <div className="relative w-full h-full flex items-center justify-center dot-grid overflow-hidden">
     <div className="absolute right-0 top-1/2 -translate-y-1/2 font-display text-[20rem] md:text-[28rem] font-black text-foreground/[0.04] leading-none select-none pointer-events-none">04</div>
     <Slide className="relative z-10">
@@ -694,6 +700,10 @@ const teamMobile = [
         <GridCard superTitle="Growth" title="Sales development." body="Help sourcing contacts and prospects." />
       </div>
     </div>
+  </div>,
+
+  <div className="w-full h-full bg-light-surface text-light flex items-center justify-center overflow-hidden">
+    <TeamCreativeGalleryMobile />
   </div>,
 
   <div className="w-full h-full bg-light-surface text-light flex items-center justify-center px-8">

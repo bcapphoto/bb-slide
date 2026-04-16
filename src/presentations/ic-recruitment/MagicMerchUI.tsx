@@ -213,28 +213,33 @@ export const MMMShowcaseDesktop = () => (
 );
 
 /* ─── Product Gallery (real AI mockups from MMM) ─── */
-type Product = { src: string; company: string; product: string };
+const galleryBase = "/images/mmm-gallery";
 
-const products1: Product[] = [
-  { src: "/images/mmm-products/tudor-recruitment-kit.jpg", company: "Tudor Watch", product: "Recruitment Kit" },
-  { src: "/images/mmm-products/gateway-spring-kit.jpg", company: "Gateway Dealer Network", product: "Spring Gifting Kit" },
-  { src: "/images/mmm-products/eclipse-backpack.jpg", company: "Eclipse Automation", product: "Nomad Renew Backpack" },
-  { src: "/images/mmm-products/southwest-pool-float.jpg", company: "Southwest Airlines", product: "Branded Pool Float" },
-  { src: "/images/mmm-products/canadian-tire-cooler.jpg", company: "Canadian Tire", product: "Carhartt Cooler" },
-  { src: "/images/mmm-products/canadian-tire-soft-cooler.jpg", company: "Canadian Tire", product: "Soft Pack Cooler" },
+const gallery1: string[] = [
+  `${galleryBase}/lifestyle_1771623752575.jpg`,
+  `${galleryBase}/lifestyle_1771864508176.jpg`,
+  `${galleryBase}/lifestyle_1771949969169.jpg`,
+  `${galleryBase}/lifestyle_1771970952692.jpg`,
+  `${galleryBase}/lifestyle_1772116231422.jpg`,
+  `${galleryBase}/lifestyle_1772289610212.jpg`,
+  `${galleryBase}/lifestyle_1772553153837.jpg`,
+  `${galleryBase}/lifestyle_1772553162379.jpg`,
+  `${galleryBase}/lifestyle_1773685480355.jpg`,
 ];
 
-// TODO: Replace these 6 placeholders with real product images for the second gallery slide.
-const products2: Product[] = [
-  { src: "/images/mmm-products/placeholder-1.jpg", company: "Client Name", product: "Product Name" },
-  { src: "/images/mmm-products/placeholder-2.jpg", company: "Client Name", product: "Product Name" },
-  { src: "/images/mmm-products/placeholder-3.jpg", company: "Client Name", product: "Product Name" },
-  { src: "/images/mmm-products/placeholder-4.jpg", company: "Client Name", product: "Product Name" },
-  { src: "/images/mmm-products/placeholder-5.jpg", company: "Client Name", product: "Product Name" },
-  { src: "/images/mmm-products/placeholder-6.jpg", company: "Client Name", product: "Product Name" },
+const gallery2: string[] = [
+  `${galleryBase}/lifestyle_1773929954800.jpg`,
+  `${galleryBase}/lifestyle_1774026059126.jpg`,
+  `${galleryBase}/lifestyle_1774275098208.jpg`,
+  `${galleryBase}/lifestyle_1774446919145.jpg`,
+  `${galleryBase}/lifestyle_1774458491605.jpg`,
+  `${galleryBase}/lifestyle_1775489367391.jpg`,
+  `${galleryBase}/lifestyle_1775845343465.jpg`,
+  `${galleryBase}/lifestyle_1776268893751.jpg`,
+  `${galleryBase}/lifestyle_1776337898138.jpg`,
 ];
 
-const GalleryDesktop = ({ products }: { products: Product[] }) => (
+const GalleryDesktop = ({ images }: { images: string[] }) => (
   <div className="w-full max-w-6xl px-8 md:px-16">
     <p className="font-display text-sm uppercase tracking-[0.35em] text-gray-500 font-bold mb-2">Real AI Mockups</p>
     <h2 className="font-title text-4xl md:text-5xl uppercase leading-[0.9] tracking-tight mb-3">
@@ -244,21 +249,16 @@ const GalleryDesktop = ({ products }: { products: Product[] }) => (
       Every image below was AI-generated in seconds — branded to the client, ready to present.
     </p>
     <div className="grid grid-cols-3 gap-4">
-      {products.map((p) => (
-        <div key={p.src} className="group relative rounded-xl overflow-hidden shadow-md aspect-square">
-          <img src={p.src} alt={`${p.company} — ${p.product}`} className="w-full h-full object-cover" />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-          <div className="absolute bottom-0 left-0 right-0 p-3 translate-y-2 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-300">
-            <p className="text-white text-xs font-bold">{p.company}</p>
-            <p className="text-white/70 text-[10px]">{p.product}</p>
-          </div>
+      {images.map((src) => (
+        <div key={src} className="relative rounded-xl overflow-hidden shadow-md aspect-square">
+          <img src={src} alt="AI-generated product mockup" className="w-full h-full object-cover" loading="lazy" />
         </div>
       ))}
     </div>
   </div>
 );
 
-const GalleryMobile = ({ products }: { products: Product[] }) => (
+const GalleryMobile = ({ images }: { images: string[] }) => (
   <div className="w-full px-8">
     <p className="font-display text-sm uppercase tracking-[0.35em] text-gray-500 font-bold mb-2">Real AI Mockups</p>
     <h2 className="font-title text-3xl uppercase leading-[0.9] tracking-tight mb-3">
@@ -267,24 +267,20 @@ const GalleryMobile = ({ products }: { products: Product[] }) => (
     <p className="text-gray-500 text-sm mb-6">
       AI-generated in seconds — branded, client-ready.
     </p>
-    <div className="grid grid-cols-2 gap-3">
-      {products.slice(0, 4).map((p) => (
-        <div key={p.src} className="relative rounded-lg overflow-hidden shadow-md aspect-square">
-          <img src={p.src} alt={`${p.company} — ${p.product}`} className="w-full h-full object-cover" />
-          <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-2.5">
-            <p className="text-white text-[10px] font-bold">{p.company}</p>
-            <p className="text-white/60 text-[9px]">{p.product}</p>
-          </div>
+    <div className="grid grid-cols-3 gap-2">
+      {images.map((src) => (
+        <div key={src} className="relative rounded-md overflow-hidden shadow-sm aspect-square">
+          <img src={src} alt="AI-generated product mockup" className="w-full h-full object-cover" loading="lazy" />
         </div>
       ))}
     </div>
   </div>
 );
 
-export const MMMProductGalleryDesktop = () => <GalleryDesktop products={products1} />;
-export const MMMProductGalleryMobile = () => <GalleryMobile products={products1} />;
-export const MMMProductGallery2Desktop = () => <GalleryDesktop products={products2} />;
-export const MMMProductGallery2Mobile = () => <GalleryMobile products={products2} />;
+export const MMMProductGalleryDesktop = () => <GalleryDesktop images={gallery1} />;
+export const MMMProductGalleryMobile = () => <GalleryMobile images={gallery1} />;
+export const MMMProductGallery2Desktop = () => <GalleryDesktop images={gallery2} />;
+export const MMMProductGallery2Mobile = () => <GalleryMobile images={gallery2} />;
 
 /* ─── Full MMM Showcase (used in mobile slide) ─── */
 export const MMMShowcaseMobile = () => (
