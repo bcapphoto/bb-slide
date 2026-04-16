@@ -58,7 +58,7 @@ const Section: React.FC<SectionProps> = ({ children, id, onSlideChange, initialS
             }`}
             style={{ animationDelay: `${i * 50}ms` }}
           >
-            <div className="min-h-full w-full flex items-center justify-center">
+            <div className="h-full w-full flex items-center justify-center">
               {child}
             </div>
           </div>

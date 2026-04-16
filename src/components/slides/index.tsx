@@ -94,7 +94,7 @@ export const BgImage = ({ src, opacity = "opacity-20" }: { src: string; opacity?
 /* ─── Mobile snap section wrapper ─── */
 export const MobileSection = ({ children, className = "" }: { children: React.ReactNode; className?: string }) => (
   <section className={`h-screen w-full snap-start flex-shrink-0 overflow-y-auto scrollbar-hide ${className}`}>
-    <div className="min-h-full w-full flex items-center justify-center">
+    <div className="h-full w-full flex items-center justify-center">
       {children}
     </div>
   </section>

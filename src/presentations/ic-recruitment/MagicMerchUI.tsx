@@ -240,15 +240,20 @@ const gallery2: string[] = [
 ];
 
 const GalleryDesktop = ({ images }: { images: string[] }) => (
-  <div className="w-full max-w-6xl px-8 md:px-16">
-    <p className="font-display text-sm uppercase tracking-[0.35em] text-gray-500 font-bold mb-2">Real AI Mockups</p>
-    <h2 className="font-title text-4xl md:text-5xl uppercase leading-[0.9] tracking-tight mb-3">
-      <span className="text-gray-900">Built by Magic Merch</span><span className="highlight-green">Maker.</span>
-    </h2>
-    <p className="text-gray-500 text-sm mb-8 max-w-2xl">
-      Every image below was AI-generated in seconds — branded to the client, ready to present.
-    </p>
-    <div className="grid grid-cols-3 gap-4">
+  <div className="w-full max-w-6xl px-8 md:px-16 flex flex-col items-center justify-center gap-6 py-8">
+    <div className="w-full">
+      <p className="font-display text-sm uppercase tracking-[0.35em] text-gray-500 font-bold mb-2">Real AI Mockups</p>
+      <h2 className="font-title text-4xl md:text-5xl uppercase leading-[0.9] tracking-tight mb-3">
+        <span className="text-gray-900">Built by Magic Merch</span><span className="highlight-green">Maker.</span>
+      </h2>
+      <p className="text-gray-500 text-sm max-w-2xl">
+        Every image below was AI-generated in seconds — branded to the client, ready to present.
+      </p>
+    </div>
+    <div
+      className="grid grid-cols-3 gap-4 w-full"
+      style={{ maxWidth: "min(72rem, calc(100vh - 18rem))" }}
+    >
       {images.map((src) => (
         <div key={src} className="relative rounded-xl overflow-hidden shadow-md aspect-square">
           <img src={src} alt="AI-generated product mockup" className="w-full h-full object-cover" loading="lazy" />
