@@ -336,7 +336,7 @@ const teamDesktop = [
       <p className="font-display text-sm uppercase tracking-[0.35em] text-light-muted font-bold mb-10">Your Team</p>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
         <GridCard superTitle="Creative" title="Design team." body="In-house creatives for the big pitches that win new business." />
-        <GridCard superTitle="Operations" title="Customer service." body="Production, order management, invoicing and payments and fulfillment — all handled." />
+        <GridCard superTitle="Operations" title="Customer service." body="Production, order management, invoicing and payments, and fulfillment — all handled." />
         <GridCard superTitle="Growth" title="Sales development." body="Help sourcing contacts and prospects when you want to grow." />
       </div>
     </div>
@@ -698,7 +698,7 @@ const teamMobile = [
       <p className="font-display text-sm uppercase tracking-[0.35em] text-light-muted font-bold mb-10">Your Team</p>
       <div className="grid grid-cols-1 gap-8">
         <GridCard superTitle="Creative" title="Design team." body="In-house creatives for the big pitches." />
-        <GridCard superTitle="Operations" title="Customer service." body="Production, order management, invoicing and payments and fulfillment — handled." />
+        <GridCard superTitle="Operations" title="Customer service." body="Production, order management, invoicing and payments, and fulfillment — handled." />
         <GridCard superTitle="Growth" title="Sales development." body="Help sourcing contacts and prospects." />
       </div>
     </div>

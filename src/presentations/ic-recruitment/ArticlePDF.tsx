@@ -277,7 +277,7 @@ const ArticlePDF = () => (
       <Text style={s.h2}>You sell. We handle everything else.</Text>
       <Text style={s.pLast}>Not a phone tree. A full team.</Text>
       <Bullet>Design team — In-house creatives for the big pitches that win new business</Bullet>
-      <Bullet>Customer service — Production, order management, invoicing and payments and fulfillment — handled</Bullet>
+      <Bullet>Customer service — Production, order management, invoicing and payments, and fulfillment — handled</Bullet>
       <Bullet>Sales development — Help sourcing contacts and prospects when you want to grow</Bullet>
       <Bullet>Self-promo budget — Show up with branded materials that make an impression</Bullet>
       <Bullet>Sample budget — Put product in your prospects' hands from day one</Bullet>

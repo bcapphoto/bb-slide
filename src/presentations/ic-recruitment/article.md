@@ -73,7 +73,7 @@ Plus seamless Canada + US logistics and execution — your clients get North Ame
 You sell. We'll handle everything else. 
 
 - **Design team** — In-house creatives for the big pitches that win new business
-- **Customer service** — Production, order management, invoicing and payments and fulfillment — handled
+- **Customer service** — Production, order management, invoicing and payments, and fulfillment — handled
 - **Sales development** — Help sourcing contacts and prospects when you want to grow
 - **Finance team** - 
 - **Self-promo budget** — Show up with branded materials that make an impression

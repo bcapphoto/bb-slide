@@ -181,7 +181,7 @@ const notes: Record<string, string[][]> = {
     // Slide 2: Three-card grid — design, CS, sales dev
     [
       "Design team: in-house creatives for the big pitches — real designers, not outsourced.",
-      "Customer service: production, order management, invoicing and payments, fulfillment — the rep never chases an order.",
+      "Customer service: production, order management, invoicing and payments, and fulfillment — the rep never chases an order.",
       "Sales development: proactive help sourcing contacts and prospects when they want to grow.",
     ],
     // Slide 3: Creative work gallery — real decks from the in-house team

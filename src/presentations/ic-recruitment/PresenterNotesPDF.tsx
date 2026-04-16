@@ -476,7 +476,7 @@ const PresenterNotesPDF = () => (
         desc="Grid — Design team, customer service, sales development."
         points={[
           "Design team: In-house creatives for the big pitches that win new business.",
-          "Customer service: Production, order management, invoicing and payments and fulfillment — all handled so you stay in front of clients.",
+          "Customer service: Production, order management, invoicing and payments, and fulfillment — all handled so you stay in front of clients.",
           "Sales development: Help sourcing contacts and prospects when you want to grow your book.",
           "These aren't promises — they're people already in place.",
         ]}
