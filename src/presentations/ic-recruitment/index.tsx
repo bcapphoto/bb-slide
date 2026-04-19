@@ -29,7 +29,7 @@ import ArticleSection from "./ArticleSection";
 import PresenterNotesSection from "./PresenterNotesSection";
 import { MMMProductGalleryDesktop, MMMProductGalleryMobile, MMMProductGallery2Desktop, MMMProductGallery2Mobile } from "./MagicMerchUI";
 import { TeamCreativeGalleryDesktop, TeamCreativeGalleryMobile } from "./TeamCreativeUI";
-import { VideoSlide, VideoSlideDark } from "./VideoPlaceholder";
+import { YouTubeSlide, YouTubeSlideDark } from "./VideoPlaceholder";
 
 import bbLogoHorizontal from "@/assets/bb-logo-horizontal-white.svg";
 import bbMonogram from "@/assets/bb-monogram-white.svg";
@@ -60,12 +60,12 @@ const titleDesktop = [
   </div>,
 
   // 2. Welcome video from Jill
-  <VideoSlide
+  <YouTubeSlide
+    videoId="uVcO62NywHY"
     from="Jill Pascuzzi"
     role="VP of Sales, USA — Brand Blvd"
     title={<>A personal <span className="highlight-green">welcome.</span></>}
     subtitle="From Jill"
-    initials="JP"
   />,
 
   // 3. The hook
@@ -147,12 +147,12 @@ const advantageDesktop = [
   </div>,
 
   // 4. Bryan video - "See the magic in action"
-  <VideoSlideDark
+  <YouTubeSlideDark
+    videoId="bWD9rLAIinI"
     from="Bryan Caporicci"
     role="VP of Growth and Innovation — Brand Blvd"
     title={<>See the magic <span className="highlight-green">in action.</span></>}
     subtitle="Product Demo"
-    initials="BC"
   />,
 
   // 5. Magic Merch Maker product gallery
@@ -488,12 +488,12 @@ const titleMobile = [
     </div>
   </div>,
 
-  <VideoSlide
+  <YouTubeSlide
+    videoId="uVcO62NywHY"
     from="Jill Pascuzzi"
     role="VP of Sales, USA — Brand Blvd"
     title={<>A personal <span className="highlight-green">welcome.</span></>}
     subtitle="From Jill"
-    initials="JP"
   />,
 
   <div className="relative w-full h-full flex items-center justify-center bg-light-surface text-light diagonal-lines-light">
@@ -553,12 +553,12 @@ const advantageMobile = [
     </div>
   </div>,
 
-  <VideoSlideDark
+  <YouTubeSlideDark
+    videoId="bWD9rLAIinI"
     from="Bryan Caporicci"
     role="VP of Growth and Innovation — Brand Blvd"
     title={<>See the magic <span className="highlight-green">in action.</span></>}
     subtitle="Product Demo"
-    initials="BC"
   />,
 
   <div className="w-full h-full bg-light-surface text-light flex items-center justify-center overflow-hidden">
