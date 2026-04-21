@@ -86,21 +86,36 @@ export default function PresentationShell({ config }: Props) {
     [navigate, config.slug, sectionNames]
   );
 
+  // Map each mobile flat-slide index → parent section index, so the mobile
+  // scroll handler / indicators can report the real section, not the slide.
+  const mobileSectionForSlide = useMemo(() => {
+    const map: number[] = [];
+    config.sections.forEach((section, sectionIdx) => {
+      const slides = section.mobileSlides || section.desktopSlides;
+      slides.forEach(() => map.push(sectionIdx));
+    });
+    return map;
+  }, [config]);
+
   // Mobile: vertical scroll handler (mobile still uses native scroll)
   useEffect(() => {
     if (!isMobile) return;
     const el = containerRef.current;
     if (!el) return;
     const handler = () => {
-      const index = Math.round(el.scrollTop / el.clientHeight);
-      setActiveSection(index);
+      const slideIdx = Math.round(el.scrollTop / el.clientHeight);
+      const sectionIdx =
+        slideIdx < mobileSectionForSlide.length
+          ? mobileSectionForSlide[slideIdx]
+          : config.sections.length; // article (if present) sits after the slides
+      setActiveSection(sectionIdx);
       setShowMobileIndicator(true);
       if (mobileIndicatorTimeout.current) clearTimeout(mobileIndicatorTimeout.current);
       mobileIndicatorTimeout.current = setTimeout(() => setShowMobileIndicator(false), 1500);
     };
     el.addEventListener("scroll", handler, { passive: true });
     return () => el.removeEventListener("scroll", handler);
-  }, [isMobile]);
+  }, [isMobile, mobileSectionForSlide, config.sections.length]);
 
   // Desktop: update URL when active section/slide changes programmatically
   useEffect(() => {
@@ -325,16 +340,6 @@ export default function PresentationShell({ config }: Props) {
     ? config.sections[activeSection].label
     : "Article";
 
-  // Compute which mobile slide maps to which section (for mobile progress)
-  const mobileSectionForSlide = useMemo(() => {
-    const map: number[] = [];
-    config.sections.forEach((section, sectionIdx) => {
-      const slides = section.mobileSlides || section.desktopSlides;
-      slides.forEach(() => map.push(sectionIdx));
-    });
-    return map;
-  }, [config]);
-
   // OG mode: render only the first slide, no nav, no scroll
   if (isOgMode) {
     const firstSlide = config.sections[0]?.desktopSlides[0];
@@ -510,24 +515,24 @@ export default function PresentationShell({ config }: Props) {
               {currentSectionLabel}
             </span>
             <span className="text-muted-foreground/40 text-[10px]">
-              {activeSection + 1}/{config.sections.length}
+              {activeSection + 1}/{navItems.length}
             </span>
           </div>
         </div>
       )}
 
-      {/* Mobile: bottom progress dots */}
+      {/* Mobile: vertical progress dots on the right edge — orientation matches the up/down scroll */}
       {isMobile && (
-        <div className="fixed bottom-4 left-1/2 -translate-x-1/2 z-[70] flex gap-1.5">
-          {config.sections.map((section, i) => (
+        <div className="fixed right-2.5 top-1/2 -translate-y-1/2 z-[70] flex flex-col gap-1.5 pointer-events-none">
+          {navItems.map((item, i) => (
             <div
-              key={section.id}
-              className={`h-1 rounded-full transition-all duration-300 ${
+              key={item.id}
+              className={`w-1 rounded-full transition-all duration-300 ${
                 i === activeSection
-                  ? "bg-primary w-6"
+                  ? "bg-primary h-6"
                   : i < activeSection
-                    ? "bg-primary/30 w-1.5"
-                    : "bg-muted-foreground/15 w-1.5"
+                    ? "bg-primary/30 h-1.5"
+                    : "bg-muted-foreground/15 h-1.5"
               }`}
             />
           ))}
