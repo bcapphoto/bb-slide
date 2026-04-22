@@ -64,16 +64,22 @@ export default function MobileActionBar({
   };
 
   return (
-    <div className="fixed bottom-0 left-0 right-0 z-[75] pointer-events-none">
-      {/* Soft fade behind the bar so it lifts off slide content. */}
-      {/* Extends all the way to the viewport bottom (past the safe-area inset) */}
-      {/* so iOS home-indicator areas stay covered by the gradient — no bare gap. */}
+    <div
+      className="fixed bottom-0 left-0 right-0 z-[75] pointer-events-none"
+      style={{
+        // Solid fill behind the buttons. Anchors to the viewport bottom and */
+        // wraps the safe-area inset so the iOS home-indicator strip / URL-bar */
+        // gutter is always covered — no white gap can leak through. */
+        backgroundColor: "hsl(var(--background))",
+      }}
+    >
+      {/* Soft fade above the wrapper so the solid fill blends into the slide */}
+      {/* content rather than ending in a hard edge. */}
       <div
-        className="absolute inset-x-0 bottom-0 pointer-events-none"
+        className="absolute inset-x-0 -top-24 h-24 pointer-events-none"
         style={{
-          height: "calc(8rem + env(safe-area-inset-bottom))",
           background:
-            "linear-gradient(to top, hsl(var(--background) / 0.95) 0%, hsl(var(--background) / 0.85) 30%, hsl(var(--background) / 0.5) 70%, transparent 100%)",
+            "linear-gradient(to top, hsl(var(--background)) 0%, hsl(var(--background) / 0.6) 50%, transparent 100%)",
         }}
         aria-hidden
       />
