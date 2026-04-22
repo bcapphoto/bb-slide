@@ -19,6 +19,9 @@ interface Props {
   activeSectionId?: string;
   activeSlideIdx?: number;
   totalSlidesInActiveSection?: number;
+  /** True when the slide behind the bar is light — flips the panel tint so */
+  /* it blends with the slide instead of looking like a dark slab on white. */
+  isLightBg?: boolean;
 }
 
 export default function MobileActionBar({
@@ -27,6 +30,7 @@ export default function MobileActionBar({
   activeSectionId,
   activeSlideIdx,
   totalSlidesInActiveSection,
+  isLightBg = false,
 }: Props) {
   if (!actions || actions.length === 0) return null;
 
@@ -63,43 +67,29 @@ export default function MobileActionBar({
     if (action.to) onNavigate(action.to);
   };
 
-  return (
-    <div
-      className="fixed bottom-0 left-0 right-0 z-[75] pointer-events-none"
-      style={{
-        // Solid fill behind the buttons. Anchors to the viewport bottom and */
-        // wraps the safe-area inset so the iOS home-indicator strip / URL-bar */
-        // gutter is always covered — no white gap can leak through. */
-        backgroundColor: "hsl(var(--background))",
-      }}
-    >
-      {/* Soft fade above the wrapper so the solid fill blends into the slide */}
-      {/* content rather than ending in a hard edge. */}
-      <div
-        className="absolute inset-x-0 -top-24 h-24 pointer-events-none"
-        style={{
-          background:
-            "linear-gradient(to top, hsl(var(--background)) 0%, hsl(var(--background) / 0.6) 50%, transparent 100%)",
-        }}
-        aria-hidden
-      />
+  // Buttons float directly on the slide — no panel, no card, no border.
+  // Each button keeps its own pill background, and the secondary variant
+  // swaps tint to stay legible against light vs dark slides.
+  const secondaryButtonClass = isLightBg
+    ? "bg-[hsl(var(--light-surface)/0.7)] text-[hsl(var(--light-text))] border border-[hsl(var(--light-text)/0.18)] backdrop-blur-md hover:bg-[hsl(var(--light-surface)/0.9)]"
+    : "bg-card/60 text-foreground border border-border/60 backdrop-blur-md hover:bg-card/80";
 
+  return (
+    <div className="fixed bottom-0 left-0 right-0 z-[75] pointer-events-none">
       <div
-        className="relative px-3 pt-3 pb-3 pointer-events-auto"
+        className="relative px-3 pt-3 pointer-events-auto"
         style={{ paddingBottom: "calc(0.75rem + env(safe-area-inset-bottom))" }}
       >
-        <div
-          className="flex gap-2 rounded-2xl border border-border/40 bg-card/80 backdrop-blur-xl p-1.5 shadow-[0_8px_32px_-12px_hsl(var(--background)/0.6)]"
-        >
+        <div className="flex gap-2">
           {visible.map((action, i) => {
             const Icon = action.icon;
             const variant = action.variant ?? "primary";
             const base =
-              "flex-1 min-w-0 inline-flex items-center justify-center gap-2 h-12 rounded-xl font-display text-[11px] font-bold uppercase tracking-[0.18em] transition-all duration-200 active:scale-[0.97] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50";
+              "flex-1 min-w-0 inline-flex items-center justify-center gap-2 h-12 rounded-2xl font-display text-[11px] font-bold uppercase tracking-[0.18em] transition-colors duration-150 active:scale-[0.97] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50";
             const styles =
               variant === "primary"
-                ? "bg-primary text-primary-foreground shadow-[0_2px_12px_-2px_hsl(var(--primary)/0.5)] active:shadow-none"
-                : "bg-transparent text-foreground border border-border/60 hover:bg-muted/40";
+                ? "bg-primary text-primary-foreground shadow-[0_4px_18px_-4px_hsl(var(--primary)/0.55)] active:shadow-none"
+                : secondaryButtonClass;
             return (
               <button
                 key={`${action.label}-${i}`}

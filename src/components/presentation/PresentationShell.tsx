@@ -220,10 +220,12 @@ export default function PresentationShell({ config }: Props) {
   );
 
   // Auto-detect whether the active slide has a light background.
-  // Samples the element behind the sidebar position and walks up the DOM
-  // computing the resolved background color's luminance.
+  // Samples the element behind the chrome position and walks up the DOM
+  // computing the resolved background color's luminance. Runs on both
+  // desktop (sidebar/action-bar tinting) and mobile (action-bar tinting),
+  // re-sampling on scroll so it keeps up with the currently visible slide.
   useEffect(() => {
-    if (isMobile || isOgMode) return;
+    if (isOgMode) return;
 
     const parseRgb = (str: string): [number, number, number, number] | null => {
       const m = str.match(/rgba?\(([^)]+)\)/);
@@ -236,10 +238,15 @@ export default function PresentationShell({ config }: Props) {
     };
 
     const detect = () => {
-      // Sample the slide content, away from the sidebar and its buttons.
-      // We pick a point left of the sidebar and slightly above center.
-      const x = Math.max(40, window.innerWidth - 200);
-      const y = Math.round(window.innerHeight * 0.25);
+      // Pick a sample point that's safely on the slide content and not behind
+      // any chrome. Mobile: center-ish, well above the bottom action bar.
+      // Desktop: left of the right-hand sidebar, slightly above center.
+      const x = isMobile
+        ? Math.round(window.innerWidth / 2)
+        : Math.max(40, window.innerWidth - 200);
+      const y = isMobile
+        ? Math.round(window.innerHeight * 0.4)
+        : Math.round(window.innerHeight * 0.25);
       let el = document.elementFromPoint(x, y) as HTMLElement | null;
       while (el) {
         const bg = getComputedStyle(el).backgroundColor;
@@ -256,12 +263,30 @@ export default function PresentationShell({ config }: Props) {
       setIsLightBg(false);
     };
 
-    // Allow transform/scroll transitions to settle before sampling
-    const t = setTimeout(detect, 50);
-    const t2 = setTimeout(detect, 750);
+    // Sample immediately on the next frame so the chrome retints in step
+    // with the slide transition rather than visibly trailing it. A second
+    // pass after the section transition finishes catches any late paint.
+    const raf = requestAnimationFrame(detect);
+    const t = setTimeout(detect, 250);
+
+    // On mobile the user scrolls the container directly. Sample on every
+    // scroll frame (rAF-throttled) so the bar tracks the slide live.
+    let rafScroll = 0;
+    const onScroll = () => {
+      if (rafScroll) return;
+      rafScroll = requestAnimationFrame(() => {
+        rafScroll = 0;
+        detect();
+      });
+    };
+    const mobileScroller = isMobile ? containerRef.current : null;
+    mobileScroller?.addEventListener("scroll", onScroll, { passive: true });
+
     return () => {
+      cancelAnimationFrame(raf);
       clearTimeout(t);
-      clearTimeout(t2);
+      if (rafScroll) cancelAnimationFrame(rafScroll);
+      mobileScroller?.removeEventListener("scroll", onScroll);
     };
   }, [activeSection, activeSlide, isMobile, isOgMode]);
 
@@ -634,6 +659,7 @@ export default function PresentationShell({ config }: Props) {
           activeSectionId={activeSectionId}
           activeSlideIdx={mobileSlideInSection}
           totalSlidesInActiveSection={totalSlidesInActiveSection}
+          isLightBg={isLightBg}
         />
       )}
 
