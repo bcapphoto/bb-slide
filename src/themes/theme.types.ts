@@ -110,6 +110,8 @@ export interface ThemeSpacing {
   radius: string;
   /** Highlight pill padding */
   highlightPadding: string;
+  /** Highlight pill corner radius. Defaults to "0.2em" if not set. */
+  highlightRadius?: string;
   /** Accent bar width */
   accentBarWidth: string;
 }

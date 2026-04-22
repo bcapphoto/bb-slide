@@ -82,6 +82,12 @@ body {
 .font-serif { font-family: var(--font-serif); }
 .font-title { font-family: var(--font-title); font-weight: var(--font-title-weight); }
 
+/* ─── Title casing ─── */
+/* All titles render in their authored case (sentence case) instead of all caps. */
+/* Overrides any Tailwind \`uppercase\` class still present on title elements so */
+/* the rule can be flipped in one place if the brand voice ever changes. */
+.font-title { text-transform: none !important; }
+
 /* ─── Dot grid (dark) ─── */
 .dot-grid::before {
   background-image: radial-gradient(circle, hsl(${patterns.dotGrid.color}) ${patterns.dotGrid.dotSize}px, transparent ${patterns.dotGrid.dotSize}px);
@@ -156,6 +162,7 @@ body {
   background-color: hsl(${colors.primary});
   color: hsl(${colors.primaryForeground});
   padding: ${spacing.highlightPadding};
+  border-radius: ${spacing.highlightRadius ?? '0.2em'};
   display: inline;
   line-height: 1.35;
   box-decoration-break: clone;
@@ -187,6 +194,7 @@ body {
   background-color: hsl(${colors.primary});
   color: hsl(${colors.primaryForeground});
   padding: ${spacing.highlightPadding};
+  border-radius: ${spacing.highlightRadius ?? '0.2em'};
   display: inline;
   line-height: 1.35;
   box-decoration-break: clone;
@@ -196,6 +204,7 @@ body {
   background-color: hsl(${colors.primary} / 0.8);
   color: hsl(${colors.primaryForeground});
   padding: ${spacing.highlightPadding};
+  border-radius: ${spacing.highlightRadius ?? '0.2em'};
   display: inline;
   line-height: 1.35;
   box-decoration-break: clone;

@@ -64,21 +64,24 @@ export default function MobileActionBar({
   };
 
   return (
-    <div
-      className="fixed bottom-0 left-0 right-0 z-[75] pointer-events-none"
-      style={{ paddingBottom: "env(safe-area-inset-bottom)" }}
-    >
-      {/* Soft fade behind the bar so it lifts off slide content */}
+    <div className="fixed bottom-0 left-0 right-0 z-[75] pointer-events-none">
+      {/* Soft fade behind the bar so it lifts off slide content. */}
+      {/* Extends all the way to the viewport bottom (past the safe-area inset) */}
+      {/* so iOS home-indicator areas stay covered by the gradient — no bare gap. */}
       <div
-        className="absolute inset-x-0 bottom-0 h-32 pointer-events-none"
+        className="absolute inset-x-0 bottom-0 pointer-events-none"
         style={{
+          height: "calc(8rem + env(safe-area-inset-bottom))",
           background:
-            "linear-gradient(to top, hsl(var(--background) / 0.85) 0%, hsl(var(--background) / 0.5) 55%, transparent 100%)",
+            "linear-gradient(to top, hsl(var(--background) / 0.95) 0%, hsl(var(--background) / 0.85) 30%, hsl(var(--background) / 0.5) 70%, transparent 100%)",
         }}
         aria-hidden
       />
 
-      <div className="relative px-3 pt-3 pb-3 pointer-events-auto">
+      <div
+        className="relative px-3 pt-3 pb-3 pointer-events-auto"
+        style={{ paddingBottom: "calc(0.75rem + env(safe-area-inset-bottom))" }}
+      >
         <div
           className="flex gap-2 rounded-2xl border border-border/40 bg-card/80 backdrop-blur-xl p-1.5 shadow-[0_8px_32px_-12px_hsl(var(--background)/0.6)]"
         >
