@@ -8,7 +8,7 @@
  * Each presentation provides a PresentationConfig; this component does the rest.
  */
 
-import { useEffect, useState, useCallback, useRef, useMemo } from "react";
+import { Fragment, useEffect, useState, useCallback, useRef, useMemo } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import Section from "@/components/Section";
 import CursorNav from "@/components/CursorNav";
@@ -484,7 +484,11 @@ export default function PresentationShell({ config }: Props) {
                 onSlideChange={handleSlideChange(sectionIdx)}
                 initialSlide={activeSection === sectionIdx ? initialSlideRef.current : 0}
               >
-                {section.desktopSlides}
+                {/* Wrap each slide in a keyed Fragment so React doesn't warn */}
+                {/* about missing keys when an array literal is passed as children. */}
+                {section.desktopSlides.map((slide, i) => (
+                  <Fragment key={`${section.id}-${i}`}>{slide}</Fragment>
+                ))}
               </Section>
             ))}
 
