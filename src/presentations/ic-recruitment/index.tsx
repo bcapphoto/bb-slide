@@ -864,6 +864,33 @@ const icRecruitment: PresentationConfig = {
   articleComponent: ArticleSection,
   articleIcon: IconArticle,
   presenterNotesComponent: PresenterNotesSection,
+
+  mobileActions: [
+    {
+      label: "Read article",
+      variant: "secondary",
+      icon: IconArticle,
+      to: { section: "article" },
+      hideWhenActive: true,
+    },
+    {
+      label: "Contact",
+      variant: "primary",
+      icon: IconClosing,
+      to: { section: "closing", slide: "last" },
+      hideWhenActive: true,
+    },
+  ],
+
+  desktopActions: [
+    {
+      label: "Contact",
+      variant: "primary",
+      icon: IconClosing,
+      to: { section: "closing", slide: "last" },
+      hideWhenActive: true,
+    },
+  ],
 };
 
 export default icRecruitment;

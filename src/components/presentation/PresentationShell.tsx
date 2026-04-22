@@ -14,8 +14,10 @@ import Section from "@/components/Section";
 import CursorNav from "@/components/CursorNav";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { MobileSection } from "@/components/slides";
-import type { PresentationConfig } from "@/presentations/presentation.types";
+import type { PresentationAction, PresentationConfig } from "@/presentations/presentation.types";
 import { ThemeProvider } from "@/themes/ThemeProvider";
+import MobileActionBar from "@/components/presentation/MobileActionBar";
+import DesktopActionBar from "@/components/presentation/DesktopActionBar";
 
 interface Props {
   config: PresentationConfig;
@@ -150,7 +152,7 @@ export default function PresentationShell({ config }: Props) {
     [updateUrl]
   );
 
-  const goToSection = useCallback((index: number, targetSlide: "first" | "last" = "first") => {
+  const goToSection = useCallback((index: number, targetSlide: "first" | "last" | number = "first") => {
     const clamped = Math.max(0, Math.min(index, TOTAL_SECTIONS - 1));
 
     if (isMobile) {
@@ -162,7 +164,13 @@ export default function PresentationShell({ config }: Props) {
     }
 
     // Desktop: programmatic section change via transform (no scroll)
-    const targetSlideIdx = targetSlide === "last" ? (slideTotals[clamped] || 1) - 1 : 0;
+    const totalForSection = slideTotals[clamped] || 1;
+    const targetSlideIdx =
+      typeof targetSlide === "number"
+        ? Math.max(0, Math.min(totalForSection - 1, targetSlide))
+        : targetSlide === "last"
+          ? totalForSection - 1
+          : 0;
 
     // Pre-set the slide position before transitioning so it's ready when section appears
     requestAnimationFrame(() => {
@@ -308,16 +316,95 @@ export default function PresentationShell({ config }: Props) {
     return () => window.removeEventListener("keydown", handler);
   }, [isMobile, isOgMode, handleNavigate, goToSection, activeSection, TOTAL_SECTIONS]);
 
-  // Build mobile flat slides array
+  // Build mobile flat slides array. Each gets a stable id so the action bar
+  // (and any other deep-link consumer) can scrollIntoView a specific slide.
   const allMobileSlides: React.ReactNode[] = [];
   config.sections.forEach((section) => {
     const slides = section.mobileSlides || section.desktopSlides;
     slides.forEach((slide, i) => {
       allMobileSlides.push(
-        <MobileSection key={`${section.id}-${i}`}>{slide}</MobileSection>
+        <MobileSection
+          key={`${section.id}-${i}`}
+          id={`mobile-slide-${section.id}-${i}`}
+        >
+          {slide}
+        </MobileSection>
       );
     });
   });
+
+  // Resolve a PresentationAction `to` target to a real DOM scroll on mobile.
+  const navigateToMobileTarget = useCallback(
+    (target: NonNullable<PresentationAction["to"]>) => {
+      if (target.section === "article") {
+        const el = document.getElementById("section-article");
+        el?.scrollIntoView({ behavior: "smooth" });
+        return;
+      }
+      const sectionConfig = config.sections.find((s) => s.id === target.section);
+      if (!sectionConfig) return;
+      const total = (sectionConfig.mobileSlides || sectionConfig.desktopSlides).length;
+      let slideIdx = 0;
+      if (target.slide === "last") slideIdx = Math.max(0, total - 1);
+      else if (typeof target.slide === "number")
+        slideIdx = Math.max(0, Math.min(total - 1, target.slide - 1));
+      const el = document.getElementById(`mobile-slide-${target.section}-${slideIdx}`);
+      el?.scrollIntoView({ behavior: "smooth" });
+    },
+    [config.sections]
+  );
+
+  // Desktop equivalent — uses the existing transform-based section nav.
+  const navigateToDesktopTarget = useCallback(
+    (target: NonNullable<PresentationAction["to"]>) => {
+      if (target.section === "article") {
+        goToSection(config.sections.length, "first");
+        return;
+      }
+      const sectionIdx = config.sections.findIndex((s) => s.id === target.section);
+      if (sectionIdx < 0) return;
+      const total = config.sections[sectionIdx].desktopSlides.length;
+      let slideIdx = 0;
+      if (target.slide === "last") slideIdx = Math.max(0, total - 1);
+      else if (typeof target.slide === "number")
+        slideIdx = Math.max(0, Math.min(total - 1, target.slide - 1));
+      goToSection(sectionIdx, slideIdx);
+    },
+    [config.sections, goToSection]
+  );
+
+  // For `hideWhenActive`, we need to know the mobile-current section + slide
+  // *within* that section. activeSection is set by the scroll handler; derive
+  // the slide-within-section from the absolute scroll position.
+  const [mobileSlideInSection, setMobileSlideInSection] = useState(0);
+  useEffect(() => {
+    if (!isMobile) return;
+    const el = containerRef.current;
+    if (!el) return;
+    const handler = () => {
+      const flatIdx = Math.round(el.scrollTop / el.clientHeight);
+      // Count slides before the active section to get within-section index
+      let before = 0;
+      for (let i = 0; i < activeSection; i++) {
+        const s = config.sections[i];
+        if (!s) break;
+        before += (s.mobileSlides || s.desktopSlides).length;
+      }
+      setMobileSlideInSection(Math.max(0, flatIdx - before));
+    };
+    handler();
+    el.addEventListener("scroll", handler, { passive: true });
+    return () => el.removeEventListener("scroll", handler);
+  }, [isMobile, activeSection, config.sections]);
+
+  const activeSectionConfig = config.sections[activeSection];
+  const totalSlidesInActiveSection = activeSectionConfig
+    ? (activeSectionConfig.mobileSlides || activeSectionConfig.desktopSlides).length
+    : 0;
+  const activeSectionId =
+    activeSection < config.sections.length
+      ? config.sections[activeSection]?.id
+      : "article";
 
   const ArticleComponent = config.articleComponent;
 
@@ -378,6 +465,9 @@ export default function PresentationShell({ config }: Props) {
             {ArticleComponent && (
               <section id="section-article" className="snap-start flex-shrink-0 h-screen overflow-y-auto scrollbar-hide">
                 <ArticleComponent />
+                {config.mobileActions && config.mobileActions.length > 0 && (
+                  <div className="h-24" aria-hidden />
+                )}
               </section>
             )}
           </>
@@ -486,6 +576,17 @@ export default function PresentationShell({ config }: Props) {
               );
             })()}
 
+            {config.desktopActions && config.desktopActions.length > 0 && (
+              <DesktopActionBar
+                actions={config.desktopActions}
+                onNavigate={navigateToDesktopTarget}
+                activeSectionId={activeSectionId}
+                activeSlideIdx={activeSlide}
+                totalSlidesInActiveSection={slideTotals[activeSection] || 0}
+                isLightBg={isLightBg}
+              />
+            )}
+
             <CursorNav
               onNavigate={handleNavigate}
               canGo={{
@@ -519,6 +620,17 @@ export default function PresentationShell({ config }: Props) {
             </span>
           </div>
         </div>
+      )}
+
+      {/* Mobile: bottom CTA action bar (configured per-presentation) */}
+      {isMobile && config.mobileActions && config.mobileActions.length > 0 && (
+        <MobileActionBar
+          actions={config.mobileActions}
+          onNavigate={navigateToMobileTarget}
+          activeSectionId={activeSectionId}
+          activeSlideIdx={mobileSlideInSection}
+          totalSlidesInActiveSection={totalSlidesInActiveSection}
+        />
       )}
 
       {/* Mobile: vertical progress dots on the right edge — orientation matches the up/down scroll */}
