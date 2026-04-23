@@ -158,7 +158,7 @@ export const MarkdownArticle = ({ source, onDownloadPdf, isGeneratingPdf }: Prop
               <button
                 onClick={onDownloadPdf}
                 disabled={isGeneratingPdf}
-                className="flex items-center gap-2 px-4 py-2 text-sm text-gray-500 hover:text-gray-900 border border-gray-200 rounded-md hover:border-gray-400 transition-colors disabled:opacity-50"
+                className="hidden md:flex items-center gap-2 px-4 py-2 text-sm text-gray-500 hover:text-gray-900 border border-gray-200 rounded-md hover:border-gray-400 transition-colors disabled:opacity-50"
               >
                 <Download size={16} />
                 {isGeneratingPdf ? "Generating..." : "Download PDF"}
