@@ -1,8 +1,9 @@
 import { useState } from "react";
 import { IconRocket, IconLightbulb, IconChart, IconTeam } from "@/components/SectionIcons";
 import bbLogoHorizontal from "@/assets/bb-logo-horizontal-white.svg";
-import { Download, Play, Linkedin, Phone, MessageSquare, Mail, Calendar } from "lucide-react";
+import { Download, Linkedin, Phone, MessageSquare, Mail, Calendar } from "lucide-react";
 import { MMMArticleGallery, TeamCreativeArticleGallery } from "./TeamCreativeUI";
+import { ArticleYouTubeCard } from "./VideoPlaceholder";
 
 const mmmGalleryAll: string[] = [
   "lifestyle_1771623752575.jpg",
@@ -81,20 +82,12 @@ const ArticleSection = () => {
 
         {/* Jill's welcome video */}
         <div className="mb-16">
-          <div className="relative bg-gray-900 rounded-lg overflow-hidden mb-4 aspect-video flex items-center justify-center">
-            <div className="absolute inset-0 bg-gradient-to-br from-gray-800 to-gray-950" />
-            <div className="relative z-10 flex flex-col items-center justify-center text-center px-6 py-10">
-              <div className="w-20 h-20 rounded-full bg-brand-green/90 flex items-center justify-center mb-6 shadow-lg">
-                <Play size={32} className="text-gray-900 ml-1" fill="currentColor" />
-              </div>
-              <p className="font-display text-xs uppercase tracking-[0.3em] text-brand-green font-bold mb-2">A Personal Welcome</p>
-              <p className="font-serif text-2xl md:text-3xl text-white mb-2">Jill Pascuzzi</p>
-              <p className="text-gray-400 text-sm md:text-base">VP of Sales, USA - Brand Blvd</p>
-            </div>
-          </div>
-          <p className="text-gray-500 text-sm italic leading-relaxed text-center">
-            Video walkthrough - available in the live presentation.
-          </p>
+          <ArticleYouTubeCard
+            videoId="uVcO62NywHY"
+            supertitle="A Personal Welcome"
+            name="Jill Pascuzzi"
+            role="VP of Sales, USA - Brand Blvd"
+          />
         </div>
 
         {/* Intro */}
@@ -177,21 +170,13 @@ const ArticleSection = () => {
         </p>
 
         {/* Video Callout */}
-        <div className="relative bg-gray-900 rounded-lg overflow-hidden mb-8 aspect-video flex items-center justify-center">
-          <div className="absolute inset-0 bg-gradient-to-br from-gray-800 to-gray-950" />
-          <div className="relative z-10 flex flex-col items-center justify-center text-center px-6 py-10">
-            <div className="w-20 h-20 rounded-full bg-brand-green/90 flex items-center justify-center mb-6 shadow-lg">
-              <Play size={32} className="text-gray-900 ml-1" fill="currentColor" />
-            </div>
-            <p className="font-display text-xs uppercase tracking-[0.3em] text-brand-green font-bold mb-2">Video Walkthrough</p>
-            <p className="font-serif text-2xl md:text-3xl text-white mb-2">Bryan Caporicci</p>
-            <p className="text-gray-400 text-sm md:text-base">VP of Growth and Innovation, Brand Blvd</p>
-          </div>
-        </div>
-
-        <p className="text-gray-500 text-sm italic leading-relaxed mb-8 text-center">
-          Video walkthrough - available in the live presentation.
-        </p>
+        <ArticleYouTubeCard
+          className="mb-10"
+          videoId="bWD9rLAIinI"
+          supertitle="Video Walkthrough"
+          name="Bryan Caporicci"
+          role="VP of Growth and Innovation, Brand Blvd"
+        />
 
         <p className="text-gray-800 text-xl font-medium leading-relaxed mb-10">
           And this is just the beginning...

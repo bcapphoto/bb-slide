@@ -308,6 +308,81 @@ export const YouTubeSlide = ({ videoId, from, role, title, subtitle }: YouTubeSl
   );
 };
 
+/* ───────────────────────── Article-friendly card ─────────────────────────
+ * A clickable, aspect-video YouTube card sized for inline use inside the
+ * long-form article. Visually mirrors the legacy static placeholder
+ * (dark gradient + brand-green play badge + supertitle / name / role),
+ * but opens the same fullscreen `VideoLightbox` on click so it actually
+ * plays — including on mobile / iOS where the previous placeholder did
+ * nothing when tapped.
+ */
+type ArticleYouTubeCardProps = {
+  videoId: string;
+  supertitle: string;
+  name: string;
+  role: string;
+  className?: string;
+};
+
+export const ArticleYouTubeCard = ({
+  videoId,
+  supertitle,
+  name,
+  role,
+  className = "",
+}: ArticleYouTubeCardProps) => {
+  const [open, setOpen] = useState(false);
+  const close = useCallback(() => setOpen(false), []);
+
+  // NOTE: We deliberately do NOT use `useAutoCloseWhenOffscreen` here (unlike
+  // the slide-deck variants). In the article context the card lives inside a
+  // tall scroll container, and on iOS Safari the address-bar collapse that
+  // happens the moment the lightbox opens can drop the card's intersection
+  // ratio below the auto-close threshold — instantly closing the lightbox
+  // and making the tap appear to do nothing. The user closes the lightbox
+  // explicitly via the X button, the backdrop, or ESC.
+
+  const label = `Play video: ${name} — ${supertitle}`;
+  const title = `${name} — ${supertitle}`;
+
+  // `touch-action: manipulation` removes the iOS double-tap-to-zoom delay
+  // and ensures the tap reliably fires `onClick` instead of being absorbed
+  // by the surrounding scroll-snap container.
+  return (
+    <div className={className}>
+      <button
+        type="button"
+        onClick={() => setOpen(true)}
+        aria-label={label}
+        style={{ touchAction: "manipulation", WebkitTapHighlightColor: "transparent" }}
+        className="group relative block w-full aspect-video bg-gray-900 rounded-lg overflow-hidden shadow-xl ring-1 ring-black/10 cursor-pointer focus:outline-none focus-visible:ring-4 focus-visible:ring-brand-green/40"
+      >
+        <span className="absolute inset-0 pointer-events-none">
+          <YouTubeThumbnail videoId={videoId} alt={title} />
+          <span className="absolute inset-0 bg-gradient-to-b from-black/55 via-black/40 to-black/75 group-hover:from-black/60 group-hover:to-black/80 transition-colors" />
+        </span>
+
+        <span className="relative z-10 h-full w-full flex flex-col items-center justify-center text-center px-6 py-10 pointer-events-none">
+          <span className="w-20 h-20 rounded-full bg-brand-green/90 flex items-center justify-center mb-6 shadow-lg group-hover:scale-105 transition-transform">
+            <svg className="w-7 h-7 text-gray-900 ml-1" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M8 5v14l11-7z" />
+            </svg>
+          </span>
+          <span className="block font-display text-xs uppercase tracking-[0.3em] text-brand-green font-bold mb-2">
+            {supertitle}
+          </span>
+          <span className="block font-serif text-2xl md:text-3xl text-white mb-2">{name}</span>
+          <span className="block text-gray-300 text-sm md:text-base">{role}</span>
+        </span>
+      </button>
+
+      {open && (
+        <VideoLightbox videoId={videoId} title={title} onClose={close} />
+      )}
+    </div>
+  );
+};
+
 export const YouTubeSlideDark = ({ videoId, from, role, title, subtitle }: YouTubeSlideProps) => {
   const [open, setOpen] = useState(false);
   const slideRef = useRef<HTMLDivElement>(null);
