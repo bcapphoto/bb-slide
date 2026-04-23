@@ -92,8 +92,16 @@ export const BgImage = ({ src, opacity = "opacity-20" }: { src: string; opacity?
 );
 
 /* ─── Mobile snap section wrapper ─── */
+// Height uses `100dvh` (dynamic viewport height) instead of `h-screen` (`100vh`)
+// so iOS Safari's address-bar collapse/expand stays in sync with the snap math.
+// With `100vh`, each snap child is sized for the URL-bar-hidden viewport; when
+// the bar reappears (typically on upward scroll), `snap-mandatory` lands the
+// section's "top" partway down the visible area instead of flush to the top.
 export const MobileSection = ({ children, className = "", id }: { children: React.ReactNode; className?: string; id?: string }) => (
-  <section id={id} className={`h-screen w-full snap-start flex-shrink-0 overflow-y-auto scrollbar-hide ${className}`}>
+  <section
+    id={id}
+    className={`h-[100dvh] w-full snap-start flex-shrink-0 overflow-y-auto scrollbar-hide ${className}`}
+  >
     <div className="h-full w-full flex items-center justify-center">
       {children}
     </div>

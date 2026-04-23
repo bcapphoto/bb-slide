@@ -478,17 +478,17 @@ export default function PresentationShell({ config }: Props) {
 
       <div
         ref={containerRef}
-        className={`h-screen scrollbar-hide grain ${
+        className={`scrollbar-hide grain ${
           isMobile
-            ? "overflow-y-auto snap-y snap-mandatory"
-            : "overflow-hidden"
+            ? "h-[100dvh] overflow-y-auto snap-y snap-mandatory"
+            : "h-screen overflow-hidden"
         }`}
       >
         {isMobile ? (
           <>
             {allMobileSlides}
             {ArticleComponent && (
-              <section id="section-article" className="snap-start flex-shrink-0 h-screen overflow-y-auto scrollbar-hide">
+              <section id="section-article" className="snap-start flex-shrink-0 h-[100dvh] overflow-y-auto scrollbar-hide">
                 <ArticleComponent />
                 {config.mobileActions && config.mobileActions.length > 0 && (
                   <div className="h-24" aria-hidden />
